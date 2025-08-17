@@ -1,0 +1,180 @@
+{
+    "linkedinFallback": "https://www.linkedin.com/in/joseph-chamdani/",
+    "companies": [
+      {
+        "name": "Sector - Cyber Security",
+        "logo": "/logos/Sector_Icon_logo.png",
+        "website": "https://sector.co.id",
+        "meta": "Internship · 1 mos",
+        "location": "Jakarta, Indonesia",
+        "roles": [
+          {
+            "title": "AI Research & Development",
+            "dates": "Aug 2025 – Present",
+            "meta": "Remote",
+            "bullets": [
+              "Currently onboarding and preparing for AI penetration testing project."
+            ],
+            "media": [
+              { "src": "/media/Sector.jpg", "caption": "Sector Website", "href": "https://sector.co.id" }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "BC Tech Club",
+        "logo": "/logos/bc-tech-club.jpg",
+        "website": "https://bctechclub.com/",
+        "meta": "Part-time · 1 yr 9 mos",
+        "location": "Bellevue, WA, United States",
+        "roles": [
+          {
+            "title": "President",
+            "dates": "May 2024 – Jun 2025 · 1 yr 2 mos",
+            "meta": "Hybrid",
+            "bullets": [
+              "Organized workshops and events to grow technical skills and community engagement.",
+              "Led a cross-functional team coordinating planning, outreach, and club strategy.",
+              "Delivered a lecture to visiting Korean exchange students about running BC Hacks 2024."
+            ],
+            "media": [
+              { "src": "/BCHACKS_Thumbnail.png", "caption": "Workshop", "href": "https://youtu.be/ydpdE1oaEcI?si=rf04Y7qArNrkPz1D" },
+              { "src": "/media/bc-2.jpeg", "caption": "BC Tech Club", "href": "https://bctechclub.com/" },
+              { "src": "/media/bc-officers.jpeg", "caption": "Team" }
+            ]
+          },
+          {
+            "title": "Mentor",
+            "dates": "Oct 2023 – May 2024 · 8 mos",
+            "meta": "Hybrid",
+            "bullets": [
+              "Provided 1:1 and small-group sessions on web dev fundamentals (HTML, CSS, Git).",
+              "Reviewed member projects and gave feedback on functionality and design.",
+              "Helped new members onboard into collaborative projects and club activities."
+            ],
+            "media": [
+              { "src": "/media/bc-tech-meeting.jpeg", "caption": "Club Meeting" }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Stockbit / Bibit",
+        "logo": "/logos/stockbit.png",
+        "website": "https://stockbit.com/",
+        "meta": "Internship · 3 mos",
+        "location": "Jakarta, Indonesia",
+        "roles": [
+          {
+            "title": "AI Engineer",
+            "dates": "Jul 2024 – Sep 2024",
+            "meta": "Hybrid",
+            "bullets": [
+              "Developed OCR pipeline to auto-extract user data from Indonesian KTP documents during the KYC process.",
+              "Built an AI model with Google Cloud AutoML to detect fraudulent documents and flag scam/spam posts from Stockbit’s social media platform.",
+              "Increased KYC verification speed and accuracy by automating manual checks."
+            ],
+            "media": [
+              { "src": "/media/stockbit-certificate.jpeg", "caption": "Certificate" },
+              { "src": "/media/team-photo.jpeg", "caption": "Team Photo" },
+              { "src": "/media/stockbit-photo.jpeg", "caption": "Solo Photo" }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Dev.Net.HS",
+        "logo": "/logos/devnet-logo.jpg",
+        "website": "https://hsdevnet.com/index",
+        "meta": "Part-time · 1 yr 1 mo",
+        "location": "Jakarta, Indonesia",
+        "roles": [
+          {
+            "title": "Founder",
+            "dates": "Apr 2023 – Apr 2024",
+            "meta": "Hybrid",
+            "bullets": [
+              "Founded a student-run tech club to promote coding, design, and video editing.",
+              "Launched weekly workshops and creative sessions before transitioning leadership.",
+              "Continued advising remotely on projects and event planning."
+            ],
+            "media": [
+              { "src": "/logos/devnet-logo.jpg", "caption": "Dev.Net.HS", "href": "https://hsdevnet.com/index" },
+              { "src": "/media/devnet-club-photo.jpeg", "caption": "Club Photo" }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Touchten Games",
+        "logo": "/logos/touchten-games-logo.jpg",
+        "website": "https://www.touchten.com/",
+        "meta": "Internship · 2 mos",
+        "location": "Jakarta Metropolitan Area",
+        "roles": [
+          {
+            "title": "Cutscene Guest Student",
+            "dates": "Jul 2023 – Aug 2023",
+            "meta": "On-site",
+            "bullets": [
+              "Developed cutscenes with Unity and C# for “Piper’s Cat Café”.",
+              "Collaborated with game design on pacing and flow.",
+              "Assisted with scripting and cutscene creation."
+            ],
+            "media": [
+              { "src": "/media/touchten-1.jpeg", "caption": "Gameplay", "href": "https://drive.google.com/file/d/1K2DFHZOAV_TE3tg1sWXrSyqqJLIcTmQB/view" },
+              { "src": "/media/touchten-2.jpeg", "caption": "Team session" }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "VR Park",
+        "logo": "/logos/vr-park-logo.jpg",
+        "website": null,
+        "meta": "Internship · 5 mos",
+        "location": "Jakarta, Indonesia",
+        "roles": [
+          {
+            "title": "Game Developer",
+            "dates": "Sep 2022 – Jan 2023",
+            "meta": "Hybrid",
+            "bullets": [
+              "Helped build Dino VR, an interactive multiplayer VR game (Unity, C#).",
+              "Integrated VR SDK plugins and multiplayer systems for immersive networking.",
+              "Created scripts and subtitles, assisted research, and onboarded new interns."
+            ],
+            "media": [
+              { "src": "/media/vr-park-logo-thumbnail.png", "caption": "VR Park", "href": "https://youtu.be/lgahuoczoiA?si=CwuUs_vg5XW6xPmv" },
+              { "src": "/media/vr-park-certificate.png", "caption": "Certificate" }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "StarCamp Asia",
+        "logo": "/logos/starcamp-logo.jpg",
+        "website": "https://www.linkedin.com/company/starcampasia/posts/?feedView=all",
+        "meta": "Internship · 2 mos",
+        "location": "Bali, Indonesia",
+        "roles": [
+          {
+            "title": "Experience Center Operator",
+            "dates": "Aug 2022 – Sep 2022",
+            "meta": "On-site",
+            "bullets": [
+              "Assisted customers with VR experiences and explained rules/controls.",
+              "Maintained and reset the game center environment.",
+              "Represented the company at NXC Summit Bali demonstrating metaverse tech."
+            ],
+            "media": [
+              { "src": "/media/nxc-1.webp", "caption": "Antaranews.com", "href": "https://www.antaranews.com/berita/3097153/starcamp-demonstrasikan-teknologi-metaverse-di-nxc-summit-bali" },
+              { "src": "/media/nxc-2.png", "caption": "Youtube", "href": "https://www.youtube.com/watch?v=0slx3VTl-Lw" },
+              { "src": "/media/starcamp-certificate.png", "caption": "Certificate" }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  
