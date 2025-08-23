@@ -8,13 +8,13 @@ function RacketsGrid() {
   return (
     <div className="grid md:grid-cols-2 gap-8">
       <RacketCard
-        title="Diadem Elevate 98"
-        img="/images/rackets/diadem_elevate.jpg" // keep your original paths
+        title="Babolat Pure Aero 2023"
+        img="/images/rackets/babolat-pure-aero.avif" // keep your original paths
         colorClass="bg-gradient-to-r from-blue-400 to-red-400 bg-clip-text text-transparent"
         specs={[
           "<strong>Use:</strong> Match play",
-          "<strong>Weight:</strong> 305g",
-          "<strong>String:</strong> Luxilon 4G 125MM / 17G",
+          "<strong>Weight:</strong> 300g",
+          "<strong>String:</strong> Luxilon Alu Power 125MM",
           "<strong>Tension:</strong> 55 lbs (mains & crosses)",
           "<strong>Grip Size:</strong> 4 (³⁄₈)",
         ]}

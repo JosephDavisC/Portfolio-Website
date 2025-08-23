@@ -13,7 +13,7 @@ const staggerContainer = { animate: { transition: { staggerChildren: 0.1 } } };
 type Cert = { name: string; issuer: string; year: string; href?: string };
 
 const certifications: Cert[] = [
-  { name: "Google Data Analytics", issuer: "Google", year: "In Progress" },
+  { name: "Google Data Analytics", issuer: "Google", year: "Issued Aug 2025", href:"/credential/google-data-analytics" },
   { name: "Unity 3D Programming", issuer: "StarCamp Asia", year: "Issued Jul 2022", href: "/credential/starcamp-unity" },
   { name: "UX Research & UX Design", issuer: "StarCamp Asia", year: "Issued Sep 2022", href: "/credential/starcamp-ux" }
 ];
