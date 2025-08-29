@@ -5,9 +5,10 @@ import Lightbox from "./Lightbox";
 import Rackets from "./Rackets"; // we’ll use <Rackets embed />
 
 const tennisImages = [
-  { src: "/images/moments/Tennis.jpg", alt: "Joseph hitting — 1" },
-  { src: "/images/moments/Tennis_2.jpg", alt: "Joseph hitting — 2" },
-  { src: "/images/moments/Tennis_3.JPG", alt: "Joseph & Denzel — 3" },
+  { src: "/images/moments/Joseph_Chamdani_Tennis_4.jpg", alt: "Joseph Backhand — 4" },
+  { src: "/images/moments/Joseph_Chamdani_Tennis.jpg", alt: "Joseph Forehand — 1" },
+  { src: "/images/moments/Joseph_Chamdani_Tennis_2.jpg", alt: "Joseph Forehand — 2" },
+  { src: "/images/moments/Joseph_Chamdani_Tennis_3.JPG", alt: "Joseph & Denzel — 3" }
 ];
 
 export default function TennisCoffeeSection() {
