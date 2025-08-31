@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ZoomIn } from "lucide-react";
 import Lightbox from "./Lightbox";
-import Rackets from "./Rackets"; // we’ll use <Rackets embed />
+import Rackets from "./Rackets";
 
 const tennisImages = [
   { src: "/images/moments/Joseph_Chamdani_Tennis_4.jpg", alt: "Joseph Backhand — 4" },

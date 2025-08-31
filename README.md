@@ -1,74 +1,112 @@
-# Welcome to your Lovable project
+# 🌐 Joseph Davis Chamdani – Portfolio Website
 
-## Project info
+[![Website](https://img.shields.io/badge/Website-joechamdani.com-6f42c1?style=for-the-badge&logo=vercel&logoColor=white)](https://joechamdani.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-joseph--chamdani-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/joseph-chamdani)
 
-**URL**: https://lovable.dev/projects/0ea28964-c649-45ee-ba1f-067f678746ec
+---
 
-## How can I edit this code?
+## 📌 About
 
-There are several ways of editing your application.
+This is my personal **portfolio website** where I showcase my background, projects, certifications, experiences, and interests.  
 
-**Use Lovable**
+The site also highlights my journey as an **Informatics & Business student @ University of Washington** and includes personal touches like my love for tennis 🎾 and coffee ☕.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/0ea28964-c649-45ee-ba1f-067f678746ec) and start prompting.
+👉 Live Site: **[joechamdani.com](https://joechamdani.com)**  
 
-Changes made via Lovable will be committed automatically to this repo.
+---
 
-**Use your preferred IDE**
+## 🚀 Tech Stack
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- ⚛️ **React (TypeScript)** – Frontend framework  
+- 🎨 **TailwindCSS** – Styling  
+- 🎬 **Framer Motion** – Animations  
+- 🖼️ **Lucide React Icons** – Icons  
+- 🌐 **Vite** – Build tool  
+- ☁️ **Hostinger** – Hosting  
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+---
 
-Follow these steps:
+## 📂 Project Structure
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+```
+src/
+ ├── components/       # Reusable React components (Hero, About, Portfolio, etc.)
+ │    ├── Hero.tsx
+ │    ├── About.tsx
+ │    ├── Portfolio.tsx
+ │    ├── Certifications.tsx
+ │    ├── Milestones.tsx
+ │    ├── Talks.tsx
+ │    ├── TennisCoffeeSection.tsx
+ │    ├── RacketCard.tsx
+ │    ├── Footer.tsx
+ │    └── Navbar.tsx
+ │
+ ├── data/             # JSON data for milestones, credentials, etc.
+ │    ├── milestones.json
+ │    └── credentials.json
+ │
+ ├── hooks/            # Custom React hooks
+ ├── lib/              # Utilities
+ ├── pages/            # Page-level components
+ ├── App.tsx           # Main app entry
+ └── main.tsx          # Vite bootstrap
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+public/
+ ├── images/           # Portfolio images
+ ├── logos/            # Logos
+ └── media/            # Media files (screenshots, certs, etc.)
+```
 
-# Step 3: Install the necessary dependencies.
-npm i
+---
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+## ⚡ Features
+
+- 📖 **Hero, About, Portfolio, Certifications, Milestones, Talks**  
+- 🎾 **Lifestyle Section** (Tennis & Coffee)  
+- 🎨 **Dark theme + glassmorphism design**  
+- 📱 **Responsive layout for all devices**  
+- 🔗 **Live links to projects, certificates, and experiences**  
+
+---
+
+## 🖼️ Screenshots
+
+### Home Section
+![Home](public/preview.png)
+
+---
+
+## 🛠️ Setup & Installation
+
+Clone the repo and install dependencies:
+
+```bash
+git clone https://github.com/<your-username>/<repo-name>.git
+cd <repo-name>
+npm install
+```
+
+Run locally:
+
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Build for production:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+npm run build
+```
 
-**Use GitHub Codespaces**
+---
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 📌 Deployment
 
-## What technologies are used for this project?
+This site is deployed on **Hostinger** with a custom domain: [joechamdani.com](https://joechamdani.com).  
+You can also easily deploy it on **Vercel** or **Netlify**.
 
-This project is built with:
+---
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/0ea28964-c649-45ee-ba1f-067f678746ec) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
-# joseph-website-portfolio
+⭐ If you like this project, feel free to fork it or connect with me on [LinkedIn](https://linkedin.com/in/joseph-chamdani)!
