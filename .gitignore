@@ -11,4 +11,9 @@ coverage/
 .env*
 node_modules/
 dist/
-build/
+node_modules/
+dist/
+.zip
+.DS_Store
+.env
+
