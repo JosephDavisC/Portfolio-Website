@@ -1,4 +1,6 @@
-<img src="https://joechamdani.com/Logo_Joseph.PNG" alt="Joseph Davis Chamdani Logo" width="120" align="left"/>
+<a href="https://joechamdani.com" target="_blank">
+  <img src="https://joechamdani.com/Logo_Joseph.PNG" alt="Joseph Davis Chamdani Logo" width="120" align="left"/>
+</a>
 
 # Joseph Davis Chamdani – Portfolio Website
 
