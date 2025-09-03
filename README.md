@@ -1,7 +1,10 @@
-# 🌐 Joseph Davis Chamdani – Portfolio Website
+<img src="https://joechamdani.com/Logo_Joseph.PNG" alt="Joseph Davis Chamdani Logo" width="120" align="left"/>
+
+# Joseph Davis Chamdani – Portfolio Website
 
 [![Website](https://img.shields.io/badge/Website-joechamdani.com-6f42c1?style=for-the-badge&logo=vercel&logoColor=white)](https://joechamdani.com)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-joseph--chamdani-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/joseph-chamdani)
+
 
 ---
 
