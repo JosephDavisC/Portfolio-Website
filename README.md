@@ -111,6 +111,3 @@ This site is deployed on **Hostinger** with a custom domain: [joechamdani.com](h
 You can also easily deploy it on **Vercel** or **Netlify**.
 
 ---
-
-
-⭐ If you like this project, feel free to fork it or connect with me on [LinkedIn](https://linkedin.com/in/joseph-chamdani)!
