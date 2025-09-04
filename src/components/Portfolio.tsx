@@ -26,9 +26,10 @@ const projects = [
     demo: "https://devpost.com/software/jam-ai"
   },
   {
-    title: "KYC OCR System",
-    tech: ["Python", "Jupyter", "TesseractOCR", "BigQuery", "AutoML"],
-    description: "Built during my internship at Stockbit, this system helps automate KYC document checks using OCR and machine learning. I used Python, Google Cloud AutoML, and BigQuery to process real user data."
+    title: "Coffee Shop – Fullstack Demo",
+    tech: ["Next.js 15", "TypeScript", "Supabase", "Stripe", "Tailwind CSS"],
+    description: "A modern coffee shop web app built with Next.js 15 (App Router), Supabase, and Stripe. Order ahead, manage bookings, track orders, and explore a clean admin dashboard.",
+    github: "https://github.com/JosephDavisC/Coffee-Shop"
   },
   {
     title: "Dino Marine VR",
