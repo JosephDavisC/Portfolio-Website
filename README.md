@@ -87,7 +87,7 @@ Clone the repo and install dependencies:
 
 ```bash
 git@github.com:JosephDavisC/Website-Portfolio.git
-cd <Website-Portfolio>
+cd Website-Portfolio
 npm install
 ```
 
