@@ -86,8 +86,8 @@ public/
 Clone the repo and install dependencies:
 
 ```bash
-git clone https://github.com/<your-username>/<repo-name>.git
-cd <repo-name>
+git@github.com:JosephDavisC/Website-Portfolio.git
+cd <Website-Portfolio>
 npm install
 ```
 
