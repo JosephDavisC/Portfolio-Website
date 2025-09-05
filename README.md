@@ -108,6 +108,6 @@ npm run build
 ## 📌 Deployment
 
 This site is deployed on **Hostinger** with a custom domain: [joechamdani.com](https://joechamdani.com).  
-You can also easily deploy it on **Vercel** or **Netlify**.
+You can also easily deploy it on either **Vercel** or **Netlify**.
 
 ---
