@@ -2,10 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
+/* ===============================
+   Design tokens (HSL only)
+================================= */
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -39,19 +38,12 @@ All colors MUST be HSL.
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -83,6 +75,7 @@ All colors MUST be HSL.
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -98,8 +91,57 @@ All colors MUST be HSL.
   * {
     @apply border-border;
   }
-
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* --- Custom cursors: stable inheritance version --- */
+@layer base {
+  @media (pointer: fine) {
+    /* 1) Put the default cursor on :root */
+    :root {
+      cursor: url("/cursors/jo-normal.png") 16 16, auto;
+    }
+
+    /* 2) Make everything inherit that cursor by default
+       (use :where(*) to keep specificity low) */
+    :where(*) {
+      cursor: inherit;
+    }
+
+    /* 3) Thumbs-up on interactive elements */
+    a,
+    button,
+    [role="button"],
+    input[type="button"],
+    input[type="submit"],
+    input[type="checkbox"],
+    input[type="radio"],
+    summary,
+    .clickable,
+    .btn,
+    .cursor-pointer {
+      cursor: url("/cursors/jo-thumb.png") 16 16, pointer;
+    }
+
+    /* 4) Keep the I-beam on text entry/editable areas */
+    input[type="text"],
+    input[type="search"],
+    input[type="email"],
+    input[type="url"],
+    input[type="tel"],
+    input[type="password"],
+    textarea,
+    [contenteditable="true"],
+    .cursor-text {
+      cursor: text;
+    }
+  }
+}
+
+/* Optional helpers */
+@layer utilities {
+  .cursor-jo { cursor: url("/cursors/jo-normal.png") 16 16, auto; }
+  .cursor-jo-thumb { cursor: url("/cursors/jo-thumb.png") 16 16, pointer; }
 }
