@@ -83,7 +83,6 @@ const Projects = () => {
                   className="h-44 w-full object-cover transition-transform duration-500 group-hover:scale-105 md:h-48"
                   loading="lazy"
                 />
-                {/* subtle gradient at bottom to improve title contrast */}
                 <span className="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-black/30 to-transparent" />
               </figure>
 
@@ -139,6 +138,19 @@ const Projects = () => {
             </motion.article>
           ))}
         </motion.div>
+
+        {/* Show more button */}
+        <div className="mt-16 text-center">
+          <a
+            href="https://github.com/JosephDavisC"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 text-slate-200 hover:bg-white/10 transition-all duration-300 hover:scale-105"
+          >
+            <Github className="h-5 w-5" />
+            See more in GitHub
+          </a>
+        </div>
       </div>
     </section>
   );
