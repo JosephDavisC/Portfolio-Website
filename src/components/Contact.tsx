@@ -92,7 +92,7 @@ const Contact = () => {
           {/* Resume Download */}
           <div className="text-center">
             <a
-              href="/resume.pdf"
+              href="media/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center px-10 py-4 bg-gradient-to-r from-blue-600 to-red-600 rounded-full hover:from-blue-700 hover:to-red-700 transition-all duration-300 group shadow-xl hover:shadow-2xl hover:scale-105"

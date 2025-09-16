@@ -33,7 +33,7 @@ const Talks = () => {
             className="block"
           >
             <img 
-              src="/BCHACKS_Thumbnail.png" 
+              src="media/BCHACKS_Thumbnail.png" 
               alt="BC Hacks Lecture" 
               className="rounded-2xl shadow-xl w-full object-cover"
             />

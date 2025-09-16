@@ -129,7 +129,7 @@ const Hero = () => {
             <div className="relative">
               {/* UW Logo */}
               <div className="absolute -top-4 -left-4 w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-xl">
-                <img src="/UW_Logo.png" alt="University of Washington" className="w-10 h-10 object-contain" />
+                <img src="logos/UW_Logo.png" alt="University of Washington" className="w-10 h-10 object-contain" />
               </div>
 
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-red-500 rounded-full blur-3xl opacity-20 animate-pulse" />

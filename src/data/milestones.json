@@ -38,7 +38,7 @@
               "Delivered a lecture to visiting Korean exchange students about running BC Hacks 2024."
             ],
             "media": [
-              { "src": "/BCHACKS_Thumbnail.png", "caption": "Workshop", "href": "https://youtu.be/ydpdE1oaEcI?si=rf04Y7qArNrkPz1D" },
+              { "src": "media/BCHACKS_Thumbnail.png", "caption": "Workshop", "href": "https://youtu.be/ydpdE1oaEcI?si=rf04Y7qArNrkPz1D" },
               { "src": "/media/bc-2.jpeg", "caption": "BC Tech Club", "href": "https://bctechclub.com/" },
               { "src": "/media/bc-officers.jpeg", "caption": "Team" }
             ]
