@@ -2,6 +2,27 @@
     "linkedinFallback": "https://www.linkedin.com/in/joseph-chamdani/",
     "companies": [
       {
+        "name": "University of Washington",
+        "logo": "/logos/UW_Logo.png",
+        "website": "https://hfs.uw.edu/Dining",
+        "meta": "Part-time · 1 mos",
+        "location": "Seattle, Washington, United States",
+        "roles": [
+          {
+            "title": "Student Assistant - Bay Laurel Catering",
+            "dates": "Sep 2025 – Present",
+            "meta": "On-site",
+            "bullets": [
+              "Working under UW Housing & Food Services Dining at Bay Laurel Catering to support catering operations and event services."
+            ],
+            "media": [
+              { "src": "media/UW-Dining.webp", "caption": "UW HFS Dining", "href": "https://hfs.uw.edu/Home" },
+              { "src": "media/bay-laurel.jpg", "caption": "UW Bay Laurel", "href": "https://hfs.uw.edu/Bay-Laurel-Catering" }
+            ]
+          }
+        ]
+      },
+      {
         "name": "Sector - Cyber Security",
         "logo": "/logos/Sector_Icon_logo.png",
         "website": "https://sector.co.id",
@@ -19,7 +40,7 @@
               { "src": "/media/Sector.jpg", "caption": "Sector Website", "href": "https://sector.co.id" }
             ]
           }
-        ]
+        ]   
       },
       {
         "name": "BC Tech Club",
