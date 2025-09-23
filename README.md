@@ -86,8 +86,8 @@ public/
 Clone the repo and install dependencies:
 
 ```bash
-https://github.com/JosephDavisC/Website-Portfolio.git
-cd Website-Portfolio
+https://github.com/JosephDavisC/Portfolio-Website.git
+cd Portfolio Website
 npm install
 ```
 
