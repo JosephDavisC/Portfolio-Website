@@ -77,6 +77,7 @@ public/
 ## 🖼️ Screenshots
 
 ### Home Section
+
 ![Home](public/media/preview-website.png)
 
 ---

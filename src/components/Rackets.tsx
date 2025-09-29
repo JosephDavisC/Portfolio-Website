@@ -63,5 +63,4 @@ export default function Rackets({ embed = false }: Props) {
   );
 }
 
-// Named export if you prefer to import just the grid:
-// export { RacketsGrid };
+
