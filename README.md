@@ -87,7 +87,7 @@ public/
 Clone the repo and install dependencies:
 
 ```bash
-https://github.com/JosephDavisC/Portfolio-Website.git
+git clone https://github.com/JosephDavisC/Portfolio-Website.git
 cd Portfolio Website
 npm install
 ```
@@ -110,5 +110,10 @@ npm run build
 
 This site is deployed on **Hostinger** with a custom domain: [joechamdani.com](https://joechamdani.com).  
 You can also easily deploy it on either **Vercel** or **Netlify**.
+
+---
+
+⚠️ Note: Some browser extensions (e.g. Better Campus, readability tools) may alter the site’s appearance.  
+For the best experience, please view with extensions disabled or whitelist this site.
 
 ---
