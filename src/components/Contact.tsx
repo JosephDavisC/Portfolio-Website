@@ -1,13 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Linkedin, Github, Instagram, Youtube, Download } from 'lucide-react';
+import ContactForm from './ContactForm';
 
 const Contact = () => {
   return (
     <section id="contact" className="py-24 px-4 sm:px-6">
       <div className="max-w-4xl mx-auto">
         <motion.div
-          className="text-center mb-20"
+          className="text-center mb-12"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -22,13 +23,21 @@ const Contact = () => {
           </p>
         </motion.div>
 
+        {/* Contact Form */}
+        <div className="mb-12">
+          <ContactForm />
+        </div>
+
         <motion.div
           className="bg-white/5 backdrop-blur-sm rounded-3xl p-6 sm:p-10 border border-white/10"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
         >
+          <h3 className="text-2xl md:text-3xl font-bold mb-8 text-center bg-gradient-to-r from-blue-400 to-red-400 bg-clip-text text-transparent">
+            Or connect with me on social
+          </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 sm:gap-8 mb-10 px-2 sm:px-0">
             {/* Email */}
             <a

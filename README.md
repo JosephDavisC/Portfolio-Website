@@ -21,11 +21,12 @@ The site also highlights my journey as an **Informatics & Business student @ Uni
 
 ## 🚀 Tech Stack
 
-- ⚛️ **React (TypeScript)** – Frontend framework  
-- 🎨 **TailwindCSS** – Styling  
-- 🎬 **Framer Motion** – Animations  
-- 🖼️ **Lucide React Icons** – Icons  
-- 🌐 **Vite** – Build tool  
+- ⚛️ **React (TypeScript)** – Frontend framework
+- 🎨 **TailwindCSS** – Styling
+- 🎬 **Framer Motion** – Animations
+- 🖼️ **Lucide React Icons** – Icons
+- 🌐 **Vite** – Build tool
+- ✉️ **EmailJS** – Contact form email integration
 - ☁️ **Hostinger** – Hosting  
 
 ---
@@ -42,6 +43,8 @@ src/
  │    ├── Milestones.tsx
  │    ├── Talks.tsx
  │    ├── TennisCoffeeSection.tsx
+ │    ├── Contact.tsx
+ │    ├── ContactForm.tsx
  │    ├── RacketCard.tsx
  │    ├── Footer.tsx
  │    └── Navbar.tsx
@@ -66,10 +69,11 @@ public/
 
 ## ⚡ Features
 
-- 📖 **Hero, About, Portfolio, Certifications, Milestones, Talks**  
-- 🎾 **Lifestyle Section** (Tennis & Coffee)  
-- 🎨 **Dark theme + glassmorphism design**  
-- 📱 **Responsive layout for all devices**  
+- 📖 **Hero, About, Portfolio, Certifications, Milestones, Talks**
+- 🎾 **Lifestyle Section** (Tennis & Coffee)
+- ✉️ **Contact Form** with EmailJS integration and auto-reply confirmation
+- 🎨 **Dark theme + glassmorphism design**
+- 📱 **Responsive layout for all devices**
 - 🔗 **Live links to projects, certificates, and experiences**  
 
 ---
@@ -88,9 +92,22 @@ Clone the repo and install dependencies:
 
 ```bash
 git clone https://github.com/JosephDavisC/Portfolio-Website.git
-cd Portfolio Website
+cd Portfolio-Website
 npm install
 ```
+
+### Environment Variables
+
+For the contact form to work, create a `.env` file in the root directory:
+
+```env
+VITE_EMAILJS_SERVICE_ID=your_service_id
+VITE_EMAILJS_TEMPLATE_ID=your_template_id
+VITE_EMAILJS_AUTOREPLY_TEMPLATE_ID=your_autoreply_template_id
+VITE_EMAILJS_PUBLIC_KEY=your_public_key
+```
+
+See `EMAILJS_SETUP.md` for detailed EmailJS setup instructions.
 
 Run locally:
 
