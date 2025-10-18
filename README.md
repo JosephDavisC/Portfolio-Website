@@ -107,8 +107,6 @@ VITE_EMAILJS_AUTOREPLY_TEMPLATE_ID=your_autoreply_template_id
 VITE_EMAILJS_PUBLIC_KEY=your_public_key
 ```
 
-See `EMAILJS_SETUP.md` for detailed EmailJS setup instructions.
-
 Run locally:
 
 ```bash
