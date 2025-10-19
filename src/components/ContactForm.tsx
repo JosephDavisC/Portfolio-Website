@@ -51,16 +51,13 @@ const ContactForm = () => {
         to_name: 'Joseph',
       };
 
-      // Send notification email to you
       await emailjs.send(serviceId, templateId, templateParams, publicKey);
 
-      // Send auto-reply confirmation email to the user (if auto-reply template is configured)
       if (autoReplyTemplateId) {
         try {
           await emailjs.send(serviceId, autoReplyTemplateId, templateParams, publicKey);
         } catch (autoReplyError) {
           console.warn('Auto-reply failed, but main message was sent:', autoReplyError);
-          // Don't fail the whole submission if auto-reply fails
         }
       }
 
@@ -68,7 +65,6 @@ const ContactForm = () => {
       toast.success('Message sent successfully! Check your email for confirmation.');
       reset();
 
-      // Reset success message after 5 seconds
       setTimeout(() => {
         setSubmitStatus('idle');
       }, 5000);
