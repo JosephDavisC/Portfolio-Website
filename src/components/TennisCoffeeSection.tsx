@@ -28,7 +28,7 @@ export default function TennisCoffeeSection() {
   };
 
   return (
-    <section id="tennis-coffee" className="py-24 px-6 bg-black/20">
+    <section id="tennis-coffee" className="py-12 px-6 bg-black/20">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">

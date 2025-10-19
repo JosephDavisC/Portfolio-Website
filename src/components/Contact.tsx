@@ -5,7 +5,7 @@ import ContactForm from './ContactForm';
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-24 px-4 sm:px-6">
+    <section id="contact" className="py-12 px-4 sm:px-6">
       <div className="max-w-4xl mx-auto">
         <motion.div
           className="text-center mb-12"

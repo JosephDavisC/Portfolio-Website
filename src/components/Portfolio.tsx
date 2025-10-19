@@ -45,14 +45,14 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section id="portfolio" className="py-24 px-6 bg-black/20">
+    <section id="portfolio" className="py-12 px-6 bg-black/20">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="text-center mb-12"
         >
           <h2 className="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-blue-400 to-red-400 bg-clip-text text-transparent">
             Portfolio
