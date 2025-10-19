@@ -9,9 +9,9 @@ type NavItem = { name: string; href: `#${string}`; short?: string };
 const links: NavItem[] = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
-  { name: "Portfolio", href: "#portfolio" },
-  { name: "Certifications", href: "#certifications" },
   { name: "Milestones", href: "#milestones" },
+  { name: "Credentials", href: "#certifications" },
+  { name: "Portfolio", href: "#portfolio" },
   { name: "Talks", href: "#talks" },
   { name: "Tennis & Coffee", href: "#tennis-coffee", short: "Tennis & Coffee" },
   { name: "Contact", href: "#contact" },
