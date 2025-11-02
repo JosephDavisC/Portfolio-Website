@@ -5,7 +5,7 @@
         "name": "University of Washington",
         "logo": "/logos/UW_Logo.png",
         "website": "https://hfs.uw.edu/Dining",
-        "meta": "Part-time · 2 mos",
+        "meta": "Part-time · 3 mos",
         "location": "Seattle, Washington, United States",
         "roles": [
           {
@@ -23,10 +23,10 @@
         ]
       },
       {
-        "name": "Sector - Cyber Security",
+        "name": "Sector - CyberSecurity",
         "logo": "/logos/Sector_Icon_logo.png",
         "website": "https://sector.co.id",
-        "meta": "Internship · 3 mos",
+        "meta": "Internship · 4 mos",
         "location": "Jakarta, Indonesia",
         "roles": [
           {
@@ -35,7 +35,8 @@
             "meta": "Remote",
             "bullets": [
               "Building AI tools to make penetration testing and cybersecurity work faster and smarter.",
-              "Creating automations that help the team detect threats and handle security tasks more easily."
+              "Developed automated threat detection systems that identify and flag security vulnerabilities.",
+              "Trained AI models on XOps data to automate data processing, improving efficiency by 20% over manual regex-based methods."
             ],
             "media": [
               { "src": "/media/Sector.jpg", "caption": "Sector Website", "href": "https://sector.co.id" }
