@@ -1,18 +1,18 @@
 import React, { Suspense } from 'react';
 
-import Hero from '@/components/Hero';
-import About from '@/components/About';
-import Navbar from '@/components/Navbar';
-import ScrollFromState from "@/components/ScrollToTop";
+import Hero from '@/components/sections/Hero';
+import About from '@/components/sections/About';
+import Navbar from '@/components/shared/Navbar';
+import ScrollFromState from "@/components/shared/ScrollToTop";
 
 
-const Portfolio = React.lazy(() => import('@/components/Portfolio'));
-const Certification = React.lazy(() => import('@/components/Certifications'));
-const Milestones = React.lazy(() => import('@/components/Milestones'));
-const Talks = React.lazy(() => import('@/components/Talks'));
-const TennisCoffeeSection = React.lazy(() => import('@/components/TennisCoffeeSection'));
-const Contact = React.lazy(() => import('@/components/Contact'));
-const Footer = React.lazy(() => import('@/components/Footer'));
+const Portfolio = React.lazy(() => import('@/components/sections/Portfolio'));
+const Certification = React.lazy(() => import('@/components/sections/Certifications'));
+const Milestones = React.lazy(() => import('@/components/sections/Milestones'));
+const Blog = React.lazy(() => import('@/components/sections/Blog'));
+const TennisCoffeeSection = React.lazy(() => import('@/components/sections/TennisCoffeeSection'));
+const Contact = React.lazy(() => import('@/components/sections/Contact'));
+const Footer = React.lazy(() => import('@/components/shared/Footer'));
 
 const Index = () => {
   return (
@@ -25,7 +25,7 @@ const Index = () => {
         <Milestones />
         <Certification />
         <Portfolio />
-        <Talks />
+        <Blog />
         <TennisCoffeeSection />
         <Contact />
         <Footer />

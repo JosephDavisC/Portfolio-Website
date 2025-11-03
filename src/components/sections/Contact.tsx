@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Linkedin, Github, Instagram, Youtube, Download } from 'lucide-react';
-import ContactForm from './ContactForm';
+import ContactForm from '@/components/shared/ContactForm';
 
 const Contact = () => {
   return (

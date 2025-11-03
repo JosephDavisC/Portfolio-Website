@@ -12,7 +12,7 @@ const links: NavItem[] = [
   { name: "Milestones", href: "#milestones" },
   { name: "Credentials", href: "#certifications" },
   { name: "Portfolio", href: "#portfolio" },
-  { name: "Talks", href: "#talks" },
+  { name: "Blog", href: "#blog" },
   { name: "Tennis & Coffee", href: "#tennis-coffee", short: "Tennis & Coffee" },
   { name: "Contact", href: "#contact" },
 ];

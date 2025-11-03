@@ -3,13 +3,14 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ScrollProgress from "@/components/ScrollProgress";
-import ScrollToTop from "@/components/ScrollToTop";
-import ScrollUpButton from "@/components/ScrollUpButton";
+import ScrollProgress from "@/components/shared/ScrollProgress";
+import ScrollToTop from "@/components/shared/ScrollToTop";
+import ScrollUpButton from "@/components/shared/ScrollUpButton";
 
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import CredentialPage from "./pages/CredentialPage";
+import ArticlePage from "./pages/ArticlePage";
 
 const queryClient = new QueryClient();
 
@@ -27,10 +28,11 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/credential/:slug" element={<CredentialPage />} />
+          <Route path="/blog/:slug" element={<ArticlePage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
 
-        {/* 👇 floating “back to top” arrow on every page */}
+        {/* 👇 floating "back to top" arrow on every page */}
         <ScrollUpButton />
       </BrowserRouter>
     </TooltipProvider>

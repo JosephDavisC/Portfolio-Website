@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import RacketCard from "./RacketCard";
+import RacketCard from "@/components/sections/RacketCard";
 
 type Props = { embed?: boolean };
 

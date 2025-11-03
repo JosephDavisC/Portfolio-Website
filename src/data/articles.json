@@ -1,0 +1,34 @@
+[
+  {
+    "id": "bc-hacks-2024",
+    "title": "BC Hacks 2024 Lecture",
+    "date": "July 2024",
+    "location": "Bellevue College",
+    "preview": "After helping organize and launch BC Hacks 2024, I was invited to give a lecture at Bellevue College about how to run a successful hackathon. This session was specially arranged for a group of 20+ Korean exchange students visiting from Korea.",
+    "thumbnail": "media/BCHACKS_Thumbnail.png",
+    "externalLinks": [
+      {
+        "url": "https://youtu.be/ydpdE1oaEcI?si=iBYgt3G78uXj6lzT",
+        "text": "Watch Lecture on YouTube"
+      },
+      {
+        "url": "https://drive.google.com/file/d/1SxYfQWwnEc5YwJ4km_Yrn_x88OWaGypN/view?usp=sharing",
+        "text": "View Presentation Slides"
+      },
+      {
+        "url": "https://bc-hacks-2024.devpost.com/",
+        "text": "View Projects on DevPost"
+      },
+      {
+        "url": "https://www.linkedin.com/posts/bc-tech-club_hackathon-mentorship-education-activity-7207101928671989760-cXQj",
+        "text": "LinkedIn: Judges, Workshops, and Mentors"
+      },
+      {
+        "url": "https://www.linkedin.com/posts/bc-tech-club_hackathon-mentorship-education-ugcPost-7206377288379080706-PVOA",
+        "text": "LinkedIn: Staff and Volunteers"
+      }
+    ],
+    "tags": ["Talks", "Hackathon", "Education"],
+    "hasFullArticle": true
+  }
+]
