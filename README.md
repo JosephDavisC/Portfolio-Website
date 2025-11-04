@@ -26,6 +26,8 @@ The site also highlights my journey as an **Informatics & Business student @ Uni
 - 🎬 **Framer Motion** – Animations
 - 🖼️ **Lucide React Icons** – Icons
 - 🌐 **Vite** – Build tool
+- 🔀 **React Router** – Client-side routing for blog pages
+- 🪖 **React Helmet** – SEO meta tags management
 - ✉️ **EmailJS** – Contact form email integration
 - ☁️ **Hostinger** – Hosting  
 
@@ -35,46 +37,59 @@ The site also highlights my journey as an **Informatics & Business student @ Uni
 
 ```
 src/
- ├── components/       # Reusable React components (Hero, About, Portfolio, etc.)
- │    ├── Hero.tsx
- │    ├── About.tsx
- │    ├── Portfolio.tsx
- │    ├── Certifications.tsx
- │    ├── Milestones.tsx
- │    ├── Talks.tsx
- │    ├── TennisCoffeeSection.tsx
- │    ├── Contact.tsx
- │    ├── ContactForm.tsx
- │    ├── RacketCard.tsx
- │    ├── Footer.tsx
- │    └── Navbar.tsx
+ ├── components/       # Reusable React components
+ │    ├── sections/   # Main page sections
+ │    │    ├── Hero.tsx
+ │    │    ├── About.tsx
+ │    │    ├── Portfolio.tsx
+ │    │    ├── Blog.tsx
+ │    │    ├── Certifications.tsx
+ │    │    ├── Milestones.tsx
+ │    │    ├── Talks.tsx
+ │    │    ├── TennisCoffeeSection.tsx
+ │    │    └── Contact.tsx
+ │    └── shared/     # Shared components
+ │         ├── Navbar.tsx
+ │         ├── Footer.tsx
+ │         ├── ContactForm.tsx
+ │         └── RacketCard.tsx
  │
- ├── data/             # JSON data for milestones, credentials, etc.
+ ├── data/             # JSON data for content
  │    ├── milestones.json
- │    └── credentials.json
+ │    ├── credentials.json
+ │    └── articles.json
  │
  ├── hooks/            # Custom React hooks
  ├── lib/              # Utilities
  ├── pages/            # Page-level components
- ├── App.tsx           # Main app entry
+ │    ├── Index.tsx   # Homepage
+ │    └── ArticlePage.tsx  # Blog article pages
+ ├── App.tsx           # Main app entry with routing
  └── main.tsx          # Vite bootstrap
 
 public/
+ ├── article_media/    # Blog article images
+ │    └── bc-hacks-2024/
  ├── images/           # Portfolio images
  ├── logos/            # Logos
  └── media/            # Media files (screenshots, certs, etc.)
+
+scripts/
+ └── generate-blog-meta.js  # Generates static HTML for SEO
 ```
 
 ---
 
 ## ⚡ Features
 
-- 📖 **Hero, About, Portfolio, Certifications, Milestones, Talks**
+- 📖 **Hero, About, Portfolio, Blog & Articles, Certifications, Milestones, Talks**
+- 📝 **Blog Section** with full article pages and SEO meta tags for social media sharing
 - 🎾 **Lifestyle Section** (Tennis & Coffee)
 - ✉️ **Contact Form** with EmailJS integration and auto-reply confirmation
 - 🎨 **Dark theme + glassmorphism design**
 - 📱 **Responsive layout for all devices**
-- 🔗 **Live links to projects, certificates, and experiences**  
+- 🔗 **Live links to projects, certificates, and experiences**
+- 🔍 **SEO optimized** with Open Graph tags for LinkedIn, Facebook, Twitter, WhatsApp  
 
 ---
 
