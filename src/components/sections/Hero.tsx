@@ -44,7 +44,7 @@ const Hero = () => {
               </div>
 
               <p className="text-2xl md:text-3xl text-slate-300 mb-4 font-light">
-                Informatics & Business Student @{" "}
+                Informatics Student @{" "}
                 <a
                   href="https://www.washington.edu"
                   target="_blank"
