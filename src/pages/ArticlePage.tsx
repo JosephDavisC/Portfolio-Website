@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Calendar, ExternalLink } from 'lucide-react';
 import Navbar from '@/components/shared/Navbar';
@@ -234,8 +235,44 @@ const ArticlePage = () => {
     return <Navigate to="/" replace />;
   }
 
+  // SEO metadata
+  const pageTitle = `${article.title} | Joseph Davis Chamdani`;
+  const pageDescription = article.preview;
+  const pageUrl = `https://joechamdani.com/blog/${article.id}`;
+  const imageUrl = article.thumbnail
+    ? `https://joechamdani.com/${article.thumbnail}`
+    : 'https://joechamdani.com/og-image.png'; // fallback image
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
+      <Helmet>
+        {/* Primary Meta Tags */}
+        <title>{pageTitle}</title>
+        <meta name="title" content={pageTitle} />
+        <meta name="description" content={pageDescription} />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:image" content={imageUrl} />
+
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={pageUrl} />
+        <meta property="twitter:title" content={pageTitle} />
+        <meta property="twitter:description" content={pageDescription} />
+        <meta property="twitter:image" content={imageUrl} />
+
+        {/* Article specific tags */}
+        <meta property="article:author" content="Joseph Davis Chamdani" />
+        <meta property="article:published_time" content={article.date} />
+        {article.tags && article.tags.map((tag) => (
+          <meta property="article:tag" content={tag} key={tag} />
+        ))}
+      </Helmet>
+
       <Navbar />
 
       {/* Article Header */}
