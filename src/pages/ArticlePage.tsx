@@ -28,6 +28,18 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             just 48 hours. It's completely beginner-friendly and organized by a collaboration of five
             student clubs: BC Tech Club, ACM, Innovators Hub, AI Ethics Club, and Filmmaking Club.
           </p>
+
+          <div className="my-6 rounded-xl overflow-hidden shadow-2xl">
+            <img
+              src="/article_media/bc-hacks-2024/Clubs.png"
+              alt="Collaborating student clubs"
+              className="w-full object-cover"
+            />
+            <p className="text-slate-400 text-sm text-center mt-3 italic">
+              Five student clubs collaborated to make BC Hacks possible
+            </p>
+          </div>
+
           <p className="text-slate-300 text-lg leading-relaxed mb-6">
             The goal is simple: create a space that empowers students to innovate, learn new tools,
             and connect with mentors and industry professionals.
@@ -35,7 +47,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
 
           <div className="my-6 rounded-xl overflow-hidden shadow-2xl">
             <img
-              src="/article_media/Group_Photo.png"
+              src="/article_media/bc-hacks-2024/Group_Photo.png"
               alt="BC Hacks 2024 participants and organizers"
               className="w-full object-cover"
             />
@@ -56,12 +68,46 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             and mentors. Our vision was clear: make BC Hacks open to everyone, not just computer science majors.
           </p>
 
+          <div className="my-6 rounded-xl overflow-hidden shadow-2xl">
+            <img
+              src="/article_media/bc-hacks-2024/Team.png"
+              alt="BC Hacks organizing team"
+              className="w-full object-cover"
+            />
+            <p className="text-slate-400 text-sm text-center mt-3 italic">
+              The organizing team behind BC Hacks 2024
+            </p>
+          </div>
+
           <h3 className="text-2xl font-semibold text-blue-400 mb-4">Month 2: Logistics & Budgeting</h3>
           <p className="text-slate-300 text-lg leading-relaxed mb-6">
             We secured Room U301 as our venue, drafted a budget of around $31,000, and set up
             communication platforms for the teams. Every small detail, from tables to name tags,
             needed careful planning.
           </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+            <div className="rounded-xl overflow-hidden shadow-2xl">
+              <img
+                src="/article_media/bc-hacks-2024/Venue.png"
+                alt="BC Hacks venue setup in Room U301"
+                className="w-full h-64 object-cover"
+              />
+              <p className="text-slate-400 text-sm text-center mt-3 italic">
+                The venue setup in Room U301, ready for participants
+              </p>
+            </div>
+            <div className="rounded-xl overflow-hidden shadow-2xl">
+              <img
+                src="/article_media/bc-hacks-2024/Room_Layout.png"
+                alt="Event room layout planning"
+                className="w-full h-64 object-cover"
+              />
+              <p className="text-slate-400 text-sm text-center mt-3 italic">
+                Planning the room layout for the event
+              </p>
+            </div>
+          </div>
 
           <h3 className="text-2xl font-semibold text-blue-400 mb-4">Month 3: Outreach & Workshops</h3>
           <p className="text-slate-300 text-lg leading-relaxed mb-6">
@@ -82,17 +128,6 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             of nerves and excitement, but we were ready.
           </p>
 
-          <div className="my-6 rounded-xl overflow-hidden shadow-2xl">
-            <img
-              src="/article_media/Venue.png"
-              alt="BC Hacks venue setup in Room U301"
-              className="w-full object-cover"
-            />
-            <p className="text-slate-400 text-sm text-center mt-3 italic">
-              The venue setup in Room U301, ready for participants
-            </p>
-          </div>
-
           <h2 className="text-3xl font-bold text-red-400 mb-6">The Event Weekend</h2>
           <p className="text-slate-300 text-lg leading-relaxed mb-4">
             <strong className="text-slate-200">Day 1:</strong> Students checked in, grabbed swag bags,
@@ -102,7 +137,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
             <div className="rounded-xl overflow-hidden shadow-2xl">
               <img
-                src="/article_media/Workshops.png"
+                src="/article_media/bc-hacks-2024/Workshops.png"
                 alt="Workshop session at BC Hacks"
                 className="w-full h-64 object-cover"
               />
@@ -112,7 +147,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             </div>
             <div className="rounded-xl overflow-hidden shadow-2xl">
               <img
-                src="/article_media/Participants.png"
+                src="/article_media/bc-hacks-2024/Participants.png"
                 alt="Students working on their projects"
                 className="w-full h-64 object-cover"
               />
@@ -131,7 +166,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
             <div className="rounded-xl overflow-hidden shadow-2xl">
               <img
-                src="/article_media/Judging_1.png"
+                src="/article_media/bc-hacks-2024/Judging_1.png"
                 alt="Teams presenting to judges"
                 className="w-full h-64 object-cover"
               />
@@ -141,7 +176,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             </div>
             <div className="rounded-xl overflow-hidden shadow-2xl">
               <img
-                src="/article_media/Judging_2.png"
+                src="/article_media/bc-hacks-2024/Judging_2.png"
                 alt="Project demonstrations"
                 className="w-full h-64 object-cover"
               />
@@ -162,7 +197,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
 
           <div className="my-6 rounded-xl overflow-hidden shadow-2xl">
             <img
-              src="/article_media/Winners.png"
+              src="/article_media/bc-hacks-2024/Winners.png"
               alt="BC Hacks 2024 award ceremony"
               className="w-full object-cover"
             />

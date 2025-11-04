@@ -3,17 +3,33 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const distPath = path.join(__dirname, '..', 'dist');
 
 const blogMeta = {
   'bc-hacks-2024': {
     title: 'BC Hacks 2024 Lecture | Joseph Davis Chamdani',
     description: 'After helping organize and launch BC Hacks 2024, I was invited to give a lecture at Bellevue College about how to run a successful hackathon. This session was specially arranged for a group of 20+ Korean exchange students visiting from Korea.',
-    image: 'https://joechamdani.com/media/BCHACKS_Thumbnail.png',
+    image: 'https://joechamdani.com/article_media/bc-hacks-2024/Group_Photo.png',
     url: 'https://joechamdani.com/blog/bc-hacks-2024'
   }
 };
 
-function generateHTML(slug, meta) {
+// Read the main index.html to get the asset file names
+function getAssetReferences() {
+  const indexPath = path.join(distPath, 'index.html');
+  const indexHtml = fs.readFileSync(indexPath, 'utf-8');
+
+  // Extract CSS and JS references
+  const cssMatch = indexHtml.match(/href="(\/assets\/index-[^"]+\.css)"/);
+  const jsMatch = indexHtml.match(/src="(\/assets\/index-[^"]+\.js)"/);
+
+  return {
+    css: cssMatch ? cssMatch[1] : '',
+    js: jsMatch ? jsMatch[1] : ''
+  };
+}
+
+function generateHTML(slug, meta, assets) {
   return `<!DOCTYPE html>
 <html lang="en">
   <head>
@@ -37,20 +53,20 @@ function generateHTML(slug, meta) {
     <meta property="twitter:description" content="${meta.description}" />
     <meta property="twitter:image" content="${meta.image}" />
 
-    <meta http-equiv="refresh" content="0;url=/" />
-    <script>
-      window.location.href = '/';
-      sessionStorage.setItem('navigateTo', '/blog/${slug}');
-    </script>
+    <!-- Load the main app's CSS and JS -->
+    <script type="module" crossorigin src="${assets.js}"></script>
+    <link rel="stylesheet" crossorigin href="${assets.css}">
   </head>
   <body>
-    <p>Redirecting...</p>
+    <div id="root"></div>
   </body>
 </html>`;
 }
 
+// Get asset references from main index.html
+const assets = getAssetReferences();
+
 // Create blog directory structure
-const distPath = path.join(__dirname, '..', 'dist');
 const blogPath = path.join(distPath, 'blog');
 
 if (!fs.existsSync(blogPath)) {
@@ -65,7 +81,7 @@ Object.entries(blogMeta).forEach(([slug, meta]) => {
   }
 
   const htmlPath = path.join(postPath, 'index.html');
-  const html = generateHTML(slug, meta);
+  const html = generateHTML(slug, meta, assets);
   fs.writeFileSync(htmlPath, html);
   console.log(`✓ Generated ${htmlPath}`);
 });
