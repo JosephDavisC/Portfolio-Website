@@ -13,7 +13,7 @@
 
 This is my personal **portfolio website** where I showcase my background, projects, certifications, experiences, and interests.  
 
-The site also highlights my journey as an **Informatics & Business student @ University of Washington** and includes personal touches like my love for tennis 🎾 and coffee ☕.
+The site also highlights my journey as an **Informatics student @ University of Washington** and includes personal touches like my love for tennis 🎾 and coffee ☕.
 
 👉 Live Site: **[joechamdani.com](https://joechamdani.com)**  
 
