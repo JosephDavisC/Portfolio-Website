@@ -21,7 +21,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             our team built together.
           </p>
 
-          <h2 className="text-3xl font-bold text-red-400 mb-6">What Is BC Hacks?</h2>
+          <h2 id="what-is-bc-hacks" className="text-3xl font-bold text-red-400 mb-6">What Is BC Hacks?</h2>
           <p className="text-slate-300 text-lg leading-relaxed mb-6">
             BC Hacks is Bellevue College's annual student-run hackathon, a weekend where students
             from all backgrounds come together to brainstorm, design, and build creative projects in
@@ -56,7 +56,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             </p>
           </div>
 
-          <h2 className="text-3xl font-bold text-red-400 mb-6">Five Months of Planning</h2>
+          <h2 id="five-months-planning" className="text-3xl font-bold text-red-400 mb-6">Five Months of Planning</h2>
           <p className="text-slate-300 text-lg leading-relaxed mb-6">
             Running a hackathon sounds exciting, but it's really a five-month journey of planning,
             coordination, and teamwork.
@@ -91,7 +91,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
               <img
                 src="/article_media/bc-hacks-2024/Venue.png"
                 alt="BC Hacks venue setup in Room U301"
-                className="w-full h-64 object-cover"
+                className="w-full h-auto md:h-64 object-cover"
               />
               <p className="text-slate-400 text-sm text-center mt-3 italic">
                 The venue setup in Room U301, ready for participants
@@ -101,7 +101,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
               <img
                 src="/article_media/bc-hacks-2024/Room_Layout.png"
                 alt="Event room layout planning"
-                className="w-full h-64 object-cover"
+                className="w-full h-auto md:h-64 object-cover"
               />
               <p className="text-slate-400 text-sm text-center mt-3 italic">
                 Planning the room layout for the event
@@ -116,11 +116,57 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             guest speakers from Amazon, Google, and Microsoft.
           </p>
 
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+            <div className="rounded-xl overflow-hidden shadow-2xl">
+              <img
+                src="/article_media/bc-hacks-2024/Marketing.png"
+                alt="BC Hacks marketing and outreach"
+                className="w-full h-auto md:h-64 object-cover"
+              />
+              <p className="text-slate-400 text-sm text-center mt-3 italic">
+                Marketing campaign and outreach materials
+              </p>
+            </div>
+            <div className="rounded-xl overflow-hidden shadow-2xl">
+              <img
+                src="/article_media/bc-hacks-2024/Judging_Rubric.png"
+                alt="Judging rubric for BC Hacks"
+                className="w-full h-auto md:h-64 object-cover"
+              />
+              <p className="text-slate-400 text-sm text-center mt-3 italic">
+                Judging rubric sent to judges and mentors
+              </p>
+            </div>
+          </div>
+
           <h3 className="text-2xl font-semibold text-blue-400 mb-4">Month 4: Preparation</h3>
           <p className="text-slate-300 text-lg leading-relaxed mb-6">
             The website went live, schedules were finalized, and our food vendors were booked. Everything
             was starting to come together.
           </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+            <div className="rounded-xl overflow-hidden shadow-2xl">
+              <img
+                src="/article_media/bc-hacks-2024/Schedule.png"
+                alt="BC Hacks event schedule"
+                className="w-full h-64 object-cover"
+              />
+              <p className="text-slate-400 text-sm text-center mt-3 italic">
+                Finalized event schedule for the weekend
+              </p>
+            </div>
+            <div className="rounded-xl overflow-hidden shadow-2xl">
+              <img
+                src="/article_media/bc-hacks-2024/Food_vendors.png"
+                alt="Food vendors at BC Hacks"
+                className="w-full h-64 object-cover"
+              />
+              <p className="text-slate-400 text-sm text-center mt-3 italic">
+                Food vendors booked for the event
+              </p>
+            </div>
+          </div>
 
           <h3 className="text-2xl font-semibold text-blue-400 mb-4">Month 5: Execution Prep</h3>
           <p className="text-slate-300 text-lg leading-relaxed mb-6">
@@ -128,13 +174,23 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             of nerves and excitement, but we were ready.
           </p>
 
-          <h2 className="text-3xl font-bold text-red-400 mb-6">The Event Weekend</h2>
+          <h2 id="event-weekend" className="text-3xl font-bold text-red-400 mb-6">The Event Weekend</h2>
           <p className="text-slate-300 text-lg leading-relaxed mb-4">
             <strong className="text-slate-200">Day 1:</strong> Students checked in, grabbed swag bags,
             and joined hands-on workshops. Everyone was excited to learn and build.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-6">
+            <div className="rounded-xl overflow-hidden shadow-2xl">
+              <img
+                src="/article_media/bc-hacks-2024/Checkin.JPG"
+                alt="Student check-in at BC Hacks"
+                className="w-full h-64 object-cover"
+              />
+              <p className="text-slate-400 text-sm text-center mt-3 italic">
+                Volunteers at the check-in desk ready to welcome participants
+              </p>
+            </div>
             <div className="rounded-xl overflow-hidden shadow-2xl">
               <img
                 src="/article_media/bc-hacks-2024/Workshops.png"
@@ -142,7 +198,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
                 className="w-full h-64 object-cover"
               />
               <p className="text-slate-400 text-sm text-center mt-3 italic">
-                Workshop sessions with guest speakers
+                Intro to API workshop with industry speakers
               </p>
             </div>
             <div className="rounded-xl overflow-hidden shadow-2xl">
@@ -152,7 +208,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
                 className="w-full h-64 object-cover"
               />
               <p className="text-slate-400 text-sm text-center mt-3 italic">
-                Students collaborating on their projects
+                Group Pictures!!
               </p>
             </div>
           </div>
@@ -211,7 +267,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             from mentors, and make something they were proud of.
           </p>
 
-          <h2 className="text-3xl font-bold text-red-400 mb-6">What I Learned</h2>
+          <h2 id="what-i-learned" className="text-3xl font-bold text-red-400 mb-6">What I Learned</h2>
           <p className="text-slate-300 text-lg leading-relaxed mb-6">
             BC Hacks taught me that organizing an event like this is just as challenging as building
             a project in it. Coordinating across multiple clubs meant balancing ideas, responsibilities,
@@ -230,7 +286,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             </p>
           </div>
 
-          <h2 className="text-3xl font-bold text-red-400 mb-6">Closing Thoughts</h2>
+          <h2 id="closing-thoughts" className="text-3xl font-bold text-red-400 mb-6">Closing Thoughts</h2>
           <p className="text-slate-300 text-lg leading-relaxed mb-6">
             If you're thinking of organizing a hackathon yourself, do it. Start small, stay consistent,
             and keep your team motivated. The impact you create will be bigger than you think.
@@ -380,8 +436,11 @@ const ArticlePage = () => {
         transition={{ duration: 0.6, delay: 0.2 }}
         className="pb-20 px-6"
       >
+        {/* Center the content with max-w-4xl */}
         <div className="max-w-4xl mx-auto">
-          <ArticleContent articleId={article.id} />
+          {/* Main Content - Always centered */}
+          <div>
+            <ArticleContent articleId={article.id} />
 
           {/* External Links Section */}
           {(article.externalLinks || article.externalLink) && (
@@ -426,6 +485,7 @@ const ArticlePage = () => {
               <ArrowLeft className="h-5 w-5 mr-2" />
               Back to All Articles
             </Link>
+          </div>
           </div>
         </div>
       </motion.div>
