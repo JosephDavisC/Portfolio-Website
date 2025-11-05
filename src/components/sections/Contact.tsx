@@ -29,7 +29,7 @@ const Contact = () => {
         </div>
 
         <motion.div
-          className="bg-white/5 backdrop-blur-sm rounded-3xl p-6 sm:p-10 border border-white/10"
+          className="bg-white/5 backdrop-blur-sm rounded-3xl p-6 sm:p-10 border border-white/10 hover:border-blue-400/30 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
@@ -42,7 +42,7 @@ const Contact = () => {
             {/* Email */}
             <a
               href="mailto:jchamd@uw.edu"
-              className="flex flex-col items-center px-6 py-6 sm:p-8 bg-white/5 rounded-2xl hover:bg-white/10 transition-all duration-300 group border border-white/10 hover:border-blue-400/30 hover:scale-105"
+              className="flex flex-col items-center px-6 py-6 sm:p-8 bg-white/5 rounded-2xl hover:bg-white/10 transition-all duration-300 group border border-white/10 hover:border-blue-400/50 hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2 hover:scale-105"
             >
               <Mail className="h-10 w-10 text-blue-400 mb-4 group-hover:scale-110 transition-transform" />
               <h3 className="font-semibold mb-2 text-lg">Email</h3>
@@ -54,11 +54,11 @@ const Contact = () => {
               href="https://www.linkedin.com/in/joseph-chamdani"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex flex-col items-center px-6 py-6 sm:p-8 bg-white/5 rounded-2xl hover:bg-white/10 transition-all duration-300 group border border-white/10 hover:border-blue-400/30 hover:scale-105"
+              className="flex flex-col items-center px-6 py-6 sm:p-8 bg-white/5 rounded-2xl hover:bg-white/10 transition-all duration-300 group border border-white/10 hover:border-blue-400/50 hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2 hover:scale-105"
             >
               <Linkedin className="h-10 w-10 text-blue-400 mb-4 group-hover:scale-110 transition-transform" />
               <h3 className="font-semibold mb-2 text-lg">LinkedIn</h3>
-              <p className="text-slate-400 whitespace-nowrap">Let’s connect</p>
+              <p className="text-slate-400 whitespace-nowrap">Let's connect</p>
             </a>
 
             {/* GitHub */}
@@ -66,7 +66,7 @@ const Contact = () => {
               href="https://github.com/JosephDavisC"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex flex-col items-center px-6 py-6 sm:p-8 bg-white/5 rounded-2xl hover:bg-white/10 transition-all duration-300 group border border-white/10 hover:border-blue-400/30 hover:scale-105"
+              className="flex flex-col items-center px-6 py-6 sm:p-8 bg-white/5 rounded-2xl hover:bg-white/10 transition-all duration-300 group border border-white/10 hover:border-blue-400/50 hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2 hover:scale-105"
             >
               <Github className="h-10 w-10 text-blue-400 mb-4 group-hover:scale-110 transition-transform" />
               <h3 className="font-semibold mb-2 text-lg">GitHub</h3>
@@ -78,7 +78,7 @@ const Contact = () => {
               href="https://www.instagram.com/josephdavisc/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex flex-col items-center px-6 py-6 sm:p-8 bg-white/5 rounded-2xl hover:bg-white/10 transition-all duration-300 group border border-white/10 hover:border-blue-400/30 hover:scale-105"
+              className="flex flex-col items-center px-6 py-6 sm:p-8 bg-white/5 rounded-2xl hover:bg-white/10 transition-all duration-300 group border border-white/10 hover:border-pink-400/50 hover:shadow-2xl hover:shadow-pink-500/20 hover:-translate-y-2 hover:scale-105"
             >
               <Instagram className="h-10 w-10 text-pink-400 mb-4 group-hover:scale-110 transition-transform" />
               <h3 className="font-semibold mb-2 text-lg">Instagram</h3>
@@ -90,7 +90,7 @@ const Contact = () => {
               href="https://www.youtube.com/@JosephDavisC"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex flex-col items-center px-6 py-6 sm:p-8 bg-white/5 rounded-2xl hover:bg-white/10 transition-all duration-300 group border border-white/10 hover:border-red-400/30 hover:scale-105"
+              className="flex flex-col items-center px-6 py-6 sm:p-8 bg-white/5 rounded-2xl hover:bg-white/10 transition-all duration-300 group border border-white/10 hover:border-red-400/50 hover:shadow-2xl hover:shadow-red-500/20 hover:-translate-y-2 hover:scale-105"
             >
               <Youtube className="h-10 w-10 text-red-400 mb-4 group-hover:scale-110 transition-transform" />
               <h3 className="font-semibold mb-2 text-lg">YouTube</h3>
@@ -104,7 +104,7 @@ const Contact = () => {
               href="media/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-10 py-4 bg-gradient-to-r from-blue-600 to-red-600 rounded-full hover:from-blue-700 hover:to-red-700 transition-all duration-300 group shadow-xl hover:shadow-2xl hover:scale-105"
+              className="inline-flex items-center px-10 py-4 bg-gradient-to-r from-blue-600 to-red-600 rounded-full hover:from-blue-700 hover:to-red-700 transition-all duration-300 group shadow-xl hover:shadow-2xl hover:shadow-purple-500/30 hover:scale-110 hover:-translate-y-1"
             >
               <Download className="mr-3 h-6 w-6 group-hover:scale-110 transition-transform" />
               Download Resume

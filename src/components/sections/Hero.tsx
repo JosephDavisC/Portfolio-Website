@@ -85,7 +85,7 @@ const Hero = () => {
                   e.preventDefault();
                   scrollToIdNoHash("about");
                 }}
-                className="inline-flex items-center px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/20 transition-all duration-300 group hover:scale-105"
+                className="inline-flex items-center px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/20 transition-all duration-300 group hover:scale-105 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/20"
                 aria-label="About Me"
               >
                 <span className="mr-3 inline-flex">
@@ -110,7 +110,7 @@ const Hero = () => {
                   e.preventDefault();
                   scrollToIdNoHash("contact");
                 }}
-                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-red-600 rounded-full hover:from-blue-700 hover:to-red-700 transition-all duration-300 group shadow-xl hover:shadow-2xl hover:scale-105"
+                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-red-600 rounded-full hover:from-blue-700 hover:to-red-700 transition-all duration-300 group shadow-xl hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 hover:-translate-y-1"
                 aria-label="Scroll to Contact section"
               >
                 <Mail className="mr-3 h-5 w-5 transition-transform group-hover:scale-110" />
@@ -126,15 +126,15 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="flex justify-center lg:justify-end"
           >
-            <div className="relative">
+            <div className="relative group/profile">
               {/* UW Logo */}
-              <div className="absolute -top-4 -left-4 w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-xl">
+              <div className="absolute -top-4 -left-4 w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-xl z-20 transition-transform duration-300 group-hover/profile:scale-110 group-hover/profile:-translate-y-1">
                 <img src="logos/UW_Logo.png" alt="University of Washington" className="w-10 h-10 object-contain" />
               </div>
 
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-red-500 rounded-full blur-3xl opacity-20 animate-pulse" />
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-red-500 rounded-full blur-3xl opacity-20 animate-pulse group-hover/profile:opacity-30 transition-opacity" />
 
-              <Avatar className="w-80 h-80 md:w-96 md:h-96 border-4 border-white/20 shadow-2xl relative z-10">
+              <Avatar className="w-80 h-80 md:w-96 md:h-96 border-4 border-white/20 shadow-2xl relative z-10 transition-all duration-300 group-hover/profile:scale-105 group-hover/profile:border-white/30 group-hover/profile:shadow-blue-500/20">
                 <AvatarImage src="/Joseph_Chamdani.JPEG" alt="Joseph Chamdani" className="object-cover object-top" />
                 <AvatarFallback className="text-6xl font-bold bg-gradient-to-br from-blue-600 to-red-600 text-white">
                   JC
@@ -142,7 +142,7 @@ const Hero = () => {
               </Avatar>
 
               {/* Tennis Icon */}
-              <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-gradient-to-r from-green-500 to-yellow-500 rounded-full flex items-center justify-center shadow-xl">
+              <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-gradient-to-r from-green-500 to-yellow-500 rounded-full flex items-center justify-center shadow-xl z-20 transition-all duration-300 group-hover/profile:scale-110 group-hover/profile:rotate-12 group-hover/profile:animate-bounce">
                 <span className="text-3xl">🎾</span>
               </div>
             </div>

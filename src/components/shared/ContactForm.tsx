@@ -79,7 +79,7 @@ const ContactForm = () => {
 
   return (
     <motion.div
-      className="bg-white/5 backdrop-blur-sm rounded-3xl p-6 sm:p-10 border border-white/10 relative overflow-hidden"
+      className="bg-white/5 backdrop-blur-sm rounded-3xl p-6 sm:p-10 border border-white/10 hover:border-blue-400/30 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 relative overflow-hidden group/form"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.2 }}
@@ -89,7 +89,7 @@ const ContactForm = () => {
       <motion.img
         src="/logos/jo-sticker.PNG"
         alt="Joseph Chibi"
-        className="absolute -top-8 -right-8 w-32 h-32 md:w-40 md:h-40 opacity-20 pointer-events-none"
+        className="absolute -top-8 -right-8 w-32 h-32 md:w-40 md:h-40 opacity-20 group-hover/form:opacity-30 pointer-events-none transition-opacity duration-500"
         initial={{ rotate: -10, scale: 0.8 }}
         animate={{
           rotate: [0, 10, 0],
@@ -118,7 +118,7 @@ const ContactForm = () => {
             type="text"
             placeholder="Your name"
             {...register('name')}
-            className={`bg-white/5 border-white/10 text-white placeholder:text-slate-500 focus:border-blue-400 ${
+            className={`bg-white/5 border-white/10 text-white placeholder:text-slate-500 focus:border-blue-400 focus:shadow-lg focus:shadow-blue-500/20 transition-all duration-300 ${
               errors.name ? 'border-red-400' : ''
             }`}
           />
@@ -140,7 +140,7 @@ const ContactForm = () => {
             type="email"
             placeholder="your.email@example.com"
             {...register('email')}
-            className={`bg-white/5 border-white/10 text-white placeholder:text-slate-500 focus:border-blue-400 ${
+            className={`bg-white/5 border-white/10 text-white placeholder:text-slate-500 focus:border-blue-400 focus:shadow-lg focus:shadow-blue-500/20 transition-all duration-300 ${
               errors.email ? 'border-red-400' : ''
             }`}
           />
@@ -162,7 +162,7 @@ const ContactForm = () => {
             type="text"
             placeholder="What's this about?"
             {...register('subject')}
-            className={`bg-white/5 border-white/10 text-white placeholder:text-slate-500 focus:border-blue-400 ${
+            className={`bg-white/5 border-white/10 text-white placeholder:text-slate-500 focus:border-blue-400 focus:shadow-lg focus:shadow-blue-500/20 transition-all duration-300 ${
               errors.subject ? 'border-red-400' : ''
             }`}
           />
@@ -184,7 +184,7 @@ const ContactForm = () => {
             placeholder="Tell me about your project, collaboration idea, or just say hi!"
             rows={6}
             {...register('message')}
-            className={`bg-white/5 border-white/10 text-white placeholder:text-slate-500 focus:border-blue-400 resize-none ${
+            className={`bg-white/5 border-white/10 text-white placeholder:text-slate-500 focus:border-blue-400 focus:shadow-lg focus:shadow-blue-500/20 transition-all duration-300 resize-none ${
               errors.message ? 'border-red-400' : ''
             }`}
           />
@@ -201,7 +201,7 @@ const ContactForm = () => {
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="w-full sm:w-auto px-8 py-6 text-lg bg-gradient-to-r from-blue-500 via-purple-500 to-red-500 hover:from-blue-600 hover:via-purple-600 hover:to-red-600 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+            className="w-full sm:w-auto px-8 py-6 text-lg bg-gradient-to-r from-blue-500 via-purple-500 to-red-500 hover:from-blue-600 hover:via-purple-600 hover:to-red-600 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-purple-500/40 hover:scale-105 hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:translate-y-0"
           >
             {isSubmitting ? (
               <>
