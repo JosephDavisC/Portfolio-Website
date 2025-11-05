@@ -56,7 +56,7 @@ export default function Certifications() {
   };
 
   return (
-    <section id="certifications" className="py-12 px-6">
+    <section id="certifications" className="py-12 px-6 pb-20">
       <div className="max-w-6xl mx-auto">
         {/* Heading */}
         <motion.div
@@ -64,11 +64,14 @@ export default function Certifications() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-blue-400 to-red-400 bg-clip-text text-transparent">
+          <h2 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-red-400 bg-clip-text text-transparent pb-2">
             Certifications
           </h2>
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+            Courses and certifications I've completed along the way
+          </p>
         </motion.div>
 
         {/* Grid */}
@@ -77,98 +80,61 @@ export default function Certifications() {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {certifications.map((cert, i) => {
-            const isLastOdd =
-              i === certifications.length - 1 &&
-              certifications.length % 2 === 1;
+          {certifications.map((cert, i) => (
+            <motion.div
+              key={i}
+              variants={fadeInUp}
+              className="bg-white/5 backdrop-blur-sm rounded-3xl p-6 border border-white/10 hover:border-blue-400/50 transition-all duration-300 group flex flex-col items-center text-center hover:scale-[1.03] hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2"
+            >
+              {/* Award icon at top left */}
+              <div className="w-full flex justify-start mb-4">
+                <Award className="h-7 w-7 text-yellow-400" />
+              </div>
 
-            return (
-              <motion.div
-                key={i}
-                variants={fadeInUp}
-                className={[
-                  "h-full flex flex-col bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-white/20 transition-all duration-300",
-                  isLastOdd ? "md:col-span-2 md:w-1/2 md:mx-auto" : "",
-                ].join(" ")}
-              >
-                {/* Top row */}
-                <div className="flex items-start justify-between gap-4 mb-3">
-                  <div className="flex items-center min-w-0">
-                    <Award className="h-7 w-7 text-yellow-400 mr-4 shrink-0" />
-                    {cert.href ? (
-                      <Link
-                        to={cert.href}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          openCredential(cert.href!);
-                        }}
-                        className="text-xl font-semibold hover:underline truncate"
-                        title={cert.name}
-                      >
-                        {cert.name}
-                      </Link>
-                    ) : (
-                      <h3
-                        className="text-xl font-semibold truncate"
-                        title={cert.name}
-                      >
-                        {cert.name}
-                      </h3>
-                    )}
-                  </div>
-
-                  {cert.logo ? (
-                    <div className="h-10 w-10 rounded-xl overflow-hidden bg-white/10 border border-white/10 flex items-center justify-center shrink-0">
-                      <img
-                        src={cert.logo}
-                        alt={cert.logoAlt || cert.issuer}
-                        className="h-8 w-8 object-contain"
-                      />
-                    </div>
-                  ) : null}
+              {/* Large logo centered */}
+              {cert.logo && (
+                <div className="h-24 w-24 rounded-2xl overflow-hidden bg-white/10 border border-white/10 flex items-center justify-center mb-6">
+                  <img
+                    src={cert.logo}
+                    alt={cert.logoAlt || cert.issuer}
+                    className="h-20 w-20 object-contain"
+                  />
                 </div>
+              )}
 
-                {/* Issuer + year */}
-                <div className="flex items-center gap-3 mb-1">
-                  {cert.logo ? (
-                    <div className="h-5 w-5 rounded-md overflow-hidden bg-white/10 border border-white/10 flex items-center justify-center">
+              {/* Certificate info */}
+              <div className="flex-1 w-full">
+                <h3 className="text-xl font-semibold text-red-400 mb-3">
+                  {cert.name}
+                </h3>
+                <div className="flex items-center justify-center gap-2 text-slate-300 mb-2">
+                  {cert.logo && (
+                    <div className="h-4 w-4 rounded overflow-hidden bg-white/10 border border-white/10 flex items-center justify-center">
                       <img
                         src={cert.logo}
                         alt=""
-                        className="h-4 w-4 object-contain"
+                        className="h-3 w-3 object-contain"
                       />
                     </div>
-                  ) : null}
-                  <p className="text-slate-300 text-base">{cert.issuer}</p>
+                  )}
+                  <p className="text-sm">{cert.issuer}</p>
                 </div>
-                <p className="text-slate-500">{cert.year}</p>
+                <p className="text-slate-400 text-xs mb-6">{cert.year}</p>
+              </div>
 
-                <div className="flex-1" />
-
-                {/* Buttons */}
-                {cert.href && (
-                  <>
-                    <button
-                      onClick={() => openCredential(cert.href!)}
-                      className="mt-4 md:hidden inline-flex w-full items-center justify-center rounded-xl border border-white/20 px-4 py-2 text-slate-200 hover:bg-white/10"
-                    >
-                      View credential
-                    </button>
-                    <div className="mt-4 hidden md:block">
-                      <button
-                        onClick={() => openCredential(cert.href!)}
-                        className="inline-flex items-center gap-1 rounded-full border border-white/20 px-3 py-1 text-sm text-slate-200 hover:bg-white/10"
-                      >
-                        Show credential ↗
-                      </button>
-                    </div>
-                  </>
-                )}
-              </motion.div>
-            );
-          })}
+              {/* Button */}
+              {cert.href && (
+                <button
+                  onClick={() => openCredential(cert.href!)}
+                  className="w-full inline-flex items-center justify-center px-4 py-2 bg-blue-500/20 text-blue-400 rounded-lg border border-blue-400/30 hover:bg-blue-500/30 hover:border-blue-400/50 transition-all group-hover:translate-y-[-2px] transform duration-200 text-sm"
+                >
+                  Show credential ↗
+                </button>
+              )}
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>

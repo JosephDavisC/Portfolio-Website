@@ -14,6 +14,7 @@ export interface Article {
   thumbnail?: string;
   externalLink?: string;
   externalLinkText?: string;
+  externalLinks?: { url: string; text: string }[];
   tags?: string[];
   hasFullArticle?: boolean;
 }
@@ -31,7 +32,7 @@ const ArticleCard: React.FC<{ article: Article; index: number }> = ({ article, i
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       viewport={{ once: true }}
-      className={`grid ${hasImage ? 'md:grid-cols-2' : 'md:grid-cols-1'} gap-8 items-center bg-white/5 backdrop-blur-sm rounded-3xl p-8 md:p-10 border border-white/10 hover:border-white/20 transition-all duration-300 group`}
+      className={`grid ${hasImage ? 'md:grid-cols-2' : 'md:grid-cols-1'} gap-8 items-center bg-white/5 backdrop-blur-sm rounded-3xl p-8 md:p-10 border border-white/10 hover:border-red-400/50 transition-all duration-300 group hover:scale-[1.02] hover:shadow-2xl hover:shadow-red-500/20 hover:-translate-y-2`}
     >
       {/* Thumbnail Image (if exists) */}
       {hasImage && (
@@ -39,13 +40,15 @@ const ArticleCard: React.FC<{ article: Article; index: number }> = ({ article, i
           href={article.externalLinks?.[0]?.url || article.externalLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="block overflow-hidden rounded-2xl"
+          className="block overflow-hidden rounded-2xl relative"
         >
           <img
             src={article.thumbnail}
             alt={article.title}
-            className="rounded-2xl shadow-xl w-full object-cover group-hover:scale-105 transition-transform duration-300"
+            className="rounded-2xl shadow-xl w-full object-cover group-hover:scale-110 transition-transform duration-500"
           />
+          {/* Red overlay on hover */}
+          <div className="absolute inset-0 bg-gradient-to-t from-red-500/40 via-red-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
         </a>
       )}
 

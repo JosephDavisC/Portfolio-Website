@@ -93,9 +93,9 @@ export default function TennisCoffeeSection() {
               >
                 {/* Tennis carousel with hover magnifier */}
                 <motion.figure
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={{ scale: 1.02, y: -8 }}
                   transition={{ type: "spring", stiffness: 230, damping: 20 }}
-                  className="group relative rounded-2xl overflow-hidden border border-white/10 shadow-lg bg-slate-800/40"
+                  className="group relative rounded-3xl overflow-hidden border border-white/10 hover:border-green-400/50 shadow-lg bg-slate-800/40 hover:shadow-2xl hover:shadow-green-500/20 transition-all duration-300"
                 >
                   <button
                     type="button"
@@ -107,13 +107,13 @@ export default function TennisCoffeeSection() {
                     <ZoomIn className="h-4 w-4" />
                   </button>
 
-                  <div className="relative h-[420px] w-full">
+                  <div className="relative h-[420px] w-full overflow-hidden">
                     <AnimatePresence mode="wait">
                       <motion.img
                         key={tennisIdx}
                         src={tennisImages[tennisIdx].src}
                         alt={tennisImages[tennisIdx].alt}
-                        className="absolute inset-0 h-full w-full object-cover"
+                        className="absolute inset-0 h-full w-full object-cover group-hover:scale-110 transition-transform duration-500"
                         initial={{ opacity: 0, x: 30 }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: -30 }}
@@ -121,6 +121,8 @@ export default function TennisCoffeeSection() {
                         loading="lazy"
                       />
                     </AnimatePresence>
+                    {/* Green overlay on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-green-500/40 via-green-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                     {/* Prev / Next */}
                     <button
@@ -161,9 +163,9 @@ export default function TennisCoffeeSection() {
 
                 {/* Coffee card with hover magnifier */}
                 <motion.figure
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={{ scale: 1.02, y: -8 }}
                   transition={{ type: "spring", stiffness: 230, damping: 20 }}
-                  className="group relative rounded-2xl overflow-hidden border border-white/10 shadow-lg bg-slate-800/40"
+                  className="group relative rounded-3xl overflow-hidden border border-white/10 hover:border-amber-400/50 shadow-lg bg-slate-800/40 hover:shadow-2xl hover:shadow-amber-500/20 transition-all duration-300"
                 >
                   <button
                     type="button"
@@ -174,12 +176,16 @@ export default function TennisCoffeeSection() {
                   >
                     <ZoomIn className="h-4 w-4" />
                   </button>
-                  <img
-                    src="/images/moments/Coffee.JPG"
-                    alt="Coffee time"
-                    className="w-full h-[420px] object-cover"
-                    loading="lazy"
-                  />
+                  <div className="relative h-[420px] w-full overflow-hidden">
+                    <img
+                      src="/images/moments/Coffee.JPG"
+                      alt="Coffee time"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                    {/* Amber/coffee overlay on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-amber-500/40 via-amber-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
                   <figcaption className="bg-white/5 text-slate-300 text-center py-4 text-sm">
                     A good brew fuels my thinking ☕
                   </figcaption>

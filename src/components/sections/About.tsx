@@ -62,7 +62,7 @@ export default function About() {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 md:p-10 border border-white/10 hover:border-white/20 transition-all"
+            className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 md:p-10 border border-white/10 hover:border-blue-400/50 transition-all duration-300 group hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2"
           >
             <header className="flex items-center mb-5">
               <MapPin className="h-7 w-7 text-red-400 mr-4" />
@@ -96,7 +96,7 @@ export default function About() {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 md:p-10 border border-white/10 hover:border-white/20 transition-all"
+            className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 md:p-10 border border-white/10 hover:border-blue-400/50 transition-all duration-300 group hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2"
           >
             <header className="flex items-center mb-5">
               <Code2 className="h-7 w-7 text-green-400 mr-4" />

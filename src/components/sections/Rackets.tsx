@@ -11,6 +11,8 @@ function RacketsGrid() {
         title="Babolat Pure Aero 2023"
         img="/images/rackets/babolat-pure-aero.avif" // keep your original paths
         colorClass="bg-gradient-to-r from-blue-400 to-red-400 bg-clip-text text-transparent"
+        glowColor="yellow"
+        rotateDirection="right"
         specs={[
           "<strong>Use:</strong> Match play",
           "<strong>Weight:</strong> 300g",
@@ -23,6 +25,8 @@ function RacketsGrid() {
         title="Babolat Pure Drive 2021"
         img="/images/rackets/babolat_pure_drive.jpg"
         colorClass="bg-gradient-to-r from-blue-400 to-red-400 bg-clip-text text-transparent"
+        glowColor="blue"
+        rotateDirection="left"
         specs={[
           "<strong>Use:</strong> Casual hitting",
           "<strong>Weight:</strong> 300g",

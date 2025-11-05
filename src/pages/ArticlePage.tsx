@@ -91,7 +91,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
               <img
                 src="/article_media/bc-hacks-2024/Venue.png"
                 alt="BC Hacks venue setup in Room U301"
-                className="w-full h-auto md:h-64 object-cover"
+                className="w-full h-auto object-contain md:object-cover md:h-64"
               />
               <p className="text-slate-400 text-sm text-center mt-3 italic">
                 The venue setup in Room U301, ready for participants
@@ -101,7 +101,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
               <img
                 src="/article_media/bc-hacks-2024/Room_Layout.png"
                 alt="Event room layout planning"
-                className="w-full h-auto md:h-64 object-cover"
+                className="w-full h-auto object-contain md:object-cover md:h-64"
               />
               <p className="text-slate-400 text-sm text-center mt-3 italic">
                 Planning the room layout for the event
@@ -121,7 +121,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
               <img
                 src="/article_media/bc-hacks-2024/Marketing.png"
                 alt="BC Hacks marketing and outreach"
-                className="w-full h-auto md:h-64 object-cover"
+                className="w-full h-auto object-contain md:object-cover md:h-64"
               />
               <p className="text-slate-400 text-sm text-center mt-3 italic">
                 Marketing campaign and outreach materials
@@ -131,7 +131,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
               <img
                 src="/article_media/bc-hacks-2024/Judging_Rubric.png"
                 alt="Judging rubric for BC Hacks"
-                className="w-full h-auto md:h-64 object-cover"
+                className="w-full h-auto object-contain md:object-cover md:h-64"
               />
               <p className="text-slate-400 text-sm text-center mt-3 italic">
                 Judging rubric sent to judges and mentors
@@ -150,7 +150,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
               <img
                 src="/article_media/bc-hacks-2024/Schedule.png"
                 alt="BC Hacks event schedule"
-                className="w-full h-64 object-cover"
+                className="w-full h-auto object-contain md:object-cover md:h-64"
               />
               <p className="text-slate-400 text-sm text-center mt-3 italic">
                 Finalized event schedule for the weekend
@@ -160,7 +160,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
               <img
                 src="/article_media/bc-hacks-2024/Food_vendors.png"
                 alt="Food vendors at BC Hacks"
-                className="w-full h-64 object-cover"
+                className="w-full h-auto object-contain md:object-cover md:h-64"
               />
               <p className="text-slate-400 text-sm text-center mt-3 italic">
                 Food vendors booked for the event
@@ -278,14 +278,6 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             judges shared career insights, and students supported each other through every bug and crash.
           </p>
 
-          <div className="bg-blue-500/10 border border-blue-400/30 rounded-lg p-6 my-8">
-            <p className="text-blue-300 text-lg italic">
-              BC Hacks 2024 wasn't just a weekend of coding. It was a celebration of creativity,
-              teamwork, and resilience. Sharing our story with the visiting students reminded me that
-              hackathons are more than competitions. They're platforms for growth and connection.
-            </p>
-          </div>
-
           <h2 id="closing-thoughts" className="text-3xl font-bold text-red-400 mb-6">Closing Thoughts</h2>
           <p className="text-slate-300 text-lg leading-relaxed mb-6">
             If you're thinking of organizing a hackathon yourself, do it. Start small, stay consistent,
@@ -318,7 +310,12 @@ const ArticlePage = () => {
 
   // Scroll to top when page loads
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    // Also set on a slight delay to override any other scroll behavior
+    const timer = setTimeout(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    }, 10);
+    return () => clearTimeout(timer);
   }, [slug]);
 
   // If article doesn't exist, redirect to home

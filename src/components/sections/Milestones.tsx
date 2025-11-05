@@ -95,9 +95,12 @@ export default function Milestones() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-blue-400 to-red-400 bg-clip-text text-transparent">
+          <h2 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-red-400 bg-clip-text text-transparent">
             Milestones
           </h2>
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+            My professional journey and experiences along the way
+          </p>
         </motion.div>
 
         <div className="relative">
@@ -146,7 +149,7 @@ export default function Milestones() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4 }}
-                    className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-7 mb-6"
+                    className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-7 mb-6 group hover:border-pink-400/50 hover:shadow-2xl hover:shadow-pink-500/20 hover:-translate-y-1 transition-all duration-300"
                   >
                     <MetaRow
                       items={[
@@ -219,7 +222,7 @@ export default function Milestones() {
                                   {Img}
                                 </button>
                               )}
-                              <figcaption className="absolute inset-x-0 bottom-0 text-xs text-slate-200/90 bg-gradient-to-t from-black/40 to-transparent px-3 py-2">
+                              <figcaption className="absolute inset-x-0 bottom-0 text-xs text-white font-medium bg-gradient-to-t from-black/80 via-black/60 to-transparent px-3 py-2.5">
                                 {m.caption}
                               </figcaption>
                             </figure>

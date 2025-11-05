@@ -73,16 +73,18 @@ const Projects = () => {
             <motion.article
               key={index}
               variants={fadeInUp}
-              className="bg-white/5 backdrop-blur-sm rounded-3xl p-6 border border-white/10 hover:border-white/20 transition-all duration-300 group hover:scale-[1.02]"
+              className="bg-white/5 backdrop-blur-sm rounded-3xl p-6 border border-white/10 hover:border-blue-400/50 transition-all duration-300 group hover:scale-[1.03] hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2"
             >
               {/* Top image */}
-              <figure className="relative overflow-hidden rounded-2xl border border-white/10">
+              <figure className="relative overflow-hidden rounded-2xl border border-white/10 group-hover:border-blue-400/30">
                 <img
                   src={project.image}
                   alt={project.imageAlt || project.title}
-                  className="h-44 w-full object-cover transition-transform duration-500 group-hover:scale-105 md:h-48"
+                  className="h-44 w-full object-cover transition-transform duration-500 group-hover:scale-110 md:h-48"
                   loading="lazy"
                 />
+                {/* Overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-500/40 via-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <span className="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-black/30 to-transparent" />
               </figure>
 
