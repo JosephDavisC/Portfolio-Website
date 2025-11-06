@@ -185,6 +185,15 @@ export default function TennisCoffeeSection() {
                     />
                     {/* Amber/coffee overlay on hover */}
                     <div className="absolute inset-0 bg-gradient-to-t from-amber-500/40 via-amber-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                    {/* Coffee chibi character */}
+                    <motion.img
+                      src="/images/chibis/coffee_chibi.PNG"
+                      alt="Coffee chibi"
+                      className="absolute bottom-4 left-4 w-20 h-20 md:w-24 md:h-24 object-contain drop-shadow-2xl pointer-events-none"
+                      animate={{ y: [0, -8, 0] }}
+                      transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                    />
                   </div>
                   <figcaption className="bg-white/5 text-slate-300 text-center py-4 text-sm">
                     A good brew fuels my thinking ☕

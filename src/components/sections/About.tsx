@@ -71,21 +71,13 @@ export default function About() {
 
             <div className="space-y-4 text-slate-300 leading-relaxed text-[17px]">
               <p>
-                I grew up in Jakarta 🇮🇩 and now study Informatics at the
-                University of Washington. I took an early path through the High
-                School Completion Program, which let me jump into college-level
-                work sooner and figure out what I actually enjoy.
+                I study Informatics at the University of Washington, but I got here through a non-traditional path. Running Start let me skip straight into college-level work, and I've been building things ever since.
               </p>
               <p>
-                That led me to AI and data. I like building small, useful
-                things—sometimes it’s an OCR pipeline, sometimes a web app, and
-                sometimes a tool for a club project. I’m still learning every
-                day, shipping when it’s “good enough,” then improving it.
+                Currently interning remotely at Sector, where I'm developing AI automation tools for cybersecurity workflows. I like projects where code meets real problems. I lead BC Tech Club and organized BC Hacks 2024, which was chaotic in the best way.
               </p>
               <p>
-                Outside the screen, I reset with tennis 🎾 and recharge with
-                coffee ☕. If a project mixes code, people, and a bit of design,
-                I’m usually in.
+                When I'm not coding, I'm on the tennis court or exploring Seattle's coffee scene. I'm interested in the startup world and building things that people actually use, but for now I'm focused on learning by doing and shipping projects that matter.
               </p>
             </div>
           </motion.article>
@@ -96,18 +88,34 @@ export default function About() {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 md:p-10 border border-white/10 hover:border-blue-400/50 transition-all duration-300 group hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2"
+            className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 md:p-10 border border-white/10 hover:border-blue-400/50 transition-all duration-300 group hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2 relative overflow-hidden"
           >
-            <header className="flex items-center mb-5">
+            {/* Stress chibi character */}
+            <motion.img
+              src="/images/chibis/jo_stress.PNG"
+              alt="Stressed Joe learning all these technologies"
+              className="absolute top-4 right-4 w-20 h-20 md:w-24 md:h-24 opacity-30 group-hover:opacity-50 pointer-events-none transition-opacity duration-500 drop-shadow-lg"
+              animate={{
+                rotate: [-5, 5, -5],
+                y: [0, -5, 0],
+              }}
+              transition={{
+                duration: 2.5,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+
+            <header className="flex items-center mb-5 relative z-10">
               <Code2 className="h-7 w-7 text-green-400 mr-4" />
               <h3 className="text-2xl font-semibold">Core Skills</h3>
             </header>
 
-            <p className="text-slate-400 mb-6">
+            <p className="text-slate-400 mb-6 relative z-10">
               Technologies I work with for school, side projects, and internships.
             </p>
 
-            <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-4 lg:grid-cols-6 gap-3">
+            <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-4 lg:grid-cols-6 gap-3 relative z-10">
               {skills.map((skill) => (
                 <div
                   key={skill.name}
