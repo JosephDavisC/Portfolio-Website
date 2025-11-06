@@ -1,4 +1,5 @@
 import React, { Suspense } from 'react';
+import { Helmet } from 'react-helmet';
 
 import Hero from '@/components/sections/Hero';
 import About from '@/components/sections/About';
@@ -17,6 +18,9 @@ const Footer = React.lazy(() => import('@/components/shared/Footer'));
 const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-x-hidden">
+      <Helmet>
+        <title>Joseph Davis Chamdani | Informatics @ UW</title>
+      </Helmet>
       <Navbar />
       <Hero />
       <About />

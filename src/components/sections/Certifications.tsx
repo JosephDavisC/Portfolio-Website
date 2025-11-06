@@ -99,7 +99,7 @@ export default function Certifications() {
                   <img
                     src={cert.logo}
                     alt={cert.logoAlt || cert.issuer}
-                    className="h-20 w-20 object-contain"
+                    className="h-20 w-20 object-contain transition-transform duration-300 group-hover:scale-110"
                   />
                 </div>
               )}
