@@ -286,14 +286,442 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
         </div>
       );
 
+    case 'highscope-to-uw':
+      return (
+        <div className="prose prose-invert max-w-none">
+          <p className="text-slate-300 text-lg leading-relaxed mb-8">
+            I think this all started when me and my family went to Atlanta for a summer trip to visit my cousins.
+            When we were there, my dad suddenly got this idea — what if I studied in the U.S.? My dad even found a place
+            called Baylor High School, and believe it or not, I almost moved there. But my dad decided to keep me in
+            Highscope instead.
+          </p>
+
+          <p className="text-slate-300 text-lg leading-relaxed mb-8">
+            Back then, I wasn't exactly the most responsible student. I played games all day, didn't really study,
+            and just went with the flow. But seeing my cousins do so well and get into great schools really changed
+            my mindset. When I got back to Indonesia and started grade 10 (which is when high school starts there),
+            I decided I wanted to take things seriously.
+          </p>
+
+          <div className="my-8 rounded-xl overflow-hidden shadow-2xl">
+            <img
+              src="/article_media/journey/Atlanta_Trip_Group_Photo.JPG"
+              alt="Atlanta trip with family and cousins"
+              className="w-full object-cover"
+            />
+            <p className="text-slate-400 text-sm text-center mt-3 italic">
+              The Atlanta trip with my family and cousins that started everything
+            </p>
+          </div>
+
+          <h2 id="the-start" className="text-3xl font-bold text-red-400 mb-6 mt-12">The Start of Everything</h2>
+          <p className="text-slate-300 text-lg leading-relaxed mb-6">
+            So I started grinding. Studying more, focusing on my classes, and trying to be my best self. One night,
+            I was on a call with my old friend Caleb. We were just catching up, and he showed me a small website he
+            was building. It was simple, but for some reason it sparked something in me.
+          </p>
+
+          <p className="text-slate-300 text-lg leading-relaxed mb-6">
+            I'd always been into tech, but I never actually tried coding before. That night changed everything. I
+            started learning and joined some bootcamps — web development, UI/UX, and later Unity 3D. I ended up really
+            liking it, and that's when I realized maybe this is what I want to do.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+            <div className="rounded-xl overflow-hidden shadow-2xl">
+              <img
+                src="/article_media/journey/VR_Park.png"
+                alt="VR Park internship"
+                className="w-full h-auto object-contain md:object-cover md:h-64"
+              />
+              <p className="text-slate-400 text-sm text-center mt-3 italic">
+                VR Park - my first internship as a Game Developer
+              </p>
+            </div>
+            <div className="rounded-xl overflow-hidden shadow-2xl">
+              <img
+                src="/article_media/journey/Highscope_Class_K_Picture.JPG"
+                alt="Highscope classroom"
+                className="w-full h-auto object-contain md:object-cover md:h-64"
+              />
+              <p className="text-slate-400 text-sm text-center mt-3 italic">
+                My Highscope days before everything changed
+              </p>
+            </div>
+          </div>
+
+          <p className="text-slate-300 text-lg leading-relaxed mb-6">
+            At Highscope, we were required to complete two internships before graduating, so I went ahead and applied
+            early. After finishing a Unity 3D bootcamp, I asked the company if I could intern with them, and they said
+            yes. That's how I got my first internship as a Game Developer at VR Park.
+          </p>
+
+          <p className="text-slate-300 text-lg leading-relaxed mb-6">
+            Even though I only worked around 3–5 hours a week while in school, it lasted six months and taught me a lot.
+            I learned how to work with people, handle tasks, and communicate better. More importantly, I met so many people
+            in tech and realized this world is growing fast. It felt like the start of something big.
+          </p>
+
+          <div className="my-8 rounded-xl overflow-hidden shadow-2xl">
+            <img
+              src="/article_media/journey/devnet-club-photo.jpeg"
+              alt="Developer Network club photo"
+              className="w-full object-cover"
+            />
+            <p className="text-slate-400 text-sm text-center mt-3 italic">
+              Developer Network - the first tech club I founded at Highscope
+            </p>
+          </div>
+
+          <p className="text-slate-300 text-lg leading-relaxed mb-8">
+            During that same year, I also founded the first-ever tech club at Highscope called Developer Network. It started
+            as a small group of students who wanted to learn coding, design, and video editing together, and it became a place
+            where I could share what I was learning from bootcamps with my classmates.
+          </p>
+
+          <h2 id="the-big-decision" className="text-3xl font-bold text-red-400 mb-6 mt-12">The Big Decision</h2>
+          <p className="text-slate-300 text-lg leading-relaxed mb-6">
+            Halfway through grade 10, my dad came to me and gave me two choices. He said, "Do you want to finish high school
+            here, or go to the U.S. and join a program where you can earn both a high school diploma and an associate's degree?"
+          </p>
+
+          <p className="text-slate-300 text-lg leading-relaxed mb-6">
+            I didn't even think twice. I said yes to the U.S. right away.
+          </p>
+
+          <p className="text-slate-300 text-lg leading-relaxed mb-6">
+            I wanted to try something new and see the world, even though I was only 15. Around that time, I also took the AP
+            Computer Science A exam. Everyone thought I was crazy for taking it so early, and they were probably right because
+            I got a 1 out of 5. But still, I took it. That experience taught me not to be afraid of trying.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+            <div className="rounded-xl overflow-hidden shadow-2xl">
+              <img
+                src="/article_media/journey/whatcom.JPG"
+                alt="College visit to Whatcom"
+                className="w-full h-auto object-contain md:object-cover md:h-64"
+              />
+              <p className="text-slate-400 text-sm text-center mt-3 italic">
+                The only photo we took together as a group during college visits - at Whatcom, no Bellevue College for some reason haha
+              </p>
+            </div>
+            <div className="rounded-xl overflow-hidden shadow-2xl">
+              <img
+                src="/article_media/journey/Leonardo_Edwin.JPG"
+                alt="With Leonardo Edwin at Bellevue College"
+                className="w-full h-auto object-contain md:object-cover md:h-64"
+              />
+              <p className="text-slate-400 text-sm text-center mt-3 italic">
+                Finally meeting Leonardo Edwin at Bellevue College - his videos were one of the reasons I chose BC
+              </p>
+            </div>
+          </div>
+
+          <p className="text-slate-300 text-lg leading-relaxed mb-6">
+            In April, I flew to Seattle with my family to visit some colleges. We checked out Shoreline, Green River, Whatcom,
+            Seattle Central, and Bellevue College. For some reason, Bellevue just felt right. One of the reasons I chose Bellevue
+            was because of Leonardo Edwin's videos - he shared his experience as an Indonesian student at BC, and that really
+            inspired me. So I applied, got accepted, said goodbye to my friends in Indonesia, and got ready for the next chapter
+            of my life.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+            <div className="rounded-xl overflow-hidden shadow-2xl">
+              <img
+                src="/article_media/journey/Shirt_Signed.JPG"
+                alt="Shirt signed by Highscope friends"
+                className="w-full h-auto object-contain md:object-cover md:h-64"
+              />
+              <p className="text-slate-400 text-sm text-center mt-3 italic">
+                My shirt signed by all my Highscope friends and mentors before leaving
+              </p>
+            </div>
+            <div className="rounded-xl overflow-hidden shadow-2xl">
+              <img
+                src="/article_media/journey/touchten.jpeg"
+                alt="TouchTen Games internship"
+                className="w-full h-auto object-contain md:object-cover md:h-64"
+              />
+              <p className="text-slate-400 text-sm text-center mt-3 italic">
+                Team group photo at TouchTen Games during my internship
+              </p>
+            </div>
+          </div>
+
+          <p className="text-slate-300 text-lg leading-relaxed mb-8">
+            After my internship at VR Park ended in January 2023, I still had quite a bit of time before leaving for the U.S.
+            So from June to September, I joined TouchTen Games as a guest student. I worked on game cutscenes for their mobile
+            game Piper's Cat Café, which was such a fun experience. I got to work with professional developers and designers,
+            and it gave me a glimpse of what it's like to be in the game industry.
+          </p>
+
+          <h2 id="starting-seattle" className="text-3xl font-bold text-red-400 mb-6 mt-12">Starting a New Life in Seattle</h2>
+          <p className="text-slate-300 text-lg leading-relaxed mb-6">
+            When I first moved to Seattle, I stayed with a host family. My parents helped me settle in, but once they left,
+            reality hit. I was completely alone in a new country. I had to figure everything out — cooking, laundry, and public
+            transport. I definitely took Indonesia for granted, but living alone made me grow up faster.
+          </p>
+
+          <p className="text-slate-300 text-lg leading-relaxed mb-6">
+            During my first week at Bellevue College, I met new friends, mostly Indonesians. One of them, Abraham, told me to
+            join the BC Tech Club, so I did. Somehow, I became an officer during my first week. My first project was building a
+            website, and I spent the whole night coding it at Abraham's house.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+            <div className="rounded-xl overflow-hidden shadow-2xl">
+              <img
+                src="/article_media/journey/Website_Making.jpg"
+                alt="Coding the BC Tech Club website"
+                className="w-full h-auto object-contain md:object-cover md:h-64"
+              />
+              <p className="text-slate-400 text-sm text-center mt-3 italic">
+                All-nighter coding the BC Tech Club website at Abraham's house
+              </p>
+            </div>
+            <div className="rounded-xl overflow-hidden shadow-2xl">
+              <img
+                src="/article_media/journey/Joe_Guan.JPG"
+                alt="With friend Guan"
+                className="w-full h-auto object-contain md:object-cover md:h-64"
+              />
+              <p className="text-slate-400 text-sm text-center mt-3 italic">
+                With Abraham at a hackathon
+              </p>
+            </div>
+          </div>
+
+          <p className="text-slate-300 text-lg leading-relaxed mb-6">
+            <a href="https://www.linkedin.com/in/abraham-guan/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors underline">Abraham</a> became my mentor. He taught me so much, from tech stuff to life advice. He's now studying at UC Berkeley
+            majoring in data science, and I'm really thankful for all the guidance he gave me back then.
+          </p>
+
+          <p className="text-slate-300 text-lg leading-relaxed mb-6">
+            That first quarter also brought something unexpected. I met a girl named <a href="https://www.linkedin.com/in/juwita-jessica-pangestu/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors underline">Jessica</a>. I was friends with her brother,
+            and he invited her to church with us. That's how we met. Fast forward, she's my girlfriend now haha.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+            <div className="rounded-xl overflow-hidden shadow-2xl">
+              <img
+                src="/article_media/journey/Juwi_1.jpg"
+                alt="With Jessica"
+                className="w-full h-auto object-contain md:object-cover md:h-64"
+              />
+              <p className="text-slate-400 text-sm text-center mt-3 italic">
+                With Jessica - from church friends to something more
+              </p>
+            </div>
+            <div className="rounded-xl overflow-hidden shadow-2xl">
+              <img
+                src="/article_media/journey/Juwi_2.JPG"
+                alt="Jessica and me"
+                className="w-full h-auto object-contain md:object-cover md:h-64"
+              />
+              <p className="text-slate-400 text-sm text-center mt-3 italic">
+                More memories together
+              </p>
+            </div>
+          </div>
+
+          <p className="text-slate-300 text-lg leading-relaxed mb-8">
+            But that quarter was also the hardest in a different way. My friend Caleb, the one who showed me that first website,
+            passed away. It really shocked me. He was one of the main reasons I got into tech, and losing him so early made me
+            realize how much this path meant to me. Since then, I've carried a small part of him in everything I do. Continuing
+            this journey became my way to honor him.
+          </p>
+
+          <h2 id="bellevue-college" className="text-3xl font-bold text-red-400 mb-6 mt-12">Bellevue College Life</h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+            <div className="rounded-xl overflow-hidden shadow-2xl">
+              <img
+                src="/article_media/journey/Bellevue_College_Orientation_Photo.JPG"
+                alt="Bellevue College orientation"
+                className="w-full h-auto object-contain md:object-cover md:h-64"
+              />
+              <p className="text-slate-400 text-sm text-center mt-3 italic">
+                Bellevue College orientation - the start of my community college journey
+              </p>
+            </div>
+            <div className="rounded-xl overflow-hidden shadow-2xl">
+              <img
+                src="/article_media/journey/Tech_Club.JPG"
+                alt="BC Tech Club meeting"
+                className="w-full h-auto object-contain md:object-cover md:h-64"
+              />
+              <p className="text-slate-400 text-sm text-center mt-3 italic">
+                BC Tech Club meeting - where I became an officer in my first week
+              </p>
+            </div>
+          </div>
+
+          <p className="text-slate-300 text-lg leading-relaxed mb-6">
+            The next few quarters went by fast. I took more computer science and math classes and started planning the Bellevue
+            College Hackathon — BC Hacks 2024.
+          </p>
+
+          <p className="text-slate-300 text-lg leading-relaxed mb-8">
+            By spring quarter, things got really intense. Between my classes and organizing the hackathon, my schedule was packed.
+            But I learned how to manage time, worked with a team, and worked under pressure. It was one of the best experiences
+            I've ever had.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+            <div className="rounded-xl overflow-hidden shadow-2xl">
+              <img
+                src="/article_media/journey/bc-hacks-group-photo.JPG"
+                alt="BC Hacks 2024 group photo"
+                className="w-full h-auto object-contain md:object-cover md:h-64"
+              />
+              <p className="text-slate-400 text-sm text-center mt-3 italic">
+                BC Hacks 2024 - one of the most rewarding experiences organizing this event
+              </p>
+            </div>
+            <div className="rounded-xl overflow-hidden shadow-2xl">
+              <img
+                src="/article_media/journey/BC_Hacks_Jess.JPG"
+                alt="At BC Hacks with Jessica"
+                className="w-full h-auto object-contain md:object-cover md:h-64"
+              />
+              <p className="text-slate-400 text-sm text-center mt-3 italic">
+                At BC Hacks with Jessica
+              </p>
+            </div>
+          </div>
+
+          <div className="my-8 p-6 bg-blue-500/10 border border-blue-400/30 rounded-2xl">
+            <p className="text-slate-300 text-lg mb-2">
+              Want to read more about BC Hacks 2024?
+            </p>
+            <Link
+              to="/blog/bc-hacks-2024"
+              className="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors text-lg font-medium"
+            >
+              Read the full BC Hacks story →
+            </Link>
+          </div>
+
+          <p className="text-slate-300 text-lg leading-relaxed mb-6">
+            Around the same time, I also became the Secretary of the Bellevue Indonesian Club. It was a great way to stay connected
+            to my Indonesian roots while living abroad, and I got to help organize events and build community among Indonesian students
+            at Bellevue College.
+          </p>
+
+          <div className="my-8 rounded-xl overflow-hidden shadow-2xl">
+            <img
+              src="/article_media/journey/Bellevue_Indo_Club.JPG"
+              alt="Bellevue Indonesian Club"
+              className="w-full object-cover"
+            />
+            <p className="text-slate-400 text-sm text-center mt-3 italic">
+              With the Bellevue Indonesian Club - staying connected to my roots
+            </p>
+          </div>
+
+          <p className="text-slate-300 text-lg leading-relaxed mb-8">
+            Then came summer quarter, and for some reason, I decided to take four classes and do an internship at Stockbit as
+            an AI Engineer. I honestly don't know what I was thinking. But it turned out fine — I finished with straight A's
+            and learned a lot about AI, data, and automation.
+          </p>
+
+          <h2 id="transferring-uw" className="text-3xl font-bold text-red-400 mb-6 mt-12">Transferring to UW</h2>
+          <p className="text-slate-300 text-lg leading-relaxed mb-6">
+            Fall and winter 2024 were all about transfer applications. I applied to 13 universities — all the UCs, Georgia Tech,
+            and UW. Sadly, I couldn't apply to East Coast schools because my credits wouldn't transfer since I was still technically
+            a high school student.
+          </p>
+
+          <p className="text-slate-300 text-lg leading-relaxed mb-8">
+            But it all worked out. I got into the University of Washington. I was rejected from UW Computer Science but got accepted
+            into Informatics, and honestly, that was good enough for me. I even turned down UC Irvine's CS offer because UW just felt
+            like home.
+          </p>
+
+          <div className="my-8 rounded-xl overflow-hidden shadow-2xl">
+            <img
+              src="/article_media/journey/Informatics_Acceptance.jpg"
+              alt="UW Informatics acceptance letter"
+              className="w-full object-cover"
+            />
+            <p className="text-slate-400 text-sm text-center mt-3 italic">
+              The acceptance letter that made it official - I'm a Husky!
+            </p>
+          </div>
+
+          <h2 id="graduation" className="text-3xl font-bold text-red-400 mb-6 mt-12">Graduation from Bellevue College</h2>
+          <p className="text-slate-300 text-lg leading-relaxed mb-6">
+            A few months later, I graduated from Bellevue College.
+          </p>
+
+          <p className="text-slate-300 text-lg leading-relaxed mb-6">
+            Standing on that stage, holding my diploma, I couldn't help but think about how far I'd come. Two years earlier, I was
+            a 15-year-old kid moving to a new country alone. That day, surrounded by friends, mentors, and family, it really hit me
+            that I made it.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+            <div className="rounded-xl overflow-hidden shadow-2xl">
+              <img
+                src="/article_media/journey/Graduation_Peace.png"
+                alt="Bellevue College graduation"
+                className="w-full h-auto object-contain md:object-cover md:h-64"
+              />
+              <p className="text-slate-400 text-sm text-center mt-3 italic">
+                Graduation day - two years condensed into one incredible journey
+              </p>
+            </div>
+            <div className="rounded-xl overflow-hidden shadow-2xl">
+              <img
+                src="/article_media/journey/Last_Pic_Hostfam.JPG"
+                alt="Last photo with host family"
+                className="w-full h-auto object-contain md:object-cover md:h-64"
+              />
+              <p className="text-slate-400 text-sm text-center mt-3 italic">
+                Last photo with my host family before moving out
+              </p>
+            </div>
+          </div>
+
+          <p className="text-slate-300 text-lg leading-relaxed mb-8">
+            Now I'm a junior in Informatics, and working as an AI Research & Development Intern at Sector, a cybersecurity company.
+            It's been a wild ride, but I wouldn't trade it for anything.
+          </p>
+
+          <div className="my-8 rounded-xl overflow-hidden shadow-2xl">
+            <img
+              src="/article_media/journey/Joe_MaryGates_Hall.jpg"
+              alt="At UW Mary Gates Hall"
+              className="w-full object-cover"
+            />
+            <p className="text-slate-400 text-sm text-center mt-3 italic">
+              At University of Washington's Mary Gates Hall - finally a Husky
+            </p>
+          </div>
+
+          <h2 id="looking-back" className="text-3xl font-bold text-red-400 mb-6 mt-12">Looking Back</h2>
+          <p className="text-slate-300 text-lg leading-relaxed mb-6">
+            Sometimes I still can't believe how much has happened — from being that kid who played games all day, to studying abroad
+            alone at 15, to now being at UW and working in AI.
+          </p>
+
+          <p className="text-slate-300 text-lg leading-relaxed mb-6">
+            Skipping two years of high school taught me a lot about independence, time, and how fast life moves when you take chances.
+          </p>
+
+          <p className="text-slate-300 text-lg leading-relaxed mb-6">
+            I didn't take the traditional path, but I'm glad I didn't. Everything that's happened — from Highscope to Bellevue College
+            to UW — made me who I am today.
+          </p>
+
+          <p className="text-slate-300 text-lg leading-relaxed mb-8">
+            Thanks for reading.
+          </p>
+        </div>
+      );
+
     // Add more article content here as you write them
-    // case 'my-journey':
-    //   return (
-    //     <div className="prose prose-invert max-w-none">
-    //       <h2>From Jakarta to Seattle</h2>
-    //       <p>Your story here...</p>
-    //     </div>
-    //   );
 
     default:
       return (

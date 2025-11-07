@@ -1,5 +1,15 @@
 [
   {
+    "id": "highscope-to-uw",
+    "title": "From Highscope to UW: How I Skipped Two Years and Found My Path",
+    "date": "January 2025",
+    "location": "Seattle, WA",
+    "preview": "My journey from being a high school student in Jakarta who played games all day, to studying abroad alone at 15, to now being a junior at the University of Washington. A story about independence, taking chances, and finding my path in tech.",
+    "thumbnail": "article_media/journey/Graduation_Peace.png",
+    "tags": ["Personal", "Education", "Journey"],
+    "hasFullArticle": true
+  },
+  {
     "id": "bc-hacks-2024",
     "title": "BC Hacks 2024 Lecture",
     "date": "July 2024",
