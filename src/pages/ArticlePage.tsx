@@ -286,14 +286,14 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
         </div>
       );
 
-    case 'highscope-to-uw':
+    case 'my-journey':
       return (
         <div className="prose prose-invert max-w-none">
           <p className="text-slate-300 text-lg leading-relaxed mb-8">
             I think this all started when me and my family went to Atlanta for a summer trip to visit my cousins.
             When we were there, my dad suddenly got this idea — what if I studied in the U.S.? My dad even found a place
             called Baylor High School, and believe it or not, I almost moved there. But my dad decided to keep me in
-            Highscope instead.
+            Highscope instead. (Yes, <span className="italic">Highscope Indonesia</span> — that's my school's actual name, not a typo of "high school" haha.)
           </p>
 
           <p className="text-slate-300 text-lg leading-relaxed mb-8">
@@ -413,7 +413,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
                 className="w-full h-auto object-contain md:object-cover md:h-64"
               />
               <p className="text-slate-400 text-sm text-center mt-3 italic">
-                Finally meeting Leonardo Edwin at Bellevue College - his videos were one of the reasons I chose BC
+                Suddenly meeting Leonardo Edwin at church 
               </p>
             </div>
           </div>
@@ -625,6 +625,17 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             an AI Engineer. I honestly don't know what I was thinking. But it turned out fine — I finished with straight A's
             and learned a lot about AI, data, and automation.
           </p>
+
+          <div className="my-8 rounded-xl overflow-hidden shadow-2xl">
+            <img
+              src="/article_media/journey/Bibit-Group-Photo.jpeg"
+              alt="Stockbit/Bibit internship team"
+              className="w-full object-cover"
+            />
+            <p className="text-slate-400 text-sm text-center mt-3 italic">
+              Internship at Stockbit/Bibit - summer of learning AI and fintech
+            </p>
+          </div>
 
           <h2 id="transferring-uw" className="text-3xl font-bold text-red-400 mb-6 mt-12">Transferring to UW</h2>
           <p className="text-slate-300 text-lg leading-relaxed mb-6">

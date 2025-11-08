@@ -6,6 +6,12 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const distPath = path.join(__dirname, '..', 'dist');
 
 const blogMeta = {
+  'my-journey': {
+    title: 'My Journey: From Jakarta to UW | Joseph Davis Chamdani',
+    description: 'How I moved from Indonesia to Seattle at 15, skipped two years of high school, and made it to the University of Washington as a junior in Informatics.',
+    image: 'https://joechamdani.com/article_media/journey/Graduation_Peace.png',
+    url: 'https://joechamdani.com/blog/my-journey'
+  },
   'bc-hacks-2024': {
     title: 'BC Hacks 2024 Lecture | Joseph Davis Chamdani',
     description: 'After helping organize and launch BC Hacks 2024, I was invited to give a lecture at Bellevue College about how to run a successful hackathon. This session was specially arranged for a group of 20+ Korean exchange students visiting from Korea.',
