@@ -14,6 +14,16 @@ const staggerContainer = {
 
 const projects = [
   {
+    title: "IShowStream",
+    image: "/media/IShowStream_Logo.png",
+    imageAlt: "IShowStream preview",
+    tech: ["React", "Python", "Go", "Gemini AI", "Google Cloud"],
+    description:
+      "StreamSense is a real-time Twitch chat analysis platform powered by Google's Agent Development Kit (ADK) and Gemini AI, deployed on Cloud Run.",
+    github: "https://github.com/JosephDavisC/IShowStream",
+    demo: "https://ishowstream-234sus25va-uc.a.run.app/"
+  },
+  {
     title: "JAM AI",
     image: "/images/portfolio/jam-ai.jpg",
     imageAlt: "JAM AI preview",
@@ -67,20 +77,20 @@ const Projects = () => {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid md:grid-cols-2 gap-8"
         >
           {projects.map((project, index) => (
             <motion.article
               key={index}
               variants={fadeInUp}
-              className="bg-white/5 backdrop-blur-sm rounded-3xl p-6 border border-white/10 hover:border-blue-400/50 transition-all duration-300 group hover:scale-[1.03] hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2"
+              className="bg-white/5 backdrop-blur-sm rounded-3xl p-6 border border-white/10 hover:border-blue-400/50 transition-all duration-300 group hover:scale-[1.03] hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2 flex flex-col"
             >
               {/* Top image */}
               <figure className="relative overflow-hidden rounded-2xl border border-white/10 group-hover:border-blue-400/30">
                 <img
                   src={project.image}
                   alt={project.imageAlt || project.title}
-                  className="h-44 w-full object-cover transition-transform duration-500 group-hover:scale-110 md:h-48"
+                  className="h-56 w-full object-cover object-center transition-transform duration-500 group-hover:scale-110 md:h-64"
                   loading="lazy"
                 />
                 {/* Overlay on hover */}
@@ -106,13 +116,13 @@ const Projects = () => {
               </div>
 
               {/* Description */}
-              <p className="text-slate-400 mt-5 mb-6 leading-relaxed text-lg">
+              <p className="text-slate-400 mt-5 mb-6 leading-relaxed text-lg flex-grow">
                 {project.description}
               </p>
 
               {/* Links */}
               {(project.github || project.demo) && (
-                <div className="flex gap-6">
+                <div className="flex gap-6 mt-auto">
                   {project.github && (
                     <a
                       href={project.github}
