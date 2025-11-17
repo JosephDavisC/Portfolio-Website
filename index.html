@@ -1,6 +1,6 @@
 <!-- Hmm fancy meeting you here 😄 -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -56,11 +56,11 @@
       console.log(`
          ______
        /      \\
-      |  0  0  |      🎾 What's better than tennis and coffee? 
+      |  0  0  |      🎾 What's better than tennis and coffee?
       |   🏸    |     💭 Both, obviously.
        \\______/      ~ Joseph
-    
-       👋 Hey there! Glad you’re snooping in the console.
+
+       👋 Hey there! Glad you're snooping in the console.
        💻 This site was brewed with code, caffeine, and good vibes.
       `);
     </script>   
@@ -71,6 +71,34 @@
   </head>
  
   <body>
+    <!-- Extension Interference Banner (Desktop only) -->
+    <div id="extension-banner" class="hidden fixed top-0 left-0 right-0 bg-gradient-to-r from-slate-900 via-blue-600 to-red-600 backdrop-blur-lg border-b border-white/10 text-white py-3.5 px-4 text-center z-[9999] shadow-md">
+      <div class="max-w-6xl mx-auto flex items-center justify-center flex-wrap gap-3">
+        <span class="text-sm">
+          <strong class="font-semibold">Colors looking off?</strong> Some browser extensions may interfere with this site's appearance. Try disabling them for the best experience.
+        </span>
+        <button
+          onclick="localStorage.setItem('extension-banner-dismissed', 'true'); document.getElementById('extension-banner').classList.add('hidden')"
+          class="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-5 py-2 rounded-lg text-sm font-semibold transition-all duration-300 whitespace-nowrap hover:scale-105">
+          Dismiss
+        </button>
+      </div>
+    </div>
+
+    <script>
+      // Show extension banner only on desktop if user hasn't dismissed it
+      if (!localStorage.getItem('extension-banner-dismissed')) {
+        // Simple mobile detection
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+                        window.innerWidth < 768;
+
+        if (!isMobile) {
+          const banner = document.getElementById('extension-banner');
+          if (banner) banner.classList.remove('hidden');
+        }
+      }
+    </script>
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
