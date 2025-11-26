@@ -1,6 +1,6 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { Mail, Coffee } from "lucide-react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Mail, Coffee, GraduationCap } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const HEADER_OFFSET = 88; // match your fixed navbar height
@@ -18,6 +18,8 @@ function scrollToIdNoHash(id: string, tries = 0) {
 }
 
 const Hero = () => {
+  const [isHoveringProfile, setIsHoveringProfile] = useState(false);
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center px-6 py-20 relative">
       {/* soft bg glow */}
@@ -126,7 +128,11 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="flex justify-center lg:justify-end"
           >
-            <div className="relative group/profile">
+            <div
+              className="relative group/profile"
+              onMouseEnter={() => setIsHoveringProfile(true)}
+              onMouseLeave={() => setIsHoveringProfile(false)}
+            >
               {/* UW Logo */}
               <div className="absolute -top-4 -left-4 w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-xl z-20 transition-transform duration-300 group-hover/profile:scale-110 group-hover/profile:-translate-y-1">
                 <img src="logos/UW_Logo.png" alt="University of Washington" className="w-10 h-10 object-contain" />
@@ -140,6 +146,32 @@ const Hero = () => {
                   JC
                 </AvatarFallback>
               </Avatar>
+
+              {/* Switch Persona Overlay */}
+              <AnimatePresence>
+                {isHoveringProfile && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
+                    className="absolute inset-0 rounded-full bg-slate-950/60 backdrop-blur-sm flex items-center justify-center z-30"
+                  >
+                    <motion.a
+                      href="https://uw.joechamdani.com"
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 8 }}
+                      transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
+                      className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-600/90 to-purple-600/90 backdrop-blur-md border border-white/20 rounded-full text-white font-medium shadow-xl hover:shadow-2xl hover:shadow-purple-500/30 hover:scale-105 transition-all duration-300"
+                      aria-label="Switch to Academic Mode - View my UW coursework and research"
+                    >
+                      <GraduationCap className="h-5 w-5" />
+                      <span>Switch to Academic Mode</span>
+                    </motion.a>
+                  </motion.div>
+                )}
+              </AnimatePresence>
 
               {/* Tennis Icon */}
               <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-gradient-to-r from-green-500 to-yellow-500 rounded-full flex items-center justify-center shadow-xl z-20 transition-all duration-300 group-hover/profile:scale-110 group-hover/profile:rotate-12 group-hover/profile:animate-bounce">

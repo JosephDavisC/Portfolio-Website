@@ -41,6 +41,7 @@ const ArticleCard: React.FC<{ article: Article; index: number }> = ({ article, i
           target="_blank"
           rel="noopener noreferrer"
           className="block overflow-hidden rounded-2xl relative"
+          aria-label={`View ${article.title} article`}
         >
           <img
             src={article.thumbnail}

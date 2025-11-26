@@ -21,7 +21,8 @@ const projects = [
     description:
       "StreamSense is a real-time Twitch chat analysis platform powered by Google's Agent Development Kit (ADK) and Gemini AI, deployed on Cloud Run.",
     github: "https://github.com/JosephDavisC/IShowStream",
-    demo: "https://ishowstream-234sus25va-uc.a.run.app/"
+    demo: "https://ishowstream-234sus25va-uc.a.run.app/",
+    demoLabel: "Live Demo"
   },
   {
     title: "JAM AI",
@@ -31,16 +32,19 @@ const projects = [
     description:
       "Built a GPT-powered health assistant for diabetes management. Tuned GPT-3.5 using 600+ Q&A lines to provide personalized insights like nutritional tips and medication reminders.",
     github: "https://github.com/JosephDavisC/Jam.AI",
-    demo: "https://devpost.com/software/jam-ai"
+    demo: "https://devpost.com/software/jam-ai",
+    demoLabel: "Devpost"
   },
   {
-    title: "Coffee Shop – Fullstack Demo",
-    image: "/images/portfolio/coffee-shop.png",
-    imageAlt: "Coffee Shop app preview",
-    tech: ["Next.js 15", "TypeScript", "Supabase", "Stripe", "Tailwind CSS"],
+    title: "AI Transfer Evaluation Tool",
+    image: "/images/portfolio/UW_Logo.jpeg",
+    imageAlt: "AI Transfer Evaluation Tool - UW Husky Logo",
+    tech: ["Next.js 14", "TypeScript", "Claude API", "Tailwind CSS", "jsPDF"],
     description:
-      "This Fullstack project is a modern coffee shop website application built with Next.js 15 (App Router), Supabase, and Stripe.",
-    github: "https://github.com/JosephDavisC/Coffee-Shop"
+      "🏆 First place winner at Anthropic Claude Hackathon. An AI-powered tool that helps community college students evaluate transfer credits to UW, automating what traditionally takes hours into seconds using Claude Vision and 157+ verified course equivalencies.",
+    github: "https://github.com/JosephDavisC/AI-Transfer-Evaluation-Tool",
+    demo: "https://devpost.com/software/ai-transfer-evaluation-tool",
+    demoLabel: "Devpost"
   },
   {
     title: "Dino Marine VR",
@@ -49,7 +53,8 @@ const projects = [
     tech: ["Unity", "C#", "VR"],
     description:
       "Worked as a Unity Developer Intern at VR Park, helping build the foundation for a multiplayer underwater VR game. I wrote scripts, added subtitles, and implemented core gameplay features during the internship.",
-    demo: "https://youtu.be/lgahuoczoiA"
+    demo: "https://youtu.be/lgahuoczoiA",
+    demoLabel: "Video Demo"
   }
 ];
 
@@ -140,9 +145,10 @@ const Projects = () => {
                       className="flex items-center text-rose-400 hover:text-rose-300 transition-colors hover:scale-105"
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`View ${project.title} ${project.demoLabel || 'demo'}`}
                     >
                       <ExternalLink className="h-5 w-5 mr-2" />
-                      More
+                      {project.demoLabel || "Live Demo"}
                     </a>
                   )}
                 </div>
