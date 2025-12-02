@@ -9,31 +9,31 @@
 
 ---
 
-## 📌 About
+## About
 
-This is my personal **portfolio website** where I showcase my background, projects, certifications, experiences, and interests.  
+This is my personal **portfolio website** where I showcase my background, projects, certifications, experiences, and interests.
 
-The site also highlights my journey as an **Informatics student @ University of Washington** and includes personal touches like my love for tennis 🎾 and coffee ☕.
+The site also highlights my journey as an **Informatics student @ University of Washington** and includes personal touches like my love for tennis and coffee.
 
-👉 Live Site: **[joechamdani.com](https://joechamdani.com)**  
-
----
-
-## 🚀 Tech Stack
-
-- ⚛️ **React (TypeScript)** – Frontend framework
-- 🎨 **TailwindCSS** – Styling
-- 🎬 **Framer Motion** – Animations
-- 🖼️ **Lucide React Icons** – Icons
-- 🌐 **Vite** – Build tool
-- 🔀 **React Router** – Client-side routing for blog pages
-- 🪖 **React Helmet** – SEO meta tags management
-- ✉️ **EmailJS** – Contact form email integration
-- ☁️ **Hostinger** – Hosting  
+Live Site: **[joechamdani.com](https://joechamdani.com)**  
 
 ---
 
-## 📂 Project Structure
+## Tech Stack
+
+- **React (TypeScript)** – Frontend framework
+- **TailwindCSS** – Styling
+- **Framer Motion** – Animations
+- **Lucide React Icons** – Icons
+- **Vite** – Build tool
+- **React Router** – Client-side routing for blog pages
+- **React Helmet** – SEO meta tags management
+- **EmailJS** – Contact form email integration
+- **Hostinger** – Hosting  
+
+---
+
+## Project Structure
 
 ```
 src/
@@ -80,20 +80,20 @@ scripts/
 
 ---
 
-## ⚡ Features
+## Features
 
-- 📖 **Hero, About, Portfolio, Blog & Articles, Certifications, Milestones, Talks**
-- 📝 **Blog Section** with full article pages and SEO meta tags for social media sharing
-- 🎾 **Lifestyle Section** (Tennis & Coffee)
-- ✉️ **Contact Form** with EmailJS integration and auto-reply confirmation
-- 🎨 **Dark theme + glassmorphism design**
-- 📱 **Responsive layout for all devices**
-- 🔗 **Live links to projects, certificates, and experiences**
-- 🔍 **SEO optimized** with Open Graph tags for LinkedIn, Facebook, Twitter, WhatsApp  
+- **Hero, About, Portfolio, Blog & Articles, Certifications, Milestones, Talks**
+- **Blog Section** with full article pages and SEO meta tags for social media sharing
+- **Lifestyle Section** (Tennis & Coffee)
+- **Contact Form** with EmailJS integration and auto-reply confirmation
+- **Dark theme + glassmorphism design**
+- **Responsive layout for all devices**
+- **Live links to projects, certificates, and experiences**
+- **SEO optimized** with Open Graph tags for LinkedIn, Facebook, Twitter, WhatsApp  
 
 ---
 
-## 🖼️ Screenshots
+## Screenshots
 
 ### Home Section
 
@@ -101,7 +101,7 @@ scripts/
 
 ---
 
-## 🛠️ Setup & Installation
+## Setup & Installation
 
 Clone the repo and install dependencies:
 
@@ -136,14 +136,13 @@ npm run build
 
 ---
 
-## ☕️ Deployment
+## Deployment
 
 This site is deployed on **Hostinger** with a custom domain: [joechamdani.com](https://joechamdani.com).  
 You can also easily deploy it on either **Vercel** or **Netlify**.
 
 ---
 
-⚠️ Note: Some browser extensions (e.g. Better Campus, readability tools) may alter the site’s appearance.  
-For the best experience, please view with extensions disabled or whitelist this site.
+**Note:** Some browser extensions (e.g. Better Campus, readability tools) may alter the site's appearance. For the best experience, please view with extensions disabled or whitelist this site.
 
 ---
