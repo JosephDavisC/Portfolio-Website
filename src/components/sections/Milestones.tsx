@@ -87,7 +87,6 @@ export default function Milestones() {
   return (
     <section id="milestones" className="py-12 px-6 bg-black/20">
       <div className="max-w-5xl mx-auto">
-        {/* keep your original title style */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -104,16 +103,13 @@ export default function Milestones() {
         </motion.div>
 
         <div className="relative">
-          {/* timeline line */}
           <div className="absolute left-3 top-0 bottom-0 w-px bg-white/10 md:left-4" />
 
           <div className="space-y-10">
             {companies.map((company) => (
               <div key={company.name} className="relative pl-10 md:pl-12">
-                {/* dot */}
                 <span className="absolute left-0 top-3 h-2.5 w-2.5 rounded-full bg-pink-400 shadow-[0_0_18px] shadow-pink-500/40" />
 
-                {/* company header with linked logo */}
                 <div className="mb-4 flex items-center gap-3">
                   <a
                     href={company.website || linkedinFallback}
@@ -141,7 +137,6 @@ export default function Milestones() {
                   </div>
                 </div>
 
-                {/* roles */}
                 {company.roles.map((role, i) => (
                   <motion.div
                     key={`${company.name}-${i}`}
@@ -183,7 +178,6 @@ export default function Milestones() {
                       ))}
                     </ul>
 
-                    {/* media grid: anchor if href exists, else lightbox button */}
                     {role.media?.length ? (
                       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                         {role.media.map((m, mi) => {

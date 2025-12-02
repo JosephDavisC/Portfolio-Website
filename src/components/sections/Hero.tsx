@@ -22,11 +22,9 @@ const Hero = () => {
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center px-6 py-20 relative">
-      {/* soft bg glow */}
       <div className="absolute inset-0 bg-gradient-to-r from-red-600/5 via-blue-600/10 to-red-600/5 backdrop-blur-3xl" />
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left Side - Text */}
           <motion.div
             className="text-left"
             initial={{ opacity: 0, x: -50 }}
@@ -73,14 +71,12 @@ const Hero = () => {
               </div>
             </motion.div>
 
-            {/* CTAs */}
             <motion.div
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.6 }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              {/* Learn more → About (uses your chibi icon) */}
               <a
                 href="#about"
                 onClick={(e) => {
@@ -100,12 +96,10 @@ const Hero = () => {
                                group-hover:translate-x-1 group-hover:rotate-[6deg]"
                   />
                 </span>
-                {/* Desktop label / Mobile label */}
                 <span className="hidden sm:inline">About Me</span>
                 <span className="sm:hidden">About me</span>
               </a>
 
-              {/* Let's Connect → Contact (no hash) */}
               <a
                 href="#contact"
                 onClick={(e) => {
@@ -121,7 +115,6 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Side - Profile */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -133,7 +126,6 @@ const Hero = () => {
               onMouseEnter={() => setIsHoveringProfile(true)}
               onMouseLeave={() => setIsHoveringProfile(false)}
             >
-              {/* UW Logo */}
               <div className="absolute -top-4 -left-4 w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-xl z-20 transition-transform duration-300 group-hover/profile:scale-110 group-hover/profile:-translate-y-1">
                 <img src="logos/UW_Logo.png" alt="University of Washington" className="w-10 h-10 object-contain" />
               </div>
@@ -147,7 +139,6 @@ const Hero = () => {
                 </AvatarFallback>
               </Avatar>
 
-              {/* Switch Persona Overlay */}
               <AnimatePresence>
                 {isHoveringProfile && (
                   <motion.div
@@ -173,7 +164,6 @@ const Hero = () => {
                 )}
               </AnimatePresence>
 
-              {/* Tennis Icon */}
               <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-gradient-to-r from-green-500 to-yellow-500 rounded-full flex items-center justify-center shadow-xl z-20 transition-all duration-300 group-hover/profile:scale-110 group-hover/profile:rotate-12 group-hover/profile:animate-bounce">
                 <span className="text-3xl">🎾</span>
               </div>

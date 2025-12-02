@@ -58,7 +58,6 @@ export default function Certifications() {
   return (
     <section id="certifications" className="py-12 px-6 pb-20 bg-black/20">
       <div className="max-w-6xl mx-auto">
-        {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -74,7 +73,6 @@ export default function Certifications() {
           </p>
         </motion.div>
 
-        {/* Grid */}
         <motion.div
           variants={staggerContainer}
           initial="initial"
@@ -88,12 +86,10 @@ export default function Certifications() {
               variants={fadeInUp}
               className="bg-white/5 backdrop-blur-sm rounded-3xl p-6 border border-white/10 hover:border-blue-400/50 transition-all duration-300 group flex flex-col items-center text-center hover:scale-[1.03] hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2"
             >
-              {/* Award icon at top left */}
               <div className="w-full flex justify-start mb-4">
                 <Award className="h-7 w-7 text-yellow-400" />
               </div>
 
-              {/* Large logo centered */}
               {cert.logo && (
                 <div className="h-24 w-24 rounded-2xl overflow-hidden bg-white/10 border border-white/10 flex items-center justify-center mb-6">
                   <img
@@ -104,7 +100,6 @@ export default function Certifications() {
                 </div>
               )}
 
-              {/* Certificate info */}
               <div className="flex-1 w-full">
                 <h3 className="text-xl font-semibold text-red-400 mb-3">
                   {cert.name}
@@ -124,7 +119,6 @@ export default function Certifications() {
                 <p className="text-slate-400 text-xs mb-6">{cert.year}</p>
               </div>
 
-              {/* Button */}
               {cert.href && (
                 <button
                   onClick={() => openCredential(cert.href!)}

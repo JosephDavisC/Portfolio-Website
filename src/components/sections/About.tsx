@@ -38,7 +38,6 @@ export default function About() {
   return (
     <section id="about" className="py-12 px-6">
       <div className="max-w-6xl mx-auto">
-        {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -54,9 +53,7 @@ export default function About() {
           </p>
         </motion.div>
 
-        {/* Two cards */}
         <div className="grid md:grid-cols-2 gap-10">
-          {/* Story */}
           <motion.article
             variants={fadeUp}
             initial="initial"
@@ -82,7 +79,6 @@ export default function About() {
             </div>
           </motion.article>
 
-          {/* Skills */}
           <motion.article
             variants={fadeUp}
             initial="initial"
@@ -90,7 +86,6 @@ export default function About() {
             viewport={{ once: true }}
             className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 md:p-10 border border-white/10 hover:border-blue-400/50 transition-all duration-300 group hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2 relative overflow-hidden"
           >
-            {/* Stress chibi character */}
             <motion.img
               src="/images/chibis/jo_stress.PNG"
               alt="Stressed Joe learning all these technologies"

@@ -159,7 +159,6 @@ export default function Navbar() {
               aria-current={isActive ? "page" : undefined}
             >
               {link.short || link.name}
-              {/* gradient underline */}
               <span
                 className={`pointer-events-none absolute -bottom-1 left-0 right-0 h-[2px] rounded-full transition-opacity ${
                   isActive
@@ -177,7 +176,6 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-slate-900/70 backdrop-blur-lg border-b border-white/10 shadow-md">
       <nav className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4 text-white">
-        {/* Logo */}
         <a href="#home" onClick={handleNavClick("#home")} className="flex items-center">
           <img
             src="/Logo_Joseph.PNG"
@@ -186,12 +184,10 @@ export default function Navbar() {
           />
         </a>
 
-        {/* Desktop links */}
         <ul className="hidden md:flex items-center gap-6 font-semibold">
           {desktopLinks}
         </ul>
 
-        {/* Mobile hamburger */}
         <button
           onClick={() => setIsOpen((s) => !s)}
           className="md:hidden focus:outline-none"
@@ -202,7 +198,6 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile dropdown */}
       {isOpen && (
         <ul className="md:hidden bg-slate-900/90 backdrop-blur-lg px-6 py-6 space-y-4 text-center border-t border-white/10 animate-fade-in-down">
           {links.map((link) =>

@@ -13,7 +13,6 @@ const Footer = () => {
           <span className="text-lg">🎾</span>
         </div>
 
-        {/* Note about extensions */}
         <p className="text-xs text-slate-500/70 max-w-md mx-auto leading-relaxed">
           ⚠️ Some browser extensions (like readability tools or Better Campus) may change how this site looks. 
           For the best experience, please view with extensions disabled.

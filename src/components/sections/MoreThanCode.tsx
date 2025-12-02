@@ -27,7 +27,6 @@ const MoreThanCode = () => {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-center items-center max-w-4xl mx-auto"
         >
-          {/* Tennis */}
           <div className="rounded-2xl overflow-hidden border border-white/10 shadow-lg hover:scale-105 transition-transform">
             <img src="/Tennis_2.jpg" alt="Tennis" className="w-full h-64 object-cover" />
             <div className="bg-white/5 text-slate-300 text-center py-4 text-sm">
@@ -35,7 +34,6 @@ const MoreThanCode = () => {
             </div>
           </div>
 
-          {/* Coffee */}
           <div className="rounded-2xl overflow-hidden border border-white/10 shadow-lg hover:scale-105 transition-transform">
             <img src="/Coffee.JPG" alt="Coffee time" className="w-full h-64 object-cover" />
             <div className="bg-white/5 text-slate-300 text-center py-4 text-sm">

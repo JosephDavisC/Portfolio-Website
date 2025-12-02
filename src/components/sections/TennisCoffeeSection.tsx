@@ -30,7 +30,6 @@ export default function TennisCoffeeSection() {
   return (
     <section id="tennis-coffee" className="py-12 px-6 bg-black/20">
       <div className="max-w-6xl mx-auto">
-        {/* Header */}
         <div className="text-center mb-8">
           <h2 className="text-5xl md:text-6xl font-bold mb-3 bg-gradient-to-r from-blue-400 to-red-400 bg-clip-text text-transparent">
             More Than Just Code
@@ -40,7 +39,6 @@ export default function TennisCoffeeSection() {
           </p>
         </div>
 
-        {/* Tabs */}
         <div
           role="tablist"
           aria-label="Tennis & Coffee sub-sections"
@@ -77,7 +75,6 @@ export default function TennisCoffeeSection() {
           />
         </div>
 
-        {/* Panels */}
         <div className="mt-10">
           <AnimatePresence mode="wait">
             {tab === "moments" ? (
@@ -91,7 +88,6 @@ export default function TennisCoffeeSection() {
                 transition={{ duration: 0.2 }}
                 className="grid grid-cols-1 md:grid-cols-2 gap-8"
               >
-                {/* Tennis carousel with hover magnifier */}
                 <motion.figure
                   whileHover={{ scale: 1.02, y: -8 }}
                   transition={{ type: "spring", stiffness: 230, damping: 20 }}
@@ -121,10 +117,8 @@ export default function TennisCoffeeSection() {
                         loading="lazy"
                       />
                     </AnimatePresence>
-                    {/* Green overlay on hover */}
                     <div className="absolute inset-0 bg-gradient-to-t from-green-500/40 via-green-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                    {/* Prev / Next */}
                     <button
                       type="button"
                       onClick={() => setTennisIdx((i) => (i - 1 + tennisImages.length) % tennisImages.length)}
@@ -142,7 +136,6 @@ export default function TennisCoffeeSection() {
                       ›
                     </button>
 
-                    {/* Dots */}
                     <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
                       {tennisImages.map((_, i) => (
                         <button
@@ -161,7 +154,6 @@ export default function TennisCoffeeSection() {
                   </figcaption>
                 </motion.figure>
 
-                {/* Coffee card with hover magnifier */}
                 <motion.figure
                   whileHover={{ scale: 1.02, y: -8 }}
                   transition={{ type: "spring", stiffness: 230, damping: 20 }}
@@ -183,10 +175,8 @@ export default function TennisCoffeeSection() {
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       loading="lazy"
                     />
-                    {/* Amber/coffee overlay on hover */}
                     <div className="absolute inset-0 bg-gradient-to-t from-amber-500/40 via-amber-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                    {/* Coffee chibi character */}
                     <motion.img
                       src="/images/chibis/coffee_chibi.PNG"
                       alt="Coffee chibi"

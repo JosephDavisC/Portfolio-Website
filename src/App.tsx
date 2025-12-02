@@ -20,9 +20,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        {/* new pages start at the top */}
         <ScrollToTop />
-        {/* thin progress bar at top */}
         <ScrollProgress />
 
         <Routes>
@@ -32,7 +30,6 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
 
-        {/* 👇 floating "back to top" arrow on every page */}
         <ScrollUpButton />
       </BrowserRouter>
     </TooltipProvider>

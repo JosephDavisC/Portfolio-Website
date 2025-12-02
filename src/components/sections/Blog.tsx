@@ -4,7 +4,6 @@ import { ExternalLink, Calendar, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import articlesData from '@/data/articles.json';
 
-// Article data structure
 export interface Article {
   id: string;
   title: string;
@@ -19,10 +18,8 @@ export interface Article {
   hasFullArticle?: boolean;
 }
 
-// Import articles from JSON
 export const articles: Article[] = articlesData;
 
-// Single article card component
 const ArticleCard: React.FC<{ article: Article; index: number }> = ({ article, index }) => {
   const hasImage = !!article.thumbnail;
 
@@ -34,7 +31,6 @@ const ArticleCard: React.FC<{ article: Article; index: number }> = ({ article, i
       viewport={{ once: true }}
       className={`grid ${hasImage ? 'md:grid-cols-2' : 'md:grid-cols-1'} gap-8 items-center bg-white/5 backdrop-blur-sm rounded-3xl p-8 md:p-10 border border-white/10 hover:border-red-400/50 transition-all duration-300 group hover:scale-[1.02] hover:shadow-2xl hover:shadow-red-500/20 hover:-translate-y-2`}
     >
-      {/* Thumbnail Image (if exists) */}
       {hasImage && (
         <a
           href={article.externalLinks?.[0]?.url || article.externalLink}
@@ -48,14 +44,11 @@ const ArticleCard: React.FC<{ article: Article; index: number }> = ({ article, i
             alt={article.title}
             className="rounded-2xl shadow-xl w-full object-cover group-hover:scale-110 transition-transform duration-500"
           />
-          {/* Red overlay on hover */}
           <div className="absolute inset-0 bg-gradient-to-t from-red-500/40 via-red-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
         </a>
       )}
 
-      {/* Text Content */}
       <div className={hasImage ? '' : 'max-w-4xl mx-auto'}>
-        {/* Date and Location */}
         <div className="flex items-center gap-2 text-slate-400 mb-3">
           <Calendar className="h-4 w-4" />
           <span className="text-sm">
@@ -63,17 +56,14 @@ const ArticleCard: React.FC<{ article: Article; index: number }> = ({ article, i
           </span>
         </div>
 
-        {/* Title */}
         <h3 className="text-2xl md:text-3xl font-semibold text-red-400 mb-4">
           {article.title}
         </h3>
 
-        {/* Preview Description */}
         <p className="text-slate-300 text-base md:text-lg leading-relaxed mb-6">
           {article.preview}
         </p>
 
-        {/* Tags */}
         {article.tags && article.tags.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-6">
             {article.tags.map((tag) => (
@@ -87,9 +77,7 @@ const ArticleCard: React.FC<{ article: Article; index: number }> = ({ article, i
           </div>
         )}
 
-        {/* Action Buttons */}
         <div className="flex flex-wrap gap-4">
-          {/* Read More Button - links to dedicated article page */}
           {article.hasFullArticle && (
             <Link
               to={`/blog/${article.id}`}
@@ -100,7 +88,6 @@ const ArticleCard: React.FC<{ article: Article; index: number }> = ({ article, i
             </Link>
           )}
 
-          {/* External Link Button (e.g., YouTube) */}
           {article.externalLink && (
             <a
               href={article.externalLink}
@@ -122,7 +109,6 @@ const Blog = () => {
   return (
     <section id="blog" className="py-12 px-6">
       <div className="max-w-6xl mx-auto">
-        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -138,14 +124,12 @@ const Blog = () => {
           </p>
         </motion.div>
 
-        {/* Articles Grid */}
         <div className="space-y-12">
           {articles.map((article, index) => (
             <ArticleCard key={article.id} article={article} index={index} />
           ))}
         </div>
 
-        {/* Coming Soon Message (optional, remove if not needed) */}
         {articles.length === 1 && (
           <motion.div
             initial={{ opacity: 0 }}

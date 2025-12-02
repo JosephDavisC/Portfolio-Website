@@ -90,7 +90,6 @@ const Projects = () => {
               variants={fadeInUp}
               className="bg-white/5 backdrop-blur-sm rounded-3xl p-6 border border-white/10 hover:border-blue-400/50 transition-all duration-300 group hover:scale-[1.03] hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2 flex flex-col"
             >
-              {/* Top image */}
               <figure className="relative overflow-hidden rounded-2xl border border-white/10 group-hover:border-blue-400/30">
                 <img
                   src={project.image}
@@ -98,17 +97,14 @@ const Projects = () => {
                   className="h-56 w-full object-cover object-center transition-transform duration-500 group-hover:scale-110 md:h-64"
                   loading="lazy"
                 />
-                {/* Overlay on hover */}
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-500/40 via-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <span className="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-black/30 to-transparent" />
               </figure>
 
-              {/* Title */}
               <h3 className="mt-5 text-2xl font-semibold group-hover:text-blue-400 transition-colors">
                 {project.title}
               </h3>
 
-              {/* Tech badges */}
               <div className="mt-3 flex flex-wrap gap-2">
                 {project.tech.map((tech) => (
                   <span
@@ -120,12 +116,10 @@ const Projects = () => {
                 ))}
               </div>
 
-              {/* Description */}
               <p className="text-slate-400 mt-5 mb-6 leading-relaxed text-lg flex-grow">
                 {project.description}
               </p>
 
-              {/* Links */}
               {(project.github || project.demo) && (
                 <div className="flex gap-6 mt-auto">
                   {project.github && (
@@ -157,7 +151,6 @@ const Projects = () => {
           ))}
         </motion.div>
 
-        {/* Show more button */}
         <div className="mt-16 text-center">
           <a
             href="https://github.com/JosephDavisC"

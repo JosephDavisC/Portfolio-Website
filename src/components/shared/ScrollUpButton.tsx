@@ -38,7 +38,6 @@ export default function ScrollUpButton() {
                      opacity-40 blur-[6px] transition group-hover:opacity-70"
         />
         <span aria-hidden className="absolute inset-0 rounded-full bg-gradient-to-b from-white/10 to-white/5" />
-        {/* Thicker/bolder arrow */}
         <ArrowUp className="relative h-5 w-5 drop-shadow-sm" strokeWidth={3.2} />
         <span className="sr-only">Scroll to top</span>
       </button>
