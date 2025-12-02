@@ -13,3 +13,6 @@ coverage/
 
 # FTP deployment credentials
 scripts/ftp-config.json
+
+# Claude Code configuration
+.claude/
