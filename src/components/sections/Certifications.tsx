@@ -56,7 +56,7 @@ export default function Certifications() {
   };
 
   return (
-    <section id="certifications" className="py-12 px-6 pb-20">
+    <section id="certifications" className="py-12 px-6 pb-20 bg-black/20">
       <div className="max-w-6xl mx-auto">
         {/* Heading */}
         <motion.div

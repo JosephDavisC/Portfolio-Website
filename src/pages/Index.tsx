@@ -27,8 +27,8 @@ const Index = () => {
 
       <Suspense fallback={<div className="text-slate-400 text-center py-10">Loading...</div>}>
         <Milestones />
-        <Certification />
         <Portfolio />
+        <Certification />
         <Blog />
         <TennisCoffeeSection />
         <Contact />
