@@ -43,8 +43,8 @@ const projects = [
     description:
       "🏆 First place winner at Anthropic Claude Hackathon. An AI-powered tool that helps community college students evaluate transfer credits to UW, automating what traditionally takes hours into seconds using Claude Vision and 157+ verified course equivalencies.",
     github: "https://github.com/JosephDavisC/AI-Transfer-Evaluation-Tool",
-    demo: "https://devpost.com/software/ai-transfer-evaluation-tool",
-    demoLabel: "Devpost"
+    demo: "https://transfer.joechamdani.cloud/",
+    demoLabel: "Live Demo"
   },
   {
     title: "Dino Marine VR",
