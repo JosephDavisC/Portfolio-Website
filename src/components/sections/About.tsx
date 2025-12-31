@@ -68,13 +68,13 @@ export default function About() {
 
             <div className="space-y-4 text-slate-300 leading-relaxed text-[17px]">
               <p>
-                I study Informatics at the University of Washington, but I got here through a non-traditional path. Running Start let me skip straight into college-level work, and I've been building things ever since.
+                Originally from Jakarta, Indonesia, I moved to Seattle and accelerated my education through the Running Start program at Bellevue College, entering the University of Washington's Informatics program as a junior.
               </p>
               <p>
-                Currently interning remotely at Sector, where I'm developing AI automation tools for cybersecurity workflows. I like projects where code meets real problems. I lead BC Tech Club and organized BC Hacks 2024, which was chaotic in the best way.
+                My work is driven by a commitment to building technology that augments human judgment rather than replacing it. I believe that trust in AI systems comes from clear boundaries and transparent limitations, not just high confidence scores.
               </p>
               <p>
-                When I'm not coding, I'm on the tennis court or exploring Seattle's coffee scene. I'm interested in the startup world and building things that people actually use, but for now I'm focused on learning by doing and shipping projects that matter.
+                Currently, I'm interning at Sector building AI automation for cybersecurity, and I lead BC Tech Club where I organized BC Hacks 2024. I'm passionate about AI ethics, human-computer interaction, and building tools people actually use.
               </p>
             </div>
           </motion.article>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, ExternalLink } from 'lucide-react';
+import { Github, ExternalLink, BookOpen } from 'lucide-react';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -22,7 +22,8 @@ const projects = [
       "StreamSense is a real-time Twitch chat analysis platform powered by Google's Agent Development Kit (ADK) and Gemini AI, deployed on Cloud Run.",
     github: "https://github.com/JosephDavisC/IShowStream",
     demo: "https://ishowstream-234sus25va-uc.a.run.app/",
-    demoLabel: "Live Demo"
+    demoLabel: "Live Demo",
+    medium: "https://medium.com/@jessica.fiona2004/ishowstream-ai-that-reads-twitch-chat-so-streamers-dont-miss-a-moment-112342be7e32"
   },
   {
     title: "JAM AI",
@@ -44,7 +45,8 @@ const projects = [
       "🏆 First place winner at Anthropic Claude Hackathon. An AI-powered tool that helps community college students evaluate transfer credits to UW, automating what traditionally takes hours into seconds using Claude Vision and 157+ verified course equivalencies.",
     github: "https://github.com/JosephDavisC/AI-Transfer-Evaluation-Tool",
     demo: "https://transfer.joechamdani.cloud/",
-    demoLabel: "Live Demo"
+    demoLabel: "Live Demo",
+    medium: "https://medium.com/@joseph.chamdani/designing-an-ai-system-for-transfer-credit-evaluation-3a6d5c48d63e"
   },
   {
     title: "Dino Marine VR",
@@ -143,6 +145,18 @@ const Projects = () => {
                     >
                       <ExternalLink className="h-5 w-5 mr-2" />
                       {project.demoLabel || "Live Demo"}
+                    </a>
+                  )}
+                  {project.medium && (
+                    <a
+                      href={project.medium}
+                      className="flex items-center text-green-400 hover:text-green-300 transition-colors hover:scale-105"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Read ${project.title} article on Medium`}
+                    >
+                      <BookOpen className="h-5 w-5 mr-2" />
+                      Article
                     </a>
                   )}
                 </div>
