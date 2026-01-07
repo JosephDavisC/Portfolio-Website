@@ -1,0 +1,109 @@
+[
+  {
+    "title": "IShowStream",
+    "category": "AI",
+    "featured": true,
+    "image": "/media/IShowStream_Logo.png",
+    "imageAlt": "IShowStream preview",
+    "tech": ["React", "Python", "Go", "Gemini AI", "Google Cloud"],
+    "description": "StreamSense is a real-time Twitch chat analysis platform powered by Google's Agent Development Kit (ADK) and Gemini AI, deployed on Cloud Run.",
+    "github": "https://github.com/JosephDavisC/IShowStream",
+    "demo": "https://ishowstream-234sus25va-uc.a.run.app/",
+    "demoLabel": "Live Demo",
+    "medium": "https://medium.com/@jessica.fiona2004/ishowstream-ai-that-reads-twitch-chat-so-streamers-dont-miss-a-moment-112342be7e32"
+  },
+  {
+    "title": "JAM AI",
+    "category": "AI",
+    "featured": true,
+    "image": "/images/portfolio/jam-ai.jpg",
+    "imageAlt": "JAM AI preview",
+    "tech": ["Python", "OpenAI", "Kaggle", "Javascript"],
+    "description": "GPT-powered health assistant for diabetes management. Fine-tuned GPT-3.5 on 600+ Q&A pairs to deliver personalized nutritional tips and medication reminders.",
+    "github": "https://github.com/JosephDavisC/Jam.AI",
+    "demo": "https://devpost.com/software/jam-ai",
+    "demoLabel": "Devpost"
+  },
+  {
+    "title": "AI Transfer Evaluation Tool",
+    "category": "AI",
+    "featured": true,
+    "image": "/images/portfolio/UW_Logo.jpeg",
+    "imageAlt": "AI Transfer Evaluation Tool - UW Husky Logo",
+    "tech": ["Next.js 14", "TypeScript", "Claude API", "Tailwind CSS", "jsPDF"],
+    "description": "First place at Anthropic Claude Hackathon. Helps transfer students evaluate credits to UW in seconds using Claude Vision and 157+ verified equivalencies.",
+    "github": "https://github.com/JosephDavisC/AI-Transfer-Evaluation-Tool",
+    "demo": "https://transfer.joechamdani.cloud/",
+    "demoLabel": "Live Demo",
+    "medium": "https://medium.com/@joseph.chamdani/designing-an-ai-system-for-transfer-credit-evaluation-3a6d5c48d63e"
+  },
+  {
+    "title": "Dino Marine VR",
+    "category": "Games",
+    "featured": true,
+    "image": "/images/portfolio/dino-marine.png",
+    "imageAlt": "Dino Marine VR preview",
+    "tech": ["Unity", "C#", "VR"],
+    "description": "Unity Developer Intern at VR Park. Built the foundation for a multiplayer underwater VR game, writing scripts, subtitles, and core gameplay features.",
+    "demo": "https://youtu.be/lgahuoczoiA",
+    "demoLabel": "Video Demo"
+  },
+  {
+    "title": "Coffee Shop",
+    "category": "Web",
+    "featured": false,
+    "image": "/images/portfolio/coffee-shop.png",
+    "imageAlt": "Coffee Shop E-commerce App",
+    "tech": ["Next.js 15", "Supabase", "Stripe", "Tailwind CSS"],
+    "description": "Full-stack e-commerce app with magic link auth, Stripe checkout, order history, and an admin dashboard for order management.",
+    "github": "https://github.com/JosephDavisC/Coffee-Shop"
+  },
+  {
+    "title": "ASR-Runner",
+    "category": "AI",
+    "featured": false,
+    "image": "/images/portfolio/ASR-Runner.png",
+    "imageAlt": "ASR-Runner Security Tool",
+    "imageStyle": "cover-top",
+    "tech": ["Go", "Python", "OpenAI API"],
+    "description": "Attack surface recon tool for security professionals. Automates subdomain discovery, HTTP probing, and generates AI-powered security reports.",
+    "github": "https://github.com/JosephDavisC/ASR-Runner"
+  },
+  {
+    "title": "INFO 200: Transfer Evaluation System",
+    "category": "Web",
+    "featured": false,
+    "image": "/images/portfolio/UW_Transfer_Evaluation_Tool.jpg",
+    "imageAlt": "AI Transfer Tool INFO 200",
+    "imageStyle": "cover-purple",
+    "tech": ["UX Design", "AI", "Education", "Prototyping"],
+    "description": "Student-facing tool predicting credit transfers at UW. Features transcript analysis, visual reports, and advisor request functionality.",
+    "github": "https://github.com/JosephDavisC/INFO-200-Final-Project",
+    "demo": "https://info200.joechamdani.cloud",
+    "demoLabel": "Live Demo"
+  },
+  {
+    "title": "INFO 201: AI Job Market & LLM Growth",
+    "category": "Data",
+    "featured": false,
+    "image": "/images/portfolio/AI_Job_Market_&_LLM_Growth.png",
+    "imageAlt": "AI Job Market & LLM Growth Analysis",
+    "imageStyle": "cover-purple",
+    "tech": ["R", "Data Science", "Kaggle", "Visualization"],
+    "description": "Analyzed LLM expansion & AI job demand using R and Kaggle data. Examined 151K+ job postings to uncover hiring patterns and model release trends.",
+    "github": "https://github.com/JosephDavisC/INFO-201-Final-Project",
+    "demo": "https://uw.joechamdani.com/projects/INFO_201/final_report_group_2",
+    "demoLabel": "Report"
+  },
+  {
+    "title": "DevNet SQL Manager",
+    "category": "Web",
+    "featured": false,
+    "image": "/images/portfolio/devnet.PNG",
+    "imageAlt": "DevNet SQL Project",
+    "imageStyle": "contain-white",
+    "tech": ["C#", "MySQL", ".NET", "Windows Forms"],
+    "description": "Windows desktop app for retail data management with role-based access. Customers view purchases, employees manage full CRUD operations.",
+    "github": "https://github.com/JosephDavisC/DevNet_SQL_Project"
+  }
+]

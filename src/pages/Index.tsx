@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 import Hero from '@/components/sections/Hero';
 import About from '@/components/sections/About';

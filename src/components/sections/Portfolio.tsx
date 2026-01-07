@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, BookOpen } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Github, ExternalLink, BookOpen, ArrowRight } from 'lucide-react';
+import projectsData from '@/data/projects.json';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -12,53 +14,7 @@ const staggerContainer = {
   animate: { transition: { staggerChildren: 0.1 } }
 };
 
-const projects = [
-  {
-    title: "IShowStream",
-    image: "/media/IShowStream_Logo.png",
-    imageAlt: "IShowStream preview",
-    tech: ["React", "Python", "Go", "Gemini AI", "Google Cloud"],
-    description:
-      "StreamSense is a real-time Twitch chat analysis platform powered by Google's Agent Development Kit (ADK) and Gemini AI, deployed on Cloud Run.",
-    github: "https://github.com/JosephDavisC/IShowStream",
-    demo: "https://ishowstream-234sus25va-uc.a.run.app/",
-    demoLabel: "Live Demo",
-    medium: "https://medium.com/@jessica.fiona2004/ishowstream-ai-that-reads-twitch-chat-so-streamers-dont-miss-a-moment-112342be7e32"
-  },
-  {
-    title: "JAM AI",
-    image: "/images/portfolio/jam-ai.jpg",
-    imageAlt: "JAM AI preview",
-    tech: ["Python", "OpenAI", "Kaggle", "Javascript"],
-    description:
-      "Built a GPT-powered health assistant for diabetes management. Tuned GPT-3.5 using 600+ Q&A lines to provide personalized insights like nutritional tips and medication reminders.",
-    github: "https://github.com/JosephDavisC/Jam.AI",
-    demo: "https://devpost.com/software/jam-ai",
-    demoLabel: "Devpost"
-  },
-  {
-    title: "AI Transfer Evaluation Tool",
-    image: "/images/portfolio/UW_Logo.jpeg",
-    imageAlt: "AI Transfer Evaluation Tool - UW Husky Logo",
-    tech: ["Next.js 14", "TypeScript", "Claude API", "Tailwind CSS", "jsPDF"],
-    description:
-      "🏆 First place winner at Anthropic Claude Hackathon. An AI-powered tool that helps community college students evaluate transfer credits to UW, automating what traditionally takes hours into seconds using Claude Vision and 157+ verified course equivalencies.",
-    github: "https://github.com/JosephDavisC/AI-Transfer-Evaluation-Tool",
-    demo: "https://transfer.joechamdani.cloud/",
-    demoLabel: "Live Demo",
-    medium: "https://medium.com/@joseph.chamdani/designing-an-ai-system-for-transfer-credit-evaluation-3a6d5c48d63e"
-  },
-  {
-    title: "Dino Marine VR",
-    image: "/images/portfolio/dino-marine.png",
-    imageAlt: "Dino Marine VR preview",
-    tech: ["Unity", "C#", "VR"],
-    description:
-      "Worked as a Unity Developer Intern at VR Park, helping build the foundation for a multiplayer underwater VR game. I wrote scripts, added subtitles, and implemented core gameplay features during the internship.",
-    demo: "https://youtu.be/lgahuoczoiA",
-    demoLabel: "Video Demo"
-  }
-];
+const projects = projectsData.filter(p => p.featured).slice(0, 4);
 
 const Projects = () => {
   return (
@@ -165,7 +121,14 @@ const Projects = () => {
           ))}
         </motion.div>
 
-        <div className="mt-16 text-center">
+        <div className="mt-16 flex flex-col sm:flex-row justify-center items-center gap-4">
+          <Link
+            to="/projects"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-400 hover:bg-blue-500/30 hover:border-blue-400/50 transition-all duration-300 hover:scale-105"
+          >
+            See all projects
+            <ArrowRight className="h-5 w-5" />
+          </Link>
           <a
             href="https://github.com/JosephDavisC"
             target="_blank"
@@ -173,7 +136,7 @@ const Projects = () => {
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 text-slate-200 hover:bg-white/10 transition-all duration-300 hover:scale-105"
           >
             <Github className="h-5 w-5" />
-            See more in GitHub
+            GitHub Profile
           </a>
         </div>
       </div>
