@@ -6,7 +6,7 @@ type Props = { embed?: boolean };
 
 function RacketsGrid() {
   return (
-    <div className="grid md:grid-cols-2 gap-8">
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       <RacketCard
         title="Babolat Pure Aero 2023"
         img="/images/rackets/babolat-pure-aero.avif" // keep your original paths
@@ -16,8 +16,10 @@ function RacketsGrid() {
         specs={[
           "<strong>Use:</strong> Match play",
           "<strong>Weight:</strong> 300g",
-          "<strong>String:</strong> Luxilon Alu Power 125MM",
-          "<strong>Tension:</strong> 55 lbs (mains & crosses)",
+          "<strong>Head Size:</strong> 100 sq in",
+          "<strong>String:</strong> Ashaway Crossfire 18 Kevlar hybrid",
+          "<strong>Mains:</strong> Kevlar 18 gauge @ 48 lbs",
+          "<strong>Crosses:</strong> Synthetic gut 16 gauge @ 52 lbs",
           "<strong>Grip Size:</strong> 4 (³⁄₈)",
         ]}
       />
@@ -28,8 +30,24 @@ function RacketsGrid() {
         glowColor="blue"
         rotateDirection="left"
         specs={[
-          "<strong>Use:</strong> Casual hitting",
+          "<strong>Use:</strong> Retired",
           "<strong>Weight:</strong> 300g",
+          "<strong>Head Size:</strong> 100 sq in",
+          "<strong>String:</strong> Wilson NXT 17",
+          "<strong>Tension:</strong> 55 lbs (mains & crosses)",
+          "<strong>Grip Size:</strong> 4 (³⁄₈)",
+        ]}
+      />
+      <RacketCard
+        title="Diadem Elevate 98"
+        img="/images/rackets/diadem_elevate.jpg"
+        colorClass="bg-gradient-to-r from-blue-400 to-red-400 bg-clip-text text-transparent"
+        glowColor="blue"
+        rotateDirection="right"
+        specs={[
+          "<strong>Use:</strong> Retired",
+          "<strong>Weight:</strong> 305g",
+          "<strong>Head Size:</strong> 98 sq in",
           "<strong>String:</strong> Wilson NXT 17",
           "<strong>Tension:</strong> 55 lbs (mains & crosses)",
           "<strong>Grip Size:</strong> 4 (³⁄₈)",
