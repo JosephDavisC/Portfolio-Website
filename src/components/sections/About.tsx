@@ -77,8 +77,8 @@ export default function About() {
             className="card-brutal p-8 md:p-10"
           >
             <header className="flex items-center mb-5">
-              <div className="w-12 h-12 rounded-full bg-court/20 border-2 border-court flex items-center justify-center mr-4">
-                <MapPin className="h-6 w-6 text-court-dark" />
+              <div className="w-12 h-12 rounded-full bg-court/20 dark:bg-[#60A5FA]/20 border-2 border-court dark:border-[#60A5FA] flex items-center justify-center mr-4">
+                <MapPin className="h-6 w-6 text-court-dark dark:text-[#60A5FA]" />
               </div>
               <h3 className="text-2xl font-heading font-semibold text-espresso">The Journey</h3>
             </header>

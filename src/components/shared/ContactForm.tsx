@@ -109,7 +109,7 @@ const ContactForm = () => {
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div>
             <label htmlFor="name" className="block text-sm font-mono font-medium text-espresso/80 dark:text-slate-300 mb-2">
-              Name <span className="text-court-dark">*</span>
+              Name <span className="text-court-dark dark:text-[#60A5FA]">*</span>
             </label>
             <Input
               id="name"
@@ -130,7 +130,7 @@ const ContactForm = () => {
 
           <div>
             <label htmlFor="email" className="block text-sm font-mono font-medium text-espresso/80 dark:text-slate-300 mb-2">
-              Email <span className="text-court-dark">*</span>
+              Email <span className="text-court-dark dark:text-[#60A5FA]">*</span>
             </label>
             <Input
               id="email"
@@ -151,7 +151,7 @@ const ContactForm = () => {
 
           <div>
             <label htmlFor="subject" className="block text-sm font-mono font-medium text-espresso/80 dark:text-slate-300 mb-2">
-              Subject <span className="text-court-dark">*</span>
+              Subject <span className="text-court-dark dark:text-[#60A5FA]">*</span>
             </label>
             <Input
               id="subject"
@@ -172,7 +172,7 @@ const ContactForm = () => {
 
           <div>
             <label htmlFor="message" className="block text-sm font-mono font-medium text-espresso/80 dark:text-slate-300 mb-2">
-              Message <span className="text-court-dark">*</span>
+              Message <span className="text-court-dark dark:text-[#60A5FA]">*</span>
             </label>
             <Textarea
               id="message"
@@ -195,7 +195,7 @@ const ContactForm = () => {
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full sm:w-auto px-8 py-6 text-lg text-paper bg-court hover:bg-court-dark border-2 border-espresso font-semibold rounded-lg shadow-brutal-sm hover:shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-brutal-sm disabled:hover:translate-x-0 disabled:hover:translate-y-0"
+              className="w-full sm:w-auto px-8 py-6 text-lg text-paper bg-court dark:bg-gradient-to-r dark:from-blue-500 dark:to-red-500 hover:bg-court-dark border-2 border-espresso dark:border-transparent font-semibold rounded-lg shadow-brutal-sm dark:shadow-none hover:shadow-brutal dark:hover:shadow-lg hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-brutal-sm disabled:hover:translate-x-0 disabled:hover:translate-y-0"
             >
               {isSubmitting ? (
                 <>
@@ -214,7 +214,7 @@ const ContactForm = () => {
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="flex items-center gap-2 text-court-dark font-mono"
+                className="flex items-center gap-2 text-court-dark dark:text-[#60A5FA] font-mono"
               >
                 <CheckCircle2 className="h-5 w-5" />
                 <span className="text-sm font-medium">Message sent successfully!</span>

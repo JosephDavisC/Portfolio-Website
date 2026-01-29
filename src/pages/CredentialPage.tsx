@@ -129,7 +129,7 @@ export default function CredentialPage() {
             <a
               href={cred.file}
               download
-              className="inline-flex items-center gap-2 px-4 py-2 bg-court text-paper font-semibold rounded-lg border-2 border-espresso shadow-brutal-sm hover:shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all text-sm"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-court dark:bg-gradient-to-r dark:from-blue-500 dark:to-red-500 text-paper font-semibold rounded-lg border-2 border-espresso dark:border-transparent shadow-brutal-sm dark:shadow-none hover:shadow-brutal dark:hover:shadow-lg hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all text-sm"
             >
               <Download className="h-4 w-4" />
               Download
@@ -159,7 +159,7 @@ export default function CredentialPage() {
             <div className="p-6 text-espresso/80">
               This credential is a PDF. On mobile/tablet we show an image for smooth
               zooming, but no image is available.{" "}
-              <a href={cred.file} target="_blank" rel="noopener noreferrer" className="underline text-court-dark">
+              <a href={cred.file} target="_blank" rel="noopener noreferrer" className="underline text-court-dark dark:text-[#60A5FA] hover:text-court dark:hover:text-[#93C5FD]">
                 Open the PDF in a new tab
               </a>.
             </div>
@@ -183,7 +183,7 @@ export default function CredentialPage() {
                 <ul className="space-y-2 text-espresso/80">
                   {cred.highlights.map((h, i) => (
                     <li key={i} className="flex gap-3">
-                      <span className="mt-2 h-1.5 w-1.5 rounded-full bg-court" />
+                      <span className="mt-2 h-1.5 w-1.5 rounded-full bg-court dark:bg-[#60A5FA]" />
                       <p>{h}</p>
                     </li>
                   ))}
@@ -238,7 +238,7 @@ export default function CredentialPage() {
                       href={video.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-court-dark hover:text-court text-sm font-medium"
+                      className="inline-flex items-center gap-1 text-court-dark dark:text-[#60A5FA] hover:text-court dark:hover:text-[#93C5FD] text-sm font-medium"
                     >
                       <PlayCircle className="h-4 w-4" />
                       Open video

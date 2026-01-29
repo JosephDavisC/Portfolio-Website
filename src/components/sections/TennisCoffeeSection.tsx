@@ -181,7 +181,7 @@ export default function TennisCoffeeSection() {
           >
             <div className="flex items-center gap-3 mb-4">
               <TennisBallIcon className="flex-shrink-0" />
-              <h3 className="text-2xl font-heading font-bold text-court-dark">On The Court</h3>
+              <h3 className="text-2xl font-heading font-bold text-court-dark dark:text-[#60A5FA]">On The Court</h3>
             </div>
 
             {/* Tennis Photo Carousel */}
@@ -240,15 +240,15 @@ export default function TennisCoffeeSection() {
                       key={i}
                       aria-label={`Go to photo ${i + 1}`}
                       onClick={() => setTennisIdx(i)}
-                      className={`h-3 w-3 rounded-full border-2 border-court transition-all ${
-                        i === tennisIdx ? "bg-court" : "bg-paper/80"
+                      className={`h-3 w-3 rounded-full border-2 border-court dark:border-[#60A5FA] transition-all ${
+                        i === tennisIdx ? "bg-court dark:bg-[#60A5FA]" : "bg-paper/80 dark:bg-slate-700"
                       }`}
                     />
                   ))}
                 </div>
               </div>
 
-              <figcaption className="bg-court/10 text-espresso text-center py-3 text-sm font-mono border-t-2 border-court">
+              <figcaption className="bg-court/10 dark:bg-[#60A5FA]/10 text-espresso dark:text-slate-200 text-center py-3 text-sm font-mono border-t-2 border-court dark:border-[#60A5FA]">
                 Where I reset, compete, and stay focused
               </figcaption>
             </motion.figure>
@@ -259,12 +259,12 @@ export default function TennisCoffeeSection() {
               transition={{ type: "spring", stiffness: 300 }}
               className="card-brutal-court p-5"
             >
-              <h4 className="text-lg font-heading font-semibold text-court-dark mb-3">Play Style</h4>
+              <h4 className="text-lg font-heading font-semibold text-court-dark dark:text-[#60A5FA] mb-3">Play Style</h4>
               <div className="flex flex-wrap gap-3">
-                <span className="px-4 py-2 rounded-full bg-court/20 border-2 border-court text-court-dark text-sm font-mono shadow-brutal-sm">
+                <span className="px-4 py-2 rounded-full bg-court/20 dark:bg-[#60A5FA]/20 border-2 border-court dark:border-[#60A5FA] text-court-dark dark:text-[#60A5FA] text-sm font-mono shadow-brutal-sm dark:shadow-none">
                   Right-handed
                 </span>
-                <span className="px-4 py-2 rounded-full bg-court/20 border-2 border-court text-court-dark text-sm font-mono shadow-brutal-sm">
+                <span className="px-4 py-2 rounded-full bg-court/20 dark:bg-[#60A5FA]/20 border-2 border-court dark:border-[#60A5FA] text-court-dark dark:text-[#60A5FA] text-sm font-mono shadow-brutal-sm dark:shadow-none">
                   One-handed backhand
                 </span>
               </div>

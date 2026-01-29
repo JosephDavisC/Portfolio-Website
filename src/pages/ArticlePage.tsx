@@ -21,7 +21,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             our team built together.
           </p>
 
-          <h2 id="what-is-bc-hacks" className="text-3xl font-heading font-bold text-court-dark mb-6">What Is BC Hacks?</h2>
+          <h2 id="what-is-bc-hacks" className="text-3xl font-heading font-bold text-court-dark dark:text-[#60A5FA] mb-6">What Is BC Hacks?</h2>
           <p className="text-espresso/80 text-lg leading-relaxed mb-6">
             BC Hacks is Bellevue College's annual student-run hackathon, a weekend where students
             from all backgrounds come together to brainstorm, design, and build creative projects in
@@ -56,7 +56,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             </p>
           </div>
 
-          <h2 id="five-months-planning" className="text-3xl font-heading font-bold text-court-dark mb-6">Five Months of Planning</h2>
+          <h2 id="five-months-planning" className="text-3xl font-heading font-bold text-court-dark dark:text-[#60A5FA] mb-6">Five Months of Planning</h2>
           <p className="text-espresso/80 text-lg leading-relaxed mb-6">
             Running a hackathon sounds exciting, but it's really a five-month journey of planning,
             coordination, and teamwork.
@@ -174,7 +174,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             of nerves and excitement, but we were ready.
           </p>
 
-          <h2 id="event-weekend" className="text-3xl font-heading font-bold text-court-dark mb-6">The Event Weekend</h2>
+          <h2 id="event-weekend" className="text-3xl font-heading font-bold text-court-dark dark:text-[#60A5FA] mb-6">The Event Weekend</h2>
           <p className="text-espresso/80 text-lg leading-relaxed mb-4">
             <strong className="text-espresso">Day 1:</strong> Students checked in, grabbed swag bags,
             and joined hands-on workshops. Everyone was excited to learn and build.
@@ -267,7 +267,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             from mentors, and make something they were proud of.
           </p>
 
-          <h2 id="what-i-learned" className="text-3xl font-heading font-bold text-court-dark mb-6">What I Learned</h2>
+          <h2 id="what-i-learned" className="text-3xl font-heading font-bold text-court-dark dark:text-[#60A5FA] mb-6">What I Learned</h2>
           <p className="text-espresso/80 text-lg leading-relaxed mb-6">
             BC Hacks taught me that organizing an event like this is just as challenging as building
             a project in it. Coordinating across multiple clubs meant balancing ideas, responsibilities,
@@ -278,7 +278,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             judges shared career insights, and students supported each other through every bug and crash.
           </p>
 
-          <h2 id="closing-thoughts" className="text-3xl font-heading font-bold text-court-dark mb-6">Closing Thoughts</h2>
+          <h2 id="closing-thoughts" className="text-3xl font-heading font-bold text-court-dark dark:text-[#60A5FA] mb-6">Closing Thoughts</h2>
           <p className="text-espresso/80 text-lg leading-relaxed mb-6">
             If you're thinking of organizing a hackathon yourself, do it. Start small, stay consistent,
             and keep your team motivated. The impact you create will be bigger than you think.
@@ -314,7 +314,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             </p>
           </div>
 
-          <h2 id="the-start" className="text-3xl font-heading font-bold text-court-dark mb-6 mt-12">The Start of Everything</h2>
+          <h2 id="the-start" className="text-3xl font-heading font-bold text-court-dark dark:text-[#60A5FA] mb-6 mt-12">The Start of Everything</h2>
           <p className="text-espresso/80 text-lg leading-relaxed mb-6">
             So I started grinding. Studying more, focusing on my classes, and trying to be my best self. One night,
             I was on a call with my old friend Caleb. We were just catching up, and he showed me a small website he
@@ -379,7 +379,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             where I could share what I was learning from bootcamps with my classmates.
           </p>
 
-          <h2 id="the-big-decision" className="text-3xl font-heading font-bold text-court-dark mb-6 mt-12">The Big Decision</h2>
+          <h2 id="the-big-decision" className="text-3xl font-heading font-bold text-court-dark dark:text-[#60A5FA] mb-6 mt-12">The Big Decision</h2>
           <p className="text-espresso/80 text-lg leading-relaxed mb-6">
             Halfway through grade 10, my dad came to me and gave me two choices. He said, "Do you want to finish high school
             here, or go to the U.S. and join a program where you can earn both a high school diploma and an associate's degree?"
@@ -456,7 +456,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             and it gave me a glimpse of what it's like to be in the game industry.
           </p>
 
-          <h2 id="starting-seattle" className="text-3xl font-heading font-bold text-court-dark mb-6 mt-12">Starting a New Life in Seattle</h2>
+          <h2 id="starting-seattle" className="text-3xl font-heading font-bold text-court-dark dark:text-[#60A5FA] mb-6 mt-12">Starting a New Life in Seattle</h2>
           <p className="text-espresso/80 text-lg leading-relaxed mb-6">
             When I first moved to Seattle, I stayed with a host family. My parents helped me settle in, but once they left,
             reality hit. I was completely alone in a new country. I had to figure everything out — cooking, laundry, and public
@@ -493,12 +493,12 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
           </div>
 
           <p className="text-espresso/80 text-lg leading-relaxed mb-6">
-            <a href="https://www.linkedin.com/in/abraham-guan/" target="_blank" rel="noopener noreferrer" className="text-court-dark hover:text-court transition-colors underline">Abraham</a> became my mentor. He taught me so much, from tech stuff to life advice. He's now studying at UC Berkeley
+            <a href="https://www.linkedin.com/in/abraham-guan/" target="_blank" rel="noopener noreferrer" className="text-court-dark dark:text-[#60A5FA] hover:text-court dark:hover:text-[#93C5FD] transition-colors underline">Abraham</a> became my mentor. He taught me so much, from tech stuff to life advice. He's now studying at UC Berkeley
             majoring in data science, and I'm really thankful for all the guidance he gave me back then.
           </p>
 
           <p className="text-espresso/80 text-lg leading-relaxed mb-6">
-            That first quarter also brought something unexpected. I met a girl named <a href="https://www.linkedin.com/in/juwita-jessica-pangestu/" target="_blank" rel="noopener noreferrer" className="text-court-dark hover:text-court transition-colors underline">Jessica</a>. I was friends with her brother,
+            That first quarter also brought something unexpected. I met a girl named <a href="https://www.linkedin.com/in/juwita-jessica-pangestu/" target="_blank" rel="noopener noreferrer" className="text-court-dark dark:text-[#60A5FA] hover:text-court dark:hover:text-[#93C5FD] transition-colors underline">Jessica</a>. I was friends with her brother,
             and he invited her to church with us. That's how we met. Fast forward, she's my girlfriend now haha.
           </p>
 
@@ -532,7 +532,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             this journey became my way to honor him.
           </p>
 
-          <h2 id="bellevue-college" className="text-3xl font-heading font-bold text-court-dark mb-6 mt-12">Bellevue College Life</h2>
+          <h2 id="bellevue-college" className="text-3xl font-heading font-bold text-court-dark dark:text-[#60A5FA] mb-6 mt-12">Bellevue College Life</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
             <div className="rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
@@ -591,13 +591,13 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             </div>
           </div>
 
-          <div className="my-8 p-6 bg-court/10 border-2 border-court rounded-2xl">
+          <div className="my-8 p-6 bg-court/10 dark:bg-[#60A5FA]/10 border-2 border-court dark:border-[#60A5FA] rounded-2xl">
             <p className="text-espresso/80 text-lg mb-2">
               Want to read more about BC Hacks 2024?
             </p>
             <Link
               to="/blog/bc-hacks-2024"
-              className="inline-flex items-center text-court-dark hover:text-court transition-colors text-lg font-medium"
+              className="inline-flex items-center text-court-dark dark:text-[#60A5FA] hover:text-court dark:hover:text-[#93C5FD] transition-colors text-lg font-medium"
             >
               Read the full BC Hacks story →
             </Link>
@@ -637,7 +637,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             </p>
           </div>
 
-          <h2 id="transferring-uw" className="text-3xl font-heading font-bold text-court-dark mb-6 mt-12">Transferring to UW</h2>
+          <h2 id="transferring-uw" className="text-3xl font-heading font-bold text-court-dark dark:text-[#60A5FA] mb-6 mt-12">Transferring to UW</h2>
           <p className="text-espresso/80 text-lg leading-relaxed mb-6">
             Fall and winter 2024 were all about transfer applications. I applied to 13 universities — all the UCs, Georgia Tech,
             and UW. Sadly, I couldn't apply to East Coast schools because my credits wouldn't transfer since I was still technically
@@ -661,7 +661,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             </p>
           </div>
 
-          <h2 id="graduation" className="text-3xl font-heading font-bold text-court-dark mb-6 mt-12">Graduation from Bellevue College</h2>
+          <h2 id="graduation" className="text-3xl font-heading font-bold text-court-dark dark:text-[#60A5FA] mb-6 mt-12">Graduation from Bellevue College</h2>
           <p className="text-espresso/80 text-lg leading-relaxed mb-6">
             A few months later, I graduated from Bellevue College.
           </p>
@@ -711,7 +711,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             </p>
           </div>
 
-          <h2 id="looking-back" className="text-3xl font-heading font-bold text-court-dark mb-6 mt-12">Looking Back</h2>
+          <h2 id="looking-back" className="text-3xl font-heading font-bold text-court-dark dark:text-[#60A5FA] mb-6 mt-12">Looking Back</h2>
           <p className="text-espresso/80 text-lg leading-relaxed mb-6">
             Sometimes I still can't believe how much has happened — from being that kid who played games all day, to studying abroad
             alone at 15, to now being at UW and working in AI.
@@ -839,7 +839,7 @@ const ArticlePage = () => {
               {article.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1 text-xs font-mono font-medium bg-court/20 text-court-dark rounded-full border-2 border-court"
+                  className="px-3 py-1 text-xs font-mono font-medium bg-court/20 dark:bg-[#60A5FA]/20 text-court-dark dark:text-[#60A5FA] rounded-full border-2 border-court dark:border-[#60A5FA]/50"
                 >
                   {tag}
                 </span>
@@ -890,7 +890,7 @@ const ArticlePage = () => {
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center text-court-dark hover:text-court transition-colors text-lg"
+                      className="inline-flex items-center text-court-dark dark:text-[#60A5FA] hover:text-court dark:hover:text-[#93C5FD] transition-colors text-lg"
                     >
                       <ExternalLink className="h-5 w-5 mr-2" />
                       {link.text}
@@ -901,7 +901,7 @@ const ArticlePage = () => {
                     href={article.externalLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center text-court-dark hover:text-court transition-colors text-lg"
+                    className="inline-flex items-center text-court-dark dark:text-[#60A5FA] hover:text-court dark:hover:text-[#93C5FD] transition-colors text-lg"
                   >
                     <ExternalLink className="h-5 w-5 mr-2" />
                     {article.externalLinkText || 'View External Resource'}

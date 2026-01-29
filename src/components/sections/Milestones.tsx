@@ -126,7 +126,7 @@ export default function Milestones() {
             {companies.map((company) => (
               <div key={company.name} className="relative pl-10 md:pl-12">
                 {/* Timeline dot */}
-                <span className="absolute left-0 top-3 h-3 w-3 rounded-full bg-court border-2 border-espresso shadow-brutal-sm" />
+                <span className="absolute left-0 top-3 h-3 w-3 rounded-full bg-court dark:bg-[#60A5FA] border-2 border-espresso dark:border-[#60A5FA] shadow-brutal-sm dark:shadow-none" />
 
                 {/* Company header */}
                 <div className="mb-4 flex items-center gap-3">
@@ -224,7 +224,7 @@ export default function Milestones() {
                                   aria-label={`Open ${m.caption} in new tab`}
                                 >
                                   {Img}
-                                  <span className="absolute top-2 right-2 text-[10px] px-2 py-1 rounded-full bg-court text-paper font-mono border border-espresso">
+                                  <span className="absolute top-2 right-2 text-[10px] px-2 py-1 rounded-full bg-court dark:bg-[#60A5FA] text-paper dark:text-slate-900 font-mono border border-espresso dark:border-[#60A5FA]">
                                     ↗
                                   </span>
                                 </a>

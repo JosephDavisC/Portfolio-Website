@@ -58,7 +58,7 @@ const ArticleCard: React.FC<{ article: Article; index: number }> = ({ article, i
           </span>
         </div>
 
-        <h3 className="text-2xl md:text-3xl font-heading font-semibold text-espresso mb-4 group-hover:text-court-dark transition-colors">
+        <h3 className="text-2xl md:text-3xl font-heading font-semibold text-espresso dark:text-slate-100 mb-4 group-hover:text-court-dark dark:group-hover:text-[#60A5FA] transition-colors">
           {article.title}
         </h3>
 
@@ -71,7 +71,7 @@ const ArticleCard: React.FC<{ article: Article; index: number }> = ({ article, i
             {article.tags.map((tag) => (
               <span
                 key={tag}
-                className="px-3 py-1 text-xs font-medium bg-court/20 text-court-dark rounded-full border-2 border-court font-mono"
+                className="px-3 py-1 text-xs font-medium bg-court/20 dark:bg-[#60A5FA]/20 text-court-dark dark:text-[#60A5FA] rounded-full border-2 border-court dark:border-[#60A5FA]/50 font-mono"
               >
                 {tag}
               </span>
@@ -83,7 +83,7 @@ const ArticleCard: React.FC<{ article: Article; index: number }> = ({ article, i
           {article.hasFullArticle && (
             <Link
               to={`/blog/${article.id}`}
-              className="inline-flex items-center px-4 py-2 bg-court text-paper font-semibold rounded-lg border-2 border-espresso shadow-brutal-sm hover:shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+              className="inline-flex items-center px-4 py-2 bg-court dark:bg-gradient-to-r dark:from-blue-500 dark:to-red-500 text-paper font-semibold rounded-lg border-2 border-espresso dark:border-transparent shadow-brutal-sm dark:shadow-none hover:shadow-brutal dark:hover:shadow-lg hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
             >
               <ArrowRight className="h-5 w-5 mr-2" />
               Read Full Article
