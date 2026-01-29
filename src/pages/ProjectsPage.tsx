@@ -245,37 +245,37 @@ const ProjectsPage: React.FC = () => {
                     </p>
 
                     {(project.github || project.demo || project.medium) && (
-                      <div className="flex gap-4 mt-auto pt-3 border-t-2 border-espresso/10 dark:border-slate-700">
+                      <div className="flex flex-wrap gap-3 mt-auto pt-4 border-t-2 border-espresso/10 dark:border-slate-700">
                         {project.github && (
                           <a
                             href={project.github}
-                            className="flex items-center text-espresso dark:text-slate-300 hover:text-court-dark dark:hover:text-[#60A5FA] transition-colors text-sm font-medium"
+                            className="btn-brutal inline-flex items-center gap-2 px-4 py-2 text-sm"
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            <Github className="h-4 w-4 mr-1.5" />
+                            <Github className="h-4 w-4" />
                             Code
                           </a>
                         )}
                         {project.demo && (
                           <a
                             href={project.demo}
-                            className="flex items-center text-court-dark dark:text-[#60A5FA] hover:text-court dark:hover:text-[#93C5FD] transition-colors text-sm font-medium"
+                            className="btn-brutal-outline inline-flex items-center gap-2 px-4 py-2 text-sm"
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            <ExternalLink className="h-4 w-4 mr-1.5" />
+                            <ExternalLink className="h-4 w-4" />
                             {project.demoLabel || "Demo"}
                           </a>
                         )}
                         {project.medium && (
                           <a
                             href={project.medium}
-                            className="flex items-center text-espresso dark:text-slate-300 hover:text-court-dark dark:hover:text-[#60A5FA] transition-colors text-sm font-medium"
+                            className="btn-brutal-outline inline-flex items-center gap-2 px-4 py-2 text-sm"
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            <BookOpen className="h-4 w-4 mr-1.5" />
+                            <BookOpen className="h-4 w-4" />
                             Article
                           </a>
                         )}

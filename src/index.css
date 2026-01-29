@@ -449,13 +449,13 @@ html {
 /* Dark mode buttons */
 .dark .btn-brutal {
   background: linear-gradient(to right, #2563eb, #dc2626);
-  border-color: transparent;
-  box-shadow: 0 10px 40px -10px rgba(220, 38, 38, 0.4);
+  border-color: #475569;
+  box-shadow: none;
 }
 
 .dark .btn-brutal:hover {
   background: linear-gradient(to right, #1d4ed8, #b91c1c);
-  box-shadow: 0 20px 50px -10px rgba(220, 38, 38, 0.5);
+  box-shadow: none;
   transform: translateY(-2px);
 }
 

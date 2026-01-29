@@ -127,9 +127,9 @@ export default function Certifications() {
                 <h3 className="text-xl font-heading font-semibold text-espresso dark:text-slate-100 mb-3 group-hover:text-court-dark dark:group-hover:text-[#60A5FA] transition-colors">
                   {cert.name}
                 </h3>
-                <div className="flex items-center justify-center gap-2 text-espresso/70 mb-2">
+                <div className="flex items-center justify-center gap-2 text-espresso/70 dark:text-slate-300 mb-2">
                   {cert.logo && (
-                    <div className="h-4 w-4 rounded overflow-hidden bg-paper border border-espresso/20 flex items-center justify-center">
+                    <div className="h-4 w-4 rounded overflow-hidden bg-paper border border-espresso/20 dark:border-slate-600 flex items-center justify-center">
                       <img
                         src={cert.logo}
                         alt=""
@@ -139,14 +139,14 @@ export default function Certifications() {
                   )}
                   <p className="text-sm font-mono">{cert.issuer}</p>
                 </div>
-                <p className="text-espresso/50 text-xs mb-6 font-mono">{cert.year}</p>
+                <p className="text-espresso/50 dark:text-slate-400 text-xs mb-6 font-mono">{cert.year}</p>
               </div>
 
               {/* Button */}
               {cert.href && (
                 <button
                   onClick={() => openCredential(cert.href!)}
-                  className="w-full inline-flex items-center justify-center px-4 py-2.5 bg-court dark:bg-gradient-to-r dark:from-blue-500 dark:to-red-500 text-paper font-semibold rounded-lg border-2 border-espresso dark:border-transparent shadow-brutal-sm dark:shadow-none hover:shadow-brutal dark:hover:shadow-lg hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all text-sm"
+                  className="w-full inline-flex items-center justify-center px-4 py-2.5 bg-court dark:bg-[#60A5FA] text-paper font-semibold rounded-lg border-2 border-espresso dark:border-slate-600 shadow-brutal-sm dark:shadow-none hover:shadow-brutal dark:hover:bg-[#93C5FD] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all text-sm"
                 >
                   Show credential ↗
                 </button>

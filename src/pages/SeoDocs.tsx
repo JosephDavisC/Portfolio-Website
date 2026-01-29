@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { useState, useEffect } from "react";
+import Navbar from "@/components/shared/Navbar";
 
 // Table of contents data
 const tocItems = [
@@ -78,11 +79,13 @@ export default function SeoDocs() {
         <meta name="twitter:image" content="https://joechamdani.com/Logo_Joseph.PNG" />
       </Helmet>
 
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
+      <Navbar />
+
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white pt-20">
         <div className="flex">
           {/* Sticky Sidebar - Hidden on mobile */}
           <aside className="hidden lg:block w-72 shrink-0">
-            <nav className="fixed top-0 left-0 w-72 h-screen overflow-y-auto border-r border-slate-700/50 bg-slate-900/80 backdrop-blur-sm p-6 pt-8">
+            <nav className="fixed top-20 left-0 w-72 h-[calc(100vh-5rem)] overflow-y-auto border-r border-slate-700/50 bg-slate-900/80 backdrop-blur-sm p-6 pt-8">
               {/* Logo/Title */}
               <div className="mb-8">
                 <div className="flex items-center gap-2 text-slate-400 text-xs mb-2">

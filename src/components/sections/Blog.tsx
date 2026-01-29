@@ -83,7 +83,7 @@ const ArticleCard: React.FC<{ article: Article; index: number }> = ({ article, i
           {article.hasFullArticle && (
             <Link
               to={`/blog/${article.id}`}
-              className="inline-flex items-center px-4 py-2 bg-court dark:bg-gradient-to-r dark:from-blue-500 dark:to-red-500 text-paper font-semibold rounded-lg border-2 border-espresso dark:border-transparent shadow-brutal-sm dark:shadow-none hover:shadow-brutal dark:hover:shadow-lg hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+              className="inline-flex items-center px-4 py-2 bg-court dark:bg-[#60A5FA] text-paper font-semibold rounded-lg border-2 border-espresso dark:border-slate-600 shadow-brutal-sm dark:shadow-none hover:shadow-brutal dark:hover:bg-[#93C5FD] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
             >
               <ArrowRight className="h-5 w-5 mr-2" />
               Read Full Article

@@ -3,6 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
+import Navbar from '@/components/shared/Navbar';
 
 const messages = [
   "Game, set, mismatch!",
@@ -17,7 +18,9 @@ const NotFound = () => {
   const randomMessage = messages[Math.floor(Math.random() * messages.length)];
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-paper px-4 text-center relative overflow-hidden">
+    <>
+      <Navbar />
+      <div className="min-h-screen flex flex-col items-center justify-center bg-paper dark:bg-[#141B2D] px-4 text-center relative overflow-hidden pt-20">
       {/* Animated background elements */}
       <motion.div
         className="absolute top-20 left-10 text-6xl opacity-20"
@@ -56,13 +59,13 @@ const NotFound = () => {
           transition={{ duration: 0.6, type: "spring", delay: 0.3 }}
           className="mb-6"
         >
-          <h1 className="text-9xl md:text-[12rem] font-heading font-extrabold text-espresso leading-none">
+          <h1 className="text-9xl md:text-[12rem] font-heading font-extrabold text-espresso dark:text-slate-100 leading-none">
             404
           </h1>
         </motion.div>
 
         <motion.h2
-          className="text-2xl md:text-3xl font-heading font-bold text-espresso mb-4"
+          className="text-2xl md:text-3xl font-heading font-bold text-espresso dark:text-slate-100 mb-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -71,7 +74,7 @@ const NotFound = () => {
         </motion.h2>
 
         <motion.p
-          className="text-espresso/70 text-lg mb-8 max-w-md mx-auto font-mono"
+          className="text-espresso/70 dark:text-slate-400 text-lg mb-8 max-w-md mx-auto font-mono"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
@@ -115,12 +118,13 @@ const NotFound = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.6 }}
-          className="mt-8 text-espresso/50 text-sm font-mono"
+          className="mt-8 text-espresso/50 dark:text-slate-500 text-sm font-mono"
         >
           Error Code: 404 | Page Not Found
         </motion.div>
       </div>
     </div>
+    </>
   );
 };
 

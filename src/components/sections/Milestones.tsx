@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Calendar, MapPin, X } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Calendar, MapPin, X, ArrowRight } from "lucide-react";
 import data from "@/data/milestones.json";
 
 /* ---------- Types matching the JSON ---------- */
@@ -11,6 +12,7 @@ type Role = {
   meta?: string;
   location?: string;
   bullets: string[];
+  detailsLink?: string;
   media?: Media[];
 };
 type Company = {
@@ -120,7 +122,7 @@ export default function Milestones() {
 
         <div className="relative">
           {/* Timeline line */}
-          <div className="absolute left-3 top-0 bottom-0 w-0.5 bg-espresso/20 md:left-4" />
+          <div className="absolute left-3 top-0 bottom-0 w-0.5 bg-espresso/20 dark:bg-slate-600 md:left-4" />
 
           <div className="space-y-10">
             {companies.map((company) => (
@@ -140,7 +142,7 @@ export default function Milestones() {
                     <img
                       src={company.logo}
                       alt={company.name}
-                      className="h-12 w-12 rounded-lg object-contain bg-paper p-1 border-2 border-espresso shadow-brutal-sm hover:shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+                      className="h-12 w-12 rounded-lg object-contain bg-paper dark:bg-slate-800 p-1 border-2 border-espresso dark:border-slate-600 shadow-brutal-sm dark:shadow-none hover:shadow-brutal dark:hover:shadow-[0_0_15px_rgba(96,165,250,0.3)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
                     />
                   </a>
                   <div>
@@ -199,6 +201,16 @@ export default function Milestones() {
                       ))}
                     </ul>
 
+                    {role.detailsLink && (
+                      <Link
+                        to={role.detailsLink}
+                        className="inline-flex items-center gap-2.5 px-5 py-2.5 mb-4 bg-court dark:bg-[#60A5FA] text-paper font-semibold rounded-xl border-2 border-espresso dark:border-slate-600 shadow-brutal-sm dark:shadow-none hover:shadow-brutal dark:hover:bg-[#93C5FD] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all text-sm"
+                      >
+                        View Details
+                        <ArrowRight className="h-4 w-4" />
+                      </Link>
+                    )}
+
                     {role.media?.length ? (
                       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                         {role.media.map((m, mi) => {
@@ -213,7 +225,7 @@ export default function Milestones() {
                           return (
                             <figure
                               key={mi}
-                              className="group relative rounded-lg overflow-hidden border-2 border-espresso/30 bg-paper"
+                              className="group relative rounded-lg overflow-hidden border-2 border-espresso/30 dark:border-slate-600 bg-paper dark:bg-slate-800/50"
                             >
                               {m.href ? (
                                 <a
@@ -224,7 +236,7 @@ export default function Milestones() {
                                   aria-label={`Open ${m.caption} in new tab`}
                                 >
                                   {Img}
-                                  <span className="absolute top-2 right-2 text-[10px] px-2 py-1 rounded-full bg-court dark:bg-[#60A5FA] text-paper dark:text-slate-900 font-mono border border-espresso dark:border-[#60A5FA]">
+                                  <span className="absolute top-2 right-2 flex items-center justify-center w-8 h-8 text-base font-bold rounded-lg bg-court dark:bg-[#60A5FA] text-paper border-2 border-espresso dark:border-slate-600 shadow-brutal-sm dark:shadow-none group-hover:scale-110 transition-transform">
                                     ↗
                                   </span>
                                 </a>
@@ -237,7 +249,7 @@ export default function Milestones() {
                                   {Img}
                                 </button>
                               )}
-                              <figcaption className="absolute inset-x-0 bottom-0 text-xs text-paper font-mono bg-gradient-to-t from-espresso/90 via-espresso/60 to-transparent px-3 py-2.5">
+                              <figcaption className="absolute inset-x-0 bottom-0 text-xs text-paper dark:text-slate-100 font-mono bg-gradient-to-t from-espresso/90 via-espresso/60 to-transparent dark:from-slate-900/95 dark:via-slate-900/70 dark:to-transparent px-3 py-2.5">
                                 {m.caption}
                               </figcaption>
                             </figure>

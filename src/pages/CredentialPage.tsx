@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, Download, ExternalLink, PlayCircle } from "lucide-react";
+import Navbar from "@/components/shared/Navbar";
 import creds from "@/data/credentials.json";
 
 /* ---------- Types ---------- */
@@ -63,18 +64,21 @@ export default function CredentialPage() {
 
   if (!cred) {
     return (
-      <section className="min-h-screen py-24 px-6 bg-paper">
-        <div className="max-w-5xl mx-auto">
-          <Link
-            to="/"
-            state={{ scrollTo: "certifications" }}
-            className="inline-flex items-center gap-2 text-espresso/60 hover:text-espresso font-mono"
-          >
-            <ArrowLeft className="h-4 w-4" /> Back
-          </Link>
-          <h1 className="text-3xl font-heading font-semibold mt-6 text-espresso">Credential not found</h1>
-        </div>
-      </section>
+      <>
+        <Navbar />
+        <section className="min-h-screen pt-28 pb-24 px-6 bg-paper dark:bg-[#141B2D]">
+          <div className="max-w-5xl mx-auto">
+            <Link
+              to="/"
+              state={{ scrollTo: "certifications" }}
+              className="inline-flex items-center gap-2 text-espresso/60 dark:text-slate-400 hover:text-espresso dark:hover:text-slate-200 font-mono"
+            >
+              <ArrowLeft className="h-4 w-4" /> Back to Credentials
+            </Link>
+            <h1 className="text-3xl font-heading font-semibold mt-6 text-espresso dark:text-slate-100">Credential not found</h1>
+          </div>
+        </section>
+      </>
     );
   }
 
@@ -90,28 +94,30 @@ export default function CredentialPage() {
   const isFileVideo = video && isVideoFile(video.url);
 
   return (
-    <section className="min-h-screen py-24 px-6 bg-paper">
-      <div className="max-w-5xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-6 md:mb-10">
-          <h1 className="text-5xl md:text-6xl font-heading font-bold mb-3 text-espresso">
-            {cred.title}
-          </h1>
-        </div>
-        <p className="text-espresso/60 text-center mb-2 font-mono">
-          {cred.issuer}
-          {cred.issued ? ` · Issued ${cred.issued}` : ""}
+    <>
+      <Navbar />
+      <section className="min-h-screen pt-28 pb-24 px-6 bg-paper dark:bg-[#141B2D]">
+        <div className="max-w-5xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-6 md:mb-10">
+            <h1 className="text-5xl md:text-6xl font-heading font-bold mb-3 text-espresso dark:text-slate-100">
+              {cred.title}
+            </h1>
+          </div>
+          <p className="text-espresso/60 dark:text-slate-400 text-center mb-2 font-mono">
+            {cred.issuer}
+            {cred.issued ? ` · Issued ${cred.issued}` : ""}
         </p>
 
-        {/* Actions */}
-        <div className="flex items-center justify-between mb-4">
-          <Link
-            to="/"
-            state={{ scrollTo: "certifications" }}
-            className="inline-flex items-center gap-2 text-espresso/70 hover:text-espresso font-mono"
-          >
-            <ArrowLeft className="h-4 w-4" /> Back
-          </Link>
+          {/* Actions */}
+          <div className="flex items-center justify-between mb-4">
+            <Link
+              to="/"
+              state={{ scrollTo: "certifications" }}
+              className="inline-flex items-center gap-2 text-espresso/70 dark:text-slate-400 hover:text-espresso dark:hover:text-slate-200 font-mono"
+            >
+              <ArrowLeft className="h-4 w-4" /> Back to Credentials
+            </Link>
 
           <div className="flex items-center gap-3">
             {/* Phone/tablet: offer "Open PDF" in a new tab */}
@@ -129,7 +135,7 @@ export default function CredentialPage() {
             <a
               href={cred.file}
               download
-              className="inline-flex items-center gap-2 px-4 py-2 bg-court dark:bg-gradient-to-r dark:from-blue-500 dark:to-red-500 text-paper font-semibold rounded-lg border-2 border-espresso dark:border-transparent shadow-brutal-sm dark:shadow-none hover:shadow-brutal dark:hover:shadow-lg hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all text-sm"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-court dark:bg-[#60A5FA] text-paper font-semibold rounded-lg border-2 border-espresso dark:border-slate-600 shadow-brutal-sm dark:shadow-none hover:shadow-brutal dark:hover:bg-[#93C5FD] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all text-sm"
             >
               <Download className="h-4 w-4" />
               Download
@@ -247,9 +253,10 @@ export default function CredentialPage() {
                 </div>
               </div>
             ) : null}
-          </div>
-        )}
-      </div>
-    </section>
+            </div>
+          )}
+        </div>
+      </section>
+    </>
   );
 }
