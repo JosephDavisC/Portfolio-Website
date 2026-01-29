@@ -4,141 +4,160 @@ import { Link } from 'react-router-dom';
 import { Github, ExternalLink, BookOpen, ArrowRight } from 'lucide-react';
 import projectsData from '@/data/projects.json';
 
-const fadeInUp = {
-  initial: { opacity: 0, y: 60 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6 }
-};
-
-const staggerContainer = {
-  animate: { transition: { staggerChildren: 0.1 } }
-};
-
 const projects = projectsData.filter(p => p.featured).slice(0, 4);
 
 const Projects = () => {
   return (
-    <section id="portfolio" className="py-12 px-6">
+    <section id="portfolio" className="py-16 px-6 bg-paper">
       <div className="max-w-6xl mx-auto">
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-blue-400 to-red-400 bg-clip-text text-transparent">
+          <h2 className="text-5xl md:text-6xl font-heading font-bold mb-6 text-espresso">
             Portfolio
           </h2>
-          <p className="text-slate-400 text-xl max-w-3xl mx-auto leading-relaxed">
+          <p className="text-espresso/60 text-xl max-w-3xl mx-auto leading-relaxed font-mono">
             Real-world projects that combine AI, data analytics, and engineering
           </p>
         </motion.div>
 
-        <motion.div
-          variants={staggerContainer}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-          className="grid md:grid-cols-2 gap-8"
-        >
+        {/* Bento Grid */}
+        <div className="grid md:grid-cols-2 gap-6">
           {projects.map((project, index) => (
             <motion.article
               key={index}
-              variants={fadeInUp}
-              className="bg-white/5 backdrop-blur-sm rounded-3xl p-6 border border-white/10 hover:border-blue-400/50 transition-all duration-300 group hover:scale-[1.03] hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2 flex flex-col"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -4 }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.1,
+                type: "spring",
+                stiffness: 200
+              }}
+              viewport={{ once: true }}
+              className="card-brutal p-6 flex flex-col group"
             >
-              <figure className="relative overflow-hidden rounded-2xl border border-white/10 group-hover:border-blue-400/30">
-                <img
+              {/* Project Image */}
+              <figure className="relative overflow-hidden rounded-lg border-2 border-espresso mb-5">
+                <motion.img
                   src={project.image}
                   alt={project.imageAlt || project.title}
-                  className="h-56 w-full object-cover object-center transition-transform duration-500 group-hover:scale-110 md:h-64"
+                  className="h-56 w-full object-cover object-center md:h-64"
                   loading="lazy"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.4 }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-500/40 via-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <span className="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-black/30 to-transparent" />
+                {/* Category Badge */}
+                <span className="absolute top-3 left-3 px-3 py-1 bg-tennis dark:bg-slate-800 text-espresso dark:text-slate-100 font-mono text-xs font-bold border-2 border-espresso dark:border-slate-600 rounded-full shadow-brutal-sm">
+                  {project.category}
+                </span>
               </figure>
 
-              <h3 className="mt-5 text-2xl font-semibold group-hover:text-blue-400 transition-colors">
+              {/* Project Title */}
+              <h3 className="text-2xl font-heading font-semibold text-espresso dark:text-slate-100 group-hover:text-court-dark dark:group-hover:text-[#60A5FA] transition-colors">
                 {project.title}
               </h3>
 
+              {/* Tech Tags */}
               <div className="mt-3 flex flex-wrap gap-2">
                 {project.tech.map((tech) => (
                   <span
                     key={tech}
-                    className="px-3 py-1 bg-slate-700/50 text-slate-300 rounded-full text-sm"
+                    className="px-3 py-1 bg-espresso/5 dark:bg-slate-700/80 text-espresso/70 dark:text-slate-200 border border-espresso/20 dark:border-slate-500/50 rounded-full text-sm font-mono"
                   >
                     {tech}
                   </span>
                 ))}
               </div>
 
-              <p className="text-slate-400 mt-5 mb-6 leading-relaxed text-lg flex-grow">
+              {/* Description */}
+              <p className="text-espresso/70 mt-4 mb-6 leading-relaxed flex-grow">
                 {project.description}
               </p>
 
+              {/* Action Links */}
               {(project.github || project.demo) && (
-                <div className="flex gap-6 mt-auto">
+                <div className="flex gap-4 mt-auto pt-4 border-t-2 border-espresso/10">
                   {project.github && (
-                    <a
+                    <motion.a
                       href={project.github}
-                      className="flex items-center text-blue-400 hover:text-blue-300 transition-colors hover:scale-105"
+                      className="flex items-center gap-2 px-4 py-2 bg-espresso/5 border-2 border-espresso/20 rounded-lg text-espresso font-medium text-sm hover:bg-espresso hover:text-paper transition-all"
                       target="_blank"
                       rel="noopener noreferrer"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
                     >
-                      <Github className="h-5 w-5 mr-2" />
+                      <Github className="h-4 w-4" />
                       Code
-                    </a>
+                    </motion.a>
                   )}
                   {project.demo && (
-                    <a
+                    <motion.a
                       href={project.demo}
-                      className="flex items-center text-rose-400 hover:text-rose-300 transition-colors hover:scale-105"
+                      className="flex items-center gap-2 px-4 py-2 bg-court/10 border-2 border-court/30 rounded-lg text-court-dark font-medium text-sm hover:bg-court hover:text-paper transition-all"
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`View ${project.title} ${project.demoLabel || 'demo'}`}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
                     >
-                      <ExternalLink className="h-5 w-5 mr-2" />
-                      {project.demoLabel || "Live Demo"}
-                    </a>
+                      <ExternalLink className="h-4 w-4" />
+                      {project.demoLabel || "Demo"}
+                    </motion.a>
                   )}
                   {project.medium && (
-                    <a
+                    <motion.a
                       href={project.medium}
-                      className="flex items-center text-green-400 hover:text-green-300 transition-colors hover:scale-105"
+                      className="flex items-center gap-2 px-4 py-2 bg-espresso/5 border-2 border-espresso/20 rounded-lg text-espresso font-medium text-sm hover:bg-espresso hover:text-paper transition-all"
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`Read ${project.title} article on Medium`}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
                     >
-                      <BookOpen className="h-5 w-5 mr-2" />
+                      <BookOpen className="h-4 w-4" />
                       Article
-                    </a>
+                    </motion.a>
                   )}
                 </div>
               )}
             </motion.article>
           ))}
-        </motion.div>
+        </div>
 
-        <div className="mt-16 flex flex-col sm:flex-row justify-center items-center gap-4">
+        {/* CTA Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="mt-12 flex flex-col sm:flex-row justify-center items-center gap-4"
+        >
           <Link
             to="/projects"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-400 hover:bg-blue-500/30 hover:border-blue-400/50 transition-all duration-300 hover:scale-105"
+            className="btn-brutal inline-flex items-center gap-2"
           >
             See all projects
             <ArrowRight className="h-5 w-5" />
           </Link>
-          <a
+          <motion.a
             href="https://github.com/JosephDavisC"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 text-slate-200 hover:bg-white/10 transition-all duration-300 hover:scale-105"
+            className="btn-brutal-outline inline-flex items-center gap-2"
+            whileHover={{ scale: 1.02, x: -2, y: -2 }}
+            whileTap={{ scale: 0.98, x: 2, y: 2 }}
           >
             <Github className="h-5 w-5" />
             GitHub Profile
-          </a>
-        </div>
+          </motion.a>
+        </motion.div>
       </div>
     </section>
   );

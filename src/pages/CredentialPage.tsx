@@ -3,15 +3,6 @@ import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, Download, ExternalLink, PlayCircle } from "lucide-react";
 import creds from "@/data/credentials.json";
 
-/* ---------- Background to match the rest of the site ---------- */
-const SiteBg = () => (
-  <div className="pointer-events-none fixed inset-0 -z-10">
-    <div className="absolute inset-0 bg-[#0b1220]" />
-    <div className="absolute inset-0 bg-[radial-gradient(700px_350px_at_15%_5%,rgba(56,189,248,0.14),transparent)]" />
-    <div className="absolute inset-0 bg-[radial-gradient(900px_450px_at_85%_-5%,rgba(244,114,182,0.14),transparent)]" />
-  </div>
-);
-
 /* ---------- Types ---------- */
 type VideoInfo = {
   title?: string;
@@ -72,18 +63,16 @@ export default function CredentialPage() {
 
   if (!cred) {
     return (
-      <section className="relative min-h-screen py-24 px-6">
-        <SiteBg />
-        <div className="max-w-5xl mx-auto text-slate-300">
-          {/* CHANGED: Back link uses state (no hash in URL) */}
+      <section className="min-h-screen py-24 px-6 bg-paper">
+        <div className="max-w-5xl mx-auto">
           <Link
             to="/"
             state={{ scrollTo: "certifications" }}
-            className="inline-flex items-center gap-2 text-slate-400 hover:text-slate-200"
+            className="inline-flex items-center gap-2 text-espresso/60 hover:text-espresso font-mono"
           >
             <ArrowLeft className="h-4 w-4" /> Back
           </Link>
-          <h1 className="text-3xl font-semibold mt-6">Credential not found</h1>
+          <h1 className="text-3xl font-heading font-semibold mt-6 text-espresso">Credential not found</h1>
         </div>
       </section>
     );
@@ -101,40 +90,37 @@ export default function CredentialPage() {
   const isFileVideo = video && isVideoFile(video.url);
 
   return (
-    <section className="relative min-h-screen py-24 px-6">
-      <SiteBg />
-
+    <section className="min-h-screen py-24 px-6 bg-paper">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="text-center mb-6 md:mb-10">
-          <h1 className="text-5xl md:text-6xl font-bold mb-3 bg-gradient-to-r from-blue-400 to-red-400 bg-clip-text text-transparent">
+          <h1 className="text-5xl md:text-6xl font-heading font-bold mb-3 text-espresso">
             {cred.title}
           </h1>
         </div>
-        <p className="text-slate-400 text-center mb-2">
+        <p className="text-espresso/60 text-center mb-2 font-mono">
           {cred.issuer}
           {cred.issued ? ` · Issued ${cred.issued}` : ""}
         </p>
 
         {/* Actions */}
         <div className="flex items-center justify-between mb-4">
-          {/* CHANGED: Back link uses state (no hash in URL) */}
           <Link
             to="/"
             state={{ scrollTo: "certifications" }}
-            className="inline-flex items-center gap-2 text-slate-300 hover:text-white"
+            className="inline-flex items-center gap-2 text-espresso/70 hover:text-espresso font-mono"
           >
             <ArrowLeft className="h-4 w-4" /> Back
           </Link>
 
           <div className="flex items-center gap-3">
-            {/* Phone/tablet: offer “Open PDF” in a new tab */}
+            {/* Phone/tablet: offer "Open PDF" in a new tab */}
             {!isDesktop && isPdf && (
               <a
                 href={cred.file}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-slate-300 hover:text-white"
+                className="inline-flex items-center gap-2 text-espresso/70 hover:text-espresso font-mono"
               >
                 <ExternalLink className="h-4 w-4" />
                 Open PDF
@@ -143,7 +129,7 @@ export default function CredentialPage() {
             <a
               href={cred.file}
               download
-              className="inline-flex items-center gap-2 text-slate-300 hover:text-white"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-court text-paper font-semibold rounded-lg border-2 border-espresso shadow-brutal-sm hover:shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all text-sm"
             >
               <Download className="h-4 w-4" />
               Download
@@ -152,13 +138,13 @@ export default function CredentialPage() {
         </div>
 
         {/* Certificate viewer */}
-        <div className="rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
+        <div className="card-brutal overflow-hidden">
           {isPdf && isDesktop ? (
             // Desktop/laptop: inline PDF
             <iframe title={cred.title} src={cred.file} className="w-full h-[82vh]" />
           ) : cred.fallbackImage ? (
             // Mobile & tablets: always show image
-            <div className="bg-black flex items-center justify-center">
+            <div className="bg-paper-dark flex items-center justify-center">
               <img
                 src={cred.fallbackImage}
                 alt={cred.title}
@@ -170,10 +156,10 @@ export default function CredentialPage() {
               />
             </div>
           ) : isPdf ? (
-            <div className="p-6 text-slate-3 00">
+            <div className="p-6 text-espresso/80">
               This credential is a PDF. On mobile/tablet we show an image for smooth
               zooming, but no image is available.{" "}
-              <a href={cred.file} target="_blank" rel="noopener noreferrer" className="underline">
+              <a href={cred.file} target="_blank" rel="noopener noreferrer" className="underline text-court-dark">
                 Open the PDF in a new tab
               </a>.
             </div>
@@ -192,12 +178,12 @@ export default function CredentialPage() {
           <div className="mt-10 grid md:grid-cols-5 gap-6 items-start">
             {/* Highlights */}
             {cred.highlights?.length ? (
-              <div className="md:col-span-3 bg-white/5 border border-white/10 rounded-2xl p-6">
-                <h3 className="text-lg font-semibold text-white mb-3">What I did</h3>
-                <ul className="space-y-2 text-slate-300">
+              <div className="md:col-span-3 card-brutal p-6">
+                <h3 className="text-lg font-heading font-semibold text-espresso mb-3">What I did</h3>
+                <ul className="space-y-2 text-espresso/80">
                   {cred.highlights.map((h, i) => (
                     <li key={i} className="flex gap-3">
-                      <span className="mt-2 h-1.5 w-1.5 rounded-full bg-slate-500/70" />
+                      <span className="mt-2 h-1.5 w-1.5 rounded-full bg-court" />
                       <p>{h}</p>
                     </li>
                   ))}
@@ -208,7 +194,7 @@ export default function CredentialPage() {
             {/* Video (YouTube / Drive / file) */}
             {video ? (
               <div className="md:col-span-2">
-                <div className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
+                <div className="card-brutal overflow-hidden">
                   <div className="aspect-video">
                     {ytEmbed ? (
                       <iframe
@@ -235,24 +221,24 @@ export default function CredentialPage() {
                         poster={video.poster || cred.fallbackImage}
                       >
                         <source src={video.url} />
-                        Your browser doesn’t support HTML5 video.
+                        Your browser doesn't support HTML5 video.
                       </video>
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center text-slate-300">
-                        Couldn’t preview this video type.
+                      <div className="w-full h-full flex items-center justify-center text-espresso/60 font-mono">
+                        Couldn't preview this video type.
                       </div>
                     )}
                   </div>
 
-                  <div className="px-4 py-3 border-t border-white/10 flex items-center justify-between">
-                    <div className="text-sm text-slate-300">
+                  <div className="px-4 py-3 border-t-2 border-espresso/10 flex items-center justify-between">
+                    <div className="text-sm text-espresso/70 font-mono">
                       {video.title || "Demo video"}
                     </div>
                     <a
                       href={video.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-slate-200 hover:text-white text-sm"
+                      className="inline-flex items-center gap-1 text-court-dark hover:text-court text-sm font-medium"
                     >
                       <PlayCircle className="h-4 w-4" />
                       Open video

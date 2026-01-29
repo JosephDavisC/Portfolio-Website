@@ -17,17 +17,17 @@ const NotFound = () => {
   const randomMessage = messages[Math.floor(Math.random() * messages.length)];
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white px-4 text-center relative overflow-hidden">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-paper px-4 text-center relative overflow-hidden">
       {/* Animated background elements */}
       <motion.div
-        className="absolute top-20 left-10 text-6xl opacity-10"
+        className="absolute top-20 left-10 text-6xl opacity-20"
         animate={{ rotate: 360 }}
         transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
       >
         🎾
       </motion.div>
       <motion.div
-        className="absolute bottom-20 right-10 text-6xl opacity-10"
+        className="absolute bottom-20 right-10 text-6xl opacity-20"
         animate={{ rotate: -360 }}
         transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
       >
@@ -56,13 +56,13 @@ const NotFound = () => {
           transition={{ duration: 0.6, type: "spring", delay: 0.3 }}
           className="mb-6"
         >
-          <h1 className="text-9xl md:text-[12rem] font-extrabold bg-gradient-to-r from-blue-400 to-red-400 bg-clip-text text-transparent mb-4 leading-none">
+          <h1 className="text-9xl md:text-[12rem] font-heading font-extrabold text-espresso leading-none">
             404
           </h1>
         </motion.div>
 
         <motion.h2
-          className="text-2xl md:text-3xl font-bold text-white mb-4"
+          className="text-2xl md:text-3xl font-heading font-bold text-espresso mb-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -71,7 +71,7 @@ const NotFound = () => {
         </motion.h2>
 
         <motion.p
-          className="text-slate-300 text-lg mb-8 max-w-md mx-auto"
+          className="text-espresso/70 text-lg mb-8 max-w-md mx-auto font-mono"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
@@ -87,7 +87,7 @@ const NotFound = () => {
         >
           <Link
             to="/"
-            className="group inline-flex items-center gap-2 px-8 py-4 bg-blue-500/20 text-blue-400 font-bold rounded-xl border border-blue-400/30 hover:bg-blue-500/30 hover:border-blue-400/50 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/50"
+            className="btn-brutal inline-flex items-center gap-2 group"
           >
             <ArrowLeft className="h-5 w-5 group-hover:-translate-x-1 transition-transform" />
             Back to Home Court
@@ -115,7 +115,7 @@ const NotFound = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.6 }}
-          className="mt-8 text-slate-400 text-sm"
+          className="mt-8 text-espresso/50 text-sm font-mono"
         >
           Error Code: 404 | Page Not Found
         </motion.div>

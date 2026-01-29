@@ -42,13 +42,13 @@ function Lightbox({
   if (!src) return null;
   return (
     <div
-      className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+      className="fixed inset-0 z-[100] bg-espresso/80 backdrop-blur-sm flex items-center justify-center p-4"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
     >
       <button
-        className="absolute top-4 right-4 p-2 rounded-md bg-white/10 hover:bg-white/15 text-white"
+        className="absolute top-4 right-4 p-2 rounded-lg bg-paper border-2 border-espresso shadow-brutal-sm hover:shadow-brutal text-espresso transition-all"
         onClick={onClose}
         aria-label="Close"
       >
@@ -57,21 +57,21 @@ function Lightbox({
       <img
         src={src}
         alt={alt || "image"}
-        className="max-h-[85vh] max-w-[92vw] object-contain rounded-xl shadow-2xl"
+        className="max-h-[85vh] max-w-[92vw] object-contain rounded-xl border-2 border-espresso shadow-brutal-lg"
         onClick={(e) => e.stopPropagation()}
       />
     </div>
   );
 }
 
-/* ---------- Dotted meta row (like LinkedIn) ---------- */
+/* ---------- Dotted meta row ---------- */
 const MetaRow = ({ items }: { items: React.ReactNode[] }) => {
   const filtered = items.filter(Boolean);
   return (
-    <div className="text-slate-400 text-sm flex flex-wrap items-center gap-x-1 gap-y-1">
+    <div className="text-espresso/60 text-sm font-mono flex flex-wrap items-center gap-x-1 gap-y-1">
       {filtered.map((item, i) => (
         <span key={i} className="inline-flex items-center">
-          {i > 0 && <span className="mx-1 text-slate-500/80 leading-none">·</span>}
+          {i > 0 && <span className="mx-1 text-espresso/40 leading-none">·</span>}
           {item}
         </span>
       ))}
@@ -85,31 +85,50 @@ export default function Milestones() {
   const [lightboxSrc, setLightboxSrc] = useState<string>("");
 
   return (
-    <section id="milestones" className="py-12 px-6 bg-black/20">
+    <section id="milestones" className="py-16 px-6 bg-paper-dark">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-red-400 bg-clip-text text-transparent">
-            Milestones
+          <h2 className="text-5xl md:text-6xl font-heading font-bold mb-6 text-espresso">
+            <span className="relative inline-block">
+              Milestones
+              <svg
+                className="absolute -bottom-2 left-0 w-full h-3"
+                viewBox="0 0 200 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M2 8C30 4 60 10 100 6C140 2 170 9 198 5"
+                  className="stroke-court dark:stroke-[#60A5FA] transition-colors duration-300"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </span>
           </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+          <p className="text-espresso/60 text-xl max-w-3xl mx-auto leading-relaxed font-mono">
             My professional journey and experiences along the way
           </p>
         </motion.div>
 
         <div className="relative">
-          <div className="absolute left-3 top-0 bottom-0 w-px bg-white/10 md:left-4" />
+          {/* Timeline line */}
+          <div className="absolute left-3 top-0 bottom-0 w-0.5 bg-espresso/20 md:left-4" />
 
           <div className="space-y-10">
             {companies.map((company) => (
               <div key={company.name} className="relative pl-10 md:pl-12">
-                <span className="absolute left-0 top-3 h-2.5 w-2.5 rounded-full bg-pink-400 shadow-[0_0_18px] shadow-pink-500/40" />
+                {/* Timeline dot */}
+                <span className="absolute left-0 top-3 h-3 w-3 rounded-full bg-court border-2 border-espresso shadow-brutal-sm" />
 
+                {/* Company header */}
                 <div className="mb-4 flex items-center gap-3">
                   <a
                     href={company.website || linkedinFallback}
@@ -121,11 +140,11 @@ export default function Milestones() {
                     <img
                       src={company.logo}
                       alt={company.name}
-                      className="h-12 w-12 rounded-md object-contain bg-white p-1 border border-white/10 hover:scale-105 transition-transform"
+                      className="h-12 w-12 rounded-lg object-contain bg-paper p-1 border-2 border-espresso shadow-brutal-sm hover:shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
                     />
                   </a>
                   <div>
-                    <h3 className="text-xl font-semibold text-white">
+                    <h3 className="text-xl font-heading font-semibold text-espresso">
                       {company.name}
                     </h3>
                     <MetaRow
@@ -137,14 +156,16 @@ export default function Milestones() {
                   </div>
                 </div>
 
+                {/* Roles */}
                 {company.roles.map((role, i) => (
                   <motion.div
                     key={`${company.name}-${i}`}
                     initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
+                    whileHover={{ y: -4 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.4 }}
-                    className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-7 mb-6 group hover:border-pink-400/50 hover:shadow-2xl hover:shadow-pink-500/20 hover:-translate-y-1 transition-all duration-300"
+                    transition={{ duration: 0.4, type: "spring", stiffness: 200 }}
+                    className="card-brutal p-6 md:p-7 mb-6"
                   >
                     <MetaRow
                       items={[
@@ -168,11 +189,11 @@ export default function Milestones() {
                       ]}
                     />
 
-                    <h4 className="text-lg font-semibold text-white mt-2 mb-3">
+                    <h4 className="text-lg font-heading font-semibold text-espresso mt-2 mb-3">
                       {role.title}
                     </h4>
 
-                    <ul className="list-disc pl-5 space-y-1.5 text-slate-300 mb-4">
+                    <ul className="list-disc pl-5 space-y-1.5 text-espresso/80 mb-4">
                       {role.bullets.map((b, bi) => (
                         <li key={bi}>{b}</li>
                       ))}
@@ -186,13 +207,13 @@ export default function Milestones() {
                               src={m.src}
                               alt={m.caption}
                               loading="lazy"
-                              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                             />
                           );
                           return (
                             <figure
                               key={mi}
-                              className="group relative rounded-2xl overflow-hidden border border-white/10 bg-white/5"
+                              className="group relative rounded-lg overflow-hidden border-2 border-espresso/30 bg-paper"
                             >
                               {m.href ? (
                                 <a
@@ -203,7 +224,7 @@ export default function Milestones() {
                                   aria-label={`Open ${m.caption} in new tab`}
                                 >
                                   {Img}
-                                  <span className="absolute top-2 right-2 text-[10px] px-1.5 py-0.5 rounded bg-black/50 text-white">
+                                  <span className="absolute top-2 right-2 text-[10px] px-2 py-1 rounded-full bg-court text-paper font-mono border border-espresso">
                                     ↗
                                   </span>
                                 </a>
@@ -216,7 +237,7 @@ export default function Milestones() {
                                   {Img}
                                 </button>
                               )}
-                              <figcaption className="absolute inset-x-0 bottom-0 text-xs text-white font-medium bg-gradient-to-t from-black/80 via-black/60 to-transparent px-3 py-2.5">
+                              <figcaption className="absolute inset-x-0 bottom-0 text-xs text-paper font-mono bg-gradient-to-t from-espresso/90 via-espresso/60 to-transparent px-3 py-2.5">
                                 {m.caption}
                               </figcaption>
                             </figure>

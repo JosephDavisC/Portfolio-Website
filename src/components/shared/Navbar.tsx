@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
-const HEADER_OFFSET = 88; // match your fixed header height
+const HEADER_OFFSET = 88;
 
 type NavItem = { name: string; href: `#${string}`; short?: string };
 
@@ -17,7 +18,6 @@ const links: NavItem[] = [
   { name: "Contact", href: "#contact" },
 ];
 
-/** Active-section tracker using IntersectionObserver + live re-scan */
 function useActiveId(ids: string[], headerOffset = 88) {
   const [activeId, setActiveId] = useState(ids[0] ?? "");
 
@@ -38,7 +38,6 @@ function useActiveId(ids: string[], headerOffset = 88) {
           if (visible[0]?.target?.id) {
             setActiveId(visible[0].target.id);
           } else {
-            // Fallback: last section whose top is above the header line
             const y = window.scrollY + headerOffset + 8;
             let current = ids[0];
             for (const id of ids) {
@@ -69,25 +68,20 @@ function useActiveId(ids: string[], headerOffset = 88) {
       }
     };
 
-    // Initial pass for any IDs already in the DOM
     ids.forEach(observeIfPresent);
 
-    // Re-observe after images load (layout shifts can detach internals)
     const imgs = Array.from(document.images);
     const onImgLoad = () => ids.forEach(observeIfPresent);
     imgs.forEach((img) => img.addEventListener("load", onImgLoad, { once: true }));
 
-    // Watch the DOM for sections that appear later (lazy/Suspense, etc.)
     const mo = new MutationObserver(() => {
       ids.forEach(observeIfPresent);
     });
     mo.observe(document.body, { childList: true, subtree: true });
 
-    // Defensive: on resize, re-ensure everything is observed
     const onResize = () => ids.forEach(observeIfPresent);
     window.addEventListener("resize", onResize);
 
-    // Kick once after paint to catch late mounts
     const raf = requestAnimationFrame(() => ids.forEach(observeIfPresent));
 
     return () => {
@@ -117,7 +111,6 @@ export default function Navbar() {
   const ids = useMemo(() => links.map((l) => l.href.slice(1)), []);
   const active = isHome ? useActiveId(ids, HEADER_OFFSET) : "";
 
-  // Keep URL clean on “/”: prevent hash, scroll, then restore "/"
   const handleNavClick =
     (hash: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
       if (isHome) {
@@ -140,7 +133,7 @@ export default function Navbar() {
             <li key={link.href} className="relative">
               <Link
                 to={`/${link.href}`}
-                className="px-1 py-1 transition-colors hover:text-blue-300"
+                className="px-2 py-1 font-medium text-espresso/70 dark:text-slate-300 hover:text-espresso dark:hover:text-white transition-colors"
               >
                 {link.short || link.name}
               </Link>
@@ -153,19 +146,17 @@ export default function Navbar() {
             <a
               href={link.href}
               onClick={handleNavClick(link.href)}
-              className={`relative px-1 py-1 transition-colors ${
-                isActive ? "text-blue-300" : "hover:text-blue-300"
+              className={`relative px-2 py-1 font-medium transition-all ${
+                isActive
+                  ? "text-court-dark dark:text-[#60A5FA]"
+                  : "text-espresso/70 dark:text-slate-300 hover:text-espresso dark:hover:text-white"
               }`}
               aria-current={isActive ? "page" : undefined}
             >
               {link.short || link.name}
-              <span
-                className={`pointer-events-none absolute -bottom-1 left-0 right-0 h-[2px] rounded-full transition-opacity ${
-                  isActive
-                    ? "opacity-100 bg-gradient-to-r from-sky-400 to-rose-400"
-                    : "opacity-0"
-                }`}
-              />
+              {isActive && (
+                <span className="absolute -bottom-1 left-0 right-0 h-[3px] bg-court dark:bg-[#60A5FA] rounded-full" />
+              )}
             </a>
           </li>
         );
@@ -174,39 +165,58 @@ export default function Navbar() {
   );
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-slate-900/70 backdrop-blur-lg border-b border-white/10 shadow-md">
-      <nav className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4 text-white">
-        <a href="#home" onClick={handleNavClick("#home")} className="flex items-center">
-          <img
-            src="/Logo_Joseph.PNG"
-            alt="Logo"
-            className="h-11 w-11 rounded-full object-cover shadow-md hover:scale-105 transition-transform"
-          />
+    <header className="fixed top-0 left-0 w-full z-50 bg-paper/90 dark:bg-[#141B2D]/95 backdrop-blur-md border-b-2 border-espresso/10 dark:border-slate-700/30 transition-colors duration-500">
+      <nav className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+        {/* Logo */}
+        <a
+          href="#home"
+          onClick={handleNavClick("#home")}
+          className="flex items-center group"
+        >
+          <div className="relative h-12 w-12 rounded-full overflow-hidden border-2 border-espresso shadow-brutal-sm transition-all duration-200 group-hover:shadow-brutal group-hover:-translate-x-0.5 group-hover:-translate-y-0.5 bg-[#1e3a5f]">
+            <img
+              src="/Logo_Joseph.PNG"
+              alt="Logo"
+              className="h-full w-full object-cover"
+            />
+          </div>
         </a>
 
-        <ul className="hidden md:flex items-center gap-6 font-semibold">
+        {/* Desktop Navigation */}
+        <ul className="hidden md:flex items-center gap-1 text-sm">
           {desktopLinks}
         </ul>
 
-        <button
-          onClick={() => setIsOpen((s) => !s)}
-          className="md:hidden focus:outline-none"
-          aria-label="Toggle navigation"
-          aria-expanded={isOpen}
-        >
-          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+        {/* Theme Toggle & Mobile Menu */}
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsOpen((s) => !s)}
+            className="md:hidden p-2 border-2 border-espresso dark:border-slate-600 rounded-lg shadow-brutal-sm hover:shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all bg-paper dark:bg-slate-800"
+            aria-label="Toggle navigation"
+            aria-expanded={isOpen}
+          >
+            {isOpen ? <X className="w-5 h-5 text-espresso dark:text-slate-200" /> : <Menu className="w-5 h-5 text-espresso dark:text-slate-200" />}
+          </button>
+        </div>
       </nav>
 
+      {/* Mobile Menu */}
       {isOpen && (
-        <ul className="md:hidden bg-slate-900/90 backdrop-blur-lg px-6 py-6 space-y-4 text-center border-t border-white/10 animate-fade-in-down">
+        <ul className="md:hidden bg-paper dark:bg-[#141B2D] border-t-2 border-espresso/10 dark:border-slate-700/30 px-6 py-6 space-y-3">
           {links.map((link) =>
             isHome ? (
               <li key={link.href}>
                 <a
                   href={link.href}
                   onClick={handleNavClick(link.href)}
-                  className="block text-white font-semibold text-lg hover:text-blue-300 transition"
+                  className={`block py-2 px-4 font-semibold text-lg rounded-lg transition-all ${
+                    active === link.href.slice(1)
+                      ? "bg-court/20 dark:bg-[#60A5FA]/20 text-court-dark dark:text-[#60A5FA] border-2 border-court dark:border-[#60A5FA] shadow-brutal-sm"
+                      : "text-espresso dark:text-slate-200 hover:bg-espresso/5 dark:hover:bg-slate-800"
+                  }`}
                 >
                   {link.short || link.name}
                 </a>
@@ -216,7 +226,7 @@ export default function Navbar() {
                 <Link
                   to={`/${link.href}`}
                   onClick={() => setIsOpen(false)}
-                  className="block text-white font-semibold text-lg hover:text-blue-300 transition"
+                  className="block py-2 px-4 font-semibold text-lg text-espresso dark:text-slate-200 hover:bg-espresso/5 dark:hover:bg-slate-800 rounded-lg transition"
                 >
                   {link.short || link.name}
                 </Link>

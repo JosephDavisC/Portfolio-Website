@@ -79,7 +79,7 @@ const ContactForm = () => {
 
   return (
     <motion.div
-      className="bg-white/5 backdrop-blur-sm rounded-3xl p-6 sm:p-10 border border-white/10 hover:border-blue-400/30 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 relative overflow-hidden group/form"
+      className="card-brutal p-6 sm:p-10 relative overflow-hidden group/form"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.2 }}
@@ -102,137 +102,137 @@ const ContactForm = () => {
       />
 
       <div className="relative z-10">
-        <h3 className="text-2xl md:text-3xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-red-400 bg-clip-text text-transparent">
+        <h3 className="text-2xl md:text-3xl font-heading font-bold mb-6 text-espresso">
           Send me a message
         </h3>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-        <div>
-          <label htmlFor="name" className="block text-sm font-medium text-slate-300 mb-2">
-            Name <span className="text-red-400">*</span>
-          </label>
-          <Input
-            id="name"
-            type="text"
-            placeholder="Your name"
-            {...register('name')}
-            className={`bg-white/5 border-white/10 text-white placeholder:text-slate-500 focus:border-blue-400 focus:shadow-lg focus:shadow-blue-500/20 transition-all duration-300 ${
-              errors.name ? 'border-red-400' : ''
-            }`}
-          />
-          {errors.name && (
-            <p className="mt-1 text-sm text-red-400 flex items-center gap-1">
-              <AlertCircle className="h-4 w-4" />
-              {errors.name.message}
-            </p>
-          )}
-        </div>
-
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">
-            Email <span className="text-red-400">*</span>
-          </label>
-          <Input
-            id="email"
-            type="email"
-            placeholder="your.email@example.com"
-            {...register('email')}
-            className={`bg-white/5 border-white/10 text-white placeholder:text-slate-500 focus:border-blue-400 focus:shadow-lg focus:shadow-blue-500/20 transition-all duration-300 ${
-              errors.email ? 'border-red-400' : ''
-            }`}
-          />
-          {errors.email && (
-            <p className="mt-1 text-sm text-red-400 flex items-center gap-1">
-              <AlertCircle className="h-4 w-4" />
-              {errors.email.message}
-            </p>
-          )}
-        </div>
-
-        <div>
-          <label htmlFor="subject" className="block text-sm font-medium text-slate-300 mb-2">
-            Subject <span className="text-red-400">*</span>
-          </label>
-          <Input
-            id="subject"
-            type="text"
-            placeholder="What's this about?"
-            {...register('subject')}
-            className={`bg-white/5 border-white/10 text-white placeholder:text-slate-500 focus:border-blue-400 focus:shadow-lg focus:shadow-blue-500/20 transition-all duration-300 ${
-              errors.subject ? 'border-red-400' : ''
-            }`}
-          />
-          {errors.subject && (
-            <p className="mt-1 text-sm text-red-400 flex items-center gap-1">
-              <AlertCircle className="h-4 w-4" />
-              {errors.subject.message}
-            </p>
-          )}
-        </div>
-
-        <div>
-          <label htmlFor="message" className="block text-sm font-medium text-slate-300 mb-2">
-            Message <span className="text-red-400">*</span>
-          </label>
-          <Textarea
-            id="message"
-            placeholder="Tell me about your project, collaboration idea, or just say hi!"
-            rows={6}
-            {...register('message')}
-            className={`bg-white/5 border-white/10 text-white placeholder:text-slate-500 focus:border-blue-400 focus:shadow-lg focus:shadow-blue-500/20 transition-all duration-300 resize-none ${
-              errors.message ? 'border-red-400' : ''
-            }`}
-          />
-          {errors.message && (
-            <p className="mt-1 text-sm text-red-400 flex items-center gap-1">
-              <AlertCircle className="h-4 w-4" />
-              {errors.message.message}
-            </p>
-          )}
-        </div>
-
-        <div className="flex flex-col sm:flex-row items-center gap-4">
-          <Button
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full sm:w-auto px-8 py-6 text-lg text-white bg-gradient-to-r from-blue-500 via-purple-500 to-red-500 hover:from-blue-600 hover:via-purple-600 hover:to-red-600 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-purple-500/40 hover:scale-105 hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:translate-y-0"
-          >
-            {isSubmitting ? (
-              <>
-                <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                Sending...
-              </>
-            ) : (
-              <>
-                <Send className="mr-2 h-5 w-5" />
-                Send Message
-              </>
+          <div>
+            <label htmlFor="name" className="block text-sm font-mono font-medium text-espresso/80 dark:text-slate-300 mb-2">
+              Name <span className="text-court-dark">*</span>
+            </label>
+            <Input
+              id="name"
+              type="text"
+              placeholder="Your name"
+              {...register('name')}
+              className={`bg-paper dark:bg-slate-800 border-2 border-espresso/20 dark:border-slate-600 text-espresso dark:text-slate-200 placeholder:text-espresso/40 dark:placeholder:text-slate-500 focus:border-court dark:focus:border-[#60A5FA] focus-visible:ring-court dark:focus-visible:ring-[#60A5FA] focus:shadow-brutal-sm transition-all duration-300 rounded-lg ${
+                errors.name ? 'border-red-500' : ''
+              }`}
+            />
+            {errors.name && (
+              <p className="mt-1 text-sm text-red-600 flex items-center gap-1 font-mono">
+                <AlertCircle className="h-4 w-4" />
+                {errors.name.message}
+              </p>
             )}
-          </Button>
+          </div>
 
-          {submitStatus === 'success' && (
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="flex items-center gap-2 text-green-400"
-            >
-              <CheckCircle2 className="h-5 w-5" />
-              <span className="text-sm font-medium">Message sent successfully!</span>
-            </motion.div>
-          )}
+          <div>
+            <label htmlFor="email" className="block text-sm font-mono font-medium text-espresso/80 dark:text-slate-300 mb-2">
+              Email <span className="text-court-dark">*</span>
+            </label>
+            <Input
+              id="email"
+              type="email"
+              placeholder="your.email@example.com"
+              {...register('email')}
+              className={`bg-paper dark:bg-slate-800 border-2 border-espresso/20 dark:border-slate-600 text-espresso dark:text-slate-200 placeholder:text-espresso/40 dark:placeholder:text-slate-500 focus:border-court dark:focus:border-[#60A5FA] focus-visible:ring-court dark:focus-visible:ring-[#60A5FA] focus:shadow-brutal-sm transition-all duration-300 rounded-lg ${
+                errors.email ? 'border-red-500' : ''
+              }`}
+            />
+            {errors.email && (
+              <p className="mt-1 text-sm text-red-600 flex items-center gap-1 font-mono">
+                <AlertCircle className="h-4 w-4" />
+                {errors.email.message}
+              </p>
+            )}
+          </div>
 
-          {submitStatus === 'error' && (
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="flex items-center gap-2 text-red-400"
+          <div>
+            <label htmlFor="subject" className="block text-sm font-mono font-medium text-espresso/80 dark:text-slate-300 mb-2">
+              Subject <span className="text-court-dark">*</span>
+            </label>
+            <Input
+              id="subject"
+              type="text"
+              placeholder="What's this about?"
+              {...register('subject')}
+              className={`bg-paper dark:bg-slate-800 border-2 border-espresso/20 dark:border-slate-600 text-espresso dark:text-slate-200 placeholder:text-espresso/40 dark:placeholder:text-slate-500 focus:border-court dark:focus:border-[#60A5FA] focus-visible:ring-court dark:focus-visible:ring-[#60A5FA] focus:shadow-brutal-sm transition-all duration-300 rounded-lg ${
+                errors.subject ? 'border-red-500' : ''
+              }`}
+            />
+            {errors.subject && (
+              <p className="mt-1 text-sm text-red-600 flex items-center gap-1 font-mono">
+                <AlertCircle className="h-4 w-4" />
+                {errors.subject.message}
+              </p>
+            )}
+          </div>
+
+          <div>
+            <label htmlFor="message" className="block text-sm font-mono font-medium text-espresso/80 dark:text-slate-300 mb-2">
+              Message <span className="text-court-dark">*</span>
+            </label>
+            <Textarea
+              id="message"
+              placeholder="Tell me about your project, collaboration idea, or just say hi!"
+              rows={6}
+              {...register('message')}
+              className={`bg-paper dark:bg-slate-800 border-2 border-espresso/20 dark:border-slate-600 text-espresso dark:text-slate-200 placeholder:text-espresso/40 dark:placeholder:text-slate-500 focus:border-court dark:focus:border-[#60A5FA] focus-visible:ring-court dark:focus-visible:ring-[#60A5FA] focus:shadow-brutal-sm transition-all duration-300 resize-none rounded-lg ${
+                errors.message ? 'border-red-500' : ''
+              }`}
+            />
+            {errors.message && (
+              <p className="mt-1 text-sm text-red-600 flex items-center gap-1 font-mono">
+                <AlertCircle className="h-4 w-4" />
+                {errors.message.message}
+              </p>
+            )}
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            <Button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full sm:w-auto px-8 py-6 text-lg text-paper bg-court hover:bg-court-dark border-2 border-espresso font-semibold rounded-lg shadow-brutal-sm hover:shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-brutal-sm disabled:hover:translate-x-0 disabled:hover:translate-y-0"
             >
-              <AlertCircle className="h-5 w-5" />
-              <span className="text-sm font-medium">Failed to send. Please try again.</span>
-            </motion.div>
-          )}
-        </div>
-      </form>
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                  Sending...
+                </>
+              ) : (
+                <>
+                  <Send className="mr-2 h-5 w-5" />
+                  Send Message
+                </>
+              )}
+            </Button>
+
+            {submitStatus === 'success' && (
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="flex items-center gap-2 text-court-dark font-mono"
+              >
+                <CheckCircle2 className="h-5 w-5" />
+                <span className="text-sm font-medium">Message sent successfully!</span>
+              </motion.div>
+            )}
+
+            {submitStatus === 'error' && (
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="flex items-center gap-2 text-red-600 font-mono"
+              >
+                <AlertCircle className="h-5 w-5" />
+                <span className="text-sm font-medium">Failed to send. Please try again.</span>
+              </motion.div>
+            )}
+          </div>
+        </form>
       </div>
     </motion.div>
   );

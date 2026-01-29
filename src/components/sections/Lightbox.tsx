@@ -20,13 +20,13 @@ export default function Lightbox({
 
   return (
     <div
-      className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+      className="fixed inset-0 z-[100] bg-espresso/80 backdrop-blur-sm flex items-center justify-center p-4"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
     >
       <button
-        className="absolute top-4 right-4 p-2 rounded-md bg-white/10 hover:bg-white/15 text-white"
+        className="absolute top-4 right-4 p-2 rounded-lg bg-paper border-2 border-espresso shadow-brutal-sm hover:shadow-brutal text-espresso transition-all"
         onClick={onClose}
         aria-label="Close"
       >
@@ -35,7 +35,7 @@ export default function Lightbox({
       <img
         src={src}
         alt={alt || "image"}
-        className="max-h-[85vh] max-w-[92vw] object-contain rounded-xl shadow-2xl"
+        className="max-h-[85vh] max-w-[92vw] object-contain rounded-xl border-2 border-espresso shadow-brutal-lg"
         onClick={(e) => e.stopPropagation()}
       />
     </div>

@@ -18,7 +18,26 @@ export default {
 			}
 		},
 		extend: {
+			// Human-Centric Design System Colors
 			colors: {
+				// New brand colors
+				paper: '#F9F7F2',
+				'paper-dark': '#F0EDE5',
+				court: {
+					DEFAULT: '#4CBB17',
+					light: '#6DD035',
+					dark: '#3A9012',
+				},
+				espresso: {
+					DEFAULT: '#3D2B1F',
+					light: '#5C4433',
+					dark: '#2A1D15',
+				},
+				tennis: {
+					DEFAULT: '#DFFF00',
+					muted: '#C5E600',
+				},
+				// Legacy semantic colors (for shadcn/ui compatibility)
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
@@ -63,6 +82,21 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				}
 			},
+			// Typography - Modern Sans-Serif System
+			fontFamily: {
+				heading: ['Manrope', 'system-ui', 'sans-serif'],
+				sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+				mono: ['JetBrains Mono', 'monospace'],
+			},
+			// Refined neobrutalist shadows (subtle 2px base)
+			boxShadow: {
+				'brutal': '2px 2px 0px 0px #3D2B1F',
+				'brutal-sm': '1px 1px 0px 0px #3D2B1F',
+				'brutal-lg': '3px 3px 0px 0px #3D2B1F',
+				'brutal-hover': '3px 3px 0px 0px #3D2B1F',
+				'brutal-court': '2px 2px 0px 0px #3A9012',
+				'brutal-espresso': '2px 2px 0px 0px #2A1D15',
+			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
@@ -84,11 +118,16 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' },
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'float': 'float 3s ease-in-out infinite',
 			}
 		}
 	},

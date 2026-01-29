@@ -1,7 +1,35 @@
 <!-- Hmm fancy meeting you here 😄 -->
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
   <head>
+    <!-- Prevent theme flash - must run before anything else -->
+    <script>
+      (function() {
+        // Disable transitions on initial load to prevent flash
+        document.documentElement.classList.add('no-transitions');
+
+        // Apply saved theme
+        var theme = localStorage.getItem('joechamdani-theme');
+        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+
+        // Re-enable transitions after page loads
+        window.addEventListener('DOMContentLoaded', function() {
+          // Small delay to ensure styles are applied before enabling transitions
+          requestAnimationFrame(function() {
+            requestAnimationFrame(function() {
+              document.documentElement.classList.remove('no-transitions');
+            });
+          });
+        });
+      })();
+    </script>
+    <!-- Google Fonts: Manrope (Headings) + Plus Jakarta Sans (Body) + JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -94,34 +122,6 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KJQ8FMJ2"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-
-    <!-- Extension Interference Banner (Desktop only) -->
-    <div id="extension-banner" class="hidden fixed top-0 left-0 right-0 bg-gradient-to-r from-slate-900 via-blue-600 to-red-600 backdrop-blur-lg border-b border-white/10 text-white py-3.5 px-4 text-center z-[9999] shadow-md">
-      <div class="max-w-6xl mx-auto flex items-center justify-center flex-wrap gap-3">
-        <span class="text-sm">
-          <strong class="font-semibold">Colors looking off?</strong> Some browser extensions may interfere with this site's appearance. Try disabling them for the best experience.
-        </span>
-        <button
-          onclick="localStorage.setItem('extension-banner-dismissed', 'true'); document.getElementById('extension-banner').classList.add('hidden')"
-          class="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-5 py-2 rounded-lg text-sm font-semibold transition-all duration-300 whitespace-nowrap hover:scale-105">
-          Dismiss
-        </button>
-      </div>
-    </div>
-
-    <script>
-      // Show extension banner only on desktop if user hasn't dismissed it
-      if (!localStorage.getItem('extension-banner-dismissed')) {
-        // Simple mobile detection
-        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
-                        window.innerWidth < 768;
-
-        if (!isMobile) {
-          const banner = document.getElementById('extension-banner');
-          if (banner) banner.classList.remove('hidden');
-        }
-      }
-    </script>
 
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>

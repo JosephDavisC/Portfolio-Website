@@ -1,8 +1,68 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ZoomIn, ChevronLeft, ChevronRight } from "lucide-react";
+import { ZoomIn, ChevronLeft, ChevronRight, Coffee } from "lucide-react";
 import Lightbox from "@/components/sections/Lightbox";
 import RacketCard from "@/components/sections/RacketCard";
+
+// Tennis Ball SVG icon (no emoji) - detailed version
+const TennisBallIcon: React.FC<{ className?: string }> = ({ className = "" }) => (
+  <svg
+    width="28"
+    height="28"
+    viewBox="0 0 24 24"
+    fill="none"
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    {/* Ball base with gradient for depth */}
+    <defs>
+      <radialGradient id="tennisBallGradient" cx="35%" cy="35%" r="65%">
+        <stop offset="0%" stopColor="#E8FF3C" />
+        <stop offset="100%" stopColor="#C5E000" />
+      </radialGradient>
+    </defs>
+    <circle cx="12" cy="12" r="10.5" fill="url(#tennisBallGradient)" stroke="#3D8C00" strokeWidth="1" />
+    {/* Curved seam - left arc */}
+    <path
+      d="M6 4.5C4 7 3.5 10 4 12C4.5 14 5.5 17 8 20"
+      stroke="#FFFFFF"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      fill="none"
+      opacity="0.9"
+    />
+    {/* Curved seam - right arc */}
+    <path
+      d="M18 4.5C20 7 20.5 10 20 12C19.5 14 18.5 17 16 20"
+      stroke="#FFFFFF"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      fill="none"
+      opacity="0.9"
+    />
+    {/* Subtle highlight */}
+    <circle cx="8" cy="8" r="2.5" fill="#FFFFFF" opacity="0.25" />
+  </svg>
+);
+
+// Tennis Racket SVG icon (no emoji)
+const TennisRacketIcon: React.FC<{ className?: string }> = ({ className = "" }) => (
+  <svg
+    width="28"
+    height="28"
+    viewBox="0 0 24 24"
+    fill="none"
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <ellipse cx="12" cy="8" rx="6" ry="7" stroke="currentColor" strokeWidth="2" fill="none" />
+    <line x1="12" y1="15" x2="12" y2="23" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    <line x1="8" y1="5" x2="16" y2="11" stroke="currentColor" strokeWidth="1" strokeOpacity="0.5" />
+    <line x1="16" y1="5" x2="8" y2="11" stroke="currentColor" strokeWidth="1" strokeOpacity="0.5" />
+    <line x1="12" y1="2" x2="12" y2="14" stroke="currentColor" strokeWidth="1" strokeOpacity="0.5" />
+    <line x1="7" y1="8" x2="17" y2="8" stroke="currentColor" strokeWidth="1" strokeOpacity="0.5" />
+  </svg>
+);
 
 const tennisImages = [
   { src: "/images/moments/Joseph_Chamdani_Tennis.jpg", alt: "Joseph Forehand — 1" },
@@ -17,6 +77,7 @@ const rackets = [
     img: "/images/rackets/babolat-pure-aero.avif",
     glowColor: "yellow" as const,
     rotateDirection: "right" as const,
+    retired: false,
     specs: [
       "<strong>Use:</strong> Match play",
       "<strong>Weight:</strong> 300g",
@@ -32,6 +93,7 @@ const rackets = [
     img: "/images/rackets/babolat_pure_drive.jpg",
     glowColor: "blue" as const,
     rotateDirection: "left" as const,
+    retired: true,
     specs: [
       "<strong>Use:</strong> Retired",
       "<strong>Weight:</strong> 300g",
@@ -46,6 +108,7 @@ const rackets = [
     img: "/images/rackets/diadem_elevate.jpg",
     glowColor: "blue" as const,
     rotateDirection: "right" as const,
+    retired: true,
     specs: [
       "<strong>Use:</strong> Retired",
       "<strong>Weight:</strong> 305g",
@@ -59,10 +122,9 @@ const rackets = [
 
 export default function TennisCoffeeSection() {
   const [tennisIdx, setTennisIdx] = useState(0);
-
-  // shared lightbox
   const [lbSrc, setLbSrc] = useState<string>("");
   const [lbAlt, setLbAlt] = useState<string>("");
+
   const openLb = (src: string, alt?: string) => {
     setLbSrc(src);
     setLbAlt(alt || "");
@@ -72,37 +134,67 @@ export default function TennisCoffeeSection() {
   const prevTennis = () => setTennisIdx((i) => (i - 1 + tennisImages.length) % tennisImages.length);
 
   return (
-    <section id="tennis-coffee" className="py-16 px-6 bg-black/20">
+    <section id="tennis-coffee" className="py-16 px-6 bg-paper-dark">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-5xl md:text-6xl font-bold mb-3 bg-gradient-to-r from-blue-400 to-red-400 bg-clip-text text-transparent">
-            More Than Just Code
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-5xl md:text-6xl font-heading font-bold mb-4 text-espresso">
+            More Than Just{" "}
+            <span className="relative inline-block">
+              Code
+              <svg
+                className="absolute -bottom-2 left-0 w-full h-3"
+                viewBox="0 0 100 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M2 8C20 4 40 10 60 6C80 2 90 9 98 5"
+                  className="stroke-court dark:stroke-[#60A5FA] transition-colors duration-300"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </span>
           </h2>
-          <p className="text-slate-400 text-lg md:text-xl max-w-3xl mx-auto">
+          <p className="text-espresso/60 text-lg md:text-xl max-w-3xl mx-auto font-mono">
             Tennis keeps me grounded. Coffee keeps me sharp.
           </p>
-        </div>
+        </motion.div>
 
-        {/* ATP-Style Two Column Layout */}
+        {/* Bento Grid Layout */}
         <div className="grid lg:grid-cols-2 gap-8">
-          {/* LEFT SIDE - ON THE COURT */}
-          <div className="space-y-6">
-            <div className="mb-4">
-              <h3 className="text-2xl font-bold text-green-400">On The Court</h3>
+          {/* LEFT - ON THE COURT (Court Green theme) */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+            viewport={{ once: true }}
+            className="space-y-6"
+          >
+            <div className="flex items-center gap-3 mb-4">
+              <TennisBallIcon className="flex-shrink-0" />
+              <h3 className="text-2xl font-heading font-bold text-court-dark">On The Court</h3>
             </div>
 
             {/* Tennis Photo Carousel */}
             <motion.figure
-              whileHover={{ scale: 1.01 }}
-              transition={{ type: "spring", stiffness: 230, damping: 20 }}
-              className="group relative rounded-2xl overflow-hidden border border-white/10 hover:border-green-400/50 shadow-lg bg-slate-800/40 hover:shadow-xl hover:shadow-green-500/20 transition-all duration-300"
+              whileHover={{ y: -4 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="card-brutal-court overflow-hidden group"
             >
               <button
                 type="button"
                 onClick={() => openLb(tennisImages[tennisIdx].src, tennisImages[tennisIdx].alt)}
-                className="absolute top-3 right-3 z-10 rounded-full p-2 bg-black/55 text-white border border-white/20
-                           opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                className="absolute top-3 right-3 z-10 rounded-full p-2 bg-paper/90 dark:bg-slate-800 text-espresso dark:text-slate-100 border-2 border-court dark:border-slate-500
+                           opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-brutal-sm"
                 aria-label="View full size"
               >
                 <ZoomIn className="h-4 w-4" />
@@ -123,10 +215,11 @@ export default function TennisCoffeeSection() {
                   />
                 </AnimatePresence>
 
+                {/* Navigation Buttons */}
                 <button
                   type="button"
                   onClick={prevTennis}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 backdrop-blur p-2 text-white/90 hover:text-white border border-white/10"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-paper/90 dark:bg-slate-800 p-2 text-espresso dark:text-slate-100 border-2 border-court dark:border-slate-500 shadow-brutal-sm hover:shadow-brutal transition-all"
                   aria-label="Previous photo"
                 >
                   <ChevronLeft className="h-5 w-5" />
@@ -134,66 +227,80 @@ export default function TennisCoffeeSection() {
                 <button
                   type="button"
                   onClick={nextTennis}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 backdrop-blur p-2 text-white/90 hover:text-white border border-white/10"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-paper/90 dark:bg-slate-800 p-2 text-espresso dark:text-slate-100 border-2 border-court dark:border-slate-500 shadow-brutal-sm hover:shadow-brutal transition-all"
                   aria-label="Next photo"
                 >
                   <ChevronRight className="h-5 w-5" />
                 </button>
 
+                {/* Dot Indicators */}
                 <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
                   {tennisImages.map((_, i) => (
                     <button
                       key={i}
                       aria-label={`Go to photo ${i + 1}`}
                       onClick={() => setTennisIdx(i)}
-                      className={`h-2 w-2 rounded-full transition ${
-                        i === tennisIdx ? "bg-white" : "bg-white/40"
+                      className={`h-3 w-3 rounded-full border-2 border-court transition-all ${
+                        i === tennisIdx ? "bg-court" : "bg-paper/80"
                       }`}
                     />
                   ))}
                 </div>
               </div>
-              <figcaption className="bg-white/5 text-slate-300 text-center py-3 text-sm">
+
+              <figcaption className="bg-court/10 text-espresso text-center py-3 text-sm font-mono border-t-2 border-court">
                 Where I reset, compete, and stay focused
               </figcaption>
             </motion.figure>
 
             {/* Play Style Card */}
-            <div className="rounded-2xl border border-white/10 bg-slate-800/40 p-5">
-              <h4 className="text-lg font-semibold text-green-400 mb-3">Play Style</h4>
+            <motion.div
+              whileHover={{ y: -2 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="card-brutal-court p-5"
+            >
+              <h4 className="text-lg font-heading font-semibold text-court-dark mb-3">Play Style</h4>
               <div className="flex flex-wrap gap-3">
-                <span className="px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/30 text-green-300 text-sm">
+                <span className="px-4 py-2 rounded-full bg-court/20 border-2 border-court text-court-dark text-sm font-mono shadow-brutal-sm">
                   Right-handed
                 </span>
-                <span className="px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/30 text-green-300 text-sm">
+                <span className="px-4 py-2 rounded-full bg-court/20 border-2 border-court text-court-dark text-sm font-mono shadow-brutal-sm">
                   One-handed backhand
                 </span>
               </div>
-            </div>
+            </motion.div>
 
-          </div>
+          </motion.div>
 
-          {/* RIGHT SIDE - OFF THE COURT */}
-          <div className="space-y-6">
-            <div className="mb-4">
-              <h3 className="text-2xl font-bold text-amber-400">Off The Court</h3>
+          {/* RIGHT - OFF THE COURT (Espresso theme) */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.1, type: "spring", stiffness: 100 }}
+            viewport={{ once: true }}
+            className="space-y-6"
+          >
+            <div className="flex items-center gap-3 mb-4">
+              <Coffee className="w-7 h-7 text-espresso flex-shrink-0" />
+              <h3 className="text-2xl font-heading font-bold text-espresso">Off The Court</h3>
             </div>
 
             {/* Coffee Photo */}
             <motion.figure
-              whileHover={{ scale: 1.01 }}
-              transition={{ type: "spring", stiffness: 230, damping: 20 }}
-              className="group relative rounded-2xl overflow-hidden border border-white/10 hover:border-amber-400/50 shadow-lg bg-slate-800/40 hover:shadow-xl hover:shadow-amber-500/20 transition-all duration-300"
+              whileHover={{ y: -4 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="card-brutal overflow-hidden group"
             >
               <button
                 type="button"
                 onClick={() => openLb("/images/moments/Coffee.JPG", "Coffee time")}
-                className="absolute top-3 right-3 z-10 rounded-full p-2 bg-black/55 text-white border border-white/20
-                           opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                className="absolute top-3 right-3 z-10 rounded-full p-2 bg-paper/90 dark:bg-slate-800 text-espresso dark:text-slate-100 border-2 border-espresso dark:border-slate-500
+                           opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-brutal-sm"
                 aria-label="View full size"
               >
                 <ZoomIn className="h-4 w-4" />
               </button>
+
               <div className="relative h-[380px] w-full overflow-hidden">
                 <img
                   src="/images/moments/Coffee.JPG"
@@ -201,55 +308,68 @@ export default function TennisCoffeeSection() {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-amber-500/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                 <motion.img
                   src="/images/chibis/coffee_chibi.PNG"
                   alt="Coffee chibi"
                   className="absolute bottom-4 left-4 w-16 h-16 md:w-20 md:h-20 object-contain drop-shadow-2xl pointer-events-none"
-                  animate={{ y: [0, -6, 0] }}
-                  transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
                 />
               </div>
-              <figcaption className="bg-white/5 text-slate-300 text-center py-3 text-sm">
+
+              <figcaption className="bg-espresso/10 text-espresso text-center py-3 text-sm font-mono border-t-2 border-espresso">
                 A good brew fuels my thinking
               </figcaption>
             </motion.figure>
 
             {/* Coffee Preferences Card */}
-            <div className="rounded-2xl border border-white/10 bg-slate-800/40 p-5">
-              <h4 className="text-lg font-semibold text-amber-400 mb-3">Go-to Orders</h4>
+            <motion.div
+              whileHover={{ y: -2 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="card-brutal p-5"
+            >
+              <h4 className="text-lg font-heading font-semibold text-espresso mb-3">Go-to Orders</h4>
               <div className="flex flex-wrap gap-3">
-                <span className="px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-sm">
+                <span className="px-4 py-2 rounded-full bg-espresso/10 border-2 border-espresso text-espresso text-sm font-mono shadow-brutal-sm">
                   Latte
                 </span>
-                <span className="px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-sm">
+                <span className="px-4 py-2 rounded-full bg-espresso/10 border-2 border-espresso text-espresso text-sm font-mono shadow-brutal-sm">
                   Iced Americano
                 </span>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
 
-        {/* RACKETS SECTION - FULL WIDTH */}
-        <div className="mt-12">
-          <div className="mb-6">
-            <h3 className="text-2xl font-bold text-slate-300">My Racket Setup</h3>
+        {/* RACKETS SECTION */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="mt-16"
+        >
+          <div className="flex items-center gap-3 mb-8">
+            <TennisRacketIcon className="text-espresso flex-shrink-0" />
+            <h3 className="text-2xl font-heading font-bold text-espresso">My Racket Setup</h3>
           </div>
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {rackets.map((racket) => (
               <RacketCard
                 key={racket.title}
                 title={racket.title}
                 img={racket.img}
-                colorClass="bg-gradient-to-r from-blue-400 to-red-400 bg-clip-text text-transparent"
+                colorClass="text-espresso font-heading"
                 glowColor={racket.glowColor}
                 rotateDirection={racket.rotateDirection}
                 specs={racket.specs}
+                retired={racket.retired}
               />
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <Lightbox src={lbSrc} alt={lbAlt} onClose={() => setLbSrc("")} />

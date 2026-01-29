@@ -24,7 +24,8 @@ export default function ScrollProgress() {
         className="h-full origin-left"
         style={{ transform: `scaleX(${p})`, transition: "transform 80ms linear" }}
       >
-        <div className="h-full w-full bg-gradient-to-r from-sky-400 via-violet-400 to-pink-400" />
+        {/* Light mode: Court Green gradient, Dark mode: Neon gradient */}
+        <div className="h-full w-full bg-gradient-to-r from-court via-court-dark to-espresso dark:from-sky-400 dark:via-violet-400 dark:to-pink-400" />
       </div>
     </div>
   );

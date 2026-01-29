@@ -1,9 +1,51 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Coffee, GraduationCap } from "lucide-react";
+import { Mail, GraduationCap } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { CoffeeCupWithSteam } from "@/components/shared/CoffeeSteam";
 
-const HEADER_OFFSET = 88; // match your fixed navbar height
+// Custom Tennis Ball SVG (no emoji) - detailed version
+const TennisBallIcon: React.FC<{ className?: string }> = ({ className = "" }) => (
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    {/* Ball base with gradient for depth */}
+    <defs>
+      <radialGradient id="heroBallGradient" cx="35%" cy="35%" r="65%">
+        <stop offset="0%" stopColor="#E8FF3C" />
+        <stop offset="100%" stopColor="#C5E000" />
+      </radialGradient>
+    </defs>
+    <circle cx="12" cy="12" r="10.5" fill="url(#heroBallGradient)" stroke="#3D8C00" strokeWidth="1" />
+    {/* Curved seam - left arc */}
+    <path
+      d="M6 4.5C4 7 3.5 10 4 12C4.5 14 5.5 17 8 20"
+      stroke="#FFFFFF"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      fill="none"
+      opacity="0.9"
+    />
+    {/* Curved seam - right arc */}
+    <path
+      d="M18 4.5C20 7 20.5 10 20 12C19.5 14 18.5 17 16 20"
+      stroke="#FFFFFF"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      fill="none"
+      opacity="0.9"
+    />
+    {/* Subtle highlight */}
+    <circle cx="8" cy="8" r="2.5" fill="#FFFFFF" opacity="0.25" />
+  </svg>
+);
+
+const HEADER_OFFSET = 88;
 const CHIBI_ICON = "/logos/jo-sticker.PNG";
 
 function scrollToIdNoHash(id: string, tries = 0) {
@@ -14,22 +56,72 @@ function scrollToIdNoHash(id: string, tries = 0) {
   }
   const top = el.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
   window.scrollTo({ top, behavior: "smooth" });
-  window.history.replaceState(null, "", "/"); // keep URL clean (no #hash)
+  window.history.replaceState(null, "", "/");
 }
+
+// Hand-drawn scribble underline SVG - Dynamic color based on theme
+const ScribbleUnderline = () => (
+  <svg
+    className="absolute -bottom-2 left-0 w-full h-3"
+    viewBox="0 0 200 12"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    preserveAspectRatio="none"
+  >
+    <path
+      d="M2 8C30 4 60 10 100 6C140 2 170 9 198 5"
+      className="stroke-court dark:stroke-[#60A5FA] transition-colors duration-300"
+      strokeWidth="3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
 
 const Hero = () => {
   const [isHoveringProfile, setIsHoveringProfile] = useState(false);
+  const [isHoveringCoffee, setIsHoveringCoffee] = useState(false);
+  const [tennisClickCount, setTennisClickCount] = useState(0);
+  const clickTimerRef = React.useRef<NodeJS.Timeout | null>(null);
+
+  // Handle tennis badge click for Easter egg
+  const handleTennisBadgeClick = () => {
+    if (clickTimerRef.current) {
+      clearTimeout(clickTimerRef.current);
+    }
+
+    const newCount = tennisClickCount + 1;
+    setTennisClickCount(newCount);
+
+    if (newCount >= 3) {
+      setTennisClickCount(0);
+      // Dispatch custom event for EasterEggs component to handle
+      window.dispatchEvent(new CustomEvent("tennis-rally"));
+    } else {
+      // Reset click count after 2 seconds of no clicks
+      clickTimerRef.current = setTimeout(() => {
+        setTennisClickCount(0);
+      }, 2000);
+    }
+  };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center px-6 py-20 relative">
-      <div className="absolute inset-0 bg-gradient-to-r from-red-600/5 via-blue-600/10 to-red-600/5 backdrop-blur-3xl" />
+    <section id="home" className="min-h-screen flex items-center justify-center px-6 py-20 relative bg-paper dark:bg-[#141B2D]">
+      {/* Subtle mesh gradient background */}
+      <div className="absolute inset-0 opacity-30 dark:opacity-20">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-court/20 dark:bg-[#60A5FA]/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-tennis/10 dark:bg-violet-500/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-espresso/5 dark:bg-slate-500/5 rounded-full blur-3xl" />
+      </div>
+
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Left Content */}
           <motion.div
             className="text-left"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
           >
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -37,108 +129,136 @@ const Hero = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="mb-8"
             >
-              <div className="flex items-center gap-3 mb-6">
-                <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-blue-400 via-white to-red-400 bg-clip-text text-transparent">
-                  Joseph Davis Chamdani
+              {/* Name with scribble underline */}
+              <div className="mb-6">
+                <h1 className="text-5xl md:text-7xl font-heading font-bold text-espresso dark:text-slate-100 leading-tight tracking-tight">
+                  Joseph Davis{" "}
+                  <span className="relative inline-block">
+                    Chamdani
+                    <ScribbleUnderline />
+                  </span>
                 </h1>
               </div>
 
-              <p className="text-2xl md:text-3xl text-slate-300 mb-4 font-light">
+              {/* Subtitle */}
+              <p className="text-2xl md:text-3xl text-espresso/80 dark:text-slate-300 mb-4 font-light">
                 Informatics Student @{" "}
                 <a
                   href="https://www.washington.edu"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-gradient-to-r from-blue-400 via-white to-red-400 bg-clip-text text-transparent hover:underline"
+                  className="text-court-dark dark:text-[#60A5FA] hover:text-court dark:hover:text-[#93C5FD] font-medium underline decoration-2 decoration-court/50 dark:decoration-[#60A5FA]/50 underline-offset-4 transition-colors"
                 >
                   University of Washington
                 </a>
               </p>
 
-              <p className="text-lg text-slate-400 max-w-2xl leading-relaxed mb-6">
+              <p className="text-lg text-espresso/60 dark:text-slate-400 max-w-2xl leading-relaxed mb-6 font-mono">
                 International student from Indonesia
               </p>
 
-              <div className="flex items-center gap-4 text-slate-500">
-                <span className="flex items-center gap-2">
-                  <Coffee className="h-4 w-4" />
+              {/* Tags */}
+              <div className="flex items-center gap-3 flex-wrap">
+                <motion.span
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-espresso/5 dark:bg-slate-800 border-2 border-espresso/20 dark:border-slate-600 rounded-full text-espresso dark:text-slate-200 font-mono text-sm shadow-brutal-sm dark:shadow-none relative"
+                  onMouseEnter={() => setIsHoveringCoffee(true)}
+                  onMouseLeave={() => setIsHoveringCoffee(false)}
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                >
+                  <CoffeeCupWithSteam isHovered={isHoveringCoffee} className="text-espresso-light dark:text-slate-300" />
                   Coffee Lover
-                </span>
-                <span className="flex items-center gap-2">
-                  <span className="text-lg">🎾</span>
+                </motion.span>
+                <span className="inline-flex items-center gap-2 px-4 py-2 bg-court/10 dark:bg-[#60A5FA]/10 border-2 border-court/30 dark:border-[#60A5FA]/30 rounded-full text-court-dark dark:text-[#60A5FA] font-mono text-sm shadow-brutal-sm dark:shadow-none">
+                  <TennisBallIcon className="h-5 w-5" />
                   Tennis player
                 </span>
               </div>
             </motion.div>
 
+            {/* CTA Buttons */}
             <motion.div
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
+              transition={{ duration: 0.6, delay: 0.6, type: "spring", stiffness: 100 }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <a
+              <motion.a
                 href="#about"
                 onClick={(e) => {
                   e.preventDefault();
                   scrollToIdNoHash("about");
                 }}
-                className="inline-flex items-center px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/20 transition-all duration-300 group hover:scale-105 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/20"
+                className="btn-brutal-outline inline-flex items-center justify-center group"
+                whileHover={{ scale: 1.02, x: -2, y: -2 }}
+                whileTap={{ scale: 0.98, x: 2, y: 2 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 aria-label="About Me"
               >
                 <span className="mr-3 inline-flex">
                   <img
                     src={CHIBI_ICON}
-                    alt=""               /* decorative */
+                    alt=""
                     aria-hidden="true"
                     draggable="false"
-                    className="h-5 w-5 md:h-6 md:w-6 object-contain drop-shadow-[0_1px_1px_rgba(0,0,0,0.45)] transition-transform
-                               group-hover:translate-x-1 group-hover:rotate-[6deg]"
+                    className="h-5 w-5 md:h-6 md:w-6 object-contain transition-transform group-hover:rotate-12"
                   />
                 </span>
-                <span className="hidden sm:inline">About Me</span>
-                <span className="sm:hidden">About me</span>
-              </a>
+                About Me
+              </motion.a>
 
-              <a
+              <motion.a
                 href="#contact"
                 onClick={(e) => {
                   e.preventDefault();
                   scrollToIdNoHash("contact");
                 }}
-                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-red-600 rounded-full hover:from-blue-700 hover:to-red-700 transition-all duration-300 group shadow-xl hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 hover:-translate-y-1"
+                className="btn-brutal inline-flex items-center justify-center group"
+                whileHover={{ scale: 1.02, x: -2, y: -2 }}
+                whileTap={{ scale: 0.98, x: 2, y: 2 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 aria-label="Scroll to Contact section"
               >
                 <Mail className="mr-3 h-5 w-5 transition-transform group-hover:scale-110" />
                 Let&apos;s Connect
-              </a>
+              </motion.a>
             </motion.div>
           </motion.div>
 
+          {/* Right - Profile Image */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.8, delay: 0.4, type: "spring", stiffness: 100 }}
             className="flex justify-center lg:justify-end"
           >
-            <div
+            <motion.div
               className="relative group/profile"
               onMouseEnter={() => setIsHoveringProfile(true)}
               onMouseLeave={() => setIsHoveringProfile(false)}
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              <div className="absolute -top-4 -left-4 w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-xl z-20 transition-transform duration-300 group-hover/profile:scale-110 group-hover/profile:-translate-y-1">
-                <img src="logos/UW_Logo.png" alt="University of Washington" className="w-10 h-10 object-contain" />
+              {/* UW Badge */}
+              <motion.div
+                className="absolute -top-4 -left-4 w-14 h-14 rounded-full flex items-center justify-center z-20 border-2 border-espresso shadow-brutal overflow-hidden"
+                whileHover={{ scale: 1.1, rotate: -5 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                <img src="/logos/UW_Logo.png" alt="University of Washington" className="w-full h-full object-cover" />
+              </motion.div>
+
+              {/* Profile Image */}
+              <div className="relative">
+                <Avatar className="w-80 h-80 md:w-96 md:h-96 border-4 border-espresso shadow-brutal-lg relative z-10 transition-all duration-300">
+                  <AvatarImage src="/Joseph_Chamdani.JPEG" alt="Joseph Chamdani" className="object-cover object-top" />
+                  <AvatarFallback className="text-6xl font-heading font-bold bg-court text-paper">
+                    JC
+                  </AvatarFallback>
+                </Avatar>
               </div>
 
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-red-500 rounded-full blur-3xl opacity-20 animate-pulse group-hover/profile:opacity-30 transition-opacity" />
-
-              <Avatar className="w-80 h-80 md:w-96 md:h-96 border-4 border-white/20 shadow-2xl relative z-10 transition-all duration-300 group-hover/profile:scale-105 group-hover/profile:border-white/30 group-hover/profile:shadow-blue-500/20">
-                <AvatarImage src="/Joseph_Chamdani.JPEG" alt="Joseph Chamdani" className="object-cover object-top" />
-                <AvatarFallback className="text-6xl font-bold bg-gradient-to-br from-blue-600 to-red-600 text-white">
-                  JC
-                </AvatarFallback>
-              </Avatar>
-
+              {/* Academic Mode Overlay */}
               <AnimatePresence>
                 {isHoveringProfile && (
                   <motion.div
@@ -146,7 +266,7 @@ const Hero = () => {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
-                    className="absolute inset-0 rounded-full bg-slate-950/60 backdrop-blur-sm flex items-center justify-center z-30"
+                    className="absolute inset-0 rounded-full bg-espresso/80 dark:bg-slate-900/85 backdrop-blur-sm flex items-center justify-center z-30"
                   >
                     <motion.a
                       href="https://uw.joechamdani.com"
@@ -154,20 +274,29 @@ const Hero = () => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 8 }}
                       transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
-                      className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-600/90 to-purple-600/90 backdrop-blur-md border border-white/20 rounded-full text-white font-medium shadow-xl hover:shadow-2xl hover:shadow-purple-500/30 hover:scale-105 transition-all duration-300"
+                      className="inline-flex items-center gap-3 px-6 py-3 bg-paper dark:bg-slate-800 border-2 border-espresso dark:border-[#60A5FA] rounded-lg font-medium shadow-brutal dark:shadow-none dark:ring-1 dark:ring-[#60A5FA]/50 hover:shadow-brutal-lg dark:hover:ring-2 transition-all duration-200 text-espresso dark:text-slate-100"
                       aria-label="Switch to Academic Mode - View my UW coursework and research"
                     >
-                      <GraduationCap className="h-5 w-5" />
-                      <span>Switch to Academic Mode</span>
+                      <GraduationCap className="h-5 w-5 dark:text-[#60A5FA]" />
+                      <span>Academic Mode</span>
                     </motion.a>
                   </motion.div>
                 )}
               </AnimatePresence>
 
-              <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-gradient-to-r from-green-500 to-yellow-500 rounded-full flex items-center justify-center shadow-xl z-20 transition-all duration-300 group-hover/profile:scale-110 group-hover/profile:rotate-12 group-hover/profile:animate-bounce">
-                <span className="text-3xl">🎾</span>
-              </div>
-            </div>
+              {/* Tennis Badge - Click 3x for Easter Egg! */}
+              <motion.button
+                onClick={handleTennisBadgeClick}
+                className="absolute -bottom-4 -right-4 w-16 h-16 bg-tennis rounded-full flex items-center justify-center z-20 border-2 border-espresso shadow-brutal cursor-pointer"
+                whileHover={{ scale: 1.1, rotate: 12 }}
+                whileTap={{ scale: 0.9 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                aria-label="Tennis ball - click 3 times for a surprise!"
+                title="Click me!"
+              >
+                <TennisBallIcon className="w-8 h-8" />
+              </motion.button>
+            </motion.div>
           </motion.div>
         </div>
       </div>

@@ -5,19 +5,36 @@ import ContactForm from '@/components/shared/ContactForm';
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-12 px-4 sm:px-6">
+    <section id="contact" className="py-16 px-4 sm:px-6 bg-paper-dark">
       <div className="max-w-4xl mx-auto">
         <motion.div
           className="text-center mb-12"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-blue-400 to-red-400 bg-clip-text text-transparent pb-2.5">
-            Let's Build Something
+          <h2 className="text-5xl md:text-6xl font-heading font-bold mb-6 text-espresso">
+            Let's{" "}
+            <span className="relative inline-block">
+              Connect
+              <svg
+                className="absolute -bottom-2 left-0 w-full h-3"
+                viewBox="0 0 200 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M2 8C30 4 60 10 100 6C140 2 170 9 198 5"
+                  className="stroke-court dark:stroke-[#60A5FA] transition-colors duration-300"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </span>
           </h2>
-          <p className="text-slate-400 text-xl max-w-3xl mx-auto leading-relaxed px-2">
+          <p className="text-espresso/60 text-xl max-w-3xl mx-auto leading-relaxed font-mono px-2">
             Always excited to discuss AI, startups, or collaborate on interesting projects.
             Let's connect and create something amazing together.
           </p>
@@ -28,80 +45,102 @@ const Contact = () => {
         </div>
 
         <motion.div
-          className="bg-white/5 backdrop-blur-sm rounded-3xl p-6 sm:p-10 border border-white/10 hover:border-blue-400/30 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500"
+          className="card-brutal p-6 sm:p-10"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-2xl md:text-3xl font-bold mb-8 text-center bg-gradient-to-r from-blue-400 to-red-400 bg-clip-text text-transparent">
+          <h3 className="text-2xl md:text-3xl font-heading font-bold mb-8 text-center text-espresso dark:text-slate-100">
             Or connect with me on social
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 sm:gap-8 mb-10 px-2 sm:px-0">
-            <a
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 sm:gap-4 mb-10 px-2 sm:px-0">
+            <motion.a
               href="mailto:jchamd@uw.edu"
-              className="flex flex-col items-center px-6 py-6 sm:p-8 bg-white/5 rounded-2xl hover:bg-white/10 transition-all duration-300 group border border-white/10 hover:border-blue-400/50 hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2 hover:scale-105"
+              whileHover={{ y: -4 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="flex flex-col items-center px-4 py-6 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-all group"
             >
-              <Mail className="h-10 w-10 text-blue-400 mb-4 group-hover:scale-110 transition-transform" />
-              <h3 className="font-semibold mb-2 text-lg">Email</h3>
-              <p className="text-slate-400 whitespace-nowrap">jchamd@uw.edu</p>
-            </a>
+              <div className="w-12 h-12 rounded-full bg-court/20 dark:bg-[#60A5FA]/20 border-2 border-court dark:border-[#60A5FA] flex items-center justify-center mb-3">
+                <Mail className="h-6 w-6 text-court-dark dark:text-[#60A5FA]" />
+              </div>
+              <h4 className="font-heading font-semibold text-espresso dark:text-slate-100 mb-1">Email</h4>
+              <p className="text-espresso/60 dark:text-slate-400 text-sm font-mono">jchamd@uw.edu</p>
+            </motion.a>
 
-            <a
+            <motion.a
               href="https://www.linkedin.com/in/joseph-chamdani"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex flex-col items-center px-6 py-6 sm:p-8 bg-white/5 rounded-2xl hover:bg-white/10 transition-all duration-300 group border border-white/10 hover:border-blue-400/50 hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2 hover:scale-105"
+              whileHover={{ y: -4 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="flex flex-col items-center px-4 py-6 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-all group"
             >
-              <Linkedin className="h-10 w-10 text-blue-400 mb-4 group-hover:scale-110 transition-transform" />
-              <h3 className="font-semibold mb-2 text-lg">LinkedIn</h3>
-              <p className="text-slate-400 whitespace-nowrap">Let's connect</p>
-            </a>
+              <div className="w-12 h-12 rounded-full bg-court/20 dark:bg-[#60A5FA]/20 border-2 border-court dark:border-[#60A5FA] flex items-center justify-center mb-3">
+                <Linkedin className="h-6 w-6 text-court-dark dark:text-[#60A5FA]" />
+              </div>
+              <h4 className="font-heading font-semibold text-espresso dark:text-slate-100 mb-1">LinkedIn</h4>
+              <p className="text-espresso/60 dark:text-slate-400 text-sm font-mono">Let's connect</p>
+            </motion.a>
 
-            <a
+            <motion.a
               href="https://github.com/JosephDavisC"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex flex-col items-center px-6 py-6 sm:p-8 bg-white/5 rounded-2xl hover:bg-white/10 transition-all duration-300 group border border-white/10 hover:border-blue-400/50 hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2 hover:scale-105"
+              whileHover={{ y: -4 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="flex flex-col items-center px-4 py-6 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-espresso dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-all group"
             >
-              <Github className="h-10 w-10 text-blue-400 mb-4 group-hover:scale-110 transition-transform" />
-              <h3 className="font-semibold mb-2 text-lg">GitHub</h3>
-              <p className="text-slate-400 whitespace-nowrap">View my code</p>
-            </a>
+              <div className="w-12 h-12 rounded-full bg-espresso/10 dark:bg-slate-700 border-2 border-espresso dark:border-slate-500 flex items-center justify-center mb-3">
+                <Github className="h-6 w-6 text-espresso dark:text-slate-300" />
+              </div>
+              <h4 className="font-heading font-semibold text-espresso dark:text-slate-100 mb-1">GitHub</h4>
+              <p className="text-espresso/60 dark:text-slate-400 text-sm font-mono">View my code</p>
+            </motion.a>
 
-            <a
+            <motion.a
               href="https://www.instagram.com/josephdavisc/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex flex-col items-center px-6 py-6 sm:p-8 bg-white/5 rounded-2xl hover:bg-white/10 transition-all duration-300 group border border-white/10 hover:border-pink-400/50 hover:shadow-2xl hover:shadow-pink-500/20 hover:-translate-y-2 hover:scale-105"
+              whileHover={{ y: -4 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="flex flex-col items-center px-4 py-6 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-all group"
             >
-              <Instagram className="h-10 w-10 text-pink-400 mb-4 group-hover:scale-110 transition-transform" />
-              <h3 className="font-semibold mb-2 text-lg">Instagram</h3>
-              <p className="text-slate-400 whitespace-nowrap">@josephdavisc</p>
-            </a>
+              <div className="w-12 h-12 rounded-full bg-court/20 dark:bg-[#60A5FA]/20 border-2 border-court dark:border-[#60A5FA] flex items-center justify-center mb-3">
+                <Instagram className="h-6 w-6 text-court-dark dark:text-[#60A5FA]" />
+              </div>
+              <h4 className="font-heading font-semibold text-espresso dark:text-slate-100 mb-1">Instagram</h4>
+              <p className="text-espresso/60 dark:text-slate-400 text-sm font-mono">@josephdavisc</p>
+            </motion.a>
 
-            <a
+            <motion.a
               href="https://www.youtube.com/@JosephDavisC"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex flex-col items-center px-6 py-6 sm:p-8 bg-white/5 rounded-2xl hover:bg-white/10 transition-all duration-300 group border border-white/10 hover:border-red-400/50 hover:shadow-2xl hover:shadow-red-500/20 hover:-translate-y-2 hover:scale-105"
+              whileHover={{ y: -4 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="flex flex-col items-center px-4 py-6 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-all group"
             >
-              <Youtube className="h-10 w-10 text-red-400 mb-4 group-hover:scale-110 transition-transform" />
-              <h3 className="font-semibold mb-2 text-lg">YouTube</h3>
-              <p className="text-slate-400 whitespace-nowrap">@JosephDavisC</p>
-            </a>
+              <div className="w-12 h-12 rounded-full bg-court/20 dark:bg-[#60A5FA]/20 border-2 border-court dark:border-[#60A5FA] flex items-center justify-center mb-3">
+                <Youtube className="h-6 w-6 text-court-dark dark:text-[#60A5FA]" />
+              </div>
+              <h4 className="font-heading font-semibold text-espresso dark:text-slate-100 mb-1">YouTube</h4>
+              <p className="text-espresso/60 dark:text-slate-400 text-sm font-mono">@JosephDavisC</p>
+            </motion.a>
           </div>
 
           <div className="text-center">
-            <a
+            <motion.a
               href="media/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-10 py-4 bg-gradient-to-r from-blue-600 to-red-600 rounded-full hover:from-blue-700 hover:to-red-700 transition-all duration-300 group shadow-xl hover:shadow-2xl hover:shadow-purple-500/30 hover:scale-110 hover:-translate-y-1"
+              className="btn-brutal inline-flex items-center gap-2"
+              whileHover={{ scale: 1.02, x: -2, y: -2 }}
+              whileTap={{ scale: 0.98, x: 2, y: 2 }}
             >
-              <Download className="mr-3 h-6 w-6 group-hover:scale-110 transition-transform" />
+              <Download className="h-5 w-5" />
               Download Resume
-            </a>
+            </motion.a>
           </div>
         </motion.div>
       </div>

@@ -7,10 +7,10 @@ import Navbar from '@/components/shared/Navbar';
 import projectsData from '@/data/projects.json';
 
 const fadeInUp = {
-  initial: { opacity: 0, y: 60 },
+  initial: { opacity: 0, y: 40 },
   animate: { opacity: 1, y: 0 },
   exit: { opacity: 0, y: -20 },
-  transition: { duration: 0.5 }
+  transition: { duration: 0.5, type: "spring", stiffness: 200 }
 };
 
 const staggerContainer = {
@@ -117,7 +117,7 @@ const ProjectsPage: React.FC = () => {
         </script>
       </Helmet>
 
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
+      <div className="min-h-screen bg-paper">
         <Navbar />
 
         <main className="pt-24 pb-16 px-6" role="main" aria-label="Projects portfolio">
@@ -125,7 +125,7 @@ const ProjectsPage: React.FC = () => {
             <Link
               to="/"
               state={{ scrollTo: 'portfolio' }}
-              className="inline-flex items-center text-slate-400 hover:text-white transition-colors mb-8 group"
+              className="inline-flex items-center text-espresso/60 dark:text-slate-400 hover:text-espresso dark:hover:text-slate-200 transition-colors mb-8 group font-mono"
             >
               <ArrowLeft className="h-4 w-4 mr-2 group-hover:-translate-x-1 transition-transform" />
               Back to Home
@@ -134,13 +134,30 @@ const ProjectsPage: React.FC = () => {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
               className="text-center mb-12"
             >
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-red-400 bg-clip-text text-transparent">
-                All Projects
+              <h1 className="text-5xl md:text-6xl font-heading font-bold mb-6 text-espresso dark:text-slate-100">
+                All{" "}
+                <span className="relative inline-block">
+                  Projects
+                  <svg
+                    className="absolute -bottom-2 left-0 w-full h-3"
+                    viewBox="0 0 200 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    preserveAspectRatio="none"
+                  >
+                    <path
+                      d="M2 8C30 4 60 10 100 6C140 2 170 9 198 5"
+                      className="stroke-court dark:stroke-[#60A5FA] transition-colors duration-300"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </span>
               </h1>
-              <p className="text-slate-400 text-xl max-w-3xl mx-auto leading-relaxed">
+              <p className="text-espresso/60 dark:text-slate-400 text-xl max-w-3xl mx-auto leading-relaxed font-mono">
                 A collection of projects spanning AI, web development, and game development
               </p>
             </motion.div>
@@ -153,18 +170,20 @@ const ProjectsPage: React.FC = () => {
               aria-label="Project category filter"
             >
               {categories.map((category) => (
-                <button
+                <motion.button
                   key={category}
                   onClick={() => setActiveCategory(category)}
                   aria-pressed={activeCategory === category}
-                  className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className={`px-5 py-2 rounded-full text-sm font-mono font-medium transition-all duration-300 border-2 ${
                     activeCategory === category
-                      ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/30'
-                      : 'bg-white/5 text-slate-300 hover:bg-white/10 border border-white/10'
+                      ? 'bg-court dark:bg-[#60A5FA] text-paper dark:text-slate-900 border-espresso dark:border-[#60A5FA] shadow-brutal-sm dark:shadow-none'
+                      : 'bg-paper dark:bg-slate-800 text-espresso dark:text-slate-200 border-espresso/20 dark:border-slate-600 hover:border-espresso/40 dark:hover:border-slate-500'
                   }`}
                 >
                   {category}
-                </button>
+                </motion.button>
               ))}
             </motion.nav>
 
@@ -178,27 +197,30 @@ const ProjectsPage: React.FC = () => {
                 className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
                 aria-label={`${activeCategory} projects`}
               >
-                {filteredProjects.map((project, index) => (
+                {filteredProjects.map((project) => (
                   <motion.article
                     key={project.title}
                     variants={fadeInUp}
                     layout
-                    className="bg-white/5 backdrop-blur-sm rounded-3xl p-5 border border-white/10 hover:border-blue-400/50 transition-all duration-300 group hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-1 flex flex-col"
+                    whileHover={{ y: -4 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className="card-brutal p-5 flex flex-col group"
                   >
-                    <figure className="relative overflow-hidden rounded-2xl border border-white/10 group-hover:border-blue-400/30">
-                      <img
+                    <figure className="relative overflow-hidden rounded-lg border-2 border-espresso dark:border-slate-600">
+                      <motion.img
                         src={project.image}
                         alt={project.imageAlt || project.title}
-                        className={`${getImageClasses(project.imageStyle)} transition-transform duration-500 group-hover:scale-110`}
+                        className={`${getImageClasses(project.imageStyle)}`}
                         loading="lazy"
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.4 }}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-blue-500/40 via-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      <span className="absolute top-3 right-3 px-2 py-1 bg-black/50 backdrop-blur-sm text-xs text-slate-200 rounded-full">
+                      <span className="absolute top-3 right-3 px-3 py-1 bg-tennis dark:bg-slate-800 text-espresso dark:text-slate-100 font-mono text-xs font-bold border-2 border-espresso dark:border-slate-600 rounded-full shadow-brutal-sm">
                         {project.category}
                       </span>
                     </figure>
 
-                    <h2 className="mt-4 text-xl font-semibold group-hover:text-blue-400 transition-colors">
+                    <h2 className="mt-4 text-xl font-heading font-semibold text-espresso dark:text-slate-100 group-hover:text-court-dark dark:group-hover:text-[#60A5FA] transition-colors">
                       {project.title}
                     </h2>
 
@@ -206,28 +228,28 @@ const ProjectsPage: React.FC = () => {
                       {project.tech.slice(0, 4).map((tech) => (
                         <span
                           key={tech}
-                          className="px-2 py-0.5 bg-slate-700/50 text-slate-300 rounded-full text-xs"
+                          className="px-2 py-0.5 bg-espresso/5 dark:bg-slate-700/80 text-espresso/70 dark:text-slate-200 border border-espresso/20 dark:border-slate-500/50 rounded-full text-xs font-mono"
                         >
                           {tech}
                         </span>
                       ))}
                       {project.tech.length > 4 && (
-                        <span className="px-2 py-0.5 bg-slate-700/50 text-slate-400 rounded-full text-xs">
+                        <span className="px-2 py-0.5 bg-espresso/5 dark:bg-slate-700/80 text-espresso/50 dark:text-slate-400 border border-espresso/20 dark:border-slate-500/50 rounded-full text-xs font-mono">
                           +{project.tech.length - 4}
                         </span>
                       )}
                     </div>
 
-                    <p className="text-slate-400 mt-4 mb-5 leading-relaxed text-sm flex-grow">
+                    <p className="text-espresso/70 dark:text-slate-300 mt-4 mb-5 leading-relaxed text-sm flex-grow">
                       {project.description}
                     </p>
 
                     {(project.github || project.demo || project.medium) && (
-                      <div className="flex gap-4 mt-auto pt-3 border-t border-white/5">
+                      <div className="flex gap-4 mt-auto pt-3 border-t-2 border-espresso/10 dark:border-slate-700">
                         {project.github && (
                           <a
                             href={project.github}
-                            className="flex items-center text-blue-400 hover:text-blue-300 transition-colors text-sm"
+                            className="flex items-center text-espresso dark:text-slate-300 hover:text-court-dark dark:hover:text-[#60A5FA] transition-colors text-sm font-medium"
                             target="_blank"
                             rel="noopener noreferrer"
                           >
@@ -238,7 +260,7 @@ const ProjectsPage: React.FC = () => {
                         {project.demo && (
                           <a
                             href={project.demo}
-                            className="flex items-center text-rose-400 hover:text-rose-300 transition-colors text-sm"
+                            className="flex items-center text-court-dark dark:text-[#60A5FA] hover:text-court dark:hover:text-[#93C5FD] transition-colors text-sm font-medium"
                             target="_blank"
                             rel="noopener noreferrer"
                           >
@@ -249,7 +271,7 @@ const ProjectsPage: React.FC = () => {
                         {project.medium && (
                           <a
                             href={project.medium}
-                            className="flex items-center text-green-400 hover:text-green-300 transition-colors text-sm"
+                            className="flex items-center text-espresso dark:text-slate-300 hover:text-court-dark dark:hover:text-[#60A5FA] transition-colors text-sm font-medium"
                             target="_blank"
                             rel="noopener noreferrer"
                           >
@@ -270,7 +292,7 @@ const ProjectsPage: React.FC = () => {
                 animate={{ opacity: 1 }}
                 className="text-center py-16"
               >
-                <p className="text-slate-400 text-lg">No projects found in this category.</p>
+                <p className="text-espresso/60 dark:text-slate-400 text-lg font-mono">No projects found in this category.</p>
               </motion.div>
             )}
 
@@ -283,20 +305,22 @@ const ProjectsPage: React.FC = () => {
               <Link
                 to="/"
                 state={{ scrollTo: 'portfolio' }}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-400 hover:bg-blue-500/30 hover:border-blue-400/50 transition-all duration-300 hover:scale-105"
+                className="btn-brutal-outline inline-flex items-center gap-2"
               >
                 <ArrowLeft className="h-5 w-5" />
                 Back to Home
               </Link>
-              <a
+              <motion.a
                 href="https://github.com/JosephDavisC"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 text-slate-200 hover:bg-white/10 transition-all duration-300 hover:scale-105"
+                className="btn-brutal inline-flex items-center gap-2"
+                whileHover={{ scale: 1.02, x: -2, y: -2 }}
+                whileTap={{ scale: 0.98, x: 2, y: 2 }}
               >
                 <Github className="h-5 w-5" />
                 More on GitHub
-              </a>
+              </motion.a>
             </motion.div>
           </div>
         </main>

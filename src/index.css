@@ -3,87 +3,82 @@
 @tailwind utilities;
 
 /* ===============================
-   Design tokens (HSL only)
+   Human-Centric Design System
+   Light Mode with Paper Texture
 ================================= */
 @layer base {
   :root {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Paper White Theme */
+    --background: 43 30% 97%;           /* #F9F7F2 Paper White */
+    --foreground: 20 29% 18%;           /* #3D2B1F Espresso */
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 43 25% 95%;                 /* Slightly darker paper */
+    --card-foreground: 20 29% 18%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 43 30% 97%;
+    --popover-foreground: 20 29% 18%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 102 79% 41%;             /* #4CBB17 Court Green */
+    --primary-foreground: 43 30% 97%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 20 29% 25%;            /* Espresso light */
+    --secondary-foreground: 43 30% 97%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 43 20% 90%;
+    --muted-foreground: 20 15% 45%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 68 100% 50%;              /* #DFFF00 Tennis Yellow */
+    --accent-foreground: 20 29% 18%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 43 30% 97%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 20 20% 80%;
+    --input: 20 20% 85%;
+    --ring: 102 79% 41%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Sidebar (keeping for shadcn compatibility) */
+    --sidebar-background: 43 25% 95%;
+    --sidebar-foreground: 20 29% 18%;
+    --sidebar-primary: 102 79% 41%;
+    --sidebar-primary-foreground: 43 30% 97%;
+    --sidebar-accent: 43 20% 90%;
+    --sidebar-accent-foreground: 20 29% 18%;
+    --sidebar-border: 20 20% 85%;
+    --sidebar-ring: 102 79% 41%;
   }
 
+  /* Dark mode fallback (for seo-docs or other pages that need it) */
   .dark {
-    --background: 222.2 84% 4.9%;
+    --background: 222 40% 11%;
     --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
+    --card: 222 40% 11%;
     --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
+    --popover: 222 40% 11%;
     --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
+    --primary: 102 79% 41%;
     --primary-foreground: 222.2 47.4% 11.2%;
-
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
-
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
+    --accent: 68 100% 50%;
     --accent-foreground: 210 40% 98%;
-
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-
+    --ring: 102 79% 41%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary: 102 79% 41%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 240 3.7% 15.9%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-ring: 102 79% 41%;
   }
 }
 
@@ -91,26 +86,54 @@
   * {
     @apply border-border;
   }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-paper text-espresso;
+    font-family: 'system-ui', '-apple-system', sans-serif;
+  }
+
+  /* Paper grain texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    mix-blend-mode: multiply;
+  }
+
+  /* Typography - Modern Sans-Serif System */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Manrope', system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
   }
 }
 
 /* --- Custom cursors: stable inheritance version --- */
 @layer base {
   @media (pointer: fine) {
-    /* 1) Put the default cursor on :root */
     :root {
       cursor: url("/cursors/jo-normal.png") 16 16, auto;
     }
 
-    /* 2) Make everything inherit that cursor by default
-       (use :where(*) to keep specificity low) */
     :where(*) {
       cursor: inherit;
     }
 
-    /* 3) Thumbs-up on interactive elements */
     a,
     button,
     [role="button"],
@@ -125,7 +148,6 @@
       cursor: url("/cursors/jo-thumb.png") 16 16, pointer;
     }
 
-    /* 4) Keep the I-beam on text entry/editable areas */
     input[type="text"],
     input[type="search"],
     input[type="email"],
@@ -140,9 +162,440 @@
   }
 }
 
-/* Optional helpers */
+/* Utility classes */
 @layer utilities {
   .cursor-jo { cursor: url("/cursors/jo-normal.png") 16 16, auto; }
   .cursor-jo-thumb { cursor: url("/cursors/jo-thumb.png") 16 16, pointer; }
 }
 
+/* Neobrutalist Card Component - Refined with smaller shadows */
+@layer components {
+  .card-brutal {
+    @apply bg-paper border-2 border-espresso rounded-xl;
+    box-shadow: 2px 2px 0px 0px #3D2B1F;
+    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .card-brutal:hover {
+    box-shadow: 3px 3px 0px 0px #3D2B1F;
+    transform: translate(-1px, -1px);
+  }
+
+  .card-brutal:active {
+    box-shadow: 1px 1px 0px 0px #3D2B1F;
+    transform: translate(1px, 1px);
+  }
+
+  /* Court Green variant */
+  .card-brutal-court {
+    @apply bg-paper border-2 border-court-dark rounded-xl;
+    box-shadow: 2px 2px 0px 0px #3A9012;
+  }
+
+  .card-brutal-court:hover {
+    box-shadow: 3px 3px 0px 0px #3A9012;
+    transform: translate(-1px, -1px);
+  }
+
+  /* Button styles */
+  .btn-brutal {
+    @apply px-6 py-3 bg-court text-paper font-semibold border-2 border-espresso rounded-lg;
+    box-shadow: 2px 2px 0px 0px #3D2B1F;
+    transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .btn-brutal:hover {
+    box-shadow: 3px 3px 0px 0px #3D2B1F;
+    transform: translate(-1px, -1px);
+  }
+
+  .btn-brutal:active {
+    box-shadow: 1px 1px 0px 0px #3D2B1F;
+    transform: translate(1px, 1px);
+  }
+
+  /* Secondary button */
+  .btn-brutal-outline {
+    @apply px-6 py-3 bg-paper text-espresso font-semibold border-2 border-espresso rounded-lg;
+    box-shadow: 2px 2px 0px 0px #3D2B1F;
+    transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .btn-brutal-outline:hover {
+    @apply bg-espresso text-paper;
+    box-shadow: 3px 3px 0px 0px #3D2B1F;
+    transform: translate(-1px, -1px);
+  }
+
+  /* Tag/Badge styles */
+  .tag-brutal {
+    @apply px-3 py-1 text-sm font-mono border-2 border-espresso rounded-full;
+    box-shadow: 1px 1px 0px 0px #3D2B1F;
+  }
+
+  .tag-court {
+    @apply bg-court/20 text-court-dark border-court-dark;
+    box-shadow: 1px 1px 0px 0px #3A9012;
+  }
+
+  .tag-espresso {
+    @apply bg-espresso/10 text-espresso border-espresso;
+  }
+
+  /* Hand-drawn underline effect */
+  .underline-scribble {
+    position: relative;
+    display: inline-block;
+  }
+
+  .underline-scribble::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 8px;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='8' viewBox='0 0 100 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 5.5C20 2 40 7 60 4C80 1 90 6 99 3.5' stroke='%234CBB17' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-size: contain;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+  background-color: #DFFF00;
+  color: #3D2B1F;
+}
+
+/* ===============================
+   Husky Mode - UW Purple & Gold Theme
+   Triggered by typing "UW" or "INFO"
+   Theme-aware: adapts to Light/Dark mode
+================================= */
+
+/* UW Brand Colors */
+.husky-mode {
+  --uw-purple: #4B2E83;
+  --uw-gold: #B7A57A;
+  --uw-gold-bright: #D0B787;
+}
+
+/* ===== LIGHT MODE Husky Styles ===== */
+.husky-mode .bg-court {
+  background-color: #4B2E83 !important;
+}
+
+.husky-mode .text-court,
+.husky-mode .text-court-dark {
+  color: #4B2E83 !important;
+}
+
+.husky-mode .border-court,
+.husky-mode .border-court-dark {
+  border-color: #4B2E83 !important;
+}
+
+.husky-mode .bg-court\/10,
+.husky-mode .bg-court\/20,
+.husky-mode .bg-court\/30 {
+  background-color: rgba(75, 46, 131, 0.2) !important;
+}
+
+/* Gold accents for buttons and highlights in Light Mode */
+.husky-mode .btn-brutal {
+  background-color: #4B2E83 !important;
+  border-color: #B7A57A !important;
+  color: #FFFFFF !important;
+}
+
+.husky-mode .btn-brutal:hover {
+  box-shadow: 4px 4px 0 #B7A57A !important;
+}
+
+/* Progress bar in Light Mode */
+.husky-mode .from-court {
+  --tw-gradient-from: #4B2E83 !important;
+}
+
+.husky-mode .via-court-dark {
+  --tw-gradient-via: #5E3A9E !important;
+}
+
+.husky-mode .to-espresso {
+  --tw-gradient-to: #B7A57A !important;
+}
+
+/* ===== DARK MODE Husky Styles ===== */
+.husky-mode.dark .bg-court,
+.dark.husky-mode .bg-court {
+  background-color: #4B2E83 !important;
+  box-shadow: 0 0 20px rgba(75, 46, 131, 0.4) !important;
+}
+
+.husky-mode.dark .text-court,
+.husky-mode.dark .text-court-dark,
+.dark.husky-mode .text-court,
+.dark.husky-mode .text-court-dark {
+  color: #D0B787 !important;
+}
+
+.husky-mode.dark .border-court,
+.husky-mode.dark .border-court-dark,
+.dark.husky-mode .border-court,
+.dark.husky-mode .border-court-dark {
+  border-color: #D0B787 !important;
+}
+
+/* Dark mode neon blue → UW Purple with glow */
+.husky-mode.dark .dark\:bg-\[\\#60A5FA\],
+.dark.husky-mode .dark\:bg-\[\\#60A5FA\] {
+  background-color: #4B2E83 !important;
+  box-shadow: 0 0 12px rgba(75, 46, 131, 0.6) !important;
+}
+
+.husky-mode.dark .dark\:text-\[\\#60A5FA\],
+.dark.husky-mode .dark\:text-\[\\#60A5FA\] {
+  color: #D0B787 !important;
+}
+
+.husky-mode.dark .dark\:border-\[\\#60A5FA\],
+.dark.husky-mode .dark\:border-\[\\#60A5FA\] {
+  border-color: #D0B787 !important;
+}
+
+/* Dark mode progress bar */
+.husky-mode.dark .dark\:from-sky-400,
+.dark.husky-mode .dark\:from-sky-400 {
+  --tw-gradient-from: #4B2E83 !important;
+}
+
+.husky-mode.dark .dark\:via-violet-400,
+.dark.husky-mode .dark\:via-violet-400 {
+  --tw-gradient-via: #6B4BA3 !important;
+}
+
+.husky-mode.dark .dark\:to-pink-400,
+.dark.husky-mode .dark\:to-pink-400 {
+  --tw-gradient-to: #D0B787 !important;
+}
+
+/* Smooth 0.8s color-sweep transition */
+.husky-mode *,
+.husky-mode *::before,
+.husky-mode *::after {
+  transition: background-color 0.8s ease, color 0.8s ease, border-color 0.8s ease, box-shadow 0.8s ease !important;
+}
+
+/* ===============================
+   CLASSIC DARK MODE THEME
+   Original dark theme from backup
+================================= */
+
+/* Premium theme transition - matches global 0.5s duration */
+html {
+  transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark mode body styles */
+.dark body {
+  background-color: hsl(222 40% 11%);
+  color: hsl(210 40% 98%);
+}
+
+/* Dark mode removes paper grain texture */
+.dark body::before {
+  opacity: 0;
+}
+
+/* Dark mode selection */
+.dark ::selection {
+  background-color: #60A5FA;
+  color: #0f172a;
+}
+
+/* Dark mode card styles - glassmorphism */
+.dark .card-brutal {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: none;
+}
+
+.dark .card-brutal:hover {
+  border-color: rgba(96, 165, 250, 0.5);
+  box-shadow: 0 25px 50px -12px rgba(96, 165, 250, 0.15);
+  transform: translateY(-4px);
+}
+
+/* Dark mode court card styles */
+.dark .card-brutal-court {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  border-color: rgba(96, 165, 250, 0.3);
+  box-shadow: none;
+}
+
+.dark .card-brutal-court:hover {
+  border-color: rgba(96, 165, 250, 0.5);
+  box-shadow: 0 25px 50px -12px rgba(96, 165, 250, 0.15);
+  transform: translateY(-4px);
+}
+
+/* Dark mode buttons */
+.dark .btn-brutal {
+  background: linear-gradient(to right, #2563eb, #dc2626);
+  border-color: transparent;
+  box-shadow: 0 10px 40px -10px rgba(220, 38, 38, 0.4);
+}
+
+.dark .btn-brutal:hover {
+  background: linear-gradient(to right, #1d4ed8, #b91c1c);
+  box-shadow: 0 20px 50px -10px rgba(220, 38, 38, 0.5);
+  transform: translateY(-2px);
+}
+
+.dark .btn-brutal-outline {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: hsl(210 40% 98%);
+  box-shadow: none;
+}
+
+.dark .btn-brutal-outline:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(96, 165, 250, 0.5);
+  color: hsl(210 40% 98%);
+  box-shadow: 0 20px 40px -10px rgba(96, 165, 250, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Dark mode color overrides */
+.dark .bg-paper {
+  background-color: hsl(222 40% 11%);
+}
+
+.dark .bg-paper-dark {
+  background-color: hsl(222 40% 9%);
+}
+
+.dark .text-espresso {
+  color: hsl(210 40% 98%);
+}
+
+.dark .text-espresso\/60 {
+  color: hsl(215 20.2% 65.1%);
+}
+
+.dark .text-espresso\/70 {
+  color: hsl(215 20.2% 70%);
+}
+
+.dark .text-espresso\/80 {
+  color: hsl(215 20.2% 80%);
+}
+
+.dark .border-espresso {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark .border-espresso\/10,
+.dark .border-espresso\/20,
+.dark .border-espresso\/30 {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Dark mode court green becomes neon blue accent */
+.dark .text-court,
+.dark .text-court-dark {
+  color: #60A5FA;
+}
+
+.dark .bg-court {
+  background: linear-gradient(to right, #2563eb, #dc2626);
+}
+
+.dark .bg-court\/10,
+.dark .bg-court\/20,
+.dark .bg-court\/30 {
+  background-color: rgba(96, 165, 250, 0.15);
+}
+
+.dark .border-court,
+.dark .border-court-dark,
+.dark .border-court\/30 {
+  border-color: rgba(96, 165, 250, 0.4);
+}
+
+/* Dark mode tags */
+.dark .tag-brutal {
+  background: rgba(71, 85, 105, 0.5);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: hsl(215 20.2% 80%);
+  box-shadow: none;
+}
+
+/* Dark mode shadows */
+.dark .shadow-brutal,
+.dark .shadow-brutal-sm,
+.dark .shadow-brutal-lg {
+  box-shadow: none;
+}
+
+/* Dark mode scribble underline - blue gradient */
+.dark .underline-scribble::after {
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='8' viewBox='0 0 100 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%2360A5FA'/%3E%3Cstop offset='100%25' stop-color='%23F87171'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M1 5.5C20 2 40 7 60 4C80 1 90 6 99 3.5' stroke='url(%23grad)' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+/* Dark mode tennis yellow adjustments */
+.dark .bg-tennis {
+  background-color: rgba(96, 165, 250, 0.2);
+}
+
+.dark .bg-tennis\/10 {
+  background-color: rgba(96, 165, 250, 0.1);
+}
+
+/* Dark mode espresso background tints */
+.dark .bg-espresso\/5 {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.dark .bg-espresso\/10 {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* ===============================
+   GLOBAL THEME TRANSITIONS
+   Applied to ALL elements so transitions work both ways (light↔dark)
+================================= */
+
+/* Base transition for all elements - works regardless of theme state */
+*,
+*::before,
+*::after {
+  transition-property: background-color, border-color, color, fill, stroke, box-shadow;
+  transition-duration: 0.5s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Disable transitions on first page load to prevent flash */
+html.no-transitions *,
+html.no-transitions *::before,
+html.no-transitions *::after {
+  transition: none !important;
+}
+
+/* Performance optimization for main containers */
+body,
+header,
+footer,
+main,
+section {
+  will-change: background-color;
+}
