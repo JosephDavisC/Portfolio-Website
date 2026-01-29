@@ -13,6 +13,7 @@ import NotFound from "./pages/NotFound";
 import CredentialPage from "./pages/CredentialPage";
 import ArticlePage from "./pages/ArticlePage";
 import ProjectsPage from "./pages/ProjectsPage";
+import SeoDocs from "./pages/SeoDocs";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ const App = () => (
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/credential/:slug" element={<CredentialPage />} />
           <Route path="/blog/:slug" element={<ArticlePage />} />
+          <Route path="/seo-docs" element={<SeoDocs />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
 

@@ -13,6 +13,13 @@ const pages = [
     description: "Explore Joseph Chamdani's portfolio of AI, web development, and game projects.",
     image: 'https://joechamdani.com/Logo_Joseph.PNG',
     url: 'https://joechamdani.com/projects'
+  },
+  {
+    path: 'seo-docs',
+    title: "SEO & Technical Documentation | Joseph Davis Chamdani",
+    description: "How I solved React SPA SEO challenges with static page generation. Custom SEO optimization, Open Graph meta tags, and modern web architecture.",
+    image: 'https://joechamdani.com/Logo_Joseph.PNG',
+    url: 'https://joechamdani.com/seo-docs'
   }
 ];
 
@@ -66,7 +73,7 @@ for (const page of pages) {
     `<meta property="og:image" content="${page.image}" />`
   );
 
-  // Replace Twitter tags
+  // Replace Twitter tags (using name= attribute)
   html = html.replace(
     /<meta name="twitter:url" content=".*?" \/>/,
     `<meta name="twitter:url" content="${page.url}" />`
@@ -83,6 +90,10 @@ for (const page of pages) {
     /<meta name="twitter:image" content=".*?" \/>/,
     `<meta name="twitter:image" content="${page.image}" />`
   );
+
+  // Remove og:image dimensions since Logo_Joseph.PNG is not 1200x630
+  html = html.replace(/<meta property="og:image:width" content=".*?" \/>\n?\s*/g, '');
+  html = html.replace(/<meta property="og:image:height" content=".*?" \/>\n?\s*/g, '');
 
   // Write the modified HTML
   fs.writeFileSync(path.join(pageDir, 'index.html'), html);

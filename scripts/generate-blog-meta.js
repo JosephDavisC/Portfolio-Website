@@ -51,13 +51,15 @@ function generateHTML(slug, meta, assets) {
     <meta property="og:title" content="${meta.title}" />
     <meta property="og:description" content="${meta.description}" />
     <meta property="og:image" content="${meta.image}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="${meta.url}" />
-    <meta property="twitter:title" content="${meta.title}" />
-    <meta property="twitter:description" content="${meta.description}" />
-    <meta property="twitter:image" content="${meta.image}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="${meta.url}" />
+    <meta name="twitter:title" content="${meta.title}" />
+    <meta name="twitter:description" content="${meta.description}" />
+    <meta name="twitter:image" content="${meta.image}" />
 
     <!-- Load the main app's CSS and JS -->
     <script type="module" crossorigin src="${assets.js}"></script>
