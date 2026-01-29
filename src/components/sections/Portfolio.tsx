@@ -8,7 +8,7 @@ const projects = projectsData.filter(p => p.featured).slice(0, 4);
 
 const Projects = () => {
   return (
-    <section id="portfolio" className="py-16 px-6 bg-paper">
+    <section id="portfolio" className="py-16 px-4 sm:px-6 bg-paper overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div
