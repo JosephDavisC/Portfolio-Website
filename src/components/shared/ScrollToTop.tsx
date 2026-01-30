@@ -32,7 +32,7 @@ export default function ScrollFromState() {
       // For all other navigations, scroll to top
       window.scrollTo(0, 0);
     }
-  }, [location.pathname]);
+  }, [location.pathname, location.state]);
 
   return null;
 }

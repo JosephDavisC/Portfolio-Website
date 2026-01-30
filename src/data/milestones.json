@@ -1,13 +1,28 @@
 {
     "linkedinFallback": "https://www.linkedin.com/in/joseph-chamdani/",
+    "categories": ["All", "Internships", "Clubs", "Work"],
     "companies": [
       {
         "name": "University of Washington",
+        "category": "Work",
         "logo": "/logos/UW_Logo.png",
         "website": "https://hfs.uw.edu/Dining",
         "meta": "Part-time · 5 mos",
         "location": "Seattle, Washington, United States",
         "roles": [
+          {
+            "title": "Student Assistant - Center Table",
+            "dates": "Jan 2026 – Present · 1 mo",
+            "meta": "On-site",
+            "bullets": [
+              "Worked as a cashier handling payments and student check in.",
+              "Served meals and maintained basic food safety standards.",
+              "Assisted staff to keep service running smoothly."
+            ],
+            "media": [
+              { "src": "/media/center-table.png", "caption": "Center Table", "href": "https://hfs.uw.edu/eat/dining-hours/Center-Table" }
+            ]
+          },
           {
             "title": "Student Assistant - Bay Laurel Catering",
             "dates": "Sep 2025 – Present",
@@ -26,6 +41,7 @@
       },
       {
         "name": "Sector - CyberSecurity",
+        "category": "Internships",
         "logo": "/logos/Sector_Icon_logo.png",
         "website": "https://sector.co.id",
         "meta": "Internship · 6 mos",
@@ -45,10 +61,11 @@
               { "src": "/media/Sector.jpg", "caption": "Sector Website", "href": "https://sector.co.id" }
             ]
           }
-        ]   
+        ]
       },
       {
         "name": "BC Tech Club",
+        "category": "Clubs",
         "logo": "/logos/bc-tech-club.jpg",
         "website": "https://bctechclub.com/",
         "meta": "Part-time · 1 yr 9 mos",
@@ -86,6 +103,7 @@
       },
       {
         "name": "Stockbit / Bibit",
+        "category": "Internships",
         "logo": "/logos/stockbit.png",
         "website": "https://stockbit.com/",
         "meta": "Internship · 3 mos",
@@ -97,9 +115,10 @@
             "meta": "Hybrid",
             "bullets": [
               "Developed OCR pipeline to auto-extract user data from Indonesian KTP documents during the KYC process.",
-              "Built an AI model with Google Cloud AutoML to detect fraudulent documents and flag scam/spam posts from Stockbit’s social media platform.",
+              "Built an AI model with Google Cloud AutoML to detect fraudulent documents and flag scam/spam posts from Stockbit's social media platform.",
               "Increased KYC verification speed and accuracy by automating manual checks."
             ],
+            "detailsLink": "/experience/stockbit",
             "media": [
               { "src": "/media/stockbit-certificate.jpeg", "caption": "Certificate" },
               { "src": "/media/team-photo.jpeg", "caption": "Team Photo" },
@@ -110,6 +129,7 @@
       },
       {
         "name": "Dev.Net.HS",
+        "category": "Clubs",
         "logo": "/logos/devnet-logo.jpg",
         "website": "https://hsdevnet.com/index",
         "meta": "Part-time · 1 yr 1 mo",
@@ -133,6 +153,7 @@
       },
       {
         "name": "Touchten Games",
+        "category": "Internships",
         "logo": "/logos/touchten-games-logo.jpg",
         "website": "https://www.touchten.com/",
         "meta": "Internship · 2 mos",
@@ -143,10 +164,11 @@
             "dates": "Jul 2023 – Aug 2023",
             "meta": "On-site",
             "bullets": [
-              "Developed cutscenes with Unity and C# for “Piper’s Cat Café”.",
+              "Developed cutscenes with Unity and C# for 'Piper's Cat Café'.",
               "Collaborated with game design on pacing and flow.",
               "Assisted with scripting and cutscene creation."
             ],
+            "detailsLink": "/experience/touchten",
             "media": [
               { "src": "/media/touchten-1.jpeg", "caption": "Gameplay", "href": "https://drive.google.com/file/d/1K2DFHZOAV_TE3tg1sWXrSyqqJLIcTmQB/view" },
               { "src": "/media/touchten-2.jpeg", "caption": "Team session" }
@@ -156,6 +178,7 @@
       },
       {
         "name": "VR Park",
+        "category": "Internships",
         "logo": "/logos/vr-park-logo.jpg",
         "website": null,
         "meta": "Internship · 5 mos",
@@ -170,6 +193,7 @@
               "Integrated VR SDK plugins and multiplayer systems for immersive networking.",
               "Created scripts and subtitles, assisted research, and onboarded new interns."
             ],
+            "detailsLink": "/experience/vr-park",
             "media": [
               { "src": "/media/vr-park-logo-thumbnail.png", "caption": "VR Park", "href": "https://youtu.be/lgahuoczoiA?si=CwuUs_vg5XW6xPmv" },
               { "src": "/media/vr-park-certificate.png", "caption": "Certificate" }
@@ -179,6 +203,7 @@
       },
       {
         "name": "StarCamp Asia",
+        "category": "Internships",
         "logo": "/logos/starcamp-logo.jpg",
         "website": "https://www.linkedin.com/company/starcampasia/posts/?feedView=all",
         "meta": "Internship · 2 mos",
@@ -203,4 +228,3 @@
       }
     ]
   }
-  

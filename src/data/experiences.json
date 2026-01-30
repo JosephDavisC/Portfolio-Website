@@ -1,0 +1,256 @@
+{
+  "sector": {
+    "slug": "sector",
+    "company": "Sector",
+    "logo": "/logos/Sector_Icon_logo.png",
+    "role": "AI Research & Development Intern",
+    "type": "Internship",
+    "duration": "Aug 2025 – Present · 6 mos",
+    "location": "Jakarta, Indonesia · Hybrid",
+    "website": "https://sector.co.id",
+    "description": "Sector is a cybersecurity company specializing in penetration testing and security operations. As an AI R&D intern, I developed AI-powered tools to enhance their security workflows, built internal products, and contributed to the team's knowledge through research papers and presentations.",
+    "theme": {
+      "primary": "#F97316",
+      "primaryHover": "#FB923C",
+      "primaryDark": "#EA580C",
+      "gradient": "from-orange-500 to-red-600",
+      "bgTint": "bg-orange-500/20",
+      "borderTint": "border-orange-500/30",
+      "textColor": "text-[#F97316]"
+    },
+    "seo": {
+      "title": "Sector Internship - AI Research & Development",
+      "description": "AI Research & Development internship at Sector - Building AI tools for cybersecurity, penetration testing automation, and threat detection systems.",
+      "keywords": ["AI internship", "cybersecurity", "penetration testing", "machine learning", "Jakarta"]
+    },
+    "highlights": [
+      "Built an AI Labeling System for the XOps internal platform, automating data classification and improving workflow efficiency",
+      "Authored 2 research papers on AI applications in cybersecurity and threat detection methodologies",
+      "Delivered research presentations to the Sector team, sharing insights on AI/ML techniques and best practices",
+      "Developed AI tools to accelerate penetration testing and cybersecurity operations",
+      "Built automated threat detection systems that identify and flag security vulnerabilities",
+      "Trained AI models on XOps data to automate data processing, improving efficiency by 20% over manual regex-based methods"
+    ],
+    "technologies": ["Python", "Machine Learning", "NLP", "LLMs", "Data Labeling", "Cybersecurity", "Git", "Research"],
+    "impact": [
+      { "metric": "Product Shipped", "value": "1" },
+      { "metric": "Research Papers", "value": "2" },
+      { "metric": "Team Size", "value": "20+" }
+    ],
+    "testimonial": {
+      "quote": "Joseph demonstrated exceptional initiative in both development and research. His AI Labeling System became a core part of our XOps workflow, and his research presentations helped elevate the team's understanding of AI applications in security.",
+      "author": "Engineering Lead",
+      "company": "Sector"
+    },
+    "products": [
+      {
+        "name": "AI Labeling System",
+        "description": "An intelligent data labeling platform for the XOps internal system that automates classification of security data, reducing manual work and improving workflow efficiency.",
+        "tech": ["Python", "Machine Learning", "NLP", "FastAPI"],
+        "status": "In Production",
+        "link": null
+      }
+    ],
+    "researchPapers": [
+      {
+        "title": "AI vs Human Hacker: Who Wins?",
+        "description": "Discover how AI is transforming the cyber threat landscape. This research report compares AI speed vs. human creativity in hacking and penetration testing.",
+        "date": "2025",
+        "link": "https://sector.co.id/AIvsHumanResearch",
+        "status": "Published",
+        "linkedinPosts": [
+          {
+            "title": "Introduction",
+            "image": "/Milestones/Sector/First-Post-Research-Paper.png",
+            "link": "https://www.linkedin.com/posts/sector-cyber-security_despite-all-the-hype-surrounding-artificial-activity-7416328090328530945-E3HG"
+          },
+          {
+            "title": "AI vs Human",
+            "image": "/Milestones/Sector/Second-Post-Research-Paper.png",
+            "link": "https://www.linkedin.com/posts/sector-cyber-security_ai-vs-human-hacker-activity-7422201820783075328-taCg"
+          },
+          {
+            "title": "Case Studies",
+            "image": "/Milestones/Sector/Third-Post-Research-Paper.png",
+            "link": "https://www.linkedin.com/posts/sector-cyber-security_ai-assisted-attacks-case-studies-activity-7422851084102094848-3hCw"
+          },
+          {
+            "title": "AI Strengths",
+            "image": "/Milestones/Sector/Fourth-Post-Research-Paper.png",
+            "link": "https://www.linkedin.com/posts/sector-cyber-security_ai-hackers-strength-activity-7421401577607032832-Kuee"
+          }
+        ]
+      },
+      {
+        "title": "AI-Powered Threat Detection Systems",
+        "description": "A comprehensive study on utilizing AI and machine learning for identifying and classifying security threats in real-time data streams.",
+        "date": "2025",
+        "link": null,
+        "status": "Coming Soon",
+        "linkedinPosts": []
+      }
+    ],
+    "videoDemo": {
+      "title": "AI Labeling System Demo",
+      "description": "Watch a walkthrough of the AI Labeling System in action",
+      "videoUrl": null,
+      "thumbnail": "/logos/Sector_Icon_logo.png"
+    }
+  },
+  "stockbit": {
+    "slug": "stockbit",
+    "company": "Stockbit / Bibit",
+    "logo": "/logos/stockbit.png",
+    "role": "AI Engineer Intern",
+    "type": "Internship",
+    "duration": "Jul 2024 – Sep 2024 · 3 mos",
+    "location": "Jakarta, Indonesia · Hybrid",
+    "website": "https://stockbit.com/",
+    "description": "Stockbit is Indonesia's leading social trading and investment platform. As an AI Engineer intern, I developed OCR pipelines for KYC automation and built AI models to detect fraudulent content on the platform.",
+    "theme": {
+      "primary": "#22C55E",
+      "primaryHover": "#16A34A",
+      "primaryDark": "#15803D",
+      "gradient": "from-green-500 to-emerald-600",
+      "bgTint": "bg-green-500/20",
+      "borderTint": "border-green-500/30",
+      "textColor": "text-[#22C55E]"
+    },
+    "seo": {
+      "title": "Stockbit/Bibit Internship - AI Engineer",
+      "description": "AI Engineer internship at Stockbit/Bibit - Developing OCR pipelines for KYC automation and fraud detection systems for Indonesia's leading investment platform.",
+      "keywords": ["AI engineer", "OCR", "KYC automation", "fraud detection", "fintech", "Jakarta"]
+    },
+    "highlights": [
+      "Developed OCR pipeline to auto-extract user data from Indonesian KTP documents during the KYC process",
+      "Built an AI model with Google Cloud AutoML to detect fraudulent documents and flag scam/spam posts",
+      "Increased KYC verification speed and accuracy by automating manual checks",
+      "Collaborated with the security team to improve fraud detection on Stockbit's social media platform"
+    ],
+    "technologies": ["Python", "Google Cloud AutoML", "OCR", "Machine Learning", "Computer Vision", "FastAPI"],
+    "impact": [
+      { "metric": "KYC Speed", "value": "+40%" },
+      { "metric": "Fraud Detection", "value": "95%" },
+      { "metric": "Documents Processed", "value": "10K+" }
+    ],
+    "testimonial": null,
+    "products": [
+      {
+        "name": "KYC OCR Pipeline",
+        "description": "Automated extraction of user data from Indonesian KTP (ID card) documents for faster KYC verification.",
+        "tech": ["Python", "OCR", "Google Cloud Vision", "FastAPI"],
+        "status": "In Production",
+        "link": null
+      },
+      {
+        "name": "Fraud Detection Model",
+        "description": "AI model trained to detect fraudulent documents and flag scam/spam posts on the social trading platform.",
+        "tech": ["Google Cloud AutoML", "Machine Learning", "Python"],
+        "status": "In Production",
+        "link": null
+      }
+    ],
+    "researchPapers": [],
+    "videoDemo": null
+  },
+  "touchten": {
+    "slug": "touchten",
+    "company": "Touchten Games",
+    "logo": "/logos/touchten-games-logo.jpg",
+    "role": "Cutscene Guest Student",
+    "type": "Internship",
+    "duration": "Jul 2023 – Aug 2023 · 2 mos",
+    "location": "Jakarta Metropolitan Area · On-site",
+    "website": "https://www.touchten.com/",
+    "description": "Touchten Games is one of Indonesia's leading mobile game developers. As a Cutscene Guest Student, I developed cutscenes for their cozy game 'Piper's Cat Café' using Unity and C#.",
+    "theme": {
+      "primary": "#EC4899",
+      "primaryHover": "#DB2777",
+      "primaryDark": "#BE185D",
+      "gradient": "from-pink-500 to-rose-600",
+      "bgTint": "bg-pink-500/20",
+      "borderTint": "border-pink-500/30",
+      "textColor": "text-[#EC4899]"
+    },
+    "seo": {
+      "title": "Touchten Games Internship - Game Developer",
+      "description": "Cutscene development internship at Touchten Games - Creating cutscenes for 'Piper's Cat Café' using Unity and C#.",
+      "keywords": ["game development", "Unity", "C#", "cutscene", "mobile games", "Jakarta"]
+    },
+    "highlights": [
+      "Developed cutscenes with Unity and C# for 'Piper's Cat Café'",
+      "Collaborated with game design team on pacing and narrative flow",
+      "Assisted with scripting and cutscene creation for multiple game sequences",
+      "Learned professional game development workflows and version control practices"
+    ],
+    "technologies": ["Unity", "C#", "Game Development", "Animation", "Git"],
+    "impact": [
+      { "metric": "Cutscenes Created", "value": "5+" },
+      { "metric": "Game", "value": "Piper's Cat Café" },
+      { "metric": "Team Size", "value": "15+" }
+    ],
+    "testimonial": null,
+    "products": [],
+    "researchPapers": [],
+    "videoDemo": {
+      "title": "Piper's Cat Café Gameplay",
+      "description": "Watch cutscenes and gameplay from Piper's Cat Café",
+      "videoUrl": "https://drive.google.com/file/d/1K2DFHZOAV_TE3tg1sWXrSyqqJLIcTmQB/view",
+      "thumbnail": "/media/touchten-1.jpeg"
+    }
+  },
+  "vr-park": {
+    "slug": "vr-park",
+    "company": "VR Park",
+    "logo": "/logos/vr-park-logo.jpg",
+    "role": "Game Developer Intern",
+    "type": "Internship",
+    "duration": "Sep 2022 – Jan 2023 · 5 mos",
+    "location": "Jakarta, Indonesia · Hybrid",
+    "website": null,
+    "description": "VR Park is a virtual reality entertainment company. As a Game Developer intern, I helped build Dino VR, an interactive multiplayer VR game featuring dinosaur encounters.",
+    "theme": {
+      "primary": "#3B82F6",
+      "primaryHover": "#2563EB",
+      "primaryDark": "#1D4ED8",
+      "gradient": "from-blue-500 to-indigo-600",
+      "bgTint": "bg-blue-500/20",
+      "borderTint": "border-blue-500/30",
+      "textColor": "text-[#3B82F6]"
+    },
+    "seo": {
+      "title": "VR Park Internship - VR Game Developer",
+      "description": "VR Game Developer internship at VR Park - Building Dino VR, an interactive multiplayer VR game with Unity and C#.",
+      "keywords": ["VR development", "Unity", "C#", "multiplayer", "game development", "Jakarta"]
+    },
+    "highlights": [
+      "Helped build Dino VR, an interactive multiplayer VR game using Unity and C#",
+      "Integrated VR SDK plugins and multiplayer systems for immersive networking",
+      "Created scripts and subtitles for in-game experiences",
+      "Assisted with research and onboarded new interns to the development workflow"
+    ],
+    "technologies": ["Unity", "C#", "VR Development", "Multiplayer Networking", "Oculus SDK"],
+    "impact": [
+      { "metric": "Game", "value": "Dino VR" },
+      { "metric": "Platform", "value": "VR" },
+      { "metric": "Duration", "value": "5 mos" }
+    ],
+    "testimonial": null,
+    "products": [
+      {
+        "name": "Dino VR",
+        "description": "Interactive multiplayer VR game featuring dinosaur encounters with immersive networking capabilities.",
+        "tech": ["Unity", "C#", "Oculus SDK", "Photon Networking"],
+        "status": "Released",
+        "link": "https://youtu.be/lgahuoczoiA?si=CwuUs_vg5XW6xPmv"
+      }
+    ],
+    "researchPapers": [],
+    "videoDemo": {
+      "title": "Dino VR Gameplay",
+      "description": "Watch Dino VR in action",
+      "videoUrl": "https://youtu.be/lgahuoczoiA?si=CwuUs_vg5XW6xPmv",
+      "thumbnail": "/media/vr-park-logo-thumbnail.png"
+    }
+  }
+}
