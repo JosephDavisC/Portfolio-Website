@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
@@ -7,17 +8,55 @@
   <!-- Main Homepage -->
   <url>
     <loc>https://joechamdani.com/</loc>
-    <lastmod>2026-01-06</lastmod>
+    <lastmod>2026-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <!-- Profile Image (WebP + Original for SEO) -->
+    <image:image>
+      <image:loc>https://joechamdani.com/Joseph_Chamdani.webp</image:loc>
+      <image:title>Joseph Davis Chamdani - Profile Photo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/Joseph_Chamdani.JPEG</image:loc>
+      <image:title>Joseph Davis Chamdani - Profile Photo</image:title>
+    </image:image>
   </url>
 
   <!-- Projects Page -->
   <url>
     <loc>https://joechamdani.com/projects</loc>
-    <lastmod>2026-01-06</lastmod>
+    <lastmod>2026-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+
+  <!-- Experience Pages -->
+  <url>
+    <loc>https://joechamdani.com/experience/sector</loc>
+    <lastmod>2026-01-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://joechamdani.com/experience/stockbit</loc>
+    <lastmod>2026-01-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://joechamdani.com/experience/touchten</loc>
+    <lastmod>2026-01-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://joechamdani.com/experience/vr-park</loc>
+    <lastmod>2026-01-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <!-- Credential Pages -->

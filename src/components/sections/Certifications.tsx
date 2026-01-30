@@ -25,7 +25,7 @@ const certifications: Cert[] = [
     issuer: "Google",
     year: "Issued Aug 2025",
     href: "/credential/google-data-analytics",
-    logo: "/logos/google.png",
+    logo: "/logos/google.webp",
     logoAlt: "Google",
   },
   {
@@ -33,7 +33,7 @@ const certifications: Cert[] = [
     issuer: "StarCamp Asia",
     year: "Issued Jul 2022",
     href: "/credential/starcamp-unity",
-    logo: "/logos/starcamp-logo.jpg",
+    logo: "/logos/starcamp-logo.webp",
     logoAlt: "StarCamp Asia",
   },
   {
@@ -41,7 +41,7 @@ const certifications: Cert[] = [
     issuer: "StarCamp Asia",
     year: "Issued Sep 2022",
     href: "/credential/starcamp-ux",
-    logo: "/logos/starcamp-logo.jpg",
+    logo: "/logos/starcamp-logo.webp",
     logoAlt: "StarCamp Asia",
   },
 ];

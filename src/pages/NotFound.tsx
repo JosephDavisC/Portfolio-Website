@@ -46,11 +46,10 @@ const NotFound = () => {
           transition={{ duration: 0.8, type: "spring", bounce: 0.5 }}
           className="mb-2"
         >
-          <img
-            src="/images/404/waakk.PNG"
-            alt="Lost character"
-            className="w-48 md:w-64 mx-auto drop-shadow-2xl object-contain"
-          />
+          <picture>
+            <source srcSet="/images/404/waakk.webp" type="image/webp" />
+            <img src="/images/404/waakk.PNG" alt="Lost character" className="w-48 md:w-64 mx-auto drop-shadow-2xl object-contain" />
+          </picture>
         </motion.div>
 
         <motion.div

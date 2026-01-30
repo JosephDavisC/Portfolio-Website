@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Mail, GraduationCap } from "lucide-react";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { CoffeeCupWithSteam } from "@/components/shared/CoffeeSteam";
 
 // Custom Tennis Ball SVG (no emoji) - detailed version
@@ -245,17 +244,26 @@ const Hero = () => {
                 whileHover={{ scale: 1.1, rotate: -5 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
-                <img src="/logos/UW_Logo.png" alt="University of Washington" className="w-full h-full object-cover" />
+                <picture>
+                  <source srcSet="/logos/UW_Logo.webp" type="image/webp" />
+                  <img src="/logos/UW_Logo.png" alt="University of Washington" className="w-full h-full object-cover" />
+                </picture>
               </motion.div>
 
-              {/* Profile Image */}
+              {/* Profile Image - Using div instead of Avatar for picture tag support */}
               <div className="relative">
-                <Avatar className="w-80 h-80 md:w-96 md:h-96 border-4 border-espresso shadow-brutal-lg relative z-10 transition-all duration-300">
-                  <AvatarImage src="/Joseph_Chamdani.JPEG" alt="Joseph Chamdani" className="object-cover object-top" />
-                  <AvatarFallback className="text-6xl font-heading font-bold bg-court text-paper">
-                    JC
-                  </AvatarFallback>
-                </Avatar>
+                <div className="relative flex w-80 h-80 md:w-96 md:h-96 shrink-0 overflow-hidden rounded-full border-4 border-espresso shadow-brutal-lg z-10 transition-all duration-300">
+                  <picture>
+                    <source srcSet="/Joseph_Chamdani.webp" type="image/webp" />
+                    <img
+                      src="/Joseph_Chamdani.JPEG"
+                      alt="Joseph Davis Chamdani"
+                      className="aspect-square h-full w-full object-cover object-top"
+                      // @ts-ignore - fetchpriority is valid HTML but not in React types yet
+                      fetchpriority="high"
+                    />
+                  </picture>
+                </div>
               </div>
 
               {/* Academic Mode Overlay */}

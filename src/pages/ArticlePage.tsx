@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useParams, Link, Navigate } from 'react-router-dom';
+import { useParams, Link, Navigate, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Calendar, ExternalLink } from 'lucide-react';
@@ -31,7 +31,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
 
           <div className="my-6 rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
             <img
-              src="/article_media/bc-hacks-2024/Clubs.png"
+              src="/article_media/bc-hacks-2024/Clubs.webp"
               alt="Collaborating student clubs"
               className="w-full object-cover"
             />
@@ -47,7 +47,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
 
           <div className="my-6 rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
             <img
-              src="/article_media/bc-hacks-2024/Group_Photo.png"
+              src="/article_media/bc-hacks-2024/Group_Photo.webp"
               alt="BC Hacks 2024 participants and organizers"
               className="w-full object-cover"
             />
@@ -70,7 +70,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
 
           <div className="my-6 rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
             <img
-              src="/article_media/bc-hacks-2024/Team.png"
+              src="/article_media/bc-hacks-2024/Team.webp"
               alt="BC Hacks organizing team"
               className="w-full object-cover"
             />
@@ -89,7 +89,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
             <div className="rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
               <img
-                src="/article_media/bc-hacks-2024/Venue.png"
+                src="/article_media/bc-hacks-2024/Venue.webp"
                 alt="BC Hacks venue setup in Room U301"
                 className="w-full h-auto object-contain md:object-cover md:h-64"
               />
@@ -99,7 +99,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             </div>
             <div className="rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
               <img
-                src="/article_media/bc-hacks-2024/Room_Layout.png"
+                src="/article_media/bc-hacks-2024/Room_Layout.webp"
                 alt="Event room layout planning"
                 className="w-full h-auto object-contain md:object-cover md:h-64"
               />
@@ -119,7 +119,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
             <div className="rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
               <img
-                src="/article_media/bc-hacks-2024/Marketing.png"
+                src="/article_media/bc-hacks-2024/Marketing.webp"
                 alt="BC Hacks marketing and outreach"
                 className="w-full h-auto object-contain md:object-cover md:h-64"
               />
@@ -129,7 +129,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             </div>
             <div className="rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
               <img
-                src="/article_media/bc-hacks-2024/Judging_Rubric.png"
+                src="/article_media/bc-hacks-2024/Judging_Rubric.webp"
                 alt="Judging rubric for BC Hacks"
                 className="w-full h-auto object-contain md:object-cover md:h-64"
               />
@@ -148,7 +148,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
             <div className="rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
               <img
-                src="/article_media/bc-hacks-2024/Schedule.png"
+                src="/article_media/bc-hacks-2024/Schedule.webp"
                 alt="BC Hacks event schedule"
                 className="w-full h-auto object-contain md:object-cover md:h-64"
               />
@@ -158,7 +158,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             </div>
             <div className="rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
               <img
-                src="/article_media/bc-hacks-2024/Food_vendors.png"
+                src="/article_media/bc-hacks-2024/Food_vendors.webp"
                 alt="Food vendors at BC Hacks"
                 className="w-full h-auto object-contain md:object-cover md:h-64"
               />
@@ -183,7 +183,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-6">
             <div className="rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
               <img
-                src="/article_media/bc-hacks-2024/Checkin.JPG"
+                src="/article_media/bc-hacks-2024/Checkin.webp"
                 alt="Student check-in at BC Hacks"
                 className="w-full h-64 object-cover"
               />
@@ -193,7 +193,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             </div>
             <div className="rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
               <img
-                src="/article_media/bc-hacks-2024/Workshops.png"
+                src="/article_media/bc-hacks-2024/Workshops.webp"
                 alt="Workshop session at BC Hacks"
                 className="w-full h-64 object-cover"
               />
@@ -203,7 +203,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             </div>
             <div className="rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
               <img
-                src="/article_media/bc-hacks-2024/Participants.png"
+                src="/article_media/bc-hacks-2024/Participants.webp"
                 alt="Students working on their projects"
                 className="w-full h-64 object-cover"
               />
@@ -222,7 +222,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
             <div className="rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
               <img
-                src="/article_media/bc-hacks-2024/Judging_1.png"
+                src="/article_media/bc-hacks-2024/Judging_1.webp"
                 alt="Teams presenting to judges"
                 className="w-full h-64 object-cover"
               />
@@ -232,7 +232,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             </div>
             <div className="rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
               <img
-                src="/article_media/bc-hacks-2024/Judging_2.png"
+                src="/article_media/bc-hacks-2024/Judging_2.webp"
                 alt="Project demonstrations"
                 className="w-full h-64 object-cover"
               />
@@ -253,7 +253,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
 
           <div className="my-6 rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
             <img
-              src="/article_media/bc-hacks-2024/Winners.png"
+              src="/article_media/bc-hacks-2024/Winners.webp"
               alt="BC Hacks 2024 award ceremony"
               className="w-full object-cover"
             />
@@ -305,7 +305,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
 
           <div className="my-8 rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
             <img
-              src="/article_media/journey/Atlanta_Trip_Group_Photo.JPG"
+              src="/article_media/journey/Atlanta_Trip_Group_Photo.webp"
               alt="Atlanta trip with family and cousins"
               className="w-full object-cover"
             />
@@ -330,7 +330,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
             <div className="rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
               <img
-                src="/article_media/journey/VR_Park.png"
+                src="/article_media/journey/VR_Park.webp"
                 alt="VR Park internship"
                 className="w-full h-auto object-contain md:object-cover md:h-64"
               />
@@ -340,7 +340,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             </div>
             <div className="rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
               <img
-                src="/article_media/journey/Highscope_Class_K_Picture.JPG"
+                src="/article_media/journey/Highscope_Class_K_Picture.webp"
                 alt="Highscope classroom"
                 className="w-full h-auto object-contain md:object-cover md:h-64"
               />
@@ -364,7 +364,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
 
           <div className="my-8 rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
             <img
-              src="/article_media/journey/devnet-club-photo.jpeg"
+              src="/article_media/journey/devnet-club-photo.webp"
               alt="Developer Network club photo"
               className="w-full object-cover"
             />
@@ -398,7 +398,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
             <div className="rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
               <img
-                src="/article_media/journey/whatcom.JPG"
+                src="/article_media/journey/whatcom.webp"
                 alt="College visit to Whatcom"
                 className="w-full h-auto object-contain md:object-cover md:h-64"
               />
@@ -408,7 +408,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             </div>
             <div className="rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
               <img
-                src="/article_media/journey/Leonardo_Edwin.JPG"
+                src="/article_media/journey/Leonardo_Edwin.webp"
                 alt="With Leonardo Edwin at Bellevue College"
                 className="w-full h-auto object-contain md:object-cover md:h-64"
               />
@@ -429,7 +429,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
             <div className="rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
               <img
-                src="/article_media/journey/Shirt_Signed.JPG"
+                src="/article_media/journey/Shirt_Signed.webp"
                 alt="Shirt signed by Highscope friends"
                 className="w-full h-auto object-contain md:object-cover md:h-64"
               />
@@ -439,7 +439,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             </div>
             <div className="rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
               <img
-                src="/article_media/journey/touchten.jpeg"
+                src="/article_media/journey/touchten.webp"
                 alt="TouchTen Games internship"
                 className="w-full h-auto object-contain md:object-cover md:h-64"
               />
@@ -472,7 +472,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
             <div className="rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
               <img
-                src="/article_media/journey/Website_Making.jpg"
+                src="/article_media/journey/Website_Making.webp"
                 alt="Coding the BC Tech Club website"
                 className="w-full h-auto object-contain md:object-cover md:h-64"
               />
@@ -482,7 +482,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             </div>
             <div className="rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
               <img
-                src="/article_media/journey/Joe_Guan.JPG"
+                src="/article_media/journey/Joe_Guan.webp"
                 alt="With friend Guan"
                 className="w-full h-auto object-contain md:object-cover md:h-64"
               />
@@ -505,7 +505,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
             <div className="rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
               <img
-                src="/article_media/journey/Juwi_1.jpg"
+                src="/article_media/journey/Juwi_1.webp"
                 alt="With Jessica"
                 className="w-full h-auto object-contain md:object-cover md:h-64"
               />
@@ -515,7 +515,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             </div>
             <div className="rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
               <img
-                src="/article_media/journey/Juwi_2.JPG"
+                src="/article_media/journey/Juwi_2.webp"
                 alt="Jessica and me"
                 className="w-full h-auto object-contain md:object-cover md:h-64"
               />
@@ -537,7 +537,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
             <div className="rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
               <img
-                src="/article_media/journey/Bellevue_College_Orientation_Photo.JPG"
+                src="/article_media/journey/Bellevue_College_Orientation_Photo.webp"
                 alt="Bellevue College orientation"
                 className="w-full h-auto object-contain md:object-cover md:h-64"
               />
@@ -547,7 +547,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             </div>
             <div className="rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
               <img
-                src="/article_media/journey/Tech_Club.JPG"
+                src="/article_media/journey/Tech_Club.webp"
                 alt="BC Tech Club meeting"
                 className="w-full h-auto object-contain md:object-cover md:h-64"
               />
@@ -571,7 +571,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
             <div className="rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
               <img
-                src="/article_media/journey/bc-hacks-group-photo.JPG"
+                src="/article_media/journey/bc-hacks-group-photo.webp"
                 alt="BC Hacks 2024 group photo"
                 className="w-full h-auto object-contain md:object-cover md:h-64"
               />
@@ -581,7 +581,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             </div>
             <div className="rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
               <img
-                src="/article_media/journey/BC_Hacks_Jess.JPG"
+                src="/article_media/journey/BC_Hacks_Jess.webp"
                 alt="At BC Hacks with Jessica"
                 className="w-full h-auto object-contain md:object-cover md:h-64"
               />
@@ -611,7 +611,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
 
           <div className="my-8 rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
             <img
-              src="/article_media/journey/Bellevue_Indo_Club.JPG"
+              src="/article_media/journey/Bellevue_Indo_Club.webp"
               alt="Bellevue Indonesian Club"
               className="w-full object-cover"
             />
@@ -628,7 +628,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
 
           <div className="my-8 rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
             <img
-              src="/article_media/journey/Bibit-Group-Photo.jpeg"
+              src="/article_media/journey/Bibit-Group-Photo.webp"
               alt="Stockbit/Bibit internship team"
               className="w-full object-cover"
             />
@@ -652,7 +652,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
 
           <div className="my-8 rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
             <img
-              src="/article_media/journey/Informatics_Acceptance.jpg"
+              src="/article_media/journey/Informatics_Acceptance.webp"
               alt="UW Informatics acceptance letter"
               className="w-full object-cover"
             />
@@ -675,7 +675,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
             <div className="rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
               <img
-                src="/article_media/journey/Graduation_Peace.png"
+                src="/article_media/journey/Graduation_Peace.webp"
                 alt="Bellevue College graduation"
                 className="w-full h-auto object-contain md:object-cover md:h-64"
               />
@@ -685,7 +685,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
             </div>
             <div className="rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
               <img
-                src="/article_media/journey/Last_Pic_Hostfam.JPG"
+                src="/article_media/journey/Last_Pic_Hostfam.webp"
                 alt="Last photo with host family"
                 className="w-full h-auto object-contain md:object-cover md:h-64"
               />
@@ -702,7 +702,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
 
           <div className="my-8 rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
             <img
-              src="/article_media/journey/Joe_MaryGates_Hall.jpg"
+              src="/article_media/journey/Joe_MaryGates_Hall.webp"
               alt="At UW Mary Gates Hall"
               className="w-full object-cover"
             />
@@ -745,7 +745,11 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
 
 const ArticlePage = () => {
   const { slug } = useParams<{ slug: string }>();
+  const location = useLocation();
   const article = articles.find((a) => a.id === slug);
+
+  // Get the return path from state, or default to home with blog scroll
+  const from = (location.state as { from?: string })?.from || "/";
 
   // Scroll to top when page loads
   useEffect(() => {
@@ -812,8 +816,8 @@ const ArticlePage = () => {
         <div className="max-w-4xl mx-auto">
           {/* Back Button */}
           <Link
-            to="/"
-            state={{ scrollTo: "blog" }}
+            to={from.split('#')[0] || "/"}
+            state={{ scrollTo: from.includes('#') ? from.split('#')[1] : "blog" }}
             className="inline-flex items-center text-espresso/60 hover:text-espresso transition-colors mb-8 group font-mono"
           >
             <ArrowLeft className="h-5 w-5 mr-2 group-hover:-translate-x-1 transition-transform" />
@@ -914,8 +918,8 @@ const ArticlePage = () => {
           {/* Back to Blog Button */}
           <div className="mt-12 text-center">
             <Link
-              to="/"
-              state={{ scrollTo: "blog" }}
+              to={from.split('#')[0] || "/"}
+              state={{ scrollTo: from.includes('#') ? from.split('#')[1] : "blog" }}
               className="btn-brutal-outline inline-flex items-center gap-2"
             >
               <ArrowLeft className="h-5 w-5" />

@@ -1,6 +1,95 @@
+# ============================
+# PERFORMANCE OPTIMIZATIONS
+# ============================
+
+# Enable Gzip/Brotli compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript
+  AddOutputFilterByType DEFLATE application/json application/xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# Browser caching for static assets
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # Images - 1 year cache
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/avif "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+
+  # Fonts - 1 year cache
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType application/font-woff2 "access plus 1 year"
+  ExpiresByType application/font-woff "access plus 1 year"
+
+  # CSS and JS - 1 year (Vite adds hash to filenames)
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+
+  # HTML - no cache (always fresh)
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# Cache-Control headers
+<IfModule mod_headers.c>
+  # Hashed assets (immutable)
+  <FilesMatch "\.(js|css|woff2|woff|jpg|jpeg|png|gif|webp|avif|svg|ico)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # HTML files - no cache
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+# ============================
+# URL REWRITING
+# ============================
+
 # Enable rewrite engine
 RewriteEngine On
 RewriteBase /
+
+# ============================
+# WEBP IMAGE SERVING
+# ============================
+# Serve WebP images when browser supports it (SEO-safe migration)
+# Original JPEG/PNG files are kept for Google Image indexing
+
+# Add MIME type for WebP
+AddType image/webp .webp
+
+# If browser accepts WebP and WebP version exists, serve it
+<IfModule mod_rewrite.c>
+  # Check if browser supports WebP
+  RewriteCond %{HTTP_ACCEPT} image/webp
+  # Match requests for jpg, jpeg, or png
+  RewriteCond %{REQUEST_URI} \.(jpe?g|png)$ [NC]
+  # Check if WebP version exists
+  RewriteCond %{DOCUMENT_ROOT}/$1.webp -f
+  # Rewrite to WebP
+  RewriteRule ^(.+)\.(jpe?g|png)$ $1.webp [T=image/webp,L]
+</IfModule>
+
+# Set Vary header for proper caching (important for CDNs)
+<IfModule mod_headers.c>
+  <FilesMatch "\.(jpe?g|png)$">
+    Header append Vary Accept
+  </FilesMatch>
+</IfModule>
+
+# ============================
+# PAGE ROUTING
+# ============================
 
 # Serve static blog pages ONLY for social media crawlers
 RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit|Twitterbot|LinkedInBot|Slackbot|WhatsApp|TelegramBot|Discordbot) [NC]

@@ -107,7 +107,7 @@ export default function About() {
           >
             {/* Floating Chibi */}
             <motion.img
-              src="/images/chibis/jo_stress.PNG"
+              src="/images/chibis/jo_stress.webp"
               alt="Stressed Joe learning all these technologies"
               className="absolute top-4 right-4 w-20 h-20 md:w-24 md:h-24 opacity-20 pointer-events-none"
               animate={{

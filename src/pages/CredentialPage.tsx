@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 import { ArrowLeft, Download, ExternalLink, PlayCircle } from "lucide-react";
 import Navbar from "@/components/shared/Navbar";
 import creds from "@/data/credentials.json";
@@ -59,8 +59,12 @@ const isVideoFile = (url?: string) =>
 /* ---------- Page ---------- */
 export default function CredentialPage() {
   const { slug } = useParams();
+  const location = useLocation();
   const cred = (creds as Cred[]).find((c) => c.slug === slug);
   const isDesktop = useIsDesktop();
+
+  // Get the return path from state, or default to home with certifications scroll
+  const from = (location.state as { from?: string })?.from || "/";
 
   if (!cred) {
     return (
@@ -69,8 +73,8 @@ export default function CredentialPage() {
         <section className="min-h-screen pt-28 pb-24 px-6 bg-paper dark:bg-[#141B2D]">
           <div className="max-w-5xl mx-auto">
             <Link
-              to="/"
-              state={{ scrollTo: "certifications" }}
+              to={from.split('#')[0] || "/"}
+              state={{ scrollTo: from.includes('#') ? from.split('#')[1] : "certifications" }}
               className="inline-flex items-center gap-2 text-espresso/60 dark:text-slate-400 hover:text-espresso dark:hover:text-slate-200 font-mono"
             >
               <ArrowLeft className="h-4 w-4" /> Back to Credentials
@@ -112,8 +116,8 @@ export default function CredentialPage() {
           {/* Actions */}
           <div className="flex items-center justify-between mb-4">
             <Link
-              to="/"
-              state={{ scrollTo: "certifications" }}
+              to={from.split('#')[0] || "/"}
+              state={{ scrollTo: from.includes('#') ? from.split('#')[1] : "certifications" }}
               className="inline-flex items-center gap-2 text-espresso/70 dark:text-slate-400 hover:text-espresso dark:hover:text-slate-200 font-mono"
             >
               <ArrowLeft className="h-4 w-4" /> Back to Credentials

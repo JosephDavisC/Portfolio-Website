@@ -86,7 +86,7 @@ const ContactForm = () => {
       viewport={{ once: true }}
     >
       <motion.img
-        src="/images/chibis/headphone_joe.PNG"
+        src="/images/chibis/headphone_joe.webp"
         alt="Joseph Chibi"
         className="absolute -top-8 -right-8 w-32 h-32 md:w-40 md:h-40 opacity-20 group-hover/form:opacity-30 pointer-events-none transition-opacity duration-500"
         initial={{ rotate: -10, scale: 0.8 }}

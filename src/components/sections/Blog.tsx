@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Calendar, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import articlesData from '@/data/articles.json';
 
 export interface Article {
@@ -20,7 +20,7 @@ export interface Article {
 
 export const articles: Article[] = articlesData;
 
-const ArticleCard: React.FC<{ article: Article; index: number }> = ({ article, index }) => {
+const ArticleCard: React.FC<{ article: Article; index: number; onOpenArticle: (id: string) => void }> = ({ article, index, onOpenArticle }) => {
   const hasImage = !!article.thumbnail;
 
   return (
@@ -81,13 +81,13 @@ const ArticleCard: React.FC<{ article: Article; index: number }> = ({ article, i
 
         <div className="flex flex-wrap gap-4">
           {article.hasFullArticle && (
-            <Link
-              to={`/blog/${article.id}`}
+            <button
+              onClick={() => onOpenArticle(article.id)}
               className="inline-flex items-center px-4 py-2 bg-court dark:bg-[#60A5FA] text-paper font-semibold rounded-lg border-2 border-espresso dark:border-slate-600 shadow-brutal-sm dark:shadow-none hover:shadow-brutal dark:hover:bg-[#93C5FD] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
             >
               <ArrowRight className="h-5 w-5 mr-2" />
               Read Full Article
-            </Link>
+            </button>
           )}
 
           {article.externalLink && (
@@ -108,6 +108,14 @@ const ArticleCard: React.FC<{ article: Article; index: number }> = ({ article, i
 };
 
 const Blog = () => {
+  const navigate = useNavigate();
+
+  const openArticle = (articleId: string) => {
+    const base = window.location.pathname || "/";
+    window.history.replaceState(null, "", `${base}#blog`);
+    navigate(`/blog/${articleId}`, { state: { from: `${base}#blog` } });
+  };
+
   return (
     <section id="blog" className="py-16 px-6 bg-paper">
       <div className="max-w-6xl mx-auto">
@@ -145,7 +153,7 @@ const Blog = () => {
 
         <div className="space-y-8">
           {articles.map((article, index) => (
-            <ArticleCard key={article.id} article={article} index={index} />
+            <ArticleCard key={article.id} article={article} index={index} onOpenArticle={openArticle} />
           ))}
         </div>
 

@@ -302,15 +302,13 @@ export default function TennisCoffeeSection() {
               </button>
 
               <div className="relative h-[380px] w-full overflow-hidden">
-                <img
-                  src="/images/moments/Coffee.JPG"
-                  alt="Coffee time"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                />
+                <picture>
+                  <source srcSet="/images/moments/Coffee.webp" type="image/webp" />
+                  <img src="/images/moments/Coffee.JPG" alt="Coffee time" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                </picture>
 
                 <motion.img
-                  src="/images/chibis/coffee_chibi.PNG"
+                  src="/images/chibis/coffee_chibi.webp"
                   alt="Coffee chibi"
                   className="absolute bottom-4 left-4 w-16 h-16 md:w-20 md:h-20 object-contain drop-shadow-2xl pointer-events-none"
                   animate={{ y: [0, -8, 0] }}

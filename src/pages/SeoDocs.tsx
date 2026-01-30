@@ -1189,7 +1189,7 @@ const pages = [
                   </div>
                   <div className="p-4">
                     <img
-                      src="/docs/my-journey-seo.png"
+                      src="/docs/my-journey-seo.webp"
                       alt="My Journey blog post social media preview"
                       className="w-full rounded-lg border border-slate-600"
                     />
@@ -1206,7 +1206,7 @@ const pages = [
                   </div>
                   <div className="p-4">
                     <img
-                      src="/docs/bchacks-seo.png"
+                      src="/docs/bchacks-seo.webp"
                       alt="BC Hacks 2024 blog post social media preview"
                       className="w-full rounded-lg border border-slate-600"
                     />

@@ -4,7 +4,6 @@ import { Helmet } from 'react-helmet-async';
 import Hero from '@/components/sections/Hero';
 import About from '@/components/sections/About';
 import Navbar from '@/components/shared/Navbar';
-import ScrollFromState from "@/components/shared/ScrollToTop";
 
 
 const Portfolio = React.lazy(() => import('@/components/sections/Portfolio'));

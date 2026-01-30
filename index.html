@@ -25,26 +25,41 @@
         });
       })();
     </script>
-    <!-- Google Fonts: Manrope (Headings) + Plus Jakarta Sans (Body) + JetBrains Mono -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Self-hosted fonts for performance (no external requests) -->
+    <link rel="preload" href="/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/fonts/fonts.css">
 
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-KJQ8FMJ2');</script>
-    <!-- End Google Tag Manager -->
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1VH7ZELQ1B"></script>
+    <!-- Analytics loaded after page is interactive (deferred for performance) -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-1VH7ZELQ1B');
+
+      // Defer analytics loading until after first paint
+      if (typeof requestIdleCallback === 'function') {
+        requestIdleCallback(loadAnalytics);
+      } else {
+        setTimeout(loadAnalytics, 2000);
+      }
+
+      function loadAnalytics() {
+        // Google Tag Manager
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(w,document,'script','dataLayer','GTM-KJQ8FMJ2');
+
+        // Google Analytics
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-1VH7ZELQ1B';
+        document.head.appendChild(s);
+
+        gtag('js', new Date());
+        gtag('config', 'G-1VH7ZELQ1B');
+      }
+      var w = window;
     </script>
 
     <meta charset="UTF-8" />
@@ -112,8 +127,12 @@
       `);
     </script>   
 
-  <link rel="preload" as="image" href="/cursors/jo-normal.png" />
-  <link rel="preload" as="image" href="/cursors/jo-thumb.png" />
+  <!-- Preload LCP image (Hero) - WebP for speed, JPEG kept for SEO -->
+  <link rel="preload" as="image" href="/Joseph_Chamdani.webp" type="image/webp" fetchpriority="high" />
+
+  <!-- Preload cursors (WebP versions) -->
+  <link rel="preload" as="image" href="/cursors/jo-normal.webp" type="image/webp" />
+  <link rel="preload" as="image" href="/cursors/jo-thumb.webp" type="image/webp" />
 
   </head>
  
