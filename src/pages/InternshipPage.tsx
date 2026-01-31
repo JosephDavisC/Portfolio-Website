@@ -18,7 +18,8 @@ import {
   ArrowUpRight,
   Play,
   Clock,
-  Share2
+  Share2,
+  Camera
 } from "lucide-react";
 import experiencesData from "@/data/experiences.json";
 
@@ -63,6 +64,11 @@ type VideoDemo = {
   thumbnail: string;
 } | null;
 
+type TeamPhoto = {
+  image: string;
+  caption: string;
+} | null;
+
 type Testimonial = {
   quote: string;
   author: string;
@@ -101,6 +107,7 @@ type Experience = {
   technologies: string[];
   impact: { metric: string; value: string }[];
   testimonial: Testimonial;
+  teamPhoto?: TeamPhoto;
   products: Product[];
   researchPapers: ResearchPaper[];
   videoDemo: VideoDemo;
@@ -435,9 +442,10 @@ export default function InternshipPage() {
                   <div className="flex flex-col md:flex-row md:items-start gap-4">
                     {/* Product Icon */}
                     <div
-                      className={`w-14 h-14 rounded-xl bg-gradient-to-br ${theme.gradient} border-2 border-espresso dark:border-transparent shadow-brutal-sm dark:shadow-none flex items-center justify-center flex-shrink-0`}
+                      className="w-14 h-14 rounded-xl border-2 border-espresso dark:border-transparent shadow-brutal-sm dark:shadow-none flex items-center justify-center flex-shrink-0"
+                      style={{ backgroundColor: theme.primary }}
                     >
-                      <Code2 className="h-7 w-7 text-paper" />
+                      <Code2 className="h-7 w-7 text-white" />
                     </div>
 
                     {/* Product Info */}
@@ -736,6 +744,48 @@ export default function InternshipPage() {
             </blockquote>
             <div className="text-sm text-espresso/60 dark:text-slate-400 font-mono">
               — {internship.testimonial.author}, {internship.testimonial.company}
+            </div>
+          </motion.div>
+        )}
+
+        {/* Team Photo */}
+        {internship.teamPhoto && (
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.35 }}
+            className="mt-8"
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <div
+                className="w-10 h-10 rounded-lg border-2 flex items-center justify-center"
+                style={{
+                  backgroundColor: `${theme.primary}20`,
+                  borderColor: `${theme.primary}50`
+                }}
+              >
+                <Camera className="h-5 w-5" style={{ color: theme.primary }} />
+              </div>
+              <h2 className="text-xl font-heading font-semibold text-espresso dark:text-slate-100">
+                The Team
+              </h2>
+            </div>
+
+            <div className="card-brutal overflow-hidden">
+              <div className="relative">
+                <img
+                  src={internship.teamPhoto.image}
+                  alt={internship.teamPhoto.caption}
+                  className="w-full h-auto object-cover"
+                />
+                {/* Gradient overlay at bottom */}
+                <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-espresso/60 dark:from-slate-900/80 to-transparent" />
+              </div>
+              <div className="px-6 py-4 border-t-2 border-espresso/10 dark:border-slate-700 bg-paper dark:bg-slate-800/50">
+                <p className="text-sm text-espresso/70 dark:text-slate-300 font-mono text-center">
+                  {internship.teamPhoto.caption}
+                </p>
+              </div>
             </div>
           </motion.div>
         )}

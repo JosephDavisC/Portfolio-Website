@@ -47,7 +47,7 @@
         "name": "AI Labeling System",
         "description": "An intelligent data labeling platform for the XOps internal system that automates classification of security data, reducing manual work and improving workflow efficiency.",
         "tech": ["Python", "Machine Learning", "NLP", "FastAPI"],
-        "status": "In Production",
+        "status": "Deployed",
         "link": null
       }
     ],
@@ -100,13 +100,13 @@
   "stockbit": {
     "slug": "stockbit",
     "company": "Stockbit / Bibit",
-    "logo": "/logos/stockbit.png",
+    "logo": "/logos/stockbit.webp",
     "role": "AI Engineer Intern",
     "type": "Internship",
     "duration": "Jul 2024 – Sep 2024 · 3 mos",
     "location": "Jakarta, Indonesia · Hybrid",
     "website": "https://stockbit.com/",
-    "description": "Stockbit is Indonesia's leading social trading and investment platform. As an AI Engineer intern, I developed OCR pipelines for KYC automation and built AI models to detect fraudulent content on the platform.",
+    "description": "Stockbit is Indonesia's leading social trading and investment platform with over 5 million users. As an AI Engineer intern on the Data Team, I worked closely with data engineers and ML specialists to build production-ready AI systems. I developed OCR pipelines for KYC automation using Google Cloud Vision API and trained custom models with Google Cloud AutoML to detect fraudulent documents and scam posts. Both products are actively used in production, processing thousands of documents daily.",
     "theme": {
       "primary": "#22C55E",
       "primaryHover": "#16A34A",
@@ -122,10 +122,12 @@
       "keywords": ["AI engineer", "OCR", "KYC automation", "fraud detection", "fintech", "Jakarta"]
     },
     "highlights": [
-      "Developed OCR pipeline to auto-extract user data from Indonesian KTP documents during the KYC process",
-      "Built an AI model with Google Cloud AutoML to detect fraudulent documents and flag scam/spam posts",
-      "Increased KYC verification speed and accuracy by automating manual checks",
-      "Collaborated with the security team to improve fraud detection on Stockbit's social media platform"
+      "Worked on the Data Team alongside data engineers and ML specialists to build production AI systems",
+      "Developed OCR pipeline using Google Cloud Vision API to auto-extract user data from Indonesian KTP (ID card) documents for KYC verification",
+      "Trained custom AI models with Google Cloud AutoML to detect fraudulent documents and flag scam/spam posts on the social trading platform",
+      "Both products shipped to production and are actively processing thousands of documents daily",
+      "Increased KYC verification speed by 40% and achieved 95% fraud detection accuracy",
+      "Collaborated with cross-functional teams including security, backend, and product to integrate AI solutions"
     ],
     "technologies": ["Python", "Google Cloud AutoML", "OCR", "Machine Learning", "Computer Vision", "FastAPI"],
     "impact": [
@@ -134,19 +136,23 @@
       { "metric": "Documents Processed", "value": "10K+" }
     ],
     "testimonial": null,
+    "teamPhoto": {
+      "image": "/media/team-photo.webp",
+      "caption": "With the Stockbit/Bibit Data Team in Jakarta"
+    },
     "products": [
       {
         "name": "KYC OCR Pipeline",
-        "description": "Automated extraction of user data from Indonesian KTP (ID card) documents for faster KYC verification.",
-        "tech": ["Python", "OCR", "Google Cloud Vision", "FastAPI"],
-        "status": "In Production",
+        "description": "Built a document processing pipeline using Google Cloud Vision API to extract text from Indonesian KTP (ID card) photos. The system parses and validates key fields (name, ID number, date of birth, address) against user-submitted data, integrated with a FastAPI backend for real-time verification during the KYC onboarding flow.",
+        "tech": ["Python", "Google Cloud Vision API", "OCR", "FastAPI"],
+        "status": "Deployed",
         "link": null
       },
       {
         "name": "Fraud Detection Model",
-        "description": "AI model trained to detect fraudulent documents and flag scam/spam posts on the social trading platform.",
-        "tech": ["Google Cloud AutoML", "Machine Learning", "Python"],
-        "status": "In Production",
+        "description": "Labeled training datasets from historically flagged posts and suspicious documents, then trained a classification model using Google Cloud AutoML. The model was integrated into the content moderation workflow to automatically flag potential scam posts and fraudulent KYC submissions for review.",
+        "tech": ["Google Cloud AutoML", "Machine Learning", "Python", "Data Labeling"],
+        "status": "Deployed",
         "link": null
       }
     ],

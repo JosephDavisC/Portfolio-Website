@@ -19,16 +19,17 @@ export default function ScrollFromState() {
 
       let lastPosition = -1;
       let stableCount = 0;
+      let frameId: number;
 
-      // Wait for the element's position to stabilize (no more layout shifts)
+      // Use requestAnimationFrame for faster, smoother checks
       const waitForStableLayout = () => {
         const targetId = scrollTargetRef.current;
         if (!targetId) return;
 
         const el = document.getElementById(targetId);
         if (!el) {
-          // Element not found yet, retry
-          setTimeout(waitForStableLayout, 100);
+          // Element not found yet, retry on next frame
+          frameId = requestAnimationFrame(waitForStableLayout);
           return;
         }
 
@@ -37,8 +38,8 @@ export default function ScrollFromState() {
         if (Math.abs(currentPosition - lastPosition) < 5) {
           // Position is stable (hasn't changed significantly)
           stableCount++;
-          if (stableCount >= 3) {
-            // Position stable for 3 checks, safe to scroll
+          if (stableCount >= 2) {
+            // Position stable for 2 checks, safe to scroll
             const finalTop = currentPosition - NAVBAR_HEIGHT;
             window.scrollTo({ top: finalTop, behavior: "instant" });
             scrollTargetRef.current = null;
@@ -50,14 +51,17 @@ export default function ScrollFromState() {
           lastPosition = currentPosition;
         }
 
-        // Keep checking (max 5 seconds)
-        if (stableCount < 50) {
-          setTimeout(waitForStableLayout, 100);
-        }
+        // Keep checking using requestAnimationFrame (much faster than setTimeout)
+        frameId = requestAnimationFrame(waitForStableLayout);
       };
 
-      // Start checking after initial render delay
-      setTimeout(waitForStableLayout, 500);
+      // Start checking on next frame (almost immediate)
+      frameId = requestAnimationFrame(waitForStableLayout);
+
+      // Cleanup on unmount
+      return () => {
+        if (frameId) cancelAnimationFrame(frameId);
+      };
     } else {
       // For all other navigations, scroll to top
       window.scrollTo(0, 0);

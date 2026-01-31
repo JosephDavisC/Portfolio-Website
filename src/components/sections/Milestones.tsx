@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useMemo } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Calendar, MapPin, X, ChevronDown, ChevronUp, Briefcase, Users, GraduationCap } from "lucide-react";
+import { Calendar, MapPin, X, ChevronDown, ChevronUp, Briefcase, Users, GraduationCap, ArrowRight } from "lucide-react";
 import data from "@/data/milestones.json";
 
 /* ---------- Types matching the JSON ---------- */
@@ -350,6 +351,17 @@ export default function Milestones() {
                                   <li key={bi}>{b}</li>
                                 ))}
                               </ul>
+
+                              {/* View Details Button */}
+                              {role.detailsLink && (
+                                <Link
+                                  to={role.detailsLink}
+                                  className="btn-brutal inline-flex items-center gap-2 mb-4"
+                                >
+                                  View Details
+                                  <ArrowRight className="h-4 w-4" />
+                                </Link>
+                              )}
 
                               {role.media?.length ? (
                                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">

@@ -56,7 +56,6 @@
               "Developed automated threat detection systems that identify and flag security vulnerabilities.",
               "Trained AI models on XOps data to automate data processing, improving efficiency by 20% over manual regex-based methods."
             ],
-            "detailsLink": "/experience/sector",
             "media": [
               { "src": "/media/Sector.jpg", "caption": "Sector Website", "href": "https://sector.co.id" }
             ]
@@ -104,7 +103,7 @@
       {
         "name": "Stockbit / Bibit",
         "category": "Internships",
-        "logo": "/logos/stockbit.png",
+        "logo": "/logos/stockbit.webp",
         "website": "https://stockbit.com/",
         "meta": "Internship · 3 mos",
         "location": "Jakarta, Indonesia",
@@ -168,7 +167,6 @@
               "Collaborated with game design on pacing and flow.",
               "Assisted with scripting and cutscene creation."
             ],
-            "detailsLink": "/experience/touchten",
             "media": [
               { "src": "/media/touchten-1.jpeg", "caption": "Gameplay", "href": "https://drive.google.com/file/d/1K2DFHZOAV_TE3tg1sWXrSyqqJLIcTmQB/view" },
               { "src": "/media/touchten-2.jpeg", "caption": "Team session" }
@@ -193,7 +191,6 @@
               "Integrated VR SDK plugins and multiplayer systems for immersive networking.",
               "Created scripts and subtitles, assisted research, and onboarded new interns."
             ],
-            "detailsLink": "/experience/vr-park",
             "media": [
               { "src": "/media/vr-park-logo-thumbnail.png", "caption": "VR Park", "href": "https://youtu.be/lgahuoczoiA?si=CwuUs_vg5XW6xPmv" },
               { "src": "/media/vr-park-certificate.png", "caption": "Certificate" }
