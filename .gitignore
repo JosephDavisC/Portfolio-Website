@@ -14,4 +14,7 @@ coverage/
 # FTP deployment credentials
 scripts/ftp-config.json
 
+# API config 
+public/api/config.php
+
 .claude/

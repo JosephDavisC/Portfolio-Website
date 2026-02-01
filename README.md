@@ -45,7 +45,6 @@ Version 2.0 marks a complete redesign—moving away from generic dark-mode templ
 - **Vite** – Build tool
 - **React Router** – Client-side routing for blog pages
 - **React Helmet** – SEO meta tags management
-- **EmailJS** – Contact form email integration
 - **Hostinger** – Hosting
 
 ---
@@ -112,7 +111,7 @@ scripts/
 - **Blog Section** with full article pages and SEO meta tags for social media sharing
 - **Projects Page** with category filtering (AI, Web, Games, Data)
 - **Lifestyle Section** (Tennis & Coffee) with racket specs and photo carousel
-- **Contact Form** with EmailJS integration and auto-reply confirmation
+- **Contact Form** with custom PHP backend and auto-reply confirmation
 - **Dual-Identity Theme System**: Warm Light Mode + Sleek Dark Mode
 - **Custom-engineered SVG animations and particle systems** (No generic emojis)
 - **Responsive layout for all devices**
@@ -142,17 +141,6 @@ Clone the repo and install dependencies:
 git clone https://github.com/JosephDavisC/Portfolio-Website.git
 cd Portfolio-Website
 npm install
-```
-
-### Environment Variables
-
-For the contact form to work, create a `.env` file in the root directory:
-
-```env
-VITE_EMAILJS_SERVICE_ID=your_service_id
-VITE_EMAILJS_TEMPLATE_ID=your_template_id
-VITE_EMAILJS_AUTOREPLY_TEMPLATE_ID=your_autoreply_template_id
-VITE_EMAILJS_PUBLIC_KEY=your_public_key
 ```
 
 Run locally:
