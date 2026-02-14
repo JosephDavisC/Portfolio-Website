@@ -117,9 +117,19 @@ const NotFound = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.6 }}
-          className="mt-8 text-espresso/50 dark:text-slate-500 text-sm font-mono"
+          className="mt-8"
         >
-          Error Code: 404 | Page Not Found
+          <p className="text-espresso/50 dark:text-slate-500 text-sm font-mono">
+            Error Code: 404 | Page Not Found
+          </p>
+          <a
+            href="https://status.joechamdani.com"
+            className="mt-2 inline-block text-xs text-espresso/40 dark:text-slate-500 underline decoration-espresso/20 dark:decoration-slate-600 hover:text-espresso/60 dark:hover:text-slate-300"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Check system status
+          </a>
         </motion.div>
       </div>
     </div>
