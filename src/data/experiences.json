@@ -5,7 +5,7 @@
     "logo": "/logos/Sector_Icon_logo.png",
     "role": "AI Research & Development Intern",
     "type": "Internship",
-    "duration": "Aug 2025 – Present · 6 mos",
+    "duration": "Aug 2025 – Feb 2026 · 7 mos",
     "location": "Jakarta, Indonesia · Hybrid",
     "website": "https://sector.co.id",
     "description": "Sector is a cybersecurity company specializing in penetration testing and security operations. As an AI R&D intern, I developed AI-powered tools to enhance their security workflows, built internal products, and contributed to the team's knowledge through research papers and presentations.",
@@ -20,12 +20,12 @@
     },
     "seo": {
       "title": "Sector Internship - AI Research & Development",
-      "description": "AI Research & Development internship at Sector - Building AI tools for cybersecurity, penetration testing automation, and threat detection systems.",
-      "keywords": ["AI internship", "cybersecurity", "penetration testing", "machine learning", "Jakarta"]
+      "description": "AI Research & Development internship at Sector, a cybersecurity company in Jakarta. Built AI labeling systems, authored 3 research papers, and developed tools for penetration testing automation and threat detection.",
+      "keywords": ["Joseph Chamdani", "AI internship", "cybersecurity", "Sector", "penetration testing", "machine learning", "research papers", "AI labeling", "threat detection", "Jakarta"]
     },
     "highlights": [
       "Built an AI Labeling System for the XOps internal platform, automating data classification and improving workflow efficiency",
-      "Authored 2 research papers on AI applications in cybersecurity and threat detection methodologies",
+      "Authored 3 research papers on AI applications in cybersecurity, threat detection, and AI vulnerabilities",
       "Delivered research presentations to the Sector team, sharing insights on AI/ML techniques and best practices",
       "Developed AI tools to accelerate penetration testing and cybersecurity operations",
       "Built automated threat detection systems that identify and flag security vulnerabilities",
@@ -34,19 +34,37 @@
     "technologies": ["Python", "Machine Learning", "NLP", "LLMs", "Data Labeling", "Cybersecurity", "Git", "Research"],
     "impact": [
       { "metric": "Product Shipped", "value": "1" },
-      { "metric": "Research Papers", "value": "2" },
+      { "metric": "Research Papers", "value": "3" },
       { "metric": "Team Size", "value": "20+" }
     ],
-    "testimonial": {
-      "quote": "Joseph demonstrated exceptional initiative in both development and research. His AI Labeling System became a core part of our XOps workflow, and his research presentations helped elevate the team's understanding of AI applications in security.",
-      "author": "Engineering Lead",
-      "company": "Sector"
-    },
+    "testimonials": [
+      {
+        "quote": "It was an absolute pleasure working alongside Joseph Davis Chamdani during his internship. He took on the challenging task of helping us build our vulnerability detection engine and exceeded expectations with his technical acuity and dedication.",
+        "author": "Suredsi Ulpada",
+        "role": "Lead IT Security Consultant",
+        "company": "Sector",
+        "linkedin": "https://www.linkedin.com/in/suredsi-ulpada/"
+      },
+      {
+        "quote": "Great to have worked on the same team with Jo. He is always reliable and consistently delivers his best results, even in challenging situations.",
+        "author": "Anggi Gunawan",
+        "role": "Founder",
+        "company": "Sector",
+        "linkedin": "https://www.linkedin.com/in/anggi-gunawan17/"
+      },
+      {
+        "quote": "Despite the different time zone, Jo consistently delivers exceptional work and adds great value to the team. Not only did he contribute to building an automated vulnerability detection system, but he also produced an outstanding research paper. His insights and expertise play a crucial role in shaping the direction of our ongoing projects. Jo's ability to analyze complex problems and propose effective solutions significantly enhances our team's performance.",
+        "author": "Arfiki Kenan",
+        "role": "Direct Manager",
+        "company": "Sector",
+        "linkedin": "https://www.linkedin.com/in/arfikikenan/"
+      }
+    ],
     "products": [
       {
         "name": "AI Labeling System",
-        "description": "An intelligent data labeling platform for the XOps internal system that automates classification of security data, reducing manual work and improving workflow efficiency.",
-        "tech": ["Python", "Machine Learning", "NLP", "FastAPI"],
+        "description": "An internal ML tool built for Sector's XOps platform to automate the classification and validation of penetration testing findings.\n\nThe system processes raw HTTP request/response data from security assessments, categorizing each finding into vulnerability types (XSS, SQL Injection, Command Injection, LFI) and determining whether it's a true positive or false positive.\n\nA 3-tier prediction pipeline handles classification: explicit label matching, a Random Forest classifier trained on 100K+ real findings with dual TF-IDF feature extraction, and pattern-based fallback detection. A separate validity detection system analyzes HTTP responses, timing deltas, status codes, and payloads to flag false positives before they reach analysts.\n\nAs an internal tool, specifics are limited, but it serves as a quality assurance layer that gives the XOps team confidence in their reporting data across thousands of findings per engagement.",
+        "tech": ["Python", "Flask", "scikit-learn", "Pandas", "Machine Learning", "NLP"],
         "status": "Deployed",
         "link": null
       }
@@ -61,40 +79,64 @@
         "linkedinPosts": [
           {
             "title": "Introduction",
-            "image": "/Milestones/Sector/First-Post-Research-Paper.png",
+            "image": "/Milestones/Sector/research-posts/First-Post-Research-Paper.png",
             "link": "https://www.linkedin.com/posts/sector-cyber-security_despite-all-the-hype-surrounding-artificial-activity-7416328090328530945-E3HG"
           },
           {
             "title": "AI vs Human",
-            "image": "/Milestones/Sector/Second-Post-Research-Paper.png",
+            "image": "/Milestones/Sector/research-posts/Second-Post-Research-Paper.png",
             "link": "https://www.linkedin.com/posts/sector-cyber-security_ai-vs-human-hacker-activity-7422201820783075328-taCg"
           },
           {
             "title": "Case Studies",
-            "image": "/Milestones/Sector/Third-Post-Research-Paper.png",
+            "image": "/Milestones/Sector/research-posts/Third-Post-Research-Paper.png",
             "link": "https://www.linkedin.com/posts/sector-cyber-security_ai-assisted-attacks-case-studies-activity-7422851084102094848-3hCw"
           },
           {
             "title": "AI Strengths",
-            "image": "/Milestones/Sector/Fourth-Post-Research-Paper.png",
+            "image": "/Milestones/Sector/research-posts/Fourth-Post-Research-Paper.png",
             "link": "https://www.linkedin.com/posts/sector-cyber-security_ai-hackers-strength-activity-7421401577607032832-Kuee"
           }
         ]
       },
       {
-        "title": "AI-Powered Threat Detection Systems",
-        "description": "A comprehensive study on utilizing AI and machine learning for identifying and classifying security threats in real-time data streams.",
-        "date": "2025",
+        "title": "Top 50 Indonesian Companies Leaked on the Dark Web (2025)",
+        "description": "A research report analyzing the evolving cyber threat landscape in Indonesia, identifying the top 50 entities affected by major data leaks and ransomware attacks on the dark web.",
+        "date": "2026",
+        "link": "https://sector.co.id/2025LeakedReport",
+        "status": "Published",
+        "linkedinPosts": [
+          {
+            "title": "Top 50 Leaked",
+            "image": "/Milestones/Sector/research-posts/First-Post-Research-Paper-2.webp",
+            "link": "https://www.linkedin.com/posts/sector-cyber-security_top-50-leaked-research-activity-7427199746059984897-xwWL"
+          },
+          {
+            "title": "55% of SEA Threats",
+            "image": "/Milestones/Sector/research-posts/Second-Post-Research-Paper-2.webp",
+            "link": "https://www.linkedin.com/posts/arfikikenan_55-of-dark-web-threats-in-sea-are-targeting-activity-7427562174958628864-4yqc"
+          }
+        ]
+      },
+      {
+        "title": "The Hidden Dangers of AI in Cybersecurity",
+        "description": "An analysis of AI vulnerabilities in cybersecurity, covering AI hallucinations, adversarial machine learning, and mitigation strategies for secure AI deployment.",
+        "date": "2026",
         "link": null,
-        "status": "Coming Soon",
+        "status": "Published",
         "linkedinPosts": []
       }
     ],
+    "teamPhoto": {
+      "image": "/Milestones/Sector/Sector_Team_Photo.webp",
+      "caption": "With the Sector team in Jakarta"
+    },
     "videoDemo": {
       "title": "AI Labeling System Demo",
-      "description": "Watch a walkthrough of the AI Labeling System in action",
-      "videoUrl": null,
-      "thumbnail": "/logos/Sector_Icon_logo.png"
+      "description": "A walkthrough of the AI Labeling System v1.3, demonstrating its 3-tier vulnerability classification pipeline, true/false positive validation, and model versioning interface.",
+      "videoUrl": "https://youtu.be/PQgIPCsLtYs",
+      "videoSrc": null,
+      "thumbnail": "/Milestones/Sector/Thumbnail.webp"
     }
   },
   "stockbit": {
@@ -135,7 +177,7 @@
       { "metric": "Fraud Detection", "value": "95%" },
       { "metric": "Documents Processed", "value": "10K+" }
     ],
-    "testimonial": null,
+    "testimonials": [],
     "teamPhoto": {
       "image": "/media/team-photo.webp",
       "caption": "With the Stockbit/Bibit Data Team in Jakarta"
@@ -195,13 +237,14 @@
       { "metric": "Game", "value": "Piper's Cat Café" },
       { "metric": "Team Size", "value": "15+" }
     ],
-    "testimonial": null,
+    "testimonials": [],
     "products": [],
     "researchPapers": [],
     "videoDemo": {
       "title": "Piper's Cat Café Gameplay",
       "description": "Watch cutscenes and gameplay from Piper's Cat Café",
       "videoUrl": "https://drive.google.com/file/d/1K2DFHZOAV_TE3tg1sWXrSyqqJLIcTmQB/view",
+      "videoSrc": null,
       "thumbnail": "/media/touchten-1.jpeg"
     }
   },
@@ -241,7 +284,7 @@
       { "metric": "Platform", "value": "VR" },
       { "metric": "Duration", "value": "5 mos" }
     ],
-    "testimonial": null,
+    "testimonials": [],
     "products": [
       {
         "name": "Dino VR",
@@ -256,6 +299,7 @@
       "title": "Dino VR Gameplay",
       "description": "Watch Dino VR in action",
       "videoUrl": "https://youtu.be/lgahuoczoiA?si=CwuUs_vg5XW6xPmv",
+      "videoSrc": null,
       "thumbnail": "/media/vr-park-logo-thumbnail.png"
     }
   }

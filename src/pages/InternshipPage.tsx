@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
@@ -61,6 +61,7 @@ type VideoDemo = {
   title: string;
   description: string;
   videoUrl: string | null;
+  videoSrc: string | null;
   thumbnail: string;
 } | null;
 
@@ -72,8 +73,10 @@ type TeamPhoto = {
 type Testimonial = {
   quote: string;
   author: string;
+  role: string;
   company: string;
-} | null;
+  linkedin?: string;
+};
 
 type Theme = {
   primary: string;
@@ -106,7 +109,7 @@ type Experience = {
   highlights: string[];
   technologies: string[];
   impact: { metric: string; value: string }[];
-  testimonial: Testimonial;
+  testimonials?: Testimonial[];
   teamPhoto?: TeamPhoto;
   products: Product[];
   researchPapers: ResearchPaper[];
@@ -116,6 +119,106 @@ type Experience = {
 type ExperiencesData = {
   [key: string]: Experience;
 };
+
+function VideoPlayer({ videoDemo, theme }: { videoDemo: NonNullable<VideoDemo>; theme: Theme }) {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handlePlay = () => {
+    if (videoDemo.videoSrc) {
+      setIsPlaying(true);
+      setTimeout(() => videoRef.current?.play(), 100);
+    } else if (videoDemo.videoUrl) {
+      window.open(videoDemo.videoUrl, '_blank');
+    }
+  };
+
+  return (
+    <div className="card-brutal overflow-hidden">
+      {isPlaying && videoDemo.videoSrc ? (
+        <div className="aspect-video bg-black">
+          <video
+            ref={videoRef}
+            className="w-full h-full"
+            controls
+            poster={videoDemo.thumbnail}
+            src={videoDemo.videoSrc}
+          />
+        </div>
+      ) : videoDemo.videoUrl || videoDemo.videoSrc ? (
+        <button
+          onClick={handlePlay}
+          className="block w-full aspect-video relative group overflow-hidden"
+        >
+          <img
+            src={videoDemo.thumbnail}
+            alt={videoDemo.title}
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
+            <div
+              className="w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
+              style={{ backgroundColor: theme.primary }}
+            >
+              <Play className="h-8 w-8 md:h-10 md:w-10 text-white ml-1" fill="white" />
+            </div>
+          </div>
+        </button>
+      ) : (
+        <div className="aspect-video bg-gradient-to-br from-espresso/5 to-espresso/10 dark:from-slate-800 dark:to-slate-900 flex flex-col items-center justify-center relative overflow-hidden">
+          <div className="absolute inset-0 opacity-10">
+            <div
+              className="absolute top-1/4 left-1/4 w-32 h-32 rounded-full blur-3xl"
+              style={{ backgroundColor: theme.primary }}
+            />
+            <div className="absolute bottom-1/4 right-1/4 w-40 h-40 bg-red-500 rounded-full blur-3xl" />
+          </div>
+          <div className="relative z-10 text-center px-6">
+            <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-espresso/10 dark:bg-white/10 border-2 border-espresso/20 dark:border-white/20 flex items-center justify-center">
+              <Play className="h-10 w-10 text-espresso/40 dark:text-white/40 ml-1" />
+            </div>
+            <h3 className="text-xl font-heading font-semibold text-espresso dark:text-slate-100 mb-2">
+              {videoDemo.title}
+            </h3>
+            <p className="text-espresso/60 dark:text-slate-400 mb-4 max-w-md">
+              {videoDemo.description}
+            </p>
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-espresso/10 dark:bg-white/10 text-espresso/60 dark:text-slate-400 text-sm font-mono rounded-lg border border-espresso/20 dark:border-white/20">
+              <Clock className="h-4 w-4" />
+              Video Coming Soon
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Video info bar */}
+      <div className="px-6 py-4 border-t-2 border-espresso/10 dark:border-slate-700 bg-paper dark:bg-slate-800/50">
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-sm font-semibold text-espresso dark:text-slate-100">
+              {videoDemo.title}
+            </p>
+            <p className="text-xs text-espresso/60 dark:text-slate-400 font-mono">
+              Product Walkthrough
+            </p>
+          </div>
+          {videoDemo.videoUrl && (
+            <a
+              href={videoDemo.videoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 font-medium text-sm hover:underline"
+              style={{ color: theme.primary }}
+            >
+              Watch on YouTube
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function InternshipPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -185,14 +288,14 @@ export default function InternshipPage() {
         <meta property="og:description" content={seo.description} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={`https://joechamdani.com/experience/${internship.slug}`} />
-        <meta property="og:image" content={`https://joechamdani.com${internship.logo}`} />
+        <meta property="og:image" content={`https://joechamdani.com${internship.teamPhoto?.image || internship.logo}`} />
         <meta property="og:site_name" content="Joseph Chamdani Portfolio" />
 
         {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:card" content={internship.teamPhoto ? "summary_large_image" : "summary"} />
         <meta name="twitter:title" content={`${seo.title} | Joseph Chamdani`} />
         <meta name="twitter:description" content={seo.description} />
-        <meta name="twitter:image" content={`https://joechamdani.com${internship.logo}`} />
+        <meta name="twitter:image" content={`https://joechamdani.com${internship.teamPhoto?.image || internship.logo}`} />
 
         {/* JSON-LD Structured Data */}
         <script type="application/ld+json">
@@ -461,9 +564,11 @@ export default function InternshipPage() {
                           {product.status}
                         </span>
                       </div>
-                      <p className="text-espresso/70 dark:text-slate-300 leading-relaxed mb-4">
-                        {product.description}
-                      </p>
+                      <div className="text-espresso/70 dark:text-slate-300 leading-relaxed mb-4 space-y-3">
+                        {product.description.split('\n\n').map((paragraph, pi) => (
+                          <p key={pi}>{paragraph}</p>
+                        ))}
+                      </div>
                       <div className="flex flex-wrap gap-2">
                         {product.tech.map((t, ti) => (
                           <span
@@ -513,73 +618,7 @@ export default function InternshipPage() {
               </h2>
             </div>
 
-            <div className="card-brutal overflow-hidden">
-              {internship.videoDemo.videoUrl ? (
-                <div className="aspect-video">
-                  <iframe
-                    className="w-full h-full"
-                    src={internship.videoDemo.videoUrl}
-                    title={internship.videoDemo.title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                </div>
-              ) : (
-                <div className="aspect-video bg-gradient-to-br from-espresso/5 to-espresso/10 dark:from-slate-800 dark:to-slate-900 flex flex-col items-center justify-center relative overflow-hidden">
-                  {/* Decorative elements */}
-                  <div className="absolute inset-0 opacity-10">
-                    <div
-                      className="absolute top-1/4 left-1/4 w-32 h-32 rounded-full blur-3xl"
-                      style={{ backgroundColor: theme.primary }}
-                    />
-                    <div className="absolute bottom-1/4 right-1/4 w-40 h-40 bg-red-500 rounded-full blur-3xl" />
-                  </div>
-
-                  {/* Placeholder content */}
-                  <div className="relative z-10 text-center px-6">
-                    <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-espresso/10 dark:bg-white/10 border-2 border-espresso/20 dark:border-white/20 flex items-center justify-center">
-                      <Play className="h-10 w-10 text-espresso/40 dark:text-white/40 ml-1" />
-                    </div>
-                    <h3 className="text-xl font-heading font-semibold text-espresso dark:text-slate-100 mb-2">
-                      {internship.videoDemo.title}
-                    </h3>
-                    <p className="text-espresso/60 dark:text-slate-400 mb-4 max-w-md">
-                      {internship.videoDemo.description}
-                    </p>
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-espresso/10 dark:bg-white/10 text-espresso/60 dark:text-slate-400 text-sm font-mono rounded-lg border border-espresso/20 dark:border-white/20">
-                      <Clock className="h-4 w-4" />
-                      Video Coming Soon
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Video info bar */}
-              <div className="px-6 py-4 border-t-2 border-espresso/10 dark:border-slate-700 bg-paper dark:bg-slate-800/50">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-semibold text-espresso dark:text-slate-100">
-                      {internship.videoDemo.title}
-                    </p>
-                    <p className="text-xs text-espresso/60 dark:text-slate-400 font-mono">
-                      Product Walkthrough
-                    </p>
-                  </div>
-                  {internship.videoDemo.videoUrl && (
-                    <a
-                      href={internship.videoDemo.videoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 font-medium text-sm hover:underline"
-                      style={{ color: theme.primary }}
-                    >
-                      Watch on YouTube
-                      <ArrowUpRight className="h-4 w-4" />
-                    </a>
-                  )}
-                </div>
-              </div>
-            </div>
+            <VideoPlayer videoDemo={internship.videoDemo} theme={theme} />
           </motion.div>
         )}
 
@@ -680,7 +719,10 @@ export default function InternshipPage() {
                               href={post.link}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="group relative rounded-lg overflow-hidden border-2 border-espresso/20 dark:border-slate-600 hover:border-[#0A66C2] dark:hover:border-[#0A66C2] transition-colors"
+                              className="group relative rounded-lg overflow-hidden border-2 border-espresso/20 dark:border-slate-600 transition-colors"
+                              style={{ '--hover-border': internship.theme.primary } as React.CSSProperties}
+                              onMouseEnter={(e) => e.currentTarget.style.borderColor = internship.theme.primary}
+                              onMouseLeave={(e) => e.currentTarget.style.borderColor = ''}
                             >
                               <div className="aspect-square relative">
                                 <img
@@ -689,7 +731,10 @@ export default function InternshipPage() {
                                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-espresso/80 via-transparent to-transparent dark:from-slate-900/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-3">
-                                  <span className="inline-flex items-center gap-1 px-2 py-1 bg-[#0A66C2] text-white text-xs font-semibold rounded-full">
+                                  <span
+                                    className="inline-flex items-center gap-1 px-2 py-1 text-white text-xs font-semibold rounded-full"
+                                    style={{ backgroundColor: internship.theme.primary }}
+                                  >
                                     <ArrowUpRight className="h-3 w-3" />
                                     View
                                   </span>
@@ -712,17 +757,13 @@ export default function InternshipPage() {
           </motion.div>
         )}
 
-        {/* Testimonial */}
-        {internship.testimonial && (
+        {/* Testimonials / References */}
+        {internship.testimonials && internship.testimonials.length > 0 && (
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="mt-8 card-brutal p-6 md:p-8"
-            style={{
-              backgroundColor: `${theme.primary}08`,
-              borderColor: `${theme.primary}30`
-            }}
+            className="mt-8"
           >
             <div className="flex items-center gap-3 mb-4">
               <div
@@ -735,15 +776,49 @@ export default function InternshipPage() {
                 <Users className="h-5 w-5" style={{ color: theme.primary }} />
               </div>
               <h2 className="text-xl font-heading font-semibold text-espresso dark:text-slate-100">
-                Reference
+                References
               </h2>
             </div>
 
-            <blockquote className="text-lg text-espresso/80 dark:text-slate-300 italic leading-relaxed mb-4">
-              "{internship.testimonial.quote}"
-            </blockquote>
-            <div className="text-sm text-espresso/60 dark:text-slate-400 font-mono">
-              — {internship.testimonial.author}, {internship.testimonial.company}
+            <div className="grid gap-4 md:grid-cols-2">
+              {internship.testimonials.map((testimonial, index) => (
+                <div
+                  key={index}
+                  className="card-brutal p-6 flex flex-col"
+                  style={{
+                    backgroundColor: `${theme.primary}08`,
+                    borderColor: `${theme.primary}30`
+                  }}
+                >
+                  <blockquote className="text-espresso/80 dark:text-slate-300 italic leading-relaxed mb-4 flex-1">
+                    "{testimonial.quote}"
+                  </blockquote>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm font-semibold text-espresso dark:text-slate-200">
+                        {testimonial.author}
+                      </span>
+                      <span className="text-xs text-espresso/40 dark:text-slate-500">·</span>
+                      <span className="text-xs text-espresso/60 dark:text-slate-400 font-mono">
+                        {testimonial.role}
+                      </span>
+                    </div>
+                    {testimonial.linkedin && (
+                      <a
+                        href={testimonial.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-espresso/40 dark:text-slate-500 hover:dark:text-[#0A66C2] transition-colors"
+                        style={{ ['--hover-color' as string]: theme.primary }}
+                        onMouseEnter={(e) => e.currentTarget.style.color = theme.primary}
+                        onMouseLeave={(e) => e.currentTarget.style.color = ''}
+                      >
+                        <ExternalLink className="h-4 w-4" />
+                      </a>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
           </motion.div>
         )}

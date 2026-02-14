@@ -7,12 +7,12 @@
         "category": "Work",
         "logo": "/logos/UW_Logo.png",
         "website": "https://hfs.uw.edu/Dining",
-        "meta": "Part-time · 5 mos",
+        "meta": "Part-time · 6 mos",
         "location": "Seattle, Washington, United States",
         "roles": [
           {
             "title": "Student Assistant - Center Table",
-            "dates": "Jan 2026 – Present · 1 mo",
+            "dates": "Jan 2026 – Present · 2 mos",
             "meta": "On-site",
             "bullets": [
               "Worked as a cashier handling payments and student check in.",
@@ -25,7 +25,7 @@
           },
           {
             "title": "Student Assistant - Bay Laurel Catering",
-            "dates": "Sep 2025 – Present",
+            "dates": "Sep 2025 – Present · 6 mos",
             "meta": "On-site",
             "bullets": [
               "Working under UW Housing & Food Services Dining at Bay Laurel Catering to support catering operations and event services.",
@@ -44,12 +44,12 @@
         "category": "Internships",
         "logo": "/logos/Sector_Icon_logo.png",
         "website": "https://sector.co.id",
-        "meta": "Internship · 6 mos",
+        "meta": "Internship · 7 mos",
         "location": "Jakarta, Indonesia",
         "roles": [
           {
             "title": "AI Research & Development",
-            "dates": "Aug 2025 – Present",
+            "dates": "Aug 2025 – Feb 2026 · 7 mos",
             "meta": "Hybrid",
             "bullets": [
               "Building AI tools to make penetration testing and cybersecurity work faster and smarter.",
