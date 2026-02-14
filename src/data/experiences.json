@@ -2,7 +2,8 @@
   "sector": {
     "slug": "sector",
     "company": "Sector",
-    "logo": "/logos/Sector_Icon_logo.png",
+    "logo": "/Milestones/Sector/Sector_Logo.png",
+    "logoBg": "#1E293B",
     "role": "AI Research & Development Intern",
     "type": "Internship",
     "duration": "Aug 2025 – Feb 2026 · 7 mos",
@@ -134,8 +135,8 @@
     "videoDemo": {
       "title": "AI Labeling System Demo",
       "description": "A walkthrough of the AI Labeling System v1.3, demonstrating its 3-tier vulnerability classification pipeline, true/false positive validation, and model versioning interface.",
-      "videoUrl": "https://youtu.be/PQgIPCsLtYs",
-      "videoSrc": null,
+      "videoUrl": "https://cdn.joechamdani.com/cdn/gNl1ohSc",
+      "videoSrc": "https://cdn.joechamdani.com/api/media/share/gNl1ohSc",
       "thumbnail": "/Milestones/Sector/Thumbnail.webp"
     }
   },

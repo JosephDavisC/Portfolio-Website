@@ -98,6 +98,7 @@ type Experience = {
   slug: string;
   company: string;
   logo: string;
+  logoBg?: string;
   role: string;
   type: string;
   duration: string;
@@ -210,7 +211,7 @@ function VideoPlayer({ videoDemo, theme }: { videoDemo: NonNullable<VideoDemo>; 
               className="inline-flex items-center gap-2 font-medium text-sm hover:underline"
               style={{ color: theme.primary }}
             >
-              Watch on YouTube
+              Watch Full Video
               <ArrowUpRight className="h-4 w-4" />
             </a>
           )}
@@ -334,7 +335,10 @@ export default function InternshipPage() {
         >
           <div className="flex flex-col md:flex-row md:items-center gap-6 mb-8">
             {/* Company Logo */}
-            <div className="w-20 h-20 md:w-24 md:h-24 rounded-xl bg-paper dark:bg-slate-800 border-2 border-espresso dark:border-slate-600 shadow-brutal-sm dark:shadow-none flex items-center justify-center overflow-hidden">
+            <div
+              className="w-20 h-20 md:w-24 md:h-24 rounded-xl bg-paper dark:bg-slate-800 border-2 border-espresso dark:border-slate-600 shadow-brutal-sm dark:shadow-none flex items-center justify-center overflow-hidden"
+              style={internship.logoBg ? { backgroundColor: internship.logoBg } : undefined}
+            >
               {internship.logo ? (
                 <img
                   src={internship.logo}
@@ -784,7 +788,7 @@ export default function InternshipPage() {
               {internship.testimonials.map((testimonial, index) => (
                 <div
                   key={index}
-                  className="card-brutal p-6 flex flex-col"
+                  className={`card-brutal p-6 flex flex-col${internship.testimonials!.length % 2 === 1 && index === internship.testimonials!.length - 1 ? ' md:col-span-2' : ''}`}
                   style={{
                     backgroundColor: `${theme.primary}08`,
                     borderColor: `${theme.primary}30`
