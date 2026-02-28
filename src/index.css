@@ -352,19 +352,19 @@ html {
 }
 
 /* Dark mode neon blue → UW Purple with glow */
-.husky-mode.dark .dark\:bg-\[\\#60A5FA\],
-.dark.husky-mode .dark\:bg-\[\\#60A5FA\] {
+.husky-mode.dark .dark\:bg-\[\#60A5FA\],
+.dark.husky-mode .dark\:bg-\[\#60A5FA\] {
   background-color: #4B2E83 !important;
   box-shadow: 0 0 12px rgba(75, 46, 131, 0.6) !important;
 }
 
-.husky-mode.dark .dark\:text-\[\\#60A5FA\],
-.dark.husky-mode .dark\:text-\[\\#60A5FA\] {
+.husky-mode.dark .dark\:text-\[\#60A5FA\],
+.dark.husky-mode .dark\:text-\[\#60A5FA\] {
   color: #D0B787 !important;
 }
 
-.husky-mode.dark .dark\:border-\[\\#60A5FA\],
-.dark.husky-mode .dark\:border-\[\\#60A5FA\] {
+.husky-mode.dark .dark\:border-\[\#60A5FA\],
+.dark.husky-mode .dark\:border-\[\#60A5FA\] {
   border-color: #D0B787 !important;
 }
 

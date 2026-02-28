@@ -91,7 +91,7 @@ export default function About() {
                 My work is driven by a commitment to building technology that augments human judgment rather than replacing it. I believe that trust in AI systems comes from clear boundaries and transparent limitations, not just high confidence scores.
               </p>
               <p>
-                Currently, I'm interning at Sector building AI automation for cybersecurity, and I lead BC Tech Club where I organized BC Hacks 2024. I'm passionate about AI ethics, human-computer interaction, and building tools people actually use.
+                I interned at Sector building AI automation for cybersecurity, and I led BC Tech Club where I organized BC Hacks 2024. I'm passionate about AI ethics, human-computer interaction, and building tools people actually use.
               </p>
             </div>
           </motion.article>

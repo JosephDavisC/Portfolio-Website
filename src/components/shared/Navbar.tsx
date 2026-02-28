@@ -168,9 +168,15 @@ export default function Navbar() {
     <header className="fixed top-0 left-0 w-full z-[100] bg-paper/90 dark:bg-[#141B2D]/95 backdrop-blur-md border-b-2 border-espresso/10 dark:border-slate-700/30 transition-colors duration-500">
       <nav className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
         {/* Logo */}
-        <a
-          href="#home"
-          onClick={handleNavClick("#home")}
+        <Link
+          to="/"
+          onClick={(e) => {
+            if (isHome) {
+              e.preventDefault();
+              scrollToId("home");
+              window.history.replaceState(null, "", "/");
+            }
+          }}
           className="flex items-center group"
         >
           <div className="relative h-12 w-12 rounded-full overflow-hidden border-2 border-espresso shadow-brutal-sm transition-all duration-200 group-hover:shadow-brutal group-hover:-translate-x-0.5 group-hover:-translate-y-0.5 bg-[#1e3a5f]">
@@ -179,7 +185,7 @@ export default function Navbar() {
               <img src="/Logo_Joseph.PNG" alt="Logo" className="h-full w-full object-cover" />
             </picture>
           </div>
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <ul className="hidden md:flex items-center gap-1 text-sm">

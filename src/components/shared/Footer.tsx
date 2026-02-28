@@ -53,6 +53,16 @@ const Footer = () => {
           <span>Powered by coffee and dreams</span>
           <TennisBallIcon />
         </div>
+
+        <a
+          href="https://status.joechamdani.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 text-xs font-mono text-espresso/40 dark:text-slate-500 hover:text-court dark:hover:text-[#60A5FA] transition-colors"
+        >
+          <span className="inline-block w-2 h-2 rounded-full bg-green-500" />
+          System Status
+        </a>
       </div>
     </footer>
   );

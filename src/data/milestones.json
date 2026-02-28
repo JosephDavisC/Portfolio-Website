@@ -11,17 +11,15 @@
         "location": "Seattle, Washington, United States",
         "roles": [
           {
-            "title": "Student Assistant - Center Table",
-            "dates": "Jan 2026 – Present · 2 mos",
+            "title": "Student Assistant - Local Point",
+            "dates": "Feb 2026 – Present · 1 mo",
             "meta": "On-site",
             "bullets": [
               "Worked as a cashier handling payments and student check in.",
               "Served meals and maintained basic food safety standards.",
               "Assisted staff to keep service running smoothly."
             ],
-            "media": [
-              { "src": "/media/center-table.png", "caption": "Center Table", "href": "https://hfs.uw.edu/eat/dining-hours/Center-Table" }
-            ]
+            "media": []
           },
           {
             "title": "Student Assistant - Bay Laurel Catering",
@@ -52,7 +50,7 @@
             "dates": "Aug 2025 – Feb 2026 · 7 mos",
             "meta": "Hybrid",
             "bullets": [
-              "Building AI tools to make penetration testing and cybersecurity work faster and smarter.",
+              "Built AI tools to make penetration testing and cybersecurity work faster and smarter.",
               "Developed automated threat detection systems that identify and flag security vulnerabilities.",
               "Trained AI models on XOps data to automate data processing, improving efficiency by 20% over manual regex-based methods."
             ],

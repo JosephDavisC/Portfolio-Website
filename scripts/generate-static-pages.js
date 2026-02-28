@@ -5,7 +5,15 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Define pages with their meta tags
+// Load experience data for dynamic page generation
+const experiencesPath = path.join(__dirname, '..', 'src', 'data', 'experiences.json');
+const experiences = JSON.parse(fs.readFileSync(experiencesPath, 'utf8'));
+
+// Load credential data for dynamic page generation
+const credentialsPath = path.join(__dirname, '..', 'src', 'data', 'credentials.json');
+const credentials = JSON.parse(fs.readFileSync(credentialsPath, 'utf8'));
+
+// Static pages
 const pages = [
   {
     path: 'projects',
@@ -22,6 +30,32 @@ const pages = [
     url: 'https://joechamdani.com/seo-docs'
   }
 ];
+
+// Generate experience pages from experiences.json
+for (const [slug, exp] of Object.entries(experiences)) {
+  const image = exp.ogImage || exp.teamPhoto?.image || exp.logo;
+  pages.push({
+    path: `experience/${slug}`,
+    title: `${exp.seo.title} | Joseph Chamdani`,
+    description: exp.seo.description,
+    image: `https://joechamdani.com${image}`,
+    url: `https://joechamdani.com/experience/${slug}`
+  });
+}
+
+// Generate credential pages from credentials.json
+for (const cred of credentials) {
+  const image = cred.fallbackImage
+    ? `https://joechamdani.com${cred.fallbackImage}`
+    : 'https://joechamdani.com/preview.png';
+  pages.push({
+    path: `credential/${cred.slug}`,
+    title: `${cred.title} — ${cred.issuer} | Joseph Chamdani`,
+    description: `${cred.title} certification issued by ${cred.issuer}${cred.issued ? ` (${cred.issued})` : ''}. View credential details and certificate.`,
+    image,
+    url: `https://joechamdani.com/credential/${cred.slug}`
+  });
+}
 
 // Read the base index.html from dist
 const distPath = path.join(__dirname, '..', 'dist');

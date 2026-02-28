@@ -9,7 +9,7 @@
   Header always set X-XSS-Protection "1; mode=block"
   Header always set Referrer-Policy "same-origin"
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
-  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://cdn.jsdelivr.net https://cdn.joechamdani.com https://www.googletagmanager.com https://www.google-analytics.com; font-src 'self'; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; frame-src https://www.youtube.com https://drive.google.com https://www.googletagmanager.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://cdn.jsdelivr.net https://cdn.joechamdani.com https://www.googletagmanager.com https://www.google-analytics.com; font-src 'self'; media-src 'self' https://cdn.joechamdani.com; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; frame-src 'self' https://www.youtube.com https://drive.google.com https://www.googletagmanager.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
 </IfModule>
 
 # ============================
@@ -66,6 +66,15 @@
 </IfModule>
 
 # ============================
+# NOINDEX FOR /v1/ (old portfolio archive)
+# ============================
+<IfModule mod_headers.c>
+  <If "%{REQUEST_URI} =~ m#^/v1/#">
+    Header set X-Robots-Tag "noindex, nofollow"
+  </If>
+</IfModule>
+
+# ============================
 # URL REWRITING
 # ============================
 
@@ -102,8 +111,32 @@ AddType image/webp .webp
 </IfModule>
 
 # ============================
+# 301 REDIRECTS: Old portfolio URLs → /v1/ (noindexed)
+# ============================
+# Google still crawls these old paths. Redirect to /v1/ so they
+# hit the noindex header above and eventually drop from the index.
+
+RewriteRule ^blog-nxc/?$ /v1/blog-nxc [R=301,L]
+RewriteRule ^portfolio-page/?$ /v1/portfolio-page [R=301,L]
+RewriteRule ^portfolio-NXC/?$ /v1/portfolio-NXC [R=301,L]
+RewriteRule ^portfolio-UI-UX-Bootcamp/?$ /v1/portfolio-UI-UX-Bootcamp [R=301,L]
+RewriteRule ^portfolio-Binus/?$ /v1/portfolio-Binus [R=301,L]
+RewriteRule ^portfolio-NXPLOLER/?$ /v1/portfolio-NXPLOLER [R=301,L]
+RewriteRule ^portfolio-hsmun/?$ /v1/portfolio-hsmun [R=301,L]
+RewriteRule ^portfolio-bctech/?$ /v1/portfolio-bctech [R=301,L]
+RewriteRule ^portfolio-unity/?$ /v1/portfolio-unity [R=301,L]
+RewriteRule ^portfolio-devnet/?$ /v1/portfolio-devnet [R=301,L]
+RewriteRule ^portfolio-dinomarine/?$ /v1/portfolio-dinomarine [R=301,L]
+RewriteRule ^portfolio-aligned/?$ /v1/portfolio-aligned [R=301,L]
+RewriteRule ^inner-page/?$ /v1/inner-page [R=301,L]
+
+# ============================
 # PAGE ROUTING
 # ============================
+
+# /v1/ old portfolio: append .html if the file exists
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}.html -f
+RewriteRule ^v1/(.+)$ /v1/$1.html [L]
 
 # Serve static blog pages ONLY for social media crawlers
 RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit|Twitterbot|LinkedInBot|Slackbot|WhatsApp|TelegramBot|Discordbot) [NC]

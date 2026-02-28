@@ -194,7 +194,7 @@ function VideoPlayer({ videoDemo, theme }: { videoDemo: NonNullable<VideoDemo>; 
 
       {/* Video info bar */}
       <div className="px-6 py-4 border-t-2 border-espresso/10 dark:border-slate-700 bg-paper dark:bg-slate-800/50">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
           <div>
             <p className="text-sm font-semibold text-espresso dark:text-slate-100">
               {videoDemo.title}

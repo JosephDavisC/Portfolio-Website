@@ -14,7 +14,13 @@ coverage/
 # FTP deployment credentials
 scripts/ftp-config.json
 
+# Deploy manifest (local artifact for incremental deploys)
+.deploy-manifest.json
+
 # API config 
 public/api/config.php
 
 .claude/
+
+# Old portfolio archive (deployed via FTP only, not tracked in git)
+public/v1/

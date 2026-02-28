@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { motion, AnimatePresence } from "framer-motion";
 import { Mail, GraduationCap } from "lucide-react";
 import { CoffeeCupWithSteam } from "@/components/shared/CoffeeSteam";
@@ -105,6 +106,10 @@ const Hero = () => {
   };
 
   return (
+    <>
+    <Helmet>
+      <link rel="preload" as="image" href="/Joseph_Chamdani.webp" type="image/webp" />
+    </Helmet>
     <section id="home" className="min-h-screen flex items-center justify-center px-6 py-20 relative bg-paper dark:bg-[#141B2D]">
       {/* Subtle mesh gradient background */}
       <div className="absolute inset-0 opacity-30 dark:opacity-20">
@@ -309,6 +314,7 @@ const Hero = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

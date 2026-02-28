@@ -2,6 +2,7 @@
 /**
  * Contact Form Handler for joechamdani.com
  * Uses PHPMailer with Google Workspace SMTP
+ * Supports multiple recipient profiles via _recipient field
  */
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -41,6 +42,7 @@ $name = trim($input['name'] ?? '');
 $email = trim($input['email'] ?? '');
 $subject = trim($input['subject'] ?? '');
 $message = trim($input['message'] ?? '');
+$recipient = trim($input['_recipient'] ?? '');
 
 if (empty($name) || empty($email) || empty($subject) || empty($message)) {
     http_response_code(400);
@@ -55,21 +57,90 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 }
 
 // ============================================
-// SMTP Configuration - Google Workspace
+// SMTP Configurations
 // ============================================
-$smtpConfig = [
-    'host' => 'smtp.gmail.com',
-    'port' => 587,
-    'username' => 'joseph@joechamdani.com',
-    'password' => $config['smtp_password'],       // Loaded from config.php
-    'from_email' => 'noreply@joechamdani.com',
-    'from_name' => 'Joseph Chamdani',
-    'reply_to' => 'joseph@joechamdani.com',
+$smtpConfigs = [
+    // Joseph: Google Workspace SMTP
+    'joseph' => [
+        'host' => 'smtp.gmail.com',
+        'port' => 587,
+        'encryption' => 'tls',
+        'username' => 'joseph@joechamdani.com',
+        'password' => $config['smtp_password'],
+        'from_email' => 'noreply@joechamdani.com',
+        'from_name' => 'Joseph Chamdani',
+        'reply_to' => 'joseph@joechamdani.com',
+    ],
+    // Jessica: Hostinger SMTP
+    'jessica' => [
+        'host' => 'smtp.hostinger.com',
+        'port' => 465,
+        'encryption' => 'ssl',
+        'username' => 'noreply@juwitajessica.com',
+        'password' => $config['jessica_smtp_password'] ?? '',
+        'from_email' => 'noreply@juwitajessica.com',
+        'from_name' => 'Jessica Pangestu',
+        'reply_to' => 'jessica.fiona2004@gmail.com',
+    ],
 ];
 
-$josephEmail = 'joseph@joechamdani.com';
-$websiteUrl = 'https://joechamdani.com';
-$logoUrl = $websiteUrl . '/Logo_Joseph.PNG';
+// ============================================
+// Recipient Profiles
+// ============================================
+$profiles = [
+    // Default: Joseph
+    'joseph@joechamdani.com' => [
+        'name' => 'Joseph Chamdani',
+        'first_name' => 'Joseph',
+        'email' => 'joseph@joechamdani.com',
+        'smtp' => 'joseph',
+        'website' => 'https://joechamdani.com',
+        'logo' => 'https://joechamdani.com/Logo_Joseph.PNG',
+        'accent' => '#4CBB17',          // Court green
+        'bg' => '#F9F7F2',             // Paper white
+        'text' => '#3D2B1F',           // Espresso
+        'border' => '#3D2B1F',
+        'shadow' => '4px 4px 0px 0px #3D2B1F',
+        'shadow_sm' => '2px 2px 0px 0px #3D2B1F',
+        'links' => [
+            ['label' => 'joechamdani.com/projects', 'url' => 'https://joechamdani.com/projects'],
+            ['label' => 'linkedin.com/in/joseph-chamdani', 'url' => 'https://linkedin.com/in/joseph-chamdani'],
+            ['label' => 'github.com/JosephDavisC', 'url' => 'https://github.com/JosephDavisC'],
+        ],
+        'footer_text' => 'joechamdani.com',
+        'dashboard_webhook' => true,
+    ],
+    // Jessica
+    'jessica.fiona2004@gmail.com' => [
+        'name' => 'Jessica Pangestu',
+        'first_name' => 'Jessica',
+        'email' => 'jessica.fiona2004@gmail.com',
+        'smtp' => 'jessica',
+        'website' => 'https://juwitajessica.com',
+        'logo' => 'https://juwitajessica.com/logo/logo.png',
+        'accent' => '#BA8B8B',          // Dusty blush rose
+        'bg' => '#FBF6F5',             // Warm cream
+        'text' => '#4A3535',            // Warm brown
+        'border' => '#D4B8B8',          // Soft rose border
+        'shadow' => '0 4px 20px -4px rgba(186, 139, 139, 0.2)',
+        'shadow_sm' => '0 2px 10px -2px rgba(186, 139, 139, 0.15)',
+        'links' => [
+            ['label' => 'instagram.com/juwitajessicaa', 'url' => 'https://instagram.com/juwitajessicaa'],
+            ['label' => 'linkedin.com/in/juwita-jessica-pangestu', 'url' => 'https://linkedin.com/in/juwita-jessica-pangestu'],
+            ['label' => 'github.com/JuwitaJessicaP', 'url' => 'https://github.com/JuwitaJessicaP'],
+        ],
+        'footer_text' => 'juwitajessica.com',
+        'dashboard_webhook' => false,
+    ],
+];
+
+// Resolve profile: use _recipient if it matches, otherwise default to Joseph
+$ownerEmail = 'joseph@joechamdani.com';
+if (!empty($recipient) && isset($profiles[$recipient])) {
+    $ownerEmail = $recipient;
+}
+$profile = $profiles[$ownerEmail];
+
 $currentDate = date('F j, Y');
 
 // Sanitize for HTML
@@ -82,30 +153,55 @@ $safeMessage = nl2br(htmlspecialchars($message, ENT_QUOTES, 'UTF-8'));
 $firstName = explode(' ', $name)[0];
 $safeFirstName = htmlspecialchars($firstName, ENT_QUOTES, 'UTF-8');
 
+// Profile vars for templates
+$pName = htmlspecialchars($profile['name'], ENT_QUOTES, 'UTF-8');
+$pFirstName = htmlspecialchars($profile['first_name'], ENT_QUOTES, 'UTF-8');
+$pWebsite = $profile['website'];
+$pLogo = $profile['logo'];
+$pAccent = $profile['accent'];
+$pBg = $profile['bg'];
+$pText = $profile['text'];
+$pBorder = $profile['border'];
+$pShadow = $profile['shadow'];
+$pShadowSm = $profile['shadow_sm'];
+$pFooter = $profile['footer_text'];
+
+// Build links HTML
+$linksHtml = '';
+foreach ($profile['links'] as $link) {
+    $lLabel = htmlspecialchars($link['label'], ENT_QUOTES, 'UTF-8');
+    $lUrl = htmlspecialchars($link['url'], ENT_QUOTES, 'UTF-8');
+    $linksHtml .= <<<LINK
+        <a href="{$lUrl}" style="display: block; background: {$pBg}; border: 1px solid {$pBorder}; border-radius: 8px; padding: 10px 14px; color: {$pText}; text-decoration: none; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 13px; margin-bottom: 10px; box-shadow: {$pShadowSm};">
+          <span style="color: {$pAccent}; font-weight: 600;">&rarr;</span> {$lLabel}
+        </a>
+LINK;
+}
+
 // ============================================
-// Email to Joseph (Notification)
+// Email to Owner (Notification)
 // ============================================
-$emailToJoseph = <<<HTML
+$emailToOwner = <<<HTML
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body style="font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; background: #F9F7F2; padding: 40px 20px; margin: 0; color: #3D2B1F;">
-  <div style="max-width: 600px; margin: 0 auto; background: #F9F7F2; border: 2px solid #3D2B1F; border-radius: 12px; box-shadow: 4px 4px 0px 0px #3D2B1F; overflow: hidden;">
+<body style="font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; background: {$pBg}; padding: 40px 20px; margin: 0; color: {$pText};">
+  <div style="max-width: 600px; margin: 0 auto; background: #ffffff; border: 1px solid {$pBorder}; border-radius: 16px; box-shadow: {$pShadow}; overflow: hidden;">
 
     <!-- Header -->
-    <div style="background: #4CBB17; padding: 24px 30px; border-bottom: 2px solid #3D2B1F;">
+    <div style="background: {$pAccent}; padding: 24px 30px;">
       <table cellpadding="0" cellspacing="0" border="0" width="100%">
         <tr>
           <td width="64" valign="middle">
-            <div style="width: 48px; height: 48px; background: #F9F7F2; border: 2px solid #3D2B1F; border-radius: 10px; box-shadow: 2px 2px 0px 0px #3D2B1F; overflow: hidden;">
-              <img src="{$logoUrl}" alt="Joseph" style="width: 48px; height: 48px; object-fit: cover; display: block;">
+            <div style="width: 48px; height: 48px; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: {$pShadowSm};">
+              <img src="{$pLogo}" alt="{$pFirstName}" style="width: 48px; height: 48px; object-fit: cover; display: block;">
             </div>
           </td>
           <td valign="middle" style="padding-left: 16px;">
-            <h1 style="font-family: 'Manrope', system-ui, sans-serif; color: #F9F7F2; margin: 0; font-size: 18px; font-weight: 700; letter-spacing: -0.02em;">New Message from Portfolio</h1>
+            <h1 style="font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #ffffff; margin: 0; font-size: 18px; font-weight: 700;">New Message from Portfolio</h1>
           </td>
         </tr>
       </table>
@@ -114,38 +210,38 @@ $emailToJoseph = <<<HTML
     <!-- Content -->
     <div style="padding: 30px;">
       <!-- Info Box -->
-      <div style="background: #F9F7F2; border: 2px solid #3D2B1F; border-radius: 8px; box-shadow: 2px 2px 0px 0px #3D2B1F; padding: 20px; margin-bottom: 24px;">
-        <table cellpadding="0" cellspacing="0" border="0" width="100%" style="font-family: 'JetBrains Mono', monospace; font-size: 14px;">
+      <div style="background: {$pBg}; border: 1px solid {$pBorder}; border-radius: 10px; padding: 20px; margin-bottom: 24px;">
+        <table cellpadding="0" cellspacing="0" border="0" width="100%" style="font-size: 14px;">
           <tr>
-            <td width="70" style="color: #3D2B1F; opacity: 0.6; padding-bottom: 12px; font-weight: 500;">From</td>
-            <td style="color: #3D2B1F; padding-bottom: 12px;">{$safeName}</td>
+            <td width="70" style="color: {$pText}; opacity: 0.6; padding-bottom: 12px; font-weight: 500;">From</td>
+            <td style="color: {$pText}; padding-bottom: 12px;">{$safeName}</td>
           </tr>
           <tr>
-            <td width="70" style="color: #3D2B1F; opacity: 0.6; padding-bottom: 12px; font-weight: 500;">Email</td>
-            <td style="color: #3D2B1F; padding-bottom: 12px;">{$safeEmail}</td>
+            <td width="70" style="color: {$pText}; opacity: 0.6; padding-bottom: 12px; font-weight: 500;">Email</td>
+            <td style="color: {$pText}; padding-bottom: 12px;">{$safeEmail}</td>
           </tr>
           <tr>
-            <td width="70" style="color: #3D2B1F; opacity: 0.6; font-weight: 500;">Subject</td>
-            <td style="color: #3D2B1F;">{$safeSubject}</td>
+            <td width="70" style="color: {$pText}; opacity: 0.6; font-weight: 500;">Subject</td>
+            <td style="color: {$pText};">{$safeSubject}</td>
           </tr>
         </table>
       </div>
 
       <!-- Message Label -->
-      <p style="font-family: 'Manrope', system-ui, sans-serif; color: #3D2B1F; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 12px 0;">Message</p>
+      <p style="color: {$pText}; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 12px 0;">Message</p>
 
       <!-- Message Box -->
-      <div style="background: #ffffff; border: 2px solid #3D2B1F; border-left: 4px solid #4CBB17; border-radius: 8px; padding: 20px; color: #3D2B1F; line-height: 1.7; font-size: 15px;">
+      <div style="background: #ffffff; border: 1px solid {$pBorder}; border-left: 4px solid {$pAccent}; border-radius: 10px; padding: 20px; color: {$pText}; line-height: 1.7; font-size: 15px;">
         {$safeMessage}
       </div>
 
       <!-- Reply Button -->
-      <a href="mailto:{$safeEmail}" style="display: inline-block; background: #4CBB17; color: #F9F7F2; text-decoration: none; padding: 12px 20px; border: 2px solid #3D2B1F; border-radius: 8px; box-shadow: 2px 2px 0px 0px #3D2B1F; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-weight: 600; font-size: 14px; margin-top: 24px;">Reply to {$safeEmail}</a>
+      <a href="mailto:{$safeEmail}" style="display: inline-block; background: {$pAccent}; color: #ffffff; text-decoration: none; padding: 12px 24px; border-radius: 50px; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-weight: 600; font-size: 14px; margin-top: 24px;">Reply to {$safeEmail}</a>
     </div>
 
     <!-- Footer -->
-    <div style="background: #F9F7F2; padding: 16px 30px; border-top: 2px solid #3D2B1F;">
-      <p style="font-family: 'JetBrains Mono', monospace; color: #3D2B1F; opacity: 0.5; font-size: 11px; margin: 0;">joechamdani.com &middot; {$currentDate}</p>
+    <div style="padding: 16px 30px; border-top: 1px solid {$pBorder};">
+      <p style="color: {$pText}; opacity: 0.4; font-size: 11px; margin: 0;">{$pFooter} &middot; {$currentDate}</p>
     </div>
   </div>
 </body>
@@ -162,61 +258,50 @@ $emailToSender = <<<HTML
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body style="font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; background: #F9F7F2; padding: 40px 20px; margin: 0; color: #3D2B1F;">
-  <div style="max-width: 600px; margin: 0 auto; background: #F9F7F2; border: 2px solid #3D2B1F; border-radius: 12px; box-shadow: 4px 4px 0px 0px #3D2B1F; overflow: hidden;">
+<body style="font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; background: {$pBg}; padding: 40px 20px; margin: 0; color: {$pText};">
+  <div style="max-width: 600px; margin: 0 auto; background: #ffffff; border: 1px solid {$pBorder}; border-radius: 16px; box-shadow: {$pShadow}; overflow: hidden;">
 
     <!-- Header -->
-    <div style="background: #4CBB17; padding: 30px; border-bottom: 2px solid #3D2B1F; text-align: center;">
-      <div style="width: 64px; height: 64px; background: #F9F7F2; border: 2px solid #3D2B1F; border-radius: 12px; box-shadow: 2px 2px 0px 0px #3D2B1F; overflow: hidden; margin: 0 auto 12px;">
-        <img src="{$logoUrl}" alt="Joseph" style="width: 64px; height: 64px; object-fit: cover; display: block;">
+    <div style="background: {$pAccent}; padding: 30px; text-align: center;">
+      <div style="width: 64px; height: 64px; background: #ffffff; border-radius: 14px; overflow: hidden; margin: 0 auto 12px; box-shadow: {$pShadowSm};">
+        <img src="{$pLogo}" alt="{$pFirstName}" style="width: 64px; height: 64px; object-fit: cover; display: block;">
       </div>
-      <h1 style="font-family: 'Manrope', system-ui, sans-serif; color: #F9F7F2; margin: 0; font-size: 18px; font-weight: 700; letter-spacing: -0.02em;">Joseph Chamdani</h1>
+      <h1 style="font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #ffffff; margin: 0; font-size: 18px; font-weight: 700;">{$pName}</h1>
     </div>
 
     <!-- Content -->
     <div style="padding: 30px;">
-      <h2 style="font-family: 'Manrope', system-ui, sans-serif; font-size: 24px; font-weight: 700; letter-spacing: -0.02em; color: #3D2B1F; margin: 0 0 16px 0;">Hey {$safeFirstName}!</h2>
+      <h2 style="font-size: 24px; font-weight: 700; color: {$pText}; margin: 0 0 16px 0;">Hey {$safeFirstName}!</h2>
 
-      <p style="color: #3D2B1F; line-height: 1.7; margin-bottom: 24px; font-size: 15px;">
+      <p style="color: {$pText}; line-height: 1.7; margin-bottom: 24px; font-size: 15px;">
         Thanks for reaching out! I've received your message and will get back to you within 24-48 hours.
       </p>
 
       <!-- Message Label -->
-      <p style="font-family: 'Manrope', system-ui, sans-serif; color: #3D2B1F; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 12px 0;">Your Message</p>
+      <p style="color: {$pText}; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 12px 0;">Your Message</p>
 
       <!-- Message Box -->
-      <div style="background: #ffffff; border: 2px solid #3D2B1F; border-radius: 8px; box-shadow: 2px 2px 0px 0px #3D2B1F; padding: 20px; margin-bottom: 28px;">
-        <div style="font-family: 'JetBrains Mono', monospace; color: #3D2B1F; font-weight: 500; margin-bottom: 12px; font-size: 13px; opacity: 0.7;">RE: {$safeSubject}</div>
-        <div style="color: #3D2B1F; line-height: 1.7; font-size: 14px;">{$safeMessage}</div>
+      <div style="background: {$pBg}; border: 1px solid {$pBorder}; border-radius: 10px; padding: 20px; margin-bottom: 28px; box-shadow: {$pShadowSm};">
+        <div style="color: {$pText}; font-weight: 500; margin-bottom: 12px; font-size: 13px; opacity: 0.6;">RE: {$safeSubject}</div>
+        <div style="color: {$pText}; line-height: 1.7; font-size: 14px;">{$safeMessage}</div>
       </div>
 
       <!-- Links Section -->
       <div style="margin-bottom: 24px;">
-        <p style="color: #3D2B1F; font-size: 14px; margin: 0 0 16px 0;">In the meantime, check out:</p>
-
-        <a href="{$websiteUrl}/projects" style="display: block; background: #F9F7F2; border: 2px solid #3D2B1F; border-radius: 6px; padding: 10px 14px; color: #3D2B1F; text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 12px; margin-bottom: 10px;">
-          <span style="color: #4CBB17; font-weight: 600;">&rarr;</span> joechamdani.com/projects
-        </a>
-
-        <a href="https://linkedin.com/in/joseph-chamdani" style="display: block; background: #F9F7F2; border: 2px solid #3D2B1F; border-radius: 6px; padding: 10px 14px; color: #3D2B1F; text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 12px; margin-bottom: 10px;">
-          <span style="color: #4CBB17; font-weight: 600;">&rarr;</span> linkedin.com/in/joseph-chamdani
-        </a>
-
-        <a href="https://github.com/JosephDavisC" style="display: block; background: #F9F7F2; border: 2px solid #3D2B1F; border-radius: 6px; padding: 10px 14px; color: #3D2B1F; text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 12px;">
-          <span style="color: #4CBB17; font-weight: 600;">&rarr;</span> github.com/JosephDavisC
-        </a>
+        <p style="color: {$pText}; font-size: 14px; margin: 0 0 16px 0;">In the meantime, check out:</p>
+        {$linksHtml}
       </div>
 
       <!-- Signature -->
-      <div style="margin-top: 24px; padding-top: 20px; border-top: 2px dashed rgba(61, 43, 31, 0.2);">
-        <p style="color: #3D2B1F; margin: 0 0 4px 0; font-size: 15px;">Talk soon!</p>
-        <p style="font-family: 'Manrope', system-ui, sans-serif; font-weight: 700; color: #3D2B1F; margin: 0;">Joseph</p>
+      <div style="margin-top: 24px; padding-top: 20px; border-top: 1px dashed {$pBorder};">
+        <p style="color: {$pText}; margin: 0 0 4px 0; font-size: 15px;">Talk soon!</p>
+        <p style="font-weight: 700; color: {$pText}; margin: 0;">{$pFirstName}</p>
       </div>
     </div>
 
     <!-- Footer -->
-    <div style="background: #F9F7F2; padding: 16px 30px; border-top: 2px solid #3D2B1F; text-align: center;">
-      <p style="font-family: 'JetBrains Mono', monospace; color: #3D2B1F; opacity: 0.5; font-size: 10px; margin: 0; line-height: 1.6;">Automated confirmation from joechamdani.com<br>I'll respond to your message directly.</p>
+    <div style="padding: 16px 30px; border-top: 1px solid {$pBorder}; text-align: center;">
+      <p style="color: {$pText}; opacity: 0.4; font-size: 10px; margin: 0; line-height: 1.6;">Automated confirmation from {$pFooter}<br>I'll respond to your message directly.</p>
     </div>
   </div>
 </body>
@@ -226,27 +311,29 @@ HTML;
 // ============================================
 // Send Emails using PHPMailer
 // ============================================
-function sendEmail($smtpConfig, $to, $subject, $body, $replyTo = null) {
+function sendEmail($smtp, $to, $subject, $body, $replyTo = null) {
     $mail = new PHPMailer(true);
 
     try {
         // SMTP settings
         $mail->isSMTP();
-        $mail->Host = $smtpConfig['host'];
+        $mail->Host = $smtp['host'];
         $mail->SMTPAuth = true;
-        $mail->Username = $smtpConfig['username'];
-        $mail->Password = $smtpConfig['password'];
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port = $smtpConfig['port'];
+        $mail->Username = $smtp['username'];
+        $mail->Password = $smtp['password'];
+        $mail->SMTPSecure = ($smtp['encryption'] === 'ssl')
+            ? PHPMailer::ENCRYPTION_SMTPS
+            : PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = $smtp['port'];
 
         // Sender
-        $mail->setFrom($smtpConfig['from_email'], $smtpConfig['from_name']);
+        $mail->setFrom($smtp['from_email'], $smtp['from_name']);
 
         // Reply-To (for the notification email, replies go to the sender)
         if ($replyTo) {
             $mail->addReplyTo($replyTo);
         } else {
-            $mail->addReplyTo($smtpConfig['reply_to'], $smtpConfig['from_name']);
+            $mail->addReplyTo($smtp['reply_to'], $smtp['from_name']);
         }
 
         // Recipient
@@ -266,25 +353,54 @@ function sendEmail($smtpConfig, $to, $subject, $body, $replyTo = null) {
     }
 }
 
-// Send notification to Joseph (reply-to = sender's email)
-$sentToJoseph = sendEmail(
-    $smtpConfig,
-    $josephEmail,
+// Resolve which SMTP config to use for this profile
+$activeSmtp = $smtpConfigs[$profile['smtp']];
+
+// Send notification to owner (reply-to = sender's email)
+$sentToOwner = sendEmail(
+    $activeSmtp,
+    $profile['email'],
     "Portfolio Contact: " . $subject,
-    $emailToJoseph,
+    $emailToOwner,
     $email  // Reply-To is the sender
 );
 
 // Send confirmation to sender
 $sentToSender = sendEmail(
-    $smtpConfig,
+    $activeSmtp,
     $email,
-    "Thanks for reaching out! - Joseph Chamdani",
+    "Thanks for reaching out! - " . $profile['name'],
     $emailToSender
 );
 
+// ============================================
+// Dashboard Webhook (best-effort, Joseph only)
+// ============================================
+if ($sentToOwner && $profile['dashboard_webhook'] && !empty($config['dashboard_webhook_secret'])) {
+    $webhookUrl = 'https://dashboard.joechamdani.com/api/contact/webhook?token=' . urlencode($config['dashboard_webhook_secret']);
+    $webhookData = json_encode([
+        'name' => $name,
+        'email' => $email,
+        'subject' => $subject,
+        'message' => $message,
+        'source' => 'portfolio',
+    ]);
+
+    $ch = curl_init($webhookUrl);
+    curl_setopt_array($ch, [
+        CURLOPT_POST => true,
+        CURLOPT_POSTFIELDS => $webhookData,
+        CURLOPT_HTTPHEADER => ['Content-Type: application/json'],
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_TIMEOUT => 5,
+        CURLOPT_CONNECTTIMEOUT => 3,
+    ]);
+    curl_exec($ch);
+    curl_close($ch);
+}
+
 // Response
-if ($sentToJoseph) {
+if ($sentToOwner) {
     echo json_encode([
         'success' => true,
         'message' => 'Message sent successfully!'

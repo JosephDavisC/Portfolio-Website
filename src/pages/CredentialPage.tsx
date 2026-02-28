@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import { Link, useParams, useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { ArrowLeft, Download, ExternalLink, PlayCircle } from "lucide-react";
 import Navbar from "@/components/shared/Navbar";
 import creds from "@/data/credentials.json";
@@ -46,7 +47,11 @@ function toYouTubeEmbed(url: string) {
     const id = u.hostname.includes("youtu.be")
       ? u.pathname.slice(1)
       : u.searchParams.get("v");
-    return id ? `https://www.youtube.com/embed/${id}?rel=0` : null;
+    if (!id) return null;
+    const si = u.searchParams.get("si");
+    const params = new URLSearchParams({ rel: "0" });
+    if (si) params.set("si", si);
+    return `https://www.youtube.com/embed/${id}?${params}`;
   } catch {
     return null;
   }
@@ -97,8 +102,32 @@ export default function CredentialPage() {
   const driveEmbed = video && isDrivePreview(video.url) ? video.url : null;
   const isFileVideo = video && isVideoFile(video.url);
 
+  const pageTitle = `${cred.title} — ${cred.issuer} | Joseph Chamdani`;
+  const pageDesc = `${cred.title} certification issued by ${cred.issuer}${cred.issued ? ` (${cred.issued})` : ""}. View credential details and certificate.`;
+  const pageUrl = `https://joechamdani.com/credential/${cred.slug}`;
+  const pageImage = cred.fallbackImage
+    ? `https://joechamdani.com${cred.fallbackImage}`
+    : "https://joechamdani.com/preview.png";
+
   return (
     <>
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDesc} />
+        <link rel="canonical" href={pageUrl} />
+
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDesc} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:image" content={pageImage} />
+        <meta property="og:site_name" content="Joseph Chamdani Portfolio" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDesc} />
+        <meta name="twitter:image" content={pageImage} />
+      </Helmet>
       <Navbar />
       <section className="min-h-screen pt-28 pb-24 px-6 bg-paper dark:bg-[#141B2D]">
         <div className="max-w-5xl mx-auto">
@@ -213,6 +242,7 @@ export default function CredentialPage() {
                         title={video.title || "Video"}
                         loading="lazy"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerPolicy="strict-origin-when-cross-origin"
                         allowFullScreen
                       />
                     ) : driveEmbed ? (
