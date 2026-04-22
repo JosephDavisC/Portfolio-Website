@@ -251,6 +251,43 @@ for (const company of milestones.companies || []) {
   }
 }
 
+// Tennis + coffee section (rendered by TennisCoffeeSection React component)
+const tennisAndCoffeeImages = [
+  {
+    src: '/images/moments/Joseph_Chamdani_Diadem_Forehand.webp',
+    alt: 'Joseph Chamdani forehand shot with Diadem Elevate 98 racket',
+  },
+  {
+    src: '/images/moments/Joseph_Chamdani_Diadem_Slice.webp',
+    alt: 'Joseph Chamdani slice shot with Diadem Elevate 98 racket',
+  },
+  {
+    src: '/images/moments/Joseph_Chamdani_Diadem_Slice_Follow_Through.webp',
+    alt: 'Joseph Chamdani slice follow-through with Diadem Elevate 98 racket',
+  },
+  {
+    src: '/images/moments/Joseph_Chamdani_Tennis.jpg',
+    alt: 'Joseph Chamdani playing tennis — forehand shot on the court',
+  },
+  {
+    src: '/images/moments/Joseph_Chamdani_Tennis_4.jpg',
+    alt: 'Joseph Chamdani playing tennis — one-handed backhand',
+  },
+  {
+    src: '/images/moments/Joseph_Chamdani_Tennis_2.jpg',
+    alt: 'Joseph Chamdani playing tennis — forehand during match',
+  },
+  {
+    src: '/images/moments/Joseph_Chamdani_Tennis_3.JPG',
+    alt: 'Joseph Chamdani with tennis partner on the court',
+  },
+  {
+    src: '/images/moments/Coffee.webp',
+    alt: 'Joseph Chamdani at a coffee shop — latte and iced americano are go-to orders',
+  },
+];
+homepageImages.push(...tennisAndCoffeeImages);
+
 // De-duplicate by src
 const seenSrcs = new Set();
 const uniqueHomepageImages = homepageImages.filter((img) => {
