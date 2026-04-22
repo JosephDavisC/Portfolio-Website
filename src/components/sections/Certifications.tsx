@@ -146,7 +146,7 @@ export default function Certifications() {
               {cert.href && (
                 <button
                   onClick={() => openCredential(cert.href!)}
-                  className="w-full inline-flex items-center justify-center px-4 py-2.5 bg-court dark:bg-[#60A5FA] text-paper font-semibold rounded-lg border-2 border-espresso dark:border-slate-600 shadow-brutal-sm dark:shadow-none hover:shadow-brutal dark:hover:bg-[#93C5FD] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all text-sm"
+                  className="btn-brutal w-full inline-flex items-center justify-center text-sm"
                 >
                   Show credential ↗
                 </button>

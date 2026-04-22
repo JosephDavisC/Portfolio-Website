@@ -448,16 +448,20 @@ html {
 
 /* Dark mode buttons */
 .dark .btn-brutal {
-  background: linear-gradient(to right, #2563eb, #dc2626);
-  border-color: #475569;
-  box-shadow: none;
+  background: rgba(96, 165, 250, 0.1);
+  color: #60A5FA;
+  border-color: rgba(96, 165, 250, 0.3);
+  box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.1);
+  backdrop-filter: blur(8px);
 }
 
 .dark .btn-brutal:hover {
-  background: linear-gradient(to right, #1d4ed8, #b91c1c);
-  box-shadow: none;
+  background: rgba(96, 165, 250, 0.2);
+  border-color: rgba(96, 165, 250, 0.6);
+  box-shadow: 0 0 16px rgba(96, 165, 250, 0.2);
   transform: translateY(-2px);
 }
+
 
 .dark .btn-brutal-outline {
   background: rgba(255, 255, 255, 0.1);
@@ -517,7 +521,7 @@ html {
 }
 
 .dark .bg-court {
-  background: linear-gradient(to right, #2563eb, #dc2626);
+  background: rgba(96, 165, 250, 0.15);
 }
 
 .dark .bg-court\/10,

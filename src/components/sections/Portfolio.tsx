@@ -100,7 +100,7 @@ const Projects = () => {
                   {project.demo && (
                     <motion.a
                       href={project.demo}
-                      className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-court/10 dark:bg-[#60A5FA]/10 border-2 border-court/30 dark:border-[#60A5FA]/30 rounded-lg text-court-dark dark:text-[#60A5FA] font-medium text-xs sm:text-sm hover:bg-court dark:hover:bg-[#60A5FA] hover:text-paper dark:hover:text-slate-900 transition-all"
+                      className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-court/10 dark:bg-[#60A5FA]/10 border-2 border-court/30 dark:border-[#60A5FA]/30 rounded-lg text-court-dark dark:text-[#60A5FA] font-medium text-xs sm:text-sm hover:bg-court dark:hover:bg-[#60A5FA]/20 hover:text-paper dark:hover:text-[#60A5FA] dark:hover:border-[#60A5FA]/60 transition-all"
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`View ${project.title} ${project.demoLabel || 'demo'}`}

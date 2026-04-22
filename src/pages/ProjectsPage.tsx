@@ -178,7 +178,7 @@ const ProjectsPage: React.FC = () => {
                   whileTap={{ scale: 0.98 }}
                   className={`px-5 py-2 rounded-full text-sm font-mono font-medium transition-all duration-300 border-2 ${
                     activeCategory === category
-                      ? 'bg-court dark:bg-[#60A5FA] text-paper dark:text-slate-900 border-espresso dark:border-[#60A5FA] shadow-brutal-sm dark:shadow-none'
+                      ? 'bg-court dark:bg-[#60A5FA]/15 text-paper dark:text-[#60A5FA] border-espresso dark:border-[#60A5FA]/40 shadow-brutal-sm dark:shadow-none'
                       : 'bg-paper dark:bg-slate-800 text-espresso dark:text-slate-200 border-espresso/20 dark:border-slate-600 hover:border-espresso/40 dark:hover:border-slate-500'
                   }`}
                 >

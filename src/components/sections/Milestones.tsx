@@ -182,7 +182,7 @@ export default function Milestones() {
               onClick={() => setActiveCategory(category)}
               className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl font-semibold text-sm border-2 transition-all ${
                 activeCategory === category
-                  ? "bg-court dark:bg-[#60A5FA] text-paper border-espresso dark:border-[#60A5FA] shadow-brutal-sm dark:shadow-none"
+                  ? "bg-court dark:bg-[#60A5FA]/15 text-paper dark:text-[#60A5FA] border-espresso dark:border-[#60A5FA]/40 shadow-brutal-sm dark:shadow-none"
                   : "bg-paper dark:bg-slate-800/50 text-espresso dark:text-slate-300 border-espresso/30 dark:border-slate-600 hover:border-espresso dark:hover:border-slate-500 hover:shadow-brutal-sm dark:hover:shadow-none"
               }`}
             >
@@ -388,7 +388,7 @@ export default function Milestones() {
                                             aria-label={`Open ${m.caption} in new tab`}
                                           >
                                             {Img}
-                                            <span className="absolute top-2 right-2 flex items-center justify-center w-8 h-8 text-base font-bold rounded-lg bg-court dark:bg-[#60A5FA] text-paper border-2 border-espresso dark:border-slate-600 shadow-brutal-sm dark:shadow-none group-hover:scale-110 transition-transform">
+                                            <span className="absolute top-2 right-2 flex items-center justify-center w-8 h-8 text-base font-bold rounded-lg bg-court dark:bg-[#60A5FA]/15 text-paper dark:text-[#60A5FA] border-2 border-espresso dark:border-[#60A5FA]/40 shadow-brutal-sm dark:shadow-none group-hover:scale-110 transition-transform">
                                               ↗
                                             </span>
                                           </a>

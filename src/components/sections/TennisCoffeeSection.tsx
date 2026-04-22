@@ -65,6 +65,9 @@ const TennisRacketIcon: React.FC<{ className?: string }> = ({ className = "" }) 
 );
 
 const tennisImages = [
+  { src: "/images/moments/Joseph_Chamdani_Diadem_Forehand.webp", alt: "Joseph Forehand — Diadem" },
+  { src: "/images/moments/Joseph_Chamdani_Diadem_Slice.webp", alt: "Joseph Slice — Diadem" },
+  { src: "/images/moments/Joseph_Chamdani_Diadem_Slice_Follow_Through.webp", alt: "Joseph Slice Follow-Through — Diadem" },
   { src: "/images/moments/Joseph_Chamdani_Tennis.jpg", alt: "Joseph Forehand — 1" },
   { src: "/images/moments/Joseph_Chamdani_Tennis_4.jpg", alt: "Joseph Backhand — 4" },
   { src: "/images/moments/Joseph_Chamdani_Tennis_2.jpg", alt: "Joseph Forehand — 2" },
@@ -207,7 +210,7 @@ export default function TennisCoffeeSection() {
                     key={tennisIdx}
                     src={tennisImages[tennisIdx].src}
                     alt={tennisImages[tennisIdx].alt}
-                    className="absolute inset-0 h-full w-full object-cover"
+                    className="absolute inset-0 h-full w-full object-cover object-[center_65%]"
                     initial={{ opacity: 0, x: 30 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -30 }}
