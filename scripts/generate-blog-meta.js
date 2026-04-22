@@ -10,15 +10,38 @@ const blogMeta = {
     title: 'My Journey: From Jakarta to UW | Joseph Davis Chamdani',
     description: 'How I moved from Indonesia to Seattle at 15, skipped two years of high school, and made it to the University of Washington as a junior in Informatics.',
     image: 'https://joechamdani.com/article_media/journey/Graduation_Peace.png',
-    url: 'https://joechamdani.com/blog/my-journey'
+    url: 'https://joechamdani.com/blog/my-journey',
+    images: [
+      {
+        src: '/article_media/journey/Graduation_Peace.png',
+        alt: 'Joseph Chamdani at graduation — from Jakarta, Indonesia to the University of Washington'
+      }
+    ]
   },
   'bc-hacks-2024': {
     title: 'BC Hacks 2024 Lecture | Joseph Davis Chamdani',
     description: 'After helping organize and launch BC Hacks 2024, I was invited to give a lecture at Bellevue College about how to run a successful hackathon. This session was specially arranged for a group of 20+ Korean exchange students visiting from Korea.',
     image: 'https://joechamdani.com/article_media/bc-hacks-2024/Group_Photo.png',
-    url: 'https://joechamdani.com/blog/bc-hacks-2024'
+    url: 'https://joechamdani.com/blog/bc-hacks-2024',
+    images: [
+      {
+        src: '/article_media/bc-hacks-2024/Group_Photo.png',
+        alt: 'Group photo from BC Hacks 2024 hackathon lecture at Bellevue College with Korean exchange students'
+      }
+    ]
   }
 };
+
+function buildSeoImagesBlock(images) {
+  if (!images?.length) return '';
+  const tags = images
+    .map(
+      (img) =>
+        `    <img src="${img.src}" alt="${(img.alt || '').replace(/"/g, '&quot;')}" loading="lazy">`
+    )
+    .join('\n');
+  return `  <div id="seo-images" hidden aria-hidden="true">\n${tags}\n  </div>\n`;
+}
 
 // Read the main index.html to get the asset file names
 function getAssetReferences() {
@@ -36,6 +59,7 @@ function getAssetReferences() {
 }
 
 function generateHTML(slug, meta, assets) {
+  const seoBlock = buildSeoImagesBlock(meta.images);
   return `<!DOCTYPE html>
 <html lang="en">
   <head>
@@ -67,7 +91,7 @@ function generateHTML(slug, meta, assets) {
   </head>
   <body>
     <div id="root"></div>
-  </body>
+${seoBlock}  </body>
 </html>`;
 }
 

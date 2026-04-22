@@ -11,14 +11,105 @@
     <lastmod>2026-02-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <!-- Profile Image (WebP + Original for SEO) -->
     <image:image>
       <image:loc>https://joechamdani.com/Joseph_Chamdani.webp</image:loc>
       <image:title>Joseph Davis Chamdani - Profile Photo</image:title>
+      <image:caption>Joseph Davis Chamdani, Informatics student at the University of Washington</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://joechamdani.com/Joseph_Chamdani.JPEG</image:loc>
       <image:title>Joseph Davis Chamdani - Profile Photo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/media/UW-Dining.png</image:loc>
+      <image:title>UW HFS Dining</image:title>
+      <image:caption>University of Washington Housing and Food Services Dining</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/media/bay-laurel.jpg</image:loc>
+      <image:title>UW Bay Laurel Catering</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/media/Sector.jpg</image:loc>
+      <image:title>Sector CyberSecurity</image:title>
+      <image:caption>Sector cybersecurity company website, Jakarta</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/media/BCHACKS_Thumbnail.webp</image:loc>
+      <image:title>BC Hacks 2024 Lecture</image:title>
+      <image:caption>BC Hacks 2024 hackathon lecture at Bellevue College</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/media/bc-2.jpeg</image:loc>
+      <image:title>BC Tech Club</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/media/bc-officers.jpeg</image:loc>
+      <image:title>BC Tech Club Officers</image:title>
+      <image:caption>BC Tech Club officer team at Bellevue College, 2024</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/media/bc-tech-meeting.jpeg</image:loc>
+      <image:title>BC Tech Club Meeting</image:title>
+      <image:caption>BC Tech Club weekly meeting at Bellevue College, 2024</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/media/stockbit-certificate.jpeg</image:loc>
+      <image:title>Stockbit Internship Certificate</image:title>
+      <image:caption>AI Engineer internship completion certificate from Stockbit/Bibit, Jakarta, 2024</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/media/team-photo.jpeg</image:loc>
+      <image:title>Stockbit Data Team</image:title>
+      <image:caption>Stockbit/Bibit Data Team in Jakarta, 2024</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/media/stockbit-photo.jpeg</image:loc>
+      <image:title>Joseph at Stockbit</image:title>
+      <image:caption>Joseph Chamdani at Stockbit/Bibit office in Jakarta, 2024</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/logos/devnet-logo.jpg</image:loc>
+      <image:title>Dev.Net.HS</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/media/devnet-club-photo.jpeg</image:loc>
+      <image:title>Dev.Net.HS Student Tech Club</image:title>
+      <image:caption>Dev.Net.HS student tech club in Jakarta, 2023</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/media/touchten-1.jpeg</image:loc>
+      <image:title>Piper's Cat Café Gameplay</image:title>
+      <image:caption>Piper's Cat Café gameplay cutscene at Touchten Games, Jakarta, 2023</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/media/touchten-2.jpeg</image:loc>
+      <image:title>Touchten Games Team</image:title>
+      <image:caption>Touchten Games development team session in Jakarta, 2023</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/media/vr-park-logo-thumbnail.png</image:loc>
+      <image:title>VR Park</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/media/vr-park-certificate.png</image:loc>
+      <image:title>VR Park Certificate</image:title>
+      <image:caption>VR Park Game Developer internship certificate, Jakarta, 2023</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/media/nxc-1.webp</image:loc>
+      <image:title>StarCamp Asia at NXC Summit Bali</image:title>
+      <image:caption>StarCamp Asia demonstrating metaverse technology at NXC Summit Bali, 2022 (Antaranews.com coverage)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/media/nxc-2.png</image:loc>
+      <image:title>StarCamp Asia VR Demo</image:title>
+      <image:caption>StarCamp Asia VR demo at NXC Summit Bali, 2022 (YouTube coverage)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/media/starcamp-certificate.png</image:loc>
+      <image:title>StarCamp Asia Internship Certificate</image:title>
+      <image:caption>StarCamp Asia Experience Center Operator internship certificate, Bali, 2022</image:caption>
     </image:image>
   </url>
 
@@ -28,6 +119,49 @@
     <lastmod>2026-02-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://joechamdani.com/media/IShowStream_Logo.png</image:loc>
+      <image:title>IShowStream</image:title>
+      <image:caption>IShowStream - Real-time Twitch Chat AI Analysis Platform</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/images/portfolio/jam-ai.jpg</image:loc>
+      <image:title>JAM AI</image:title>
+      <image:caption>JAM AI - GPT-Powered Diabetes Health Assistant</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/images/portfolio/UW_Logo.jpeg</image:loc>
+      <image:title>AI Transfer Evaluation Tool</image:title>
+      <image:caption>AI Transfer Evaluation Tool - 1st Place UW Claude Hackathon 2025</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/images/portfolio/dino-marine.png</image:loc>
+      <image:title>Dino Marine VR</image:title>
+      <image:caption>Dino Marine VR - Unity Multiplayer VR Game</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/images/portfolio/coffee-shop.png</image:loc>
+      <image:title>Coffee Shop</image:title>
+      <image:caption>Coffee Shop E-commerce App built with Next.js and Supabase</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/images/portfolio/ASR-Runner.png</image:loc>
+      <image:title>ASR-Runner</image:title>
+      <image:caption>ASR-Runner attack surface reconnaissance security tool</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/images/portfolio/UW_Transfer_Evaluation_Tool.jpg</image:loc>
+      <image:title>INFO 200: Transfer Evaluation System</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/images/portfolio/AI_Job_Market_&amp;_LLM_Growth.png</image:loc>
+      <image:title>INFO 201: AI Job Market &amp; LLM Growth</image:title>
+      <image:caption>AI Job Market and LLM Growth analysis using R and Kaggle data</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/images/portfolio/devnet.PNG</image:loc>
+      <image:title>DevNet SQL Manager</image:title>
+    </image:image>
   </url>
 
   <!-- Experience Pages -->
@@ -36,6 +170,23 @@
     <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://joechamdani.com/Milestones/Sector/Sector_Full_Logo.png</image:loc>
+      <image:title>Sector Internship - AI Research &amp; Development</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/Milestones/Sector/Sector_Team_Photo.webp</image:loc>
+      <image:title>Sector Team in Jakarta</image:title>
+      <image:caption>With the Sector team in Jakarta</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/Milestones/Sector/Thumbnail.webp</image:loc>
+      <image:title>AI Labeling System Demo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/Milestones/Sector/Sector_Logo.png</image:loc>
+      <image:title>Sector logo</image:title>
+    </image:image>
   </url>
 
   <url>
@@ -43,6 +194,19 @@
     <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://joechamdani.com/logos/stockbit.png</image:loc>
+      <image:title>Stockbit/Bibit Internship - AI Engineer</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/media/team-photo.webp</image:loc>
+      <image:title>Stockbit/Bibit Data Team</image:title>
+      <image:caption>With the Stockbit/Bibit Data Team in Jakarta</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/logos/stockbit.webp</image:loc>
+      <image:title>Stockbit/Bibit logo</image:title>
+    </image:image>
   </url>
 
   <url>
@@ -50,6 +214,14 @@
     <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://joechamdani.com/logos/touchten-games-logo.jpg</image:loc>
+      <image:title>Touchten Games Internship</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/media/touchten-1.jpeg</image:loc>
+      <image:title>Piper's Cat Café Gameplay</image:title>
+    </image:image>
   </url>
 
   <url>
@@ -57,6 +229,14 @@
     <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://joechamdani.com/logos/vr-park-logo.jpg</image:loc>
+      <image:title>VR Park Internship - VR Game Developer</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/media/vr-park-logo-thumbnail.png</image:loc>
+      <image:title>Dino VR Gameplay</image:title>
+    </image:image>
   </url>
 
   <!-- Credential Pages -->
@@ -65,6 +245,11 @@
     <lastmod>2025-12-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://joechamdani.com/media/google-data-analytics-certificate.png</image:loc>
+      <image:title>Google Data Analytics Certificate</image:title>
+      <image:caption>Google Data Analytics — Google certificate</image:caption>
+    </image:image>
   </url>
 
   <url>
@@ -72,6 +257,11 @@
     <lastmod>2025-12-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://joechamdani.com/media/starcamp-unity-certificate.png</image:loc>
+      <image:title>Unity 3D Programming Certificate</image:title>
+      <image:caption>Unity 3D Programming — StarCamp Asia certificate</image:caption>
+    </image:image>
   </url>
 
   <url>
@@ -79,6 +269,11 @@
     <lastmod>2025-12-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://joechamdani.com/media/starcamp-ux-certificate.png</image:loc>
+      <image:title>UX Research &amp; UX Design Certificate</image:title>
+      <image:caption>UX Research &amp; UX Design — StarCamp Asia certificate</image:caption>
+    </image:image>
   </url>
 
   <!-- Blog Articles -->
@@ -87,6 +282,11 @@
     <lastmod>2025-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://joechamdani.com/article_media/journey/Graduation_Peace.png</image:loc>
+      <image:title>Joseph Chamdani at Graduation</image:title>
+      <image:caption>Joseph Chamdani at graduation — from Jakarta, Indonesia to the University of Washington</image:caption>
+    </image:image>
   </url>
 
   <url>
@@ -94,6 +294,11 @@
     <lastmod>2025-07-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://joechamdani.com/article_media/bc-hacks-2024/Group_Photo.png</image:loc>
+      <image:title>BC Hacks 2024 Group Photo</image:title>
+      <image:caption>Group photo from BC Hacks 2024 hackathon lecture at Bellevue College with Korean exchange students</image:caption>
+    </image:image>
   </url>
 
 </urlset>

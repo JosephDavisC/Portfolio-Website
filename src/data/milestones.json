@@ -7,23 +7,12 @@
         "category": "Work",
         "logo": "/logos/UW_Logo.png",
         "website": "https://hfs.uw.edu/Dining",
-        "meta": "Part-time · 6 mos",
+        "meta": "Part-time · 8 mos",
         "location": "Seattle, Washington, United States",
         "roles": [
           {
-            "title": "Student Assistant - Local Point",
-            "dates": "Feb 2026 – Present · 1 mo",
-            "meta": "On-site",
-            "bullets": [
-              "Worked as a cashier handling payments and student check in.",
-              "Served meals and maintained basic food safety standards.",
-              "Assisted staff to keep service running smoothly."
-            ],
-            "media": []
-          },
-          {
             "title": "Student Assistant - Bay Laurel Catering",
-            "dates": "Sep 2025 – Present · 6 mos",
+            "dates": "Sep 2025 – Present · 8 mos",
             "meta": "On-site",
             "bullets": [
               "Working under UW Housing & Food Services Dining at Bay Laurel Catering to support catering operations and event services.",
@@ -50,9 +39,9 @@
             "dates": "Aug 2025 – Feb 2026 · 7 mos",
             "meta": "Hybrid",
             "bullets": [
-              "Built AI tools to make penetration testing and cybersecurity work faster and smarter.",
+              "Built AI automation tools to speed up penetration testing and improve cybersecurity workflows.",
               "Developed automated threat detection systems that identify and flag security vulnerabilities.",
-              "Trained AI models on XOps data to automate data processing, improving efficiency by 20% over manual regex-based methods."
+              "Training AI models on XOps data to automate data processing, improving efficiency by 20% over manual regex based methods."
             ],
             "detailsLink": "/experience/sector",
             "media": [
@@ -81,7 +70,7 @@
             "media": [
               { "src": "media/BCHACKS_Thumbnail.webp", "caption": "BC Hacks Lecture", "href": "https://joechamdani.com/blog/bc-hacks-2024" },
               { "src": "/media/bc-2.jpeg", "caption": "BC Tech Club", "href": "https://bctechclub.com/" },
-              { "src": "/media/bc-officers.jpeg", "caption": "Team" }
+              { "src": "/media/bc-officers.jpeg", "caption": "BC Tech Club officer team at Bellevue College, 2024" }
             ]
           },
           {
@@ -94,7 +83,7 @@
               "Helped new members onboard into collaborative projects and club activities."
             ],
             "media": [
-              { "src": "/media/bc-tech-meeting.jpeg", "caption": "Club Meeting" }
+              { "src": "/media/bc-tech-meeting.jpeg", "caption": "BC Tech Club weekly meeting at Bellevue College, 2024" }
             ]
           }
         ]
@@ -118,9 +107,9 @@
             ],
             "detailsLink": "/experience/stockbit",
             "media": [
-              { "src": "/media/stockbit-certificate.jpeg", "caption": "Certificate" },
-              { "src": "/media/team-photo.jpeg", "caption": "Team Photo" },
-              { "src": "/media/stockbit-photo.jpeg", "caption": "Solo Photo" }
+              { "src": "/media/stockbit-certificate.jpeg", "caption": "AI Engineer internship completion certificate from Stockbit/Bibit, Jakarta, 2024" },
+              { "src": "/media/team-photo.jpeg", "caption": "Stockbit/Bibit Data Team in Jakarta, 2024" },
+              { "src": "/media/stockbit-photo.jpeg", "caption": "Joseph Chamdani at Stockbit/Bibit office in Jakarta, 2024" }
             ]
           }
         ]
@@ -144,7 +133,7 @@
             ],
             "media": [
               { "src": "/logos/devnet-logo.jpg", "caption": "Dev.Net.HS", "href": "https://hsdevnet.com/index" },
-              { "src": "/media/devnet-club-photo.jpeg", "caption": "Club Photo" }
+              { "src": "/media/devnet-club-photo.jpeg", "caption": "Dev.Net.HS student tech club in Jakarta, 2023" }
             ]
           }
         ]
@@ -167,8 +156,8 @@
               "Assisted with scripting and cutscene creation."
             ],
             "media": [
-              { "src": "/media/touchten-1.jpeg", "caption": "Gameplay", "href": "https://drive.google.com/file/d/1K2DFHZOAV_TE3tg1sWXrSyqqJLIcTmQB/view" },
-              { "src": "/media/touchten-2.jpeg", "caption": "Team session" }
+              { "src": "/media/touchten-1.jpeg", "caption": "Piper's Cat Café gameplay cutscene at Touchten Games, Jakarta, 2023", "href": "https://drive.google.com/file/d/1K2DFHZOAV_TE3tg1sWXrSyqqJLIcTmQB/view" },
+              { "src": "/media/touchten-2.jpeg", "caption": "Touchten Games development team session in Jakarta, 2023" }
             ]
           }
         ]
@@ -192,7 +181,7 @@
             ],
             "media": [
               { "src": "/media/vr-park-logo-thumbnail.png", "caption": "VR Park", "href": "https://youtu.be/lgahuoczoiA?si=CwuUs_vg5XW6xPmv" },
-              { "src": "/media/vr-park-certificate.png", "caption": "Certificate" }
+              { "src": "/media/vr-park-certificate.png", "caption": "VR Park Game Developer internship certificate, Jakarta, 2023" }
             ]
           }
         ]
@@ -215,9 +204,9 @@
               "Represented the company at NXC Summit Bali demonstrating metaverse tech."
             ],
             "media": [
-              { "src": "/media/nxc-1.webp", "caption": "Antaranews.com", "href": "https://www.antaranews.com/berita/3097153/starcamp-demonstrasikan-teknologi-metaverse-di-nxc-summit-bali" },
-              { "src": "/media/nxc-2.png", "caption": "Youtube", "href": "https://www.youtube.com/watch?v=0slx3VTl-Lw" },
-              { "src": "/media/starcamp-certificate.png", "caption": "Certificate" }
+              { "src": "/media/nxc-1.webp", "caption": "StarCamp Asia demonstrating metaverse technology at NXC Summit Bali, 2022 (Antaranews.com coverage)", "href": "https://www.antaranews.com/berita/3097153/starcamp-demonstrasikan-teknologi-metaverse-di-nxc-summit-bali" },
+              { "src": "/media/nxc-2.png", "caption": "StarCamp Asia VR demo at NXC Summit Bali, 2022 (YouTube coverage)", "href": "https://www.youtube.com/watch?v=0slx3VTl-Lw" },
+              { "src": "/media/starcamp-certificate.png", "caption": "StarCamp Asia Experience Center Operator internship certificate, Bali, 2022" }
             ]
           }
         ]
