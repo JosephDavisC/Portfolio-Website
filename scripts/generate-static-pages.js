@@ -235,12 +235,19 @@ homepageImages.push({
   alt: 'Joseph Davis Chamdani — Informatics student at the University of Washington',
 });
 
+// Images explicitly excluded from SEO indexing (still rendered by the site)
+const excludedFromSeo = new Set([
+  '/media/UW-Dining.png',
+  '/media/bay-laurel.jpg',
+]);
+
 // Every milestone media entry
 for (const company of milestones.companies || []) {
   for (const role of company.roles || []) {
     for (const media of role.media || []) {
       // Normalize src (some start with media/, some with /media/)
       const src = media.src.startsWith('/') ? media.src : `/${media.src}`;
+      if (excludedFromSeo.has(src)) continue;
       homepageImages.push({
         src,
         alt: media.caption
