@@ -75,12 +75,45 @@
 </IfModule>
 
 # ============================
+# NOINDEX FOR /info498* (class projects, not for indexing)
+# ============================
+<IfModule mod_headers.c>
+  <If "%{REQUEST_URI} =~ m#^/info498#">
+    Header set X-Robots-Tag "noindex, nofollow"
+  </If>
+</IfModule>
+
+# ============================
 # URL REWRITING
 # ============================
 
 # Enable rewrite engine
 RewriteEngine On
 RewriteBase /
+
+# ============================
+# ARCHIVED STATIC SITES
+# ============================
+# info498, info498resonance and the-path-growth were relocated under
+# /archive/ to declutter the web root. Their assets use absolute paths and
+# the-path-growth is tied to the /the-path-growth React route, so the public
+# URLs must stay identical. These rules serve them from /archive/ internally
+# (no visible redirect, so all original links keep working).
+
+# info498resonance (match before info498 to avoid prefix collisions)
+RewriteRule ^info498resonance/?$ /archive/info498resonance/index.html [L]
+RewriteRule ^info498resonance/(.+)$ /archive/info498resonance/$1 [L]
+
+# info498
+RewriteRule ^info498/?$ /archive/info498/index.html [L]
+RewriteRule ^info498/(.+)$ /archive/info498/$1 [L]
+
+# the-path-growth (loader page + pdf-preview.html). Only rewrite sub-paths that
+# exist as real files in the archive, so React routes like /the-path-growth/v1
+# still fall through to the SPA below.
+RewriteRule ^the-path-growth/?$ /archive/the-path-growth/index.html [L]
+RewriteCond %{DOCUMENT_ROOT}/archive/the-path-growth/$1 -f
+RewriteRule ^the-path-growth/(.+)$ /archive/the-path-growth/$1 [L]
 
 # ============================
 # WEBP IMAGE SERVING

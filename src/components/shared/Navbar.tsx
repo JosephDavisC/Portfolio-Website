@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Briefcase } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 
 const HEADER_OFFSET = 88;
@@ -194,6 +194,17 @@ export default function Navbar() {
 
         {/* Theme Toggle & Mobile Menu */}
         <div className="flex items-center gap-3">
+          {/* Freelance CTA */}
+          <a
+            href="https://freelance.joechamdani.com/#contact"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-brutal hidden md:inline-flex items-center gap-1.5 px-4 py-2 text-sm"
+          >
+            <Briefcase className="w-4 h-4" />
+            Work with me
+          </a>
+
           <ThemeToggle />
 
           {/* Mobile Menu Button */}
@@ -238,6 +249,18 @@ export default function Navbar() {
               </li>
             )
           )}
+          <li className="pt-2">
+            <a
+              href="https://freelance.joechamdani.com/#contact"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setIsOpen(false)}
+              className="btn-brutal flex items-center justify-center gap-2 py-3 text-lg"
+            >
+              <Briefcase className="w-5 h-5" />
+              Work with me
+            </a>
+          </li>
         </ul>
       )}
     </header>

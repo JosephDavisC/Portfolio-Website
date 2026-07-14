@@ -24,3 +24,26 @@ public/api/config.php
 
 # Old portfolio archive (deployed via FTP only, not tracked in git)
 public/v1/
+
+# Standalone microsites & archived pages (deployed via FTP only, not tracked in git)
+public/whitespace/
+public/whitespace-solutions/
+public/whitespace-talents/
+public/archive/
+
+# VSCode workspace settings (local)
+.vscode/
+
+# Private the-path-growth pitch (deployed via FTP only, kept out of the public repo)
+src/pages/ThePathGrowthPage.tsx
+src/pages/ThePathGrowthV1Page.tsx
+public/api/visibility-check.php
+public/images/og-the-path-growth.png
+public/images/og-the-path-preview.html
+public/images/the-path-instagram.png
+public/logos/claude.svg
+public/logos/openai.svg
+public/logos/perplexity.svg
+public/logos/reddit.svg
+public/logos/the-path-logo.svg
+public/logos/tiktok.svg

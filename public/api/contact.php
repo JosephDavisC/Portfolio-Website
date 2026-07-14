@@ -57,6 +57,31 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 }
 
 // ============================================
+// Rate limiting: 4 messages/day per sender email, 10/day per IP
+// ============================================
+function rateLimit($key, $max, $windowSec) {
+    $file = sys_get_temp_dir() . '/contact-rl-' . md5($key);
+    $now = time();
+    $stamps = @json_decode(@file_get_contents($file), true) ?: [];
+    $stamps = array_values(array_filter($stamps, fn($t) => $t > $now - $windowSec));
+    if (count($stamps) >= $max) return false;
+    $stamps[] = $now;
+    @file_put_contents($file, json_encode($stamps), LOCK_EX);
+    return true;
+}
+
+if (!rateLimit('email-' . strtolower($email), 4, 86400)) {
+    http_response_code(429);
+    echo json_encode(['success' => false, 'message' => "You've reached the daily message limit. Email me directly instead: joseph@joechamdani.com"]);
+    exit();
+}
+if (!rateLimit('ip-' . ($_SERVER['REMOTE_ADDR'] ?? '?'), 10, 86400)) {
+    http_response_code(429);
+    echo json_encode(['success' => false, 'message' => "Too many messages from this connection today. Email me directly instead: joseph@joechamdani.com"]);
+    exit();
+}
+
+// ============================================
 // SMTP Configurations
 // ============================================
 $smtpConfigs = [

@@ -268,7 +268,7 @@ export default function Milestones() {
                         <img
                           src={company.logo}
                           alt={company.name}
-                          className="h-12 w-12 rounded-lg object-contain bg-paper dark:bg-slate-800 p-1 border-2 border-espresso dark:border-slate-600 shadow-brutal-sm dark:shadow-none hover:shadow-brutal dark:hover:shadow-[0_0_15px_rgba(96,165,250,0.3)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+                          className={`h-12 w-12 rounded-lg object-contain p-1 border-2 border-espresso dark:border-slate-600 shadow-brutal-sm dark:shadow-none hover:shadow-brutal dark:hover:shadow-[0_0_15px_rgba(96,165,250,0.3)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all ${company.logo.endsWith('.svg') ? 'bg-white dark:bg-white' : 'bg-paper dark:bg-slate-800'}`}
                         />
                       </a>
                       <div className="flex-1 min-w-0">
@@ -377,7 +377,7 @@ export default function Milestones() {
                                     return (
                                       <figure
                                         key={mi}
-                                        className="group relative rounded-lg overflow-hidden border-2 border-espresso/30 dark:border-slate-600 bg-paper dark:bg-slate-800/50"
+                                        className={`group relative rounded-lg overflow-hidden border-2 border-espresso/30 dark:border-slate-600 ${m.src.endsWith('.svg') ? 'bg-white dark:bg-white' : 'bg-paper dark:bg-slate-800/50'}`}
                                       >
                                         {m.href ? (
                                           <a

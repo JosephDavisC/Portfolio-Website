@@ -3,6 +3,48 @@
     "categories": ["All", "Internships", "Clubs", "Work"],
     "companies": [
       {
+        "name": "Whitespace Solutions",
+        "category": "Internships",
+        "logo": "/logos/whitespace-solution-logo.svg",
+        "website": "https://whitespace.id",
+        "meta": "Internship · 1 mo",
+        "location": "Jakarta, Indonesia",
+        "roles": [
+          {
+            "title": "AI Product Intern",
+            "dates": "Jul 2026 – Present · 1 mo",
+            "meta": "Hybrid",
+            "bullets": [
+              "Building AI-powered product features and integrations at Whitespace Solutions."
+            ],
+            "media": [
+              { "src": "/logos/whitespace-solution-logo.svg", "caption": "Whitespace Solutions", "href": "https://whitespace.id" }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Information Consulting Group",
+        "category": "Clubs",
+        "logo": "/logos/ICG.png",
+        "website": "https://www.linkedin.com/company/information-consulting-group/",
+        "meta": "Part-time · 3 mos",
+        "location": "Seattle, Washington, United States",
+        "roles": [
+          {
+            "title": "Technology Operations Associate",
+            "dates": "May 2026 – Present · 3 mos",
+            "meta": "Hybrid",
+            "bullets": [
+              "Supporting technology operations and consulting initiatives at Information Consulting Group."
+            ],
+            "media": [
+              { "src": "/logos/ICG.png", "caption": "Information Consulting Group", "href": "https://washingtonicg.org/" }
+            ]
+          }
+        ]
+      },
+      {
         "name": "University of Washington",
         "category": "Work",
         "logo": "/logos/UW_Logo.png",
@@ -15,9 +57,7 @@
             "dates": "Sep 2025 – Present · 8 mos",
             "meta": "On-site",
             "bullets": [
-              "Working under UW Housing & Food Services Dining at Bay Laurel Catering to support catering operations and event services.",
-              "Helped prepare, organize, and deliver food service items for campus events and daily operations.",
-              "Coordinated with staff to maintain smooth service flow and meet event requirements."
+              "Support UW Housing and Food Services with catering operations, event setup, and daily food service."
             ],
             "media": [
               { "src": "media/UW-Dining.png", "caption": "UW HFS Dining", "href": "https://hfs.uw.edu/Home" },

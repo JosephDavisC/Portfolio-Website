@@ -1,5 +1,5 @@
 import React from "react";
-import { Coffee } from "lucide-react";
+import { Coffee, LayoutDashboard } from "lucide-react";
 
 // Tennis Ball SVG icon (no emoji) - detailed version
 const TennisBallIcon = () => (
@@ -54,15 +54,27 @@ const Footer = () => {
           <TennisBallIcon />
         </div>
 
-        <a
-          href="https://status.joechamdani.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-xs font-mono text-espresso/40 dark:text-slate-500 hover:text-court dark:hover:text-[#60A5FA] transition-colors"
-        >
-          <span className="inline-block w-2 h-2 rounded-full bg-green-500" />
-          System Status
-        </a>
+        <div className="flex flex-wrap justify-center items-center gap-x-5 gap-y-2">
+          <a
+            href="https://freelance.joechamdani.com/login"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-xs font-mono text-espresso/40 dark:text-slate-500 hover:text-court dark:hover:text-[#60A5FA] transition-colors"
+          >
+            <LayoutDashboard className="w-3 h-3" />
+            Client Portal
+          </a>
+
+          <a
+            href="https://status.joechamdani.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-xs font-mono text-espresso/40 dark:text-slate-500 hover:text-court dark:hover:text-[#60A5FA] transition-colors"
+          >
+            <span className="inline-block w-2 h-2 rounded-full bg-green-500" />
+            System Status
+          </a>
+        </div>
       </div>
     </footer>
   );

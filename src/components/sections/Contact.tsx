@@ -42,6 +42,17 @@ const Contact = () => {
 
         <div className="mb-12">
           <ContactForm />
+          <p className="mt-5 text-center text-sm font-mono text-espresso/60 dark:text-slate-400 px-2">
+            Working with me comes with a live client portal.{" "}
+            <a
+              href="https://freelance.joechamdani.com/dashboard?demo=1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-court-dark dark:text-[#60A5FA] hover:underline"
+            >
+              See the demo →
+            </a>
+          </p>
         </div>
 
         <motion.div

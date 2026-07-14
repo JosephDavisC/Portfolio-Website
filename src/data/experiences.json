@@ -1,4 +1,82 @@
 {
+  "icg": {
+    "slug": "icg",
+    "company": "Information Consulting Group",
+    "logo": "/logos/ICG.png",
+    "ogImage": "/logos/ICG.png",
+    "role": "Technology Operations Associate",
+    "type": "Part-time",
+    "duration": "May 2026 – Present · 3 mos",
+    "location": "Seattle, Washington, United States · Hybrid",
+    "website": "https://www.linkedin.com/company/information-consulting-group/",
+    "description": "Information Consulting Group (ICG) is a consulting organization based in Seattle, WA. As a Technology Operations Associate, I support technology operations and consulting initiatives, collaborating with the team on operational and technical projects.",
+    "theme": {
+      "primary": "#1E3A5F",
+      "primaryHover": "#2B527A",
+      "primaryDark": "#162C4A",
+      "gradient": "from-blue-900 to-blue-700",
+      "bgTint": "bg-blue-900/20",
+      "borderTint": "border-blue-900/30",
+      "textColor": "text-[#1E3A5F]"
+    },
+    "seo": {
+      "title": "Information Consulting Group - Technology Operations Associate",
+      "description": "Technology Operations Associate at Information Consulting Group, Seattle. Supporting technology operations and consulting initiatives.",
+      "keywords": [
+        "Joseph Chamdani",
+        "Technology Operations",
+        "Information Consulting Group",
+        "ICG",
+        "Seattle",
+        "consulting"
+      ]
+    },
+    "highlights": [
+      "Supporting technology operations and consulting initiatives",
+      "Collaborating with the team on operational and technical projects"
+    ],
+    "technologies": ["Technology Operations", "Consulting"],
+    "impact": []
+  },
+  "whitespace": {
+    "slug": "whitespace",
+    "company": "Whitespace Solutions",
+    "logo": "/logos/whitespace-solution-logo.svg",
+    "ogImage": "/logos/whitespace-solution-logo.svg",
+    "role": "AI Product Intern",
+    "type": "Internship",
+    "duration": "Jul 2026 – Present · 1 mo",
+    "location": "Jakarta, Indonesia · Hybrid",
+    "website": "https://whitespace.id",
+    "description": "Whitespace Solutions is a technology company based in Jakarta, Indonesia. As an AI Product Intern, I work on building and integrating AI-powered features into product workflows, collaborating closely with the product and engineering teams.",
+    "theme": {
+      "primary": "#6366F1",
+      "primaryHover": "#818CF8",
+      "primaryDark": "#4F46E5",
+      "gradient": "from-indigo-500 to-violet-600",
+      "bgTint": "bg-indigo-500/20",
+      "borderTint": "border-indigo-500/30",
+      "textColor": "text-[#6366F1]"
+    },
+    "seo": {
+      "title": "Whitespace Solutions Internship - AI Product Intern",
+      "description": "AI Product Intern at Whitespace Solutions, Jakarta. Building AI-powered product features and collaborating with product and engineering teams.",
+      "keywords": [
+        "Joseph Chamdani",
+        "AI Product Intern",
+        "Whitespace Solutions",
+        "Jakarta",
+        "AI internship",
+        "product development"
+      ]
+    },
+    "highlights": [
+      "Building AI-powered product features and workflows",
+      "Collaborating with product and engineering teams on AI integration initiatives"
+    ],
+    "technologies": ["AI/ML", "Product Development"],
+    "impact": []
+  },
   "sector": {
     "slug": "sector",
     "company": "Sector",

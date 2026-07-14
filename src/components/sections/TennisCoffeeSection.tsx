@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ZoomIn, ChevronLeft, ChevronRight, Coffee } from "lucide-react";
+import { ZoomIn, ChevronLeft, ChevronRight, Coffee, Wrench } from "lucide-react";
 import Lightbox from "@/components/sections/Lightbox";
-import RacketCard from "@/components/sections/RacketCard";
 
 // Tennis Ball SVG icon (no emoji) - detailed version
 const TennisBallIcon: React.FC<{ className?: string }> = ({ className = "" }) => (
@@ -74,55 +73,36 @@ const tennisImages = [
   { src: "/images/moments/Joseph_Chamdani_Tennis_3.JPG", alt: "Joseph & Denzel — 3" }
 ];
 
-const rackets = [
-  {
-    title: "Diadem Elevate 98",
-    img: "/images/rackets/diadem_elevate.jpg",
-    glowColor: "blue" as const,
-    rotateDirection: "right" as const,
-    retired: false,
-    specs: [
-      "<strong>Use:</strong> Match play",
-      "<strong>Weight:</strong> 305g",
-      "<strong>Head Size:</strong> 98 sq in",
-      "<strong>String:</strong> Luxilon 4G 125 / Wilson NXT 17 hybrid",
-      "<strong>Mains:</strong> Luxilon 4G 125 @ 50 lbs",
-      "<strong>Crosses:</strong> Wilson NXT 17 @ 48 lbs",
-      "<strong>Grip Size:</strong> 4 (³⁄₈)",
-    ],
-  },
-  {
-    title: "Babolat Pure Aero 2023",
-    img: "/images/rackets/babolat-pure-aero.avif",
-    glowColor: "yellow" as const,
-    rotateDirection: "left" as const,
-    retired: false,
-    specs: [
-      "<strong>Use:</strong> Casual",
-      "<strong>Weight:</strong> 300g",
-      "<strong>Head Size:</strong> 100 sq in",
-      "<strong>String:</strong> Ashaway Crossfire 18 Kevlar hybrid",
-      "<strong>Mains:</strong> Kevlar 18 gauge @ 48 lbs",
-      "<strong>Crosses:</strong> Synthetic gut 16 gauge @ 52 lbs",
-      "<strong>Grip Size:</strong> 4 (³⁄₈)",
-    ],
-  },
-  {
-    title: "Babolat Pure Drive 2021",
-    img: "/images/rackets/babolat_pure_drive.jpg",
-    glowColor: "blue" as const,
-    rotateDirection: "right" as const,
-    retired: true,
-    specs: [
-      "<strong>Use:</strong> Retired",
-      "<strong>Weight:</strong> 300g",
-      "<strong>Head Size:</strong> 100 sq in",
-      "<strong>String:</strong> Wilson NXT 17",
-      "<strong>Tension:</strong> 55 lbs (mains & crosses)",
-      "<strong>Grip Size:</strong> 4 (³⁄₈)",
-    ],
-  },
+const diademSpecs = [
+  { label: "Use", value: "Match play" },
+  { label: "Weight", value: "309g (+ 4g lead tape)" },
+  { label: "Head Size", value: "98 sq in" },
+  { label: "Mains", value: "Luxilon 4G 125 @ 47 lbs" },
+  { label: "Crosses", value: "Wilson NXT 17 @ 45 lbs" },
+  { label: "Grip Size", value: "4 (³⁄₈)" },
 ];
+
+function StringBed() {
+  const mainsX = Array.from({ length: 10 }, (_, i) => 18 + i * 9.4);
+  const crossesY = Array.from({ length: 12 }, (_, i) => 14 + i * 10);
+  return (
+    <svg viewBox="0 0 120 170" width="90" height="127" aria-hidden="true">
+      <defs>
+        <clipPath id="racket-head-clip">
+          <ellipse cx="60" cy="70" rx="50" ry="60" />
+        </clipPath>
+      </defs>
+      <g clipPath="url(#racket-head-clip)" stroke="#4CBB17" strokeWidth="1.5" opacity="0.9">
+        {mainsX.map((x) => <line key={x} x1={x} y1="5" x2={x} y2="135" />)}
+      </g>
+      <g clipPath="url(#racket-head-clip)" stroke="#60A5FA" strokeWidth="1.5" opacity="0.9">
+        {crossesY.map((y) => <line key={y} x1="5" y1={y} x2="115" y2={y} />)}
+      </g>
+      <ellipse cx="60" cy="70" rx="50" ry="60" stroke="#3D2B1F" strokeWidth="5" fill="none" opacity="0.25" />
+      <rect x="52" y="128" width="16" height="38" rx="6" fill="#3D2B1F" opacity="0.2" />
+    </svg>
+  );
+}
 
 export default function TennisCoffeeSection() {
   const [tennisIdx, setTennisIdx] = useState(0);
@@ -139,7 +119,7 @@ export default function TennisCoffeeSection() {
 
   return (
     <section id="tennis-coffee" className="py-16 px-6 bg-paper-dark">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -353,23 +333,79 @@ export default function TennisCoffeeSection() {
           className="mt-16"
         >
           <div className="flex items-center gap-3 mb-8">
-            <TennisRacketIcon className="text-espresso flex-shrink-0" />
-            <h3 className="text-2xl font-heading font-bold text-espresso">My Racket Setup</h3>
+            <TennisRacketIcon className="text-espresso dark:text-[#60A5FA] flex-shrink-0" />
+            <h3 className="text-2xl font-heading font-bold text-espresso dark:text-slate-100">My Racket Setup</h3>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {rackets.map((racket) => (
-              <RacketCard
-                key={racket.title}
-                title={racket.title}
-                img={racket.img}
-                colorClass="text-espresso font-heading"
-                glowColor={racket.glowColor}
-                rotateDirection={racket.rotateDirection}
-                specs={racket.specs}
-                retired={racket.retired}
-              />
-            ))}
+          <div className="card-brutal p-6 md:p-10">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              {/* Left — racket image */}
+              <motion.div
+                whileHover={{ rotate: 2, scale: 1.03 }}
+                transition={{ type: "spring", stiffness: 200, damping: 15 }}
+                className="flex justify-center"
+              >
+                <div className="rounded-xl border-2 border-espresso/20 dark:border-slate-600 bg-paper dark:bg-slate-800 p-6 w-full max-w-sm">
+                  <img
+                    src="/images/rackets/diadem_elevate.jpg"
+                    alt="Diadem Elevate V3 98"
+                    className="mx-auto w-auto"
+                    style={{ height: "420px", objectFit: "contain" }}
+                    loading="lazy"
+                  />
+                </div>
+              </motion.div>
+
+              {/* Right — specs + string diagram + customisation */}
+              <div className="space-y-6">
+                <h4 className="text-3xl font-heading font-bold text-espresso dark:text-slate-100">
+                  Diadem Elevate V3 98
+                </h4>
+
+                <ul className="space-y-3">
+                  {diademSpecs.map(({ label, value }) => (
+                    <li key={label} className="flex gap-3 font-mono text-base">
+                      <span className="font-bold text-espresso dark:text-[#60A5FA] min-w-[100px]">{label}</span>
+                      <span className="text-espresso/70 dark:text-slate-300">{value}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* String bed diagram */}
+                <div>
+                  <p className="text-xs font-mono font-semibold uppercase tracking-widest text-espresso/40 dark:text-slate-500 mb-3">String Bed</p>
+                  <div className="flex items-center gap-6">
+                    <StringBed />
+                    <div className="space-y-4">
+                      <div>
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="inline-block w-5 h-0.5 bg-court rounded-full" />
+                          <span className="font-mono text-xs font-semibold text-espresso dark:text-slate-200">Mains · 47 lbs</span>
+                        </div>
+                        <p className="font-mono text-xs text-espresso/50 dark:text-slate-400 pl-7">Luxilon 4G 125</p>
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="inline-block w-5 h-0.5 bg-[#60A5FA] rounded-full" />
+                          <span className="font-mono text-xs font-semibold text-espresso dark:text-slate-200">Crosses · 45 lbs</span>
+                        </div>
+                        <p className="font-mono text-xs text-espresso/50 dark:text-slate-400 pl-7">Wilson NXT 17</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Customisation callout */}
+                <div className="flex items-start gap-3 rounded-lg border-2 border-court dark:border-[#60A5FA] bg-court/10 dark:bg-[#60A5FA]/10 px-4 py-3">
+                  <Wrench className="w-4 h-4 mt-0.5 flex-shrink-0 text-court-dark dark:text-[#60A5FA]" />
+                  <div>
+                    <p className="text-xs font-mono font-semibold uppercase tracking-widest text-court-dark dark:text-[#60A5FA] mb-1">Customised</p>
+                    <p className="font-mono text-sm text-espresso/80 dark:text-slate-300">+1g at 3 o'clock (inner hoop) · +1g at 9 o'clock (inner hoop) · +2g at throat/yoke (inner face)</p>
+                    <p className="font-mono text-sm text-espresso/80 dark:text-slate-300">Total added: 4g · Hybrid tension · 47 lbs mains / 45 lbs crosses</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>
