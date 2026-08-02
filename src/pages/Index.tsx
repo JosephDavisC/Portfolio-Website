@@ -8,9 +8,11 @@ import Navbar from '@/components/shared/Navbar';
 
 const Portfolio = React.lazy(() => import('@/components/sections/Portfolio'));
 const Certification = React.lazy(() => import('@/components/sections/Certifications'));
+const Awards = React.lazy(() => import('@/components/sections/Awards'));
 const Milestones = React.lazy(() => import('@/components/sections/Milestones'));
 const Blog = React.lazy(() => import('@/components/sections/Blog'));
 const TennisCoffeeSection = React.lazy(() => import('@/components/sections/TennisCoffeeSection'));
+const Testimonials = React.lazy(() => import('@/components/sections/Testimonials'));
 const Contact = React.lazy(() => import('@/components/sections/Contact'));
 const Footer = React.lazy(() => import('@/components/shared/Footer'));
 
@@ -28,8 +30,10 @@ const Index = () => {
         <Milestones />
         <Portfolio />
         <Certification />
+        <Awards />
         <Blog />
         <TennisCoffeeSection />
+        <Testimonials />
         <Contact />
         <Footer />
       </Suspense>

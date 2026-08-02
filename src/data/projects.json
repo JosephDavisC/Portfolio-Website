@@ -70,6 +70,17 @@
     "github": "https://github.com/JosephDavisC/ASR-Runner"
   },
   {
+    "title": "garak (NVIDIA)",
+    "category": "AI",
+    "featured": false,
+    "image": "/images/portfolio/garak.png",
+    "imageAlt": "garak CLI filtering contribution to NVIDIA",
+    "imageStyle": "cover-top",
+    "tech": ["Python", "CLI", "LLM Security"],
+    "description": "Merged open-source contribution to NVIDIA's garak, the LLM vulnerability scanner. Added CLI filtering for --list_probes and --list_detectors (via spec or config file) with invalid-input handling and tests.",
+    "github": "https://github.com/NVIDIA/garak/pull/1367"
+  },
+  {
     "title": "INFO 200: Transfer Evaluation System",
     "category": "Web",
     "featured": false,

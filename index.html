@@ -167,8 +167,30 @@
         ]
       }
     </script>
-       
-    
+
+    <!-- WebSite + site navigation: signals main pages to Google (helps sitelinks) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://joechamdani.com/#website",
+            "name": "Joseph Davis Chamdani",
+            "alternateName": "joechamdani.com",
+            "url": "https://joechamdani.com/",
+            "author": { "@type": "Person", "name": "Joseph Davis Chamdani", "url": "https://joechamdani.com/" }
+          },
+          { "@type": "SiteNavigationElement", "position": 1, "name": "Projects", "url": "https://joechamdani.com/projects" },
+          { "@type": "SiteNavigationElement", "position": 2, "name": "Milestones", "url": "https://joechamdani.com/#milestones" },
+          { "@type": "SiteNavigationElement", "position": 3, "name": "Credentials", "url": "https://joechamdani.com/#certifications" },
+          { "@type": "SiteNavigationElement", "position": 4, "name": "Awards", "url": "https://joechamdani.com/#awards" },
+          { "@type": "SiteNavigationElement", "position": 5, "name": "Blog", "url": "https://joechamdani.com/#blog" },
+          { "@type": "SiteNavigationElement", "position": 6, "name": "Contact", "url": "https://joechamdani.com/#contact" }
+        ]
+      }
+    </script>
+
     <script>
       console.log(`
          ______

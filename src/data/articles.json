@@ -10,6 +10,21 @@
     "hasFullArticle": true
   },
   {
+    "id": "ishowstream-feature",
+    "title": "IShowStream: AI That Reads Twitch Chat",
+    "date": "November 2025",
+    "location": "Google Cloud Run Hackathon",
+    "preview": "A feature on IShowStream, our five-agent system that reads Twitch chat in real time so streamers never miss a moment. Written by my teammate Jessica Fiona.",
+    "thumbnail": "media/ishowstream.webp",
+    "tags": ["AI", "Google Cloud", "Hackathon"],
+    "hasFullArticle": false,
+    "externalLinks": [
+      { "url": "https://medium.com/@jessica.fiona2004/ishowstream-ai-that-reads-twitch-chat-so-streamers-dont-miss-a-moment-112342be7e32", "text": "Read on Medium" },
+      { "url": "https://devpost.com/software/google-ai-agent-jeder", "text": "Devpost" },
+      { "url": "https://github.com/JosephDavisC/IShowStream", "text": "GitHub" }
+    ]
+  },
+  {
     "id": "bc-hacks-2024",
     "title": "BC Hacks 2024 Lecture",
     "date": "July 2024",

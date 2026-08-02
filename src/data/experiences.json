@@ -50,13 +50,13 @@
     "website": "https://whitespace.id",
     "description": "Whitespace Solutions is a technology company based in Jakarta, Indonesia. As an AI Product Intern, I work on building and integrating AI-powered features into product workflows, collaborating closely with the product and engineering teams.",
     "theme": {
-      "primary": "#6366F1",
-      "primaryHover": "#818CF8",
-      "primaryDark": "#4F46E5",
-      "gradient": "from-indigo-500 to-violet-600",
-      "bgTint": "bg-indigo-500/20",
-      "borderTint": "border-indigo-500/30",
-      "textColor": "text-[#6366F1]"
+      "primary": "#F2902A",
+      "primaryHover": "#F8A94E",
+      "primaryDark": "#D97B12",
+      "gradient": "from-orange-500 to-amber-600",
+      "bgTint": "bg-orange-500/20",
+      "borderTint": "border-orange-500/30",
+      "textColor": "text-[#F2902A]"
     },
     "seo": {
       "title": "Whitespace Solutions Internship - AI Product Intern",

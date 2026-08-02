@@ -101,6 +101,24 @@ const ArticleCard: React.FC<{ article: Article; index: number; onOpenArticle: (i
               {article.externalLinkText || 'External Link'}
             </a>
           )}
+
+          {/* External-only articles (no internal full article): surface each link as a button */}
+          {!article.hasFullArticle && article.externalLinks?.map((link, i) => (
+            <a
+              key={link.url}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={
+                i === 0
+                  ? "btn-brutal inline-flex items-center"
+                  : "inline-flex items-center px-4 py-2 bg-espresso/5 dark:bg-white/5 text-espresso dark:text-slate-100 font-medium rounded-lg border-2 border-espresso/30 dark:border-slate-600 hover:bg-espresso hover:text-paper dark:hover:border-[#60A5FA]/50 transition-all"
+              }
+            >
+              <ExternalLink className="h-5 w-5 mr-2" />
+              {link.text}
+            </a>
+          ))}
         </div>
       </div>
     </motion.article>

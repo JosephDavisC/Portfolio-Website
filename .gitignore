@@ -47,3 +47,10 @@ public/logos/perplexity.svg
 public/logos/reddit.svg
 public/logos/the-path-logo.svg
 public/logos/tiktok.svg
+
+# Local deploy helper for the whitespace-talents microsite (not committed)
+scripts/sync-whitespace-talents.sh
+scripts/sync-whitespace-landing.sh
+
+# Ideosource portfolio logos (hosted for ideosource.com hotlinking, FTP-only)
+public/ideosource/

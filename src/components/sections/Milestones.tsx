@@ -4,6 +4,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Calendar, MapPin, X, ChevronDown, ChevronUp, Briefcase, Users, GraduationCap, ArrowRight } from "lucide-react";
 import data from "@/data/milestones.json";
 
+/* Cache-bust for images: appends a version so browsers/CDN fetch a fresh copy
+   instead of serving a stale/corrupt cached one (images are cached immutable).
+   Bump this number if a stale image ever sticks again. */
+const IMG_V = "2";
+const bust = (src: string) =>
+  src ? `${src}${src.includes("?") ? "&" : "?"}v=${IMG_V}` : src;
+
 /* ---------- Types matching the JSON ---------- */
 type Media = { src: string; caption: string; href?: string };
 type Role = {
@@ -70,7 +77,7 @@ function Lightbox({
         <X className="h-6 w-6" />
       </button>
       <img
-        src={src}
+        src={bust(src)}
         alt={alt || "image"}
         className="max-h-[85vh] max-w-[92vw] object-contain rounded-xl border-2 border-espresso shadow-brutal-lg"
         onClick={(e) => e.stopPropagation()}
@@ -266,7 +273,7 @@ export default function Milestones() {
                         onClick={(e) => e.stopPropagation()}
                       >
                         <img
-                          src={company.logo}
+                          src={bust(company.logo)}
                           alt={company.name}
                           className={`h-12 w-12 rounded-lg object-contain p-1 border-2 border-espresso dark:border-slate-600 shadow-brutal-sm dark:shadow-none hover:shadow-brutal dark:hover:shadow-[0_0_15px_rgba(96,165,250,0.3)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all ${company.logo.endsWith('.svg') ? 'bg-white dark:bg-white' : 'bg-paper dark:bg-slate-800'}`}
                         />
@@ -368,7 +375,7 @@ export default function Milestones() {
                                   {role.media.map((m, mi) => {
                                     const Img = (
                                       <img
-                                        src={m.src}
+                                        src={bust(m.src)}
                                         alt={m.caption}
                                         loading="lazy"
                                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"

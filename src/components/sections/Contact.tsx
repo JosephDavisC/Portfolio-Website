@@ -3,6 +3,23 @@ import { motion } from 'framer-motion';
 import { Mail, Linkedin, Github, Instagram, Youtube, Download } from 'lucide-react';
 import ContactForm from '@/components/shared/ContactForm';
 
+// Brand marks lucide doesn't ship (fill = currentColor so they inherit text color)
+const XIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+);
+const MediumIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+    <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42S20.96 8.46 20.96 12zM24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z" />
+  </svg>
+);
+const DevpostIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+    <path d="M6.002 1.61L0 12.004 6.002 22.39h11.996L24 12.004 17.998 1.61zm1.593 4.084h3.947c3.605 0 6.276 1.695 6.276 6.31 0 4.436-3.21 6.302-6.456 6.302H7.595zm2.517 2.449v7.714h1.241c2.646 0 3.862-1.55 3.862-3.861.009-2.569-1.096-3.853-3.767-3.853z" />
+  </svg>
+);
+
 const Contact = () => {
   return (
     <section id="contact" className="py-16 px-4 sm:px-6 bg-paper-dark">
@@ -65,7 +82,7 @@ const Contact = () => {
           <h3 className="text-2xl md:text-3xl font-heading font-bold mb-8 text-center text-espresso dark:text-slate-100">
             Or connect with me on social
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 sm:gap-4 mb-10 px-2 sm:px-0">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-4 mb-10 px-2 sm:px-0">
             <motion.a
               href="mailto:jchamd@uw.edu"
               whileHover={{ y: -4 }}
@@ -137,6 +154,51 @@ const Contact = () => {
               </div>
               <h4 className="font-heading font-semibold text-espresso dark:text-slate-100 mb-1">YouTube</h4>
               <p className="text-espresso/60 dark:text-slate-400 text-sm font-mono">@JosephDavisC</p>
+            </motion.a>
+
+            <motion.a
+              href="https://x.com/chamdani_davis"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ y: -4 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="flex flex-col items-center px-4 py-6 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-all group"
+            >
+              <div className="w-12 h-12 rounded-full bg-court/20 dark:bg-[#60A5FA]/20 border-2 border-court dark:border-[#60A5FA] flex items-center justify-center mb-3">
+                <XIcon className="h-5 w-5 text-court-dark dark:text-[#60A5FA]" />
+              </div>
+              <h4 className="font-heading font-semibold text-espresso dark:text-slate-100 mb-1">X</h4>
+              <p className="text-espresso/60 dark:text-slate-400 text-sm font-mono">@chamdani_davis</p>
+            </motion.a>
+
+            <motion.a
+              href="https://devpost.com/joseph-chamdani"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ y: -4 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="flex flex-col items-center px-4 py-6 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-all group"
+            >
+              <div className="w-12 h-12 rounded-full bg-court/20 dark:bg-[#60A5FA]/20 border-2 border-court dark:border-[#60A5FA] flex items-center justify-center mb-3">
+                <DevpostIcon className="h-6 w-6 text-court-dark dark:text-[#60A5FA]" />
+              </div>
+              <h4 className="font-heading font-semibold text-espresso dark:text-slate-100 mb-1">Devpost</h4>
+              <p className="text-espresso/60 dark:text-slate-400 text-sm font-mono">Hackathons</p>
+            </motion.a>
+
+            <motion.a
+              href="https://medium.com/@joseph.chamdani"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ y: -4 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="flex flex-col items-center px-4 py-6 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-all group"
+            >
+              <div className="w-12 h-12 rounded-full bg-court/20 dark:bg-[#60A5FA]/20 border-2 border-court dark:border-[#60A5FA] flex items-center justify-center mb-3">
+                <MediumIcon className="h-6 w-6 text-court-dark dark:text-[#60A5FA]" />
+              </div>
+              <h4 className="font-heading font-semibold text-espresso dark:text-slate-100 mb-1">Medium</h4>
+              <p className="text-espresso/60 dark:text-slate-400 text-sm font-mono">Writing</p>
             </motion.a>
           </div>
 

@@ -6,26 +6,59 @@ interface Skill {
   name: string;
   displayName?: string;
   icon: string;
-  color: string;
 }
 
-const skills: Skill[] = [
-  { name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg", color: "#3776ab" },
-  { name: "JavaScript", displayName: "JS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg", color: "#f7df1e" },
-  { name: "TypeScript", displayName: "TS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg", color: "#3178c6" },
-  { name: "Go", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg", color: "#00add8" },
-  { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", color: "#61dafb" },
-  { name: "Node.js", displayName: "Node", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", color: "#339933" },
-  { name: "HTML", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg", color: "#e34f26" },
-  { name: "CSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg", color: "#1572b6" },
-  { name: "Java", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg", color: "#ed8b00" },
-  { name: "C#", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg", color: "#239120" },
-  { name: "C++", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg", color: "#00599c" },
-  { name: "R", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg", color: "#276dc3" },
-  { name: "MySQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg", color: "#4479a1" },
-  { name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg", color: "#f05032" },
-  { name: "Figma", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg", color: "#f24e1e" },
-  { name: "Unity", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg", color: "#000000" }
+// devicon (jsdelivr) helper; CSP already allows cdn.jsdelivr.net for img-src
+const dv = (p: string) => `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${p}.svg`;
+
+const skillGroups: { label: string; items: Skill[] }[] = [
+  {
+    label: "Languages",
+    items: [
+      { name: "Python", icon: dv("python/python-original") },
+      { name: "TypeScript", displayName: "TS", icon: dv("typescript/typescript-original") },
+      { name: "JavaScript", displayName: "JS", icon: dv("javascript/javascript-original") },
+      { name: "Go", icon: dv("go/go-original") },
+      { name: "Java", icon: dv("java/java-original") },
+      { name: "C#", icon: dv("csharp/csharp-original") },
+      { name: "C++", icon: dv("cplusplus/cplusplus-original") },
+      { name: "R", icon: dv("r/r-original") },
+    ],
+  },
+  {
+    label: "AI & Data",
+    items: [
+      { name: "OpenAI", icon: "/images/tech/openai.svg" },
+      { name: "Claude", icon: "/images/tech/claude.svg" },
+      { name: "Gemini", icon: "/images/tech/gemini.svg" },
+      { name: "Google Cloud", displayName: "GCP", icon: dv("googlecloud/googlecloud-original") },
+      { name: "BigQuery", icon: "/images/tech/bigquery.svg" },
+      { name: "Tableau", icon: "/images/tech/tableau.svg" },
+      { name: "MySQL", icon: dv("mysql/mysql-original") },
+    ],
+  },
+  {
+    label: "Web & Design",
+    items: [
+      { name: "React", icon: dv("react/react-original") },
+      { name: "Next.js", displayName: "Next", icon: dv("nextjs/nextjs-original") },
+      { name: "Node.js", displayName: "Node", icon: dv("nodejs/nodejs-original") },
+      { name: "Tailwind", icon: dv("tailwindcss/tailwindcss-original") },
+      { name: "HTML", icon: dv("html5/html5-original") },
+      { name: "CSS", icon: dv("css3/css3-original") },
+      { name: "Figma", icon: dv("figma/figma-original") },
+    ],
+  },
+  {
+    label: "Cloud & Tools",
+    items: [
+      { name: "AWS", icon: dv("amazonwebservices/amazonwebservices-original-wordmark") },
+      { name: "Git", icon: dv("git/git-original") },
+      { name: "FastAPI", icon: dv("fastapi/fastapi-original") },
+      { name: "Flask", icon: dv("flask/flask-original") },
+      { name: "Unity", icon: dv("unity/unity-original") },
+    ],
+  },
 ];
 
 export default function About() {
@@ -61,8 +94,18 @@ export default function About() {
             </span>
           </h2>
           <p className="text-espresso/60 text-xl max-w-3xl mx-auto leading-relaxed font-mono">
-            Just a kid from Jakarta trying things out in Seattle.
+            Informatics student at the University of Washington, focused on AI, data science, and product design.
           </p>
+          <div className="flex flex-wrap justify-center gap-2 mt-7">
+            {["UW Informatics", "Class of 2027", "Seattle, WA", "1st place · UW Claude Hackathon"].map((stat) => (
+              <span
+                key={stat}
+                className="px-3.5 py-1.5 text-xs font-mono font-medium bg-court/15 dark:bg-[#60A5FA]/15 text-court-dark dark:text-[#60A5FA] rounded-full border-2 border-court/40 dark:border-[#60A5FA]/40"
+              >
+                {stat}
+              </span>
+            ))}
+          </div>
         </motion.div>
 
         {/* Two Column Cards */}
@@ -132,32 +175,38 @@ export default function About() {
               Technologies I work with for school, side projects, and internships.
             </p>
 
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-6 gap-4 relative z-10">
-              {skills.map((skill, index) => (
-                <motion.div
-                  key={skill.name}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  transition={{
-                    duration: 0.3,
-                    delay: index * 0.03,
-                    type: "spring",
-                    stiffness: 300
-                  }}
-                  viewport={{ once: true }}
-                  className="flex flex-col items-center p-2.5 rounded-xl border-2 border-espresso/20 bg-paper hover:border-espresso/40 hover:shadow-brutal-sm transition-all duration-200 min-h-[80px]"
-                  title={skill.name}
-                >
-                  <img
-                    src={skill.icon}
-                    alt={`${skill.name} logo`}
-                    className="w-7 h-7 sm:w-8 sm:h-8 mb-1.5 flex-shrink-0"
-                  />
-                  <span className="text-[10px] sm:text-xs text-espresso/70 text-center font-mono font-medium leading-tight">
-                    {skill.displayName || skill.name}
-                  </span>
-                </motion.div>
+            <div className="space-y-3 relative z-10">
+              {skillGroups.map((group) => (
+                <div key={group.label}>
+                  <p className="text-[10px] font-mono font-semibold uppercase tracking-widest text-espresso/40 dark:text-slate-500 mb-1.5">
+                    {group.label}
+                  </p>
+                  <div className="grid grid-cols-5 sm:grid-cols-7 lg:grid-cols-8 gap-1.5">
+                    {group.items.map((skill, index) => (
+                      <motion.div
+                        key={skill.name}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        whileHover={{ scale: 1.12, y: -2 }}
+                        transition={{
+                          duration: 0.3,
+                          delay: index * 0.02,
+                          type: "spring",
+                          stiffness: 300,
+                        }}
+                        viewport={{ once: true }}
+                        className="group/skill flex items-center justify-center aspect-square rounded-lg border border-black/10 bg-white hover:border-black/25 hover:shadow-brutal-sm transition-all duration-200"
+                        title={skill.name}
+                      >
+                        <img
+                          src={skill.icon}
+                          alt={`${skill.name} logo`}
+                          className="w-6 h-6 flex-shrink-0"
+                        />
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
           </motion.article>

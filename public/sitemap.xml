@@ -273,6 +273,18 @@
 
   <!-- Credential Pages -->
   <url>
+    <loc>https://joechamdani.com/credential/google-project-management</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://joechamdani.com/media/google-project-management-certificate.png</image:loc>
+      <image:title>Google Project Management Certificate</image:title>
+      <image:caption>Google Project Management Professional Certificate</image:caption>
+    </image:image>
+  </url>
+
+  <url>
     <loc>https://joechamdani.com/credential/google-data-analytics</loc>
     <lastmod>2025-12-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -330,6 +342,28 @@
       <image:loc>https://joechamdani.com/article_media/bc-hacks-2024/Group_Photo.png</image:loc>
       <image:title>BC Hacks 2024 Group Photo</image:title>
       <image:caption>Group photo from BC Hacks 2024 hackathon lecture at Bellevue College with Korean exchange students</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://joechamdani.com/experience/whitespace</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://joechamdani.com/logos/whitespace-solution-logo.svg</image:loc>
+      <image:title>Whitespace Solutions - AI Product Intern</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://joechamdani.com/experience/icg</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://joechamdani.com/logos/ICG.png</image:loc>
+      <image:title>Information Consulting Group - Technology Operations Associate</image:title>
     </image:image>
   </url>
 

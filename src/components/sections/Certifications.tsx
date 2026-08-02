@@ -21,6 +21,14 @@ type Cert = {
 
 const certifications: Cert[] = [
   {
+    name: "Google Project Management",
+    issuer: "Google",
+    year: "Issued Aug 2026",
+    href: "/credential/google-project-management",
+    logo: "/logos/google.webp",
+    logoAlt: "Google",
+  },
+  {
     name: "Google Data Analytics",
     issuer: "Google",
     year: "Issued Aug 2025",
@@ -30,19 +38,19 @@ const certifications: Cert[] = [
   },
   {
     name: "Unity 3D Programming",
-    issuer: "StarCamp Asia",
+    issuer: "Ideosource Venture Building",
     year: "Issued Jul 2022",
     href: "/credential/starcamp-unity",
-    logo: "/logos/starcamp-logo.webp",
-    logoAlt: "StarCamp Asia",
+    logo: "/logos/ideosource.webp",
+    logoAlt: "Ideosource",
   },
   {
     name: "UX Research & UX Design",
-    issuer: "StarCamp Asia",
+    issuer: "Ideosource Venture Building",
     year: "Issued Sep 2022",
     href: "/credential/starcamp-ux",
-    logo: "/logos/starcamp-logo.webp",
-    logoAlt: "StarCamp Asia",
+    logo: "/logos/ideosource.webp",
+    logoAlt: "Ideosource",
   },
 ];
 
@@ -94,7 +102,7 @@ export default function Certifications() {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {certifications.map((cert, i) => (
             <motion.article
@@ -124,10 +132,10 @@ export default function Certifications() {
 
               {/* Content */}
               <div className="flex-1 w-full">
-                <h3 className="text-xl font-heading font-semibold text-espresso dark:text-slate-100 mb-3 group-hover:text-court-dark dark:group-hover:text-[#60A5FA] transition-colors">
+                <h3 className="text-xl font-heading font-semibold text-espresso dark:text-slate-100 mb-3 group-hover:text-court-dark dark:group-hover:text-[#60A5FA] transition-colors min-h-[3.5rem] flex items-center justify-center">
                   {cert.name}
                 </h3>
-                <div className="flex items-center justify-center gap-2 text-espresso/70 dark:text-slate-300 mb-2">
+                <div className="flex items-center justify-center gap-2 text-espresso/70 dark:text-slate-300 mb-2 min-h-[2.5rem]">
                   {cert.logo && (
                     <div className="h-4 w-4 rounded overflow-hidden bg-paper border border-espresso/20 dark:border-slate-600 flex items-center justify-center">
                       <img

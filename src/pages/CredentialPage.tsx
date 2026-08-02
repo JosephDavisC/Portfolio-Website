@@ -19,6 +19,7 @@ type Cred = {
   file: string;            // pdf or image path under /public
   fallbackImage?: string;  // image fallback for mobile/tablet when file is pdf
   video?: VideoInfo;
+  note?: string;
   highlights?: string[];
 };
 
@@ -180,7 +181,7 @@ export default function CredentialPage() {
         <div className="card-brutal overflow-hidden">
           {isPdf && isDesktop ? (
             // Desktop/laptop: inline PDF
-            <iframe title={cred.title} src={cred.file} className="w-full h-[82vh]" />
+            <iframe title={cred.title} src={`${cred.file}#toolbar=0&navpanes=0&scrollbar=0&view=Fit`} className="w-full h-[82vh]" />
           ) : cred.fallbackImage ? (
             // Mobile & tablets: always show image
             <div className="bg-paper-dark flex items-center justify-center">
@@ -217,8 +218,11 @@ export default function CredentialPage() {
           <div className="mt-10 grid md:grid-cols-5 gap-6 items-start">
             {/* Highlights */}
             {cred.highlights?.length ? (
-              <div className="md:col-span-3 card-brutal p-6">
+              <div className={`card-brutal p-6 ${video ? "md:col-span-3" : "md:col-span-5"}`}>
                 <h3 className="text-lg font-heading font-semibold text-espresso mb-3">What I did</h3>
+                {cred.note ? (
+                  <p className="text-espresso/70 dark:text-slate-400 mb-4 leading-relaxed italic">{cred.note}</p>
+                ) : null}
                 <ul className="space-y-2 text-espresso/80">
                   {cred.highlights.map((h, i) => (
                     <li key={i} className="flex gap-3">
