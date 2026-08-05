@@ -94,10 +94,10 @@ export default function About() {
             </span>
           </h2>
           <p className="text-espresso/60 text-xl max-w-3xl mx-auto leading-relaxed font-mono">
-            Informatics student at the University of Washington, focused on AI, data science, and product design.
+            Informatics @ UW. I build AI and data products people can actually trust.
           </p>
           <div className="flex flex-wrap justify-center gap-2 mt-7">
-            {["UW Informatics", "Class of 2027", "Seattle, WA", "1st place · UW Claude Hackathon"].map((stat) => (
+            {["UW Informatics", "Class of 2027", "Seattle, WA"].map((stat) => (
               <span
                 key={stat}
                 className="px-3.5 py-1.5 text-xs font-mono font-medium bg-court/15 dark:bg-[#60A5FA]/15 text-court-dark dark:text-[#60A5FA] rounded-full border-2 border-court/40 dark:border-[#60A5FA]/40"
@@ -168,7 +168,7 @@ export default function About() {
               <div className="w-12 h-12 rounded-full bg-espresso/10 border-2 border-espresso flex items-center justify-center mr-4">
                 <Code2 className="h-6 w-6 text-espresso" />
               </div>
-              <h3 className="text-2xl font-heading font-semibold text-espresso">Core Skills</h3>
+              <h3 className="text-2xl font-heading font-semibold text-espresso">What I build with</h3>
             </header>
 
             <p className="text-espresso/60 mb-6 relative z-10 font-mono text-sm">

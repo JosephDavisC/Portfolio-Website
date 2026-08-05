@@ -144,21 +144,25 @@ const Hero = () => {
                 </h1>
               </div>
 
-              {/* Subtitle */}
-              <p className="text-2xl md:text-3xl text-espresso/80 dark:text-slate-300 mb-4 font-light">
-                Informatics Student @{" "}
+              {/* Value prop hook */}
+              <p className="text-2xl md:text-3xl text-espresso/80 dark:text-slate-300 mb-4 font-light text-balance">
+                I build{" "}
+                <span className="text-court-dark dark:text-[#60A5FA] font-medium">AI and data products</span>
+                {", and I ship them."}
+              </p>
+
+              {/* Proof line */}
+              <p className="text-sm md:text-base text-espresso/60 dark:text-slate-400 max-w-2xl leading-relaxed mb-6 font-mono text-pretty">
+                {"Informatics @ "}
                 <a
                   href="https://www.washington.edu"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-court-dark dark:text-[#60A5FA] hover:text-court dark:hover:text-[#93C5FD] font-medium underline decoration-2 decoration-court/50 dark:decoration-[#60A5FA]/50 underline-offset-4 transition-colors"
+                  className="text-court-dark dark:text-[#60A5FA] hover:text-court dark:hover:text-[#93C5FD] transition-colors"
                 >
-                  University of Washington
+                  UW
                 </a>
-              </p>
-
-              <p className="text-lg text-espresso/60 dark:text-slate-400 max-w-2xl leading-relaxed mb-6 font-mono">
-                International student from Indonesia
+                {" · Anthropic hackathon winner · NVIDIA open source contributor"}
               </p>
 
               {/* Tags */}
@@ -188,16 +192,16 @@ const Hero = () => {
               className="flex flex-col sm:flex-row gap-4"
             >
               <motion.a
-                href="#about"
+                href="#portfolio"
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollToIdNoHash("about");
+                  scrollToIdNoHash("portfolio");
                 }}
                 className="btn-brutal-outline inline-flex items-center justify-center group"
                 whileHover={{ scale: 1.02, x: -2, y: -2 }}
                 whileTap={{ scale: 0.98, x: 2, y: 2 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                aria-label="About Me"
+                aria-label="See my work"
               >
                 <span className="mr-3 inline-flex">
                   <img
@@ -208,7 +212,7 @@ const Hero = () => {
                     className="h-5 w-5 md:h-6 md:w-6 object-contain transition-transform group-hover:rotate-12"
                   />
                 </span>
-                About Me
+                See my work
               </motion.a>
 
               <motion.a
