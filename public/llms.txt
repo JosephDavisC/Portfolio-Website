@@ -16,7 +16,7 @@
 
 - [AI Transfer Evaluation Tool](https://transfer.joechamdani.cloud): 1st place, UW Claude Hackathon 2025. Parses WA community college transcripts and maps courses to UW equivalents with Claude Vision. Built with Next.js, TypeScript, Claude API.
 - [IShowStream](https://github.com/JosephDavisC/IShowStream): Real-time Twitch chat analytics using a 5-agent system on Google Gemini, deployed on Cloud Run (Go, Python FastAPI, React).
-- [garak (NVIDIA)](https://github.com/JosephDavisC): Merged open-source contribution to NVIDIA's garak LLM red-teaming toolkit (CLI filtering, test coverage).
+- [garak (NVIDIA)](https://github.com/NVIDIA/garak/pull/1367): Merged open-source contribution to NVIDIA's garak LLM red-teaming toolkit (CLI filtering, test coverage).
 - [ASR-Runner](https://github.com/JosephDavisC/ASR-Runner): Go tool automating attack-surface reconnaissance (subfinder, httpx, katana).
 - [JAM.AI](https://github.com/JosephDavisC/Jam.AI): GPT-powered diabetes health assistant (Flask, OpenAI).
 
@@ -60,6 +60,11 @@
 - Email: joseph@joechamdani.com
 - LinkedIn: https://www.linkedin.com/in/joseph-chamdani/
 - GitHub: https://github.com/JosephDavisC
+- Devpost: https://devpost.com/joseph-chamdani
+- Medium: https://medium.com/@joseph.chamdani
+- X/Twitter: https://x.com/chamdani_davis
+- YouTube: https://www.youtube.com/@JosephDavisC
+- Instagram: https://www.instagram.com/josephdavisc/
 
 ## Optional
 
@@ -67,8 +72,3 @@
 - [INFO 200 Transfer Evaluation System](https://info200.joechamdani.cloud): The class prototype that seeded the hackathon tool (a separate project).
 - [INFO 340 Project](https://info340.joechamdani.com): UW Informatics INFO 340 course project.
 - [INFO 380 Project](https://info380.joechamdani.com): UW Informatics INFO 380 course project.
-- Devpost: https://devpost.com/joseph-chamdani
-- Medium: https://medium.com/@joseph.chamdani
-- X/Twitter: https://x.com/chamdani_davis
-- YouTube: https://www.youtube.com/@JosephDavisC
-- Instagram: https://www.instagram.com/josephdavisc/
