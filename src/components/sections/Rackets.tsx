@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import RacketCard from "@/components/sections/RacketCard";
 
 type Props = { embed?: boolean };
@@ -64,7 +64,7 @@ export default function Rackets({ embed = false }: Props) {
   return (
     <section id="rackets" className="py-24 px-6 bg-black/20">
       <div className="max-w-6xl mx-auto">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -77,7 +77,7 @@ export default function Rackets({ embed = false }: Props) {
           <p className="text-slate-400 text-xl max-w-3xl mx-auto leading-relaxed">
             Click the rackets to reveal the specs.
           </p>
-        </motion.div>
+        </m.div>
 
         <RacketsGrid />
       </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { ExternalLink, Calendar, ArrowRight } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import articlesData from '@/data/articles.json';
@@ -24,7 +24,7 @@ const ArticleCard: React.FC<{ article: Article; index: number; onOpenArticle: (i
   const hasImage = !!article.thumbnail;
 
   return (
-    <motion.article
+    <m.article
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       whileHover={{ y: -4 }}
@@ -40,7 +40,7 @@ const ArticleCard: React.FC<{ article: Article; index: number; onOpenArticle: (i
           className="block overflow-hidden rounded-lg border-2 border-espresso relative group"
           aria-label={`View ${article.title} article`}
         >
-          <motion.img
+          <m.img
             src={article.thumbnail}
             alt={article.title}
             className="w-full h-56 md:h-64 object-cover"
@@ -121,7 +121,7 @@ const ArticleCard: React.FC<{ article: Article; index: number; onOpenArticle: (i
           ))}
         </div>
       </div>
-    </motion.article>
+    </m.article>
   );
 };
 
@@ -137,7 +137,7 @@ const Blog = () => {
   return (
     <section id="blog" className="py-16 px-6 bg-paper">
       <div className="max-w-6xl mx-auto">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
@@ -167,7 +167,7 @@ const Blog = () => {
           <p className="text-espresso/60 text-xl max-w-3xl mx-auto leading-relaxed font-mono">
             Stories, experiences, and lessons learned along the way
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="space-y-8">
           {articles.map((article, index) => (
@@ -176,7 +176,7 @@ const Blog = () => {
         </div>
 
         {articles.length === 1 && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -184,7 +184,7 @@ const Blog = () => {
             className="text-center mt-12 text-espresso/60 font-mono"
           >
             <p>More articles coming soon...</p>
-          </motion.div>
+          </m.div>
         )}
       </div>
     </section>

@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Navbar from "@/components/shared/Navbar";
 import {
   ArrowLeft,
@@ -312,7 +312,7 @@ export default function InternshipPage() {
       >
         <div className="max-w-5xl mx-auto">
           {/* Back Button */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.3 }}
@@ -324,10 +324,10 @@ export default function InternshipPage() {
             >
               <ArrowLeft className="h-4 w-4" /> Back to Milestones
             </Link>
-          </motion.div>
+          </m.div>
 
         {/* Hero Section */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -410,10 +410,10 @@ export default function InternshipPage() {
           <p className="mt-6 text-espresso/80 dark:text-slate-300 leading-relaxed text-lg">
             {internship.description}
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Impact Metrics */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
@@ -435,12 +435,12 @@ export default function InternshipPage() {
               </div>
             </div>
           ))}
-        </motion.div>
+        </m.div>
 
         {/* Main Content Grid */}
         <div className="grid md:grid-cols-3 gap-6">
           {/* Key Accomplishments */}
-          <motion.div
+          <m.div
             variants={fadeInUp}
             initial="initial"
             animate="animate"
@@ -461,14 +461,14 @@ export default function InternshipPage() {
               </h2>
             </div>
 
-            <motion.ul
+            <m.ul
               variants={staggerContainer}
               initial="initial"
               animate="animate"
               className="space-y-4"
             >
               {internship.highlights.map((highlight, i) => (
-                <motion.li
+                <m.li
                   key={i}
                   variants={fadeInUp}
                   className="flex gap-3"
@@ -480,13 +480,13 @@ export default function InternshipPage() {
                   <span className="text-espresso/80 dark:text-slate-300 leading-relaxed">
                     {highlight}
                   </span>
-                </motion.li>
+                </m.li>
               ))}
-            </motion.ul>
-          </motion.div>
+            </m.ul>
+          </m.div>
 
           {/* Technologies */}
-          <motion.div
+          <m.div
             variants={fadeInUp}
             initial="initial"
             animate="animate"
@@ -512,12 +512,12 @@ export default function InternshipPage() {
                 </span>
               ))}
             </div>
-          </motion.div>
+          </m.div>
         </div>
 
         {/* Products Section */}
         {internship.products?.length > 0 && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.15 }}
@@ -540,7 +540,7 @@ export default function InternshipPage() {
 
             <div className="grid gap-4">
               {internship.products.map((product, i) => (
-                <motion.div
+                <m.div
                   key={i}
                   whileHover={{ y: -4 }}
                   transition={{ type: "spring", stiffness: 300 }}
@@ -599,15 +599,15 @@ export default function InternshipPage() {
                       </a>
                     )}
                   </div>
-                </motion.div>
+                </m.div>
               ))}
             </div>
-          </motion.div>
+          </m.div>
         )}
 
         {/* Video Demo Section */}
         {internship.videoDemo && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.18 }}
@@ -623,12 +623,12 @@ export default function InternshipPage() {
             </div>
 
             <VideoPlayer videoDemo={internship.videoDemo} theme={theme} />
-          </motion.div>
+          </m.div>
         )}
 
         {/* Research Papers Section */}
         {internship.researchPapers?.length > 0 && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -645,7 +645,7 @@ export default function InternshipPage() {
 
             <div className="space-y-6">
               {internship.researchPapers.map((paper, i) => (
-                <motion.div
+                <m.div
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -755,15 +755,15 @@ export default function InternshipPage() {
                       </div>
                     )}
                   </div>
-                </motion.div>
+                </m.div>
               ))}
             </div>
-          </motion.div>
+          </m.div>
         )}
 
         {/* Testimonials / References */}
         {internship.testimonials && internship.testimonials.length > 0 && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
@@ -824,12 +824,12 @@ export default function InternshipPage() {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </m.div>
         )}
 
         {/* Team Photo */}
         {internship.teamPhoto && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.35 }}
@@ -866,11 +866,11 @@ export default function InternshipPage() {
                 </p>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         )}
 
         {/* CTA */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
@@ -887,7 +887,7 @@ export default function InternshipPage() {
             <Briefcase className="h-5 w-5" />
             Get in Touch
           </Link>
-        </motion.div>
+        </m.div>
         </div>
       </section>
     </>

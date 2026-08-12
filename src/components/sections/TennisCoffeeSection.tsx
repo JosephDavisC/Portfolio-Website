@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { ZoomIn, ChevronLeft, ChevronRight, Coffee, Wrench } from "lucide-react";
 import Lightbox from "@/components/sections/Lightbox";
 
@@ -121,7 +121,7 @@ export default function TennisCoffeeSection() {
     <section id="tennis-coffee" className="py-16 px-6 bg-paper-dark">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
@@ -151,12 +151,12 @@ export default function TennisCoffeeSection() {
           <p className="text-espresso/60 text-lg md:text-xl max-w-3xl mx-auto font-mono">
             Tennis keeps me grounded. Coffee keeps me sharp.
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Bento Grid Layout */}
         <div className="grid lg:grid-cols-2 gap-8">
           {/* LEFT - ON THE COURT (Court Green theme) */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
@@ -169,7 +169,7 @@ export default function TennisCoffeeSection() {
             </div>
 
             {/* Tennis Photo Carousel */}
-            <motion.figure
+            <m.figure
               whileHover={{ y: -4 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
               className="card-brutal-court overflow-hidden group"
@@ -186,7 +186,7 @@ export default function TennisCoffeeSection() {
 
               <div className="relative h-[380px] w-full overflow-hidden">
                 <AnimatePresence mode="wait">
-                  <motion.img
+                  <m.img
                     key={tennisIdx}
                     src={tennisImages[tennisIdx].src}
                     alt={tennisImages[tennisIdx].alt}
@@ -235,10 +235,10 @@ export default function TennisCoffeeSection() {
               <figcaption className="bg-court/10 dark:bg-[#60A5FA]/10 text-espresso dark:text-slate-200 text-center py-3 text-sm font-mono border-t-2 border-court dark:border-[#60A5FA]">
                 Where I reset, compete, and stay focused
               </figcaption>
-            </motion.figure>
+            </m.figure>
 
             {/* Play Style Card */}
-            <motion.div
+            <m.div
               whileHover={{ y: -2 }}
               transition={{ type: "spring", stiffness: 300 }}
               className="card-brutal-court p-5"
@@ -252,12 +252,12 @@ export default function TennisCoffeeSection() {
                   One-handed backhand
                 </span>
               </div>
-            </motion.div>
+            </m.div>
 
-          </motion.div>
+          </m.div>
 
           {/* RIGHT - OFF THE COURT (Espresso theme) */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.1, type: "spring", stiffness: 100 }}
@@ -270,7 +270,7 @@ export default function TennisCoffeeSection() {
             </div>
 
             {/* Coffee Photo */}
-            <motion.figure
+            <m.figure
               whileHover={{ y: -4 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
               className="card-brutal overflow-hidden group"
@@ -291,7 +291,7 @@ export default function TennisCoffeeSection() {
                   <img src="/images/moments/Coffee.JPG" alt="Coffee time" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                 </picture>
 
-                <motion.img
+                <m.img
                   src="/images/chibis/coffee_chibi.webp"
                   alt="Coffee chibi"
                   className="absolute bottom-4 left-4 w-16 h-16 md:w-20 md:h-20 object-contain drop-shadow-2xl pointer-events-none"
@@ -303,10 +303,10 @@ export default function TennisCoffeeSection() {
               <figcaption className="bg-espresso/10 text-espresso text-center py-3 text-sm font-mono border-t-2 border-espresso">
                 A good brew fuels my thinking
               </figcaption>
-            </motion.figure>
+            </m.figure>
 
             {/* Coffee Preferences Card */}
-            <motion.div
+            <m.div
               whileHover={{ y: -2 }}
               transition={{ type: "spring", stiffness: 300 }}
               className="card-brutal p-5"
@@ -320,12 +320,12 @@ export default function TennisCoffeeSection() {
                   Iced Americano
                 </span>
               </div>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </div>
 
         {/* RACKETS SECTION */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -340,21 +340,20 @@ export default function TennisCoffeeSection() {
           <div className="card-brutal p-6 md:p-10">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               {/* Left — racket image */}
-              <motion.div
+              <m.div
                 whileHover={{ rotate: 2, scale: 1.03 }}
                 transition={{ type: "spring", stiffness: 200, damping: 15 }}
                 className="flex justify-center"
               >
                 <div className="rounded-xl border-2 border-espresso/20 dark:border-slate-600 bg-paper dark:bg-slate-800 p-6 w-full max-w-sm">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="/images/rackets/diadem_elevate.jpg"
                     alt="Diadem Elevate V3 98"
                     className="mx-auto w-auto"
                     style={{ height: "420px", objectFit: "contain" }}
-                    loading="lazy"
                   />
                 </div>
-              </motion.div>
+              </m.div>
 
               {/* Right — specs + string diagram + customisation */}
               <div className="space-y-6">
@@ -407,7 +406,7 @@ export default function TennisCoffeeSection() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
 
       <Lightbox src={lbSrc} alt={lbAlt} onClose={() => setLbSrc("")} />

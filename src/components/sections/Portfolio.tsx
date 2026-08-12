@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Github, ExternalLink, BookOpen, ArrowRight } from 'lucide-react';
 import projectsData from '@/data/projects.json';
@@ -11,7 +11,7 @@ const Projects = () => {
     <section id="portfolio" className="py-16 px-4 sm:px-6 bg-paper overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
@@ -24,12 +24,12 @@ const Projects = () => {
           <p className="text-espresso/60 text-xl max-w-3xl mx-auto leading-relaxed font-mono">
             Real-world projects that combine AI, data analytics, and engineering
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Bento Grid */}
         <div className="grid md:grid-cols-2 gap-6">
           {projects.map((project, index) => (
-            <motion.article
+            <m.article
               key={index}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -45,7 +45,7 @@ const Projects = () => {
             >
               {/* Project Image */}
               <figure className="relative overflow-hidden rounded-lg border-2 border-espresso mb-5">
-                <motion.img
+                <m.img
                   src={project.image}
                   alt={project.imageAlt || project.title}
                   className="h-56 w-full object-cover object-center md:h-64"
@@ -85,7 +85,7 @@ const Projects = () => {
               {(project.github || project.demo) && (
                 <div className="flex flex-wrap gap-2 sm:gap-3 mt-auto pt-4 border-t-2 border-espresso/10">
                   {project.github && (
-                    <motion.a
+                    <m.a
                       href={project.github}
                       className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-espresso/5 border-2 border-espresso/20 rounded-lg text-espresso font-medium text-xs sm:text-sm hover:bg-espresso hover:text-paper transition-all"
                       target="_blank"
@@ -95,10 +95,10 @@ const Projects = () => {
                     >
                       <Github className="h-4 w-4" />
                       Code
-                    </motion.a>
+                    </m.a>
                   )}
                   {project.demo && (
-                    <motion.a
+                    <m.a
                       href={project.demo}
                       className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-court/10 dark:bg-[#60A5FA]/10 border-2 border-court/30 dark:border-[#60A5FA]/30 rounded-lg text-court-dark dark:text-[#60A5FA] font-medium text-xs sm:text-sm hover:bg-court dark:hover:bg-[#60A5FA]/20 hover:text-paper dark:hover:text-[#60A5FA] dark:hover:border-[#60A5FA]/60 transition-all"
                       target="_blank"
@@ -109,10 +109,10 @@ const Projects = () => {
                     >
                       <ExternalLink className="h-4 w-4" />
                       {project.demoLabel || "Demo"}
-                    </motion.a>
+                    </m.a>
                   )}
                   {project.medium && (
-                    <motion.a
+                    <m.a
                       href={project.medium}
                       className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-espresso/5 border-2 border-espresso/20 rounded-lg text-espresso font-medium text-xs sm:text-sm hover:bg-espresso hover:text-paper transition-all"
                       target="_blank"
@@ -123,16 +123,16 @@ const Projects = () => {
                     >
                       <BookOpen className="h-4 w-4" />
                       Article
-                    </motion.a>
+                    </m.a>
                   )}
                 </div>
               )}
-            </motion.article>
+            </m.article>
           ))}
         </div>
 
         {/* CTA Buttons */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
@@ -146,7 +146,7 @@ const Projects = () => {
             See all projects
             <ArrowRight className="h-5 w-5" />
           </Link>
-          <motion.a
+          <m.a
             href="https://github.com/JosephDavisC"
             target="_blank"
             rel="noopener noreferrer"
@@ -156,8 +156,8 @@ const Projects = () => {
           >
             <Github className="h-5 w-5" />
             GitHub Profile
-          </motion.a>
-        </motion.div>
+          </m.a>
+        </m.div>
       </div>
     </section>
   );

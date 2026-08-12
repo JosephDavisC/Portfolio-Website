@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 
 const RacketCard = ({ title, img, specs, colorClass }: any) => {
   const [showDetails, setShowDetails] = useState(false);
 
   return (
-    <motion.div
+    <m.div
       whileHover={{ scale: 1.05 }}
       className="bg-white/5 backdrop-blur-sm rounded-3xl p-6 border border-white/10 transition-all cursor-pointer w-72"
       onClick={() => setShowDetails(!showDetails)}
@@ -26,7 +26,7 @@ const RacketCard = ({ title, img, specs, colorClass }: any) => {
           ))}
         </div>
       )}
-    </motion.div>
+    </m.div>
   );
 };
 

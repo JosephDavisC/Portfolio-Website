@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Trophy, Medal, Award as AwardIcon, GraduationCap } from 'lucide-react';
 
 type Honor = {
@@ -47,7 +47,7 @@ const Awards = () => {
   return (
     <section id="awards" className="py-16 px-6 bg-paper-dark">
       <div className="max-w-6xl mx-auto">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, type: 'spring', stiffness: 100 }}
@@ -77,13 +77,13 @@ const Awards = () => {
           <p className="text-espresso/60 text-xl max-w-2xl mx-auto font-mono">
             Recognition from hackathons, summits, and scholarships.
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {honors.map((h, i) => {
             const Icon = h.icon;
             return (
-              <motion.div
+              <m.div
                 key={h.title}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -110,7 +110,7 @@ const Awards = () => {
                   {h.org}
                 </p>
                 <p className="text-espresso/50 dark:text-slate-500 text-sm font-mono mt-4">{h.year}</p>
-              </motion.div>
+              </m.div>
             );
           })}
         </div>

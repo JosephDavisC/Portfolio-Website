@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 /* ============================================
    COFFEE STEAM SVG ANIMATION
@@ -62,7 +62,7 @@ export const CoffeeCupWithSteam: React.FC<{ isHovered?: boolean; className?: str
       {isHovered && (
         <g>
           {/* Steam Line 1 - Left */}
-          <motion.path
+          <m.path
             d="M6 4 C6 2.5, 7 2, 7 1"
             stroke="currentColor"
             strokeWidth="1.5"
@@ -75,7 +75,7 @@ export const CoffeeCupWithSteam: React.FC<{ isHovered?: boolean; className?: str
             style={{ transformOrigin: "center bottom" }}
           />
           {/* Steam Line 2 - Center */}
-          <motion.path
+          <m.path
             d="M10 4 C10 2.5, 10 2, 10 0"
             stroke="currentColor"
             strokeWidth="1.5"
@@ -88,7 +88,7 @@ export const CoffeeCupWithSteam: React.FC<{ isHovered?: boolean; className?: str
             style={{ transformOrigin: "center bottom" }}
           />
           {/* Steam Line 3 - Right */}
-          <motion.path
+          <m.path
             d="M14 4 C14 2.5, 13 2, 13 1"
             stroke="currentColor"
             strokeWidth="1.5"
@@ -118,7 +118,7 @@ export const SteamAnimation: React.FC<{ className?: string }> = ({ className = "
         style={{ overflow: "visible" }}
       >
         {/* Three wavy steam lines */}
-        <motion.path
+        <m.path
           d="M8 20 Q8 14, 10 10 Q12 6, 10 2"
           stroke="currentColor"
           strokeWidth="2"
@@ -136,7 +136,7 @@ export const SteamAnimation: React.FC<{ className?: string }> = ({ className = "
             ease: "easeOut",
           }}
         />
-        <motion.path
+        <m.path
           d="M16 20 Q16 14, 16 10 Q16 6, 16 2"
           stroke="currentColor"
           strokeWidth="2"
@@ -155,7 +155,7 @@ export const SteamAnimation: React.FC<{ className?: string }> = ({ className = "
             ease: "easeOut",
           }}
         />
-        <motion.path
+        <m.path
           d="M24 20 Q24 14, 22 10 Q20 6, 22 2"
           stroke="currentColor"
           strokeWidth="2"
@@ -218,7 +218,7 @@ export const CoffeeLoadingAnimation: React.FC<{ progress?: number; className?: s
       </defs>
 
       {/* Animated fill */}
-      <motion.rect
+      <m.rect
         x="3"
         y="8"
         width="14"

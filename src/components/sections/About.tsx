@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { MapPin, Code2 } from "lucide-react";
 
 interface Skill {
@@ -66,7 +66,7 @@ export default function About() {
     <section id="about" className="py-16 px-6 bg-paper-dark">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
@@ -106,12 +106,12 @@ export default function About() {
               </span>
             ))}
           </div>
-        </motion.div>
+        </m.div>
 
         {/* Two Column Cards */}
         <div className="grid md:grid-cols-2 gap-8">
           {/* The Journey Card */}
-          <motion.article
+          <m.article
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             whileHover={{ y: -4 }}
@@ -137,10 +137,10 @@ export default function About() {
                 I interned at Sector building AI automation for cybersecurity, and I led BC Tech Club where I organized BC Hacks 2024. I'm passionate about AI ethics, human-computer interaction, and building tools people actually use.
               </p>
             </div>
-          </motion.article>
+          </m.article>
 
           {/* Core Skills Card */}
-          <motion.article
+          <m.article
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             whileHover={{ y: -4 }}
@@ -149,7 +149,7 @@ export default function About() {
             className="card-brutal p-8 md:p-10 relative overflow-hidden"
           >
             {/* Floating Chibi */}
-            <motion.img
+            <m.img
               src="/images/chibis/jo_stress.webp"
               alt="Stressed Joe learning all these technologies"
               className="absolute top-4 right-4 w-20 h-20 md:w-24 md:h-24 opacity-20 pointer-events-none"
@@ -183,7 +183,7 @@ export default function About() {
                   </p>
                   <div className="grid grid-cols-5 sm:grid-cols-7 lg:grid-cols-8 gap-1.5">
                     {group.items.map((skill, index) => (
-                      <motion.div
+                      <m.div
                         key={skill.name}
                         initial={{ opacity: 0, scale: 0.8 }}
                         whileInView={{ opacity: 1, scale: 1 }}
@@ -203,13 +203,13 @@ export default function About() {
                           alt={`${skill.name} logo`}
                           className="w-6 h-6 flex-shrink-0"
                         />
-                      </motion.div>
+                      </m.div>
                     ))}
                   </div>
                 </div>
               ))}
             </div>
-          </motion.article>
+          </m.article>
         </div>
       </div>
     </section>

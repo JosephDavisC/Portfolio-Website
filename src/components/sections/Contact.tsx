@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Mail, Linkedin, Github, Instagram, Youtube, Download } from 'lucide-react';
 import ContactForm from '@/components/shared/ContactForm';
 
@@ -24,7 +24,7 @@ const Contact = () => {
   return (
     <section id="contact" className="py-16 px-4 sm:px-6 bg-paper-dark">
       <div className="max-w-4xl mx-auto">
-        <motion.div
+        <m.div
           className="text-center mb-12"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -55,7 +55,7 @@ const Contact = () => {
             Always excited to discuss AI, startups, or collaborate on interesting projects.
             Let's connect and create something amazing together.
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="mb-12">
           <ContactForm />
@@ -72,7 +72,7 @@ const Contact = () => {
           </p>
         </div>
 
-        <motion.div
+        <m.div
           className="card-brutal p-6 sm:p-10"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -83,7 +83,7 @@ const Contact = () => {
             Or connect with me on social
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-4 mb-10 px-2 sm:px-0">
-            <motion.a
+            <m.a
               href="mailto:jchamd@uw.edu"
               whileHover={{ y: -4 }}
               transition={{ type: "spring", stiffness: 300 }}
@@ -94,9 +94,9 @@ const Contact = () => {
               </div>
               <h4 className="font-heading font-semibold text-espresso dark:text-slate-100 mb-1">Email</h4>
               <p className="text-espresso/60 dark:text-slate-400 text-sm font-mono">jchamd@uw.edu</p>
-            </motion.a>
+            </m.a>
 
-            <motion.a
+            <m.a
               href="https://www.linkedin.com/in/joseph-chamdani"
               target="_blank"
               rel="noopener noreferrer"
@@ -109,9 +109,9 @@ const Contact = () => {
               </div>
               <h4 className="font-heading font-semibold text-espresso dark:text-slate-100 mb-1">LinkedIn</h4>
               <p className="text-espresso/60 dark:text-slate-400 text-sm font-mono">Let's connect</p>
-            </motion.a>
+            </m.a>
 
-            <motion.a
+            <m.a
               href="https://github.com/JosephDavisC"
               target="_blank"
               rel="noopener noreferrer"
@@ -124,9 +124,9 @@ const Contact = () => {
               </div>
               <h4 className="font-heading font-semibold text-espresso dark:text-slate-100 mb-1">GitHub</h4>
               <p className="text-espresso/60 dark:text-slate-400 text-sm font-mono">View my code</p>
-            </motion.a>
+            </m.a>
 
-            <motion.a
+            <m.a
               href="https://www.instagram.com/josephdavisc/"
               target="_blank"
               rel="noopener noreferrer"
@@ -139,9 +139,9 @@ const Contact = () => {
               </div>
               <h4 className="font-heading font-semibold text-espresso dark:text-slate-100 mb-1">Instagram</h4>
               <p className="text-espresso/60 dark:text-slate-400 text-sm font-mono">@josephdavisc</p>
-            </motion.a>
+            </m.a>
 
-            <motion.a
+            <m.a
               href="https://www.youtube.com/@JosephDavisC"
               target="_blank"
               rel="noopener noreferrer"
@@ -154,9 +154,9 @@ const Contact = () => {
               </div>
               <h4 className="font-heading font-semibold text-espresso dark:text-slate-100 mb-1">YouTube</h4>
               <p className="text-espresso/60 dark:text-slate-400 text-sm font-mono">@JosephDavisC</p>
-            </motion.a>
+            </m.a>
 
-            <motion.a
+            <m.a
               href="https://x.com/chamdani_davis"
               target="_blank"
               rel="noopener noreferrer"
@@ -169,9 +169,9 @@ const Contact = () => {
               </div>
               <h4 className="font-heading font-semibold text-espresso dark:text-slate-100 mb-1">X</h4>
               <p className="text-espresso/60 dark:text-slate-400 text-sm font-mono">@chamdani_davis</p>
-            </motion.a>
+            </m.a>
 
-            <motion.a
+            <m.a
               href="https://devpost.com/joseph-chamdani"
               target="_blank"
               rel="noopener noreferrer"
@@ -184,9 +184,9 @@ const Contact = () => {
               </div>
               <h4 className="font-heading font-semibold text-espresso dark:text-slate-100 mb-1">Devpost</h4>
               <p className="text-espresso/60 dark:text-slate-400 text-sm font-mono">Hackathons</p>
-            </motion.a>
+            </m.a>
 
-            <motion.a
+            <m.a
               href="https://medium.com/@joseph.chamdani"
               target="_blank"
               rel="noopener noreferrer"
@@ -199,11 +199,11 @@ const Contact = () => {
               </div>
               <h4 className="font-heading font-semibold text-espresso dark:text-slate-100 mb-1">Medium</h4>
               <p className="text-espresso/60 dark:text-slate-400 text-sm font-mono">Writing</p>
-            </motion.a>
+            </m.a>
           </div>
 
           <div className="text-center">
-            <motion.a
+            <m.a
               href="media/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
@@ -213,9 +213,9 @@ const Contact = () => {
             >
               <Download className="h-5 w-5" />
               Download Resume
-            </motion.a>
+            </m.a>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

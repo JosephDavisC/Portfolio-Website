@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
 import { useTheme } from "@/contexts/ThemeContext";
 
@@ -79,7 +79,7 @@ const TennisBallRain: React.FC<{ onComplete: () => void }> = ({ onComplete }) =>
   return (
     <div className="fixed inset-0 pointer-events-none z-[9999] overflow-hidden">
       {balls.map((ball) => (
-        <motion.div
+        <m.div
           key={ball.id}
           className="absolute"
           style={{ left: `${ball.x}%` }}
@@ -96,7 +96,7 @@ const TennisBallRain: React.FC<{ onComplete: () => void }> = ({ onComplete }) =>
           }}
         >
           <TennisBallSVG size={ball.size} />
-        </motion.div>
+        </m.div>
       ))}
     </div>
   );
@@ -104,7 +104,7 @@ const TennisBallRain: React.FC<{ onComplete: () => void }> = ({ onComplete }) =>
 
 // Husky SVG Watermark (minimalist)
 const HuskyWatermark: React.FC<{ isDark: boolean }> = ({ isDark }) => (
-  <motion.div
+  <m.div
     initial={{ opacity: 0, scale: 0.8 }}
     animate={{ opacity: isDark ? 0.1 : 0.05, scale: 1 }}
     exit={{ opacity: 0, scale: 0.8 }}
@@ -129,7 +129,7 @@ const HuskyWatermark: React.FC<{ isDark: boolean }> = ({ isDark }) => (
       />
       <circle cx="50" cy="85" r="8" fill="#B7A57A" />
     </svg>
-  </motion.div>
+  </m.div>
 );
 
 // Main Easter Eggs Provider

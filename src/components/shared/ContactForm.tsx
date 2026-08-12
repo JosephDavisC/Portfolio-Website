@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -67,14 +67,14 @@ const ContactForm = () => {
   };
 
   return (
-    <motion.div
+    <m.div
       className="card-brutal p-6 sm:p-10 relative overflow-hidden group/form"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.2 }}
       viewport={{ once: true }}
     >
-      <motion.img
+      <m.img
         src="/images/chibis/headphone_joe.webp"
         alt="Joseph Chibi"
         className="absolute -top-8 -right-8 w-32 h-32 md:w-40 md:h-40 opacity-20 group-hover/form:opacity-30 pointer-events-none transition-opacity duration-500"
@@ -200,30 +200,30 @@ const ContactForm = () => {
             </Button>
 
             {submitStatus === 'success' && (
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 className="flex items-center gap-2 text-court-dark dark:text-[#60A5FA] font-mono"
               >
                 <CheckCircle2 className="h-5 w-5" />
                 <span className="text-sm font-medium">Message sent successfully!</span>
-              </motion.div>
+              </m.div>
             )}
 
             {submitStatus === 'error' && (
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 className="flex items-center gap-2 text-red-600 font-mono"
               >
                 <AlertCircle className="h-5 w-5" />
                 <span className="text-sm font-medium">Failed to send. Please try again.</span>
-              </motion.div>
+              </m.div>
             )}
           </div>
         </form>
       </div>
-    </motion.div>
+    </m.div>
   );
 };
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
 
 /* ============================================
@@ -54,7 +54,7 @@ export default function ThemeToggle() {
   const isDark = theme === "dark";
 
   return (
-    <motion.button
+    <m.button
       onClick={toggleTheme}
       className={`
         relative w-16 h-8 rounded-full
@@ -90,7 +90,7 @@ export default function ThemeToggle() {
       </div>
 
       {/* Thumb */}
-      <motion.div
+      <m.div
         className={`
           w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0
           ${isDark
@@ -111,15 +111,15 @@ export default function ThemeToggle() {
           transition: "background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
         }}
       >
-        <motion.span
+        <m.span
           initial={false}
           animate={{ rotate: isDark ? 360 : 0 }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
           className={isDark ? "text-slate-900" : "text-paper"}
         >
           {isDark ? <MoonIcon /> : <SunIcon />}
-        </motion.span>
-      </motion.div>
-    </motion.button>
+        </m.span>
+      </m.div>
+    </m.button>
   );
 }

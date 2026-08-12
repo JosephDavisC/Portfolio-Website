@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { Github, ExternalLink, BookOpen, ArrowLeft } from 'lucide-react';
@@ -131,7 +131,7 @@ const ProjectsPage: React.FC = () => {
               Back to Home
             </Link>
 
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
@@ -160,9 +160,9 @@ const ProjectsPage: React.FC = () => {
               <p className="text-espresso/60 dark:text-slate-400 text-xl max-w-3xl mx-auto leading-relaxed font-mono">
                 A collection of projects spanning AI, web development, and game development
               </p>
-            </motion.div>
+            </m.div>
 
-            <motion.nav
+            <m.nav
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -170,7 +170,7 @@ const ProjectsPage: React.FC = () => {
               aria-label="Project category filter"
             >
               {categories.map((category) => (
-                <motion.button
+                <m.button
                   key={category}
                   onClick={() => setActiveCategory(category)}
                   aria-pressed={activeCategory === category}
@@ -183,12 +183,12 @@ const ProjectsPage: React.FC = () => {
                   }`}
                 >
                   {category}
-                </motion.button>
+                </m.button>
               ))}
-            </motion.nav>
+            </m.nav>
 
             <AnimatePresence mode="wait">
-              <motion.section
+              <m.section
                 key={activeCategory}
                 variants={staggerContainer}
                 initial="initial"
@@ -198,16 +198,15 @@ const ProjectsPage: React.FC = () => {
                 aria-label={`${activeCategory} projects`}
               >
                 {filteredProjects.map((project) => (
-                  <motion.article
+                  <m.article
                     key={project.title}
                     variants={fadeInUp}
-                    layout
                     whileHover={{ y: -4 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                     className="card-brutal p-5 flex flex-col group"
                   >
                     <figure className="relative overflow-hidden rounded-lg border-2 border-espresso dark:border-slate-600">
-                      <motion.img
+                      <m.img
                         src={project.image}
                         alt={project.imageAlt || project.title}
                         className={`${getImageClasses(project.imageStyle)}`}
@@ -281,22 +280,22 @@ const ProjectsPage: React.FC = () => {
                         )}
                       </div>
                     )}
-                  </motion.article>
+                  </m.article>
                 ))}
-              </motion.section>
+              </m.section>
             </AnimatePresence>
 
             {filteredProjects.length === 0 && (
-              <motion.div
+              <m.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 className="text-center py-16"
               >
                 <p className="text-espresso/60 dark:text-slate-400 text-lg font-mono">No projects found in this category.</p>
-              </motion.div>
+              </m.div>
             )}
 
-            <motion.div
+            <m.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
@@ -310,7 +309,7 @@ const ProjectsPage: React.FC = () => {
                 <ArrowLeft className="h-5 w-5" />
                 Back to Home
               </Link>
-              <motion.a
+              <m.a
                 href="https://github.com/JosephDavisC"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -320,8 +319,8 @@ const ProjectsPage: React.FC = () => {
               >
                 <Github className="h-5 w-5" />
                 More on GitHub
-              </motion.a>
-            </motion.div>
+              </m.a>
+            </m.div>
           </div>
         </main>
       </div>

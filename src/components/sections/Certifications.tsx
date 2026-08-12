@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Award } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -66,7 +66,7 @@ export default function Certifications() {
   return (
     <section id="certifications" className="py-16 px-6 pb-20 bg-paper">
       <div className="max-w-6xl mx-auto">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
@@ -95,9 +95,9 @@ export default function Certifications() {
           <p className="text-espresso/60 text-xl max-w-3xl mx-auto leading-relaxed font-mono">
             Courses and certifications I've completed along the way
           </p>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           variants={staggerContainer}
           initial="initial"
           whileInView="animate"
@@ -105,7 +105,7 @@ export default function Certifications() {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {certifications.map((cert, i) => (
-            <motion.article
+            <m.article
               key={i}
               variants={fadeInUp}
               whileHover={{ y: -4 }}
@@ -159,9 +159,9 @@ export default function Certifications() {
                   Show credential ↗
                 </button>
               )}
-            </motion.article>
+            </m.article>
           ))}
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

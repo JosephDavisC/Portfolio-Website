@@ -1,11 +1,11 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 
 const MoreThanCode = () => {
   return (
     <section id="tennis-coffees" className="py-24 px-6 bg-black/10">
       <div className="max-w-6xl mx-auto">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -18,9 +18,9 @@ const MoreThanCode = () => {
           <p className="text-slate-400 text-xl max-w-3xl mx-auto leading-relaxed">
             Outside of school, I stay grounded with things I love. Tennis, and a good cup of Coffee.
           </p>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -40,7 +40,7 @@ const MoreThanCode = () => {
               A good brew fuels my thinking ☕
             </div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

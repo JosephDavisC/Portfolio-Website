@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams, Link, Navigate, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { ArrowLeft, Calendar, ExternalLink } from 'lucide-react';
 import Navbar from '@/components/shared/Navbar';
 import Footer from '@/components/shared/Footer';
@@ -807,7 +807,7 @@ const ArticlePage = () => {
       <Navbar />
 
       {/* Article Header */}
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
@@ -867,10 +867,10 @@ const ArticlePage = () => {
             </a>
           )}
         </div>
-      </motion.div>
+      </m.div>
 
       {/* Article Content */}
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
@@ -928,7 +928,7 @@ const ArticlePage = () => {
           </div>
           </div>
         </div>
-      </motion.div>
+      </m.div>
 
       <Footer />
     </div>

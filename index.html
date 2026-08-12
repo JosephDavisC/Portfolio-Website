@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta charset="UTF-8" />
     <!-- Prevent theme flash - must run before anything else -->
     <script>
       (function() {
@@ -28,6 +29,8 @@
     <!-- Self-hosted fonts for performance (no external requests) -->
     <link rel="preload" href="/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" as="image" href="/Joseph_Chamdani.webp" type="image/webp" fetchpriority="high">
     <link rel="stylesheet" href="/fonts/fonts.css">
 
     <!-- Analytics loaded after page is interactive (deferred for performance) -->
@@ -35,12 +38,18 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
 
-      // Defer analytics loading until after first paint
-      if (typeof requestIdleCallback === 'function') {
-        requestIdleCallback(loadAnalytics);
-      } else {
-        setTimeout(loadAnalytics, 2000);
+      // Defer analytics until the first user interaction (or a fallback well past
+      // LCP), so ~430 KB of GTM/GA JS stays off the critical hydration/LCP path.
+      var __analyticsStarted = false;
+      function __startAnalytics() {
+        if (__analyticsStarted) return;
+        __analyticsStarted = true;
+        loadAnalytics();
       }
+      ['scroll', 'mousemove', 'touchstart', 'keydown', 'click'].forEach(function (evt) {
+        window.addEventListener(evt, __startAnalytics, { once: true, passive: true });
+      });
+      setTimeout(__startAnalytics, 4000);
 
       function loadAnalytics() {
         // Google Tag Manager
@@ -62,7 +71,6 @@
       var w = window;
     </script>
 
-    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <title>Joseph Davis Chamdani | Informatics @ UW</title>

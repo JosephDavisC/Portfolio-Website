@@ -1,6 +1,6 @@
 // src/pages/NotFound.tsx
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import Navbar from '@/components/shared/Navbar';
@@ -22,25 +22,25 @@ const NotFound = () => {
       <Navbar />
       <div className="min-h-screen flex flex-col items-center justify-center bg-paper dark:bg-[#141B2D] px-4 text-center relative overflow-hidden pt-20">
       {/* Animated background elements */}
-      <motion.div
+      <m.div
         className="absolute top-20 left-10 text-6xl opacity-20"
         animate={{ rotate: 360 }}
         transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
       >
         🎾
-      </motion.div>
-      <motion.div
+      </m.div>
+      <m.div
         className="absolute bottom-20 right-10 text-6xl opacity-20"
         animate={{ rotate: -360 }}
         transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
       >
         🎾
-      </motion.div>
+      </m.div>
 
       {/* Main content */}
       <div className="relative z-10">
         {/* Cute character illustration */}
-        <motion.div
+        <m.div
           initial={{ scale: 0, rotate: -180 }}
           animate={{ scale: 1, rotate: 0 }}
           transition={{ duration: 0.8, type: "spring", bounce: 0.5 }}
@@ -50,9 +50,9 @@ const NotFound = () => {
             <source srcSet="/images/404/waakk.webp" type="image/webp" />
             <img src="/images/404/waakk.PNG" alt="Lost character" className="w-48 md:w-64 mx-auto drop-shadow-2xl object-contain" />
           </picture>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           initial={{ scale: 0.5, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.6, type: "spring", delay: 0.3 }}
@@ -61,27 +61,27 @@ const NotFound = () => {
           <h1 className="text-9xl md:text-[12rem] font-heading font-extrabold text-espresso dark:text-slate-100 leading-none">
             404
           </h1>
-        </motion.div>
+        </m.div>
 
-        <motion.h2
+        <m.h2
           className="text-2xl md:text-3xl font-heading font-bold text-espresso dark:text-slate-100 mb-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           {randomMessage}
-        </motion.h2>
+        </m.h2>
 
-        <motion.p
+        <m.p
           className="text-espresso/70 dark:text-slate-400 text-lg mb-8 max-w-md mx-auto font-mono"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
           This court doesn't exist. Let's get you back in play.
-        </motion.p>
+        </m.p>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
@@ -94,10 +94,10 @@ const NotFound = () => {
             <ArrowLeft className="h-5 w-5 group-hover:-translate-x-1 transition-transform" />
             Back to Home Court
           </Link>
-        </motion.div>
+        </m.div>
 
         {/* Bouncing tennis ball */}
-        <motion.div
+        <m.div
           animate={{
             y: [0, -30, 0],
             rotate: [0, 180, 360]
@@ -110,10 +110,10 @@ const NotFound = () => {
           className="text-6xl mt-12"
         >
           🎾
-        </motion.div>
+        </m.div>
 
         {/* Additional decorative elements */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.6 }}
@@ -130,7 +130,7 @@ const NotFound = () => {
           >
             Check system status
           </a>
-        </motion.div>
+        </m.div>
       </div>
     </div>
     </>

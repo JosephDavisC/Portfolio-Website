@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { Mail, GraduationCap } from "lucide-react";
 import { CoffeeCupWithSteam } from "@/components/shared/CoffeeSteam";
 
@@ -121,13 +121,13 @@ const Hero = () => {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Content */}
-          <motion.div
+          <m.div
             className="text-left"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
           >
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -167,7 +167,7 @@ const Hero = () => {
 
               {/* Tags */}
               <div className="flex items-center gap-3 flex-wrap">
-                <motion.span
+                <m.span
                   className="inline-flex items-center gap-2 px-4 py-2 bg-espresso/5 dark:bg-slate-800 border-2 border-espresso/20 dark:border-slate-600 rounded-full text-espresso dark:text-slate-200 font-mono text-sm shadow-brutal-sm dark:shadow-none relative"
                   onMouseEnter={() => setIsHoveringCoffee(true)}
                   onMouseLeave={() => setIsHoveringCoffee(false)}
@@ -176,22 +176,22 @@ const Hero = () => {
                 >
                   <CoffeeCupWithSteam isHovered={isHoveringCoffee} className="text-espresso-light dark:text-slate-300" />
                   Coffee Lover
-                </motion.span>
+                </m.span>
                 <span className="inline-flex items-center gap-2 px-4 py-2 bg-court/10 dark:bg-[#60A5FA]/10 border-2 border-court/30 dark:border-[#60A5FA]/30 rounded-full text-court-dark dark:text-[#60A5FA] font-mono text-sm shadow-brutal-sm dark:shadow-none">
                   <TennisBallIcon className="h-5 w-5" />
                   Tennis player
                 </span>
               </div>
-            </motion.div>
+            </m.div>
 
             {/* CTA Buttons */}
-            <motion.div
+            <m.div
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.6, type: "spring", stiffness: 100 }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <motion.a
+              <m.a
                 href="#portfolio"
                 onClick={(e) => {
                   e.preventDefault();
@@ -213,9 +213,9 @@ const Hero = () => {
                   />
                 </span>
                 See my work
-              </motion.a>
+              </m.a>
 
-              <motion.a
+              <m.a
                 href="#contact"
                 onClick={(e) => {
                   e.preventDefault();
@@ -229,18 +229,18 @@ const Hero = () => {
               >
                 <Mail className="mr-3 h-5 w-5 transition-transform group-hover:scale-110" />
                 Let&apos;s Connect
-              </motion.a>
-            </motion.div>
-          </motion.div>
+              </m.a>
+            </m.div>
+          </m.div>
 
           {/* Right - Profile Image */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4, type: "spring", stiffness: 100 }}
             className="flex justify-center lg:justify-end"
           >
-            <motion.div
+            <m.div
               className="relative group/profile"
               onMouseEnter={() => setIsHoveringProfile(true)}
               onMouseLeave={() => setIsHoveringProfile(false)}
@@ -248,7 +248,7 @@ const Hero = () => {
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
               {/* UW Badge */}
-              <motion.div
+              <m.div
                 className="absolute -top-4 -left-4 w-14 h-14 rounded-full flex items-center justify-center z-20 border-2 border-espresso shadow-brutal overflow-hidden"
                 whileHover={{ scale: 1.1, rotate: -5 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
@@ -257,7 +257,7 @@ const Hero = () => {
                   <source srcSet="/logos/UW_Logo.webp" type="image/webp" />
                   <img src="/logos/UW_Logo.png" alt="University of Washington" className="w-full h-full object-cover" />
                 </picture>
-              </motion.div>
+              </m.div>
 
               {/* Profile Image - Using div instead of Avatar for picture tag support */}
               <div className="relative">
@@ -278,14 +278,14 @@ const Hero = () => {
               {/* Academic Mode Overlay */}
               <AnimatePresence>
                 {isHoveringProfile && (
-                  <motion.div
+                  <m.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
                     className="absolute inset-0 rounded-full bg-espresso/80 dark:bg-slate-900/85 backdrop-blur-sm flex items-center justify-center z-30"
                   >
-                    <motion.a
+                    <m.a
                       href="https://uw.joechamdani.com"
                       initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -296,13 +296,13 @@ const Hero = () => {
                     >
                       <GraduationCap className="h-5 w-5 dark:text-[#60A5FA]" />
                       <span>Academic Mode</span>
-                    </motion.a>
-                  </motion.div>
+                    </m.a>
+                  </m.div>
                 )}
               </AnimatePresence>
 
               {/* Tennis Badge - Click 3x for Easter Egg! */}
-              <motion.button
+              <m.button
                 onClick={handleTennisBadgeClick}
                 className="absolute -bottom-4 -right-4 w-16 h-16 bg-tennis rounded-full flex items-center justify-center z-20 border-2 border-espresso shadow-brutal cursor-pointer"
                 whileHover={{ scale: 1.1, rotate: 12 }}
@@ -312,9 +312,9 @@ const Hero = () => {
                 title="Click me!"
               >
                 <TennisBallIcon className="w-8 h-8" />
-              </motion.button>
-            </motion.div>
-          </motion.div>
+              </m.button>
+            </m.div>
+          </m.div>
         </div>
       </div>
     </section>

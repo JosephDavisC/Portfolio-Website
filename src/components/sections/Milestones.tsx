@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { Calendar, MapPin, X, ChevronDown, ChevronUp, Briefcase, Users, GraduationCap, ArrowRight } from "lucide-react";
 import data from "@/data/milestones.json";
 
@@ -76,7 +76,7 @@ function Lightbox({
       >
         <X className="h-6 w-6" />
       </button>
-      <img
+      <img loading="lazy" decoding="async"
         src={bust(src)}
         alt={alt || "image"}
         className="max-h-[85vh] max-w-[92vw] object-contain rounded-xl border-2 border-espresso shadow-brutal-lg"
@@ -144,7 +144,7 @@ export default function Milestones() {
   return (
     <section id="milestones" className="py-16 px-6 bg-paper-dark dark:bg-[#0F1521]">
       <div className="max-w-5xl mx-auto">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
@@ -173,10 +173,10 @@ export default function Milestones() {
           <p className="text-espresso/60 dark:text-slate-400 text-xl max-w-3xl mx-auto leading-relaxed font-mono">
             My professional journey and experiences along the way
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Category Filter Tabs */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -202,10 +202,10 @@ export default function Milestones() {
               )}
             </button>
           ))}
-        </motion.div>
+        </m.div>
 
         {/* Expand/Collapse All Buttons */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -236,7 +236,7 @@ export default function Milestones() {
             <ChevronUp className="h-3.5 w-3.5" />
             Collapse All
           </button>
-        </motion.div>
+        </m.div>
 
         <div className="relative">
           {/* Timeline line */}
@@ -248,7 +248,7 @@ export default function Milestones() {
                 const isExpanded = expandedCompanies.has(company.name);
 
                 return (
-                  <motion.div
+                  <m.div
                     key={company.name}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -272,7 +272,7 @@ export default function Milestones() {
                         aria-label={`${company.name} website`}
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <img
+                        <img loading="lazy" decoding="async"
                           src={bust(company.logo)}
                           alt={company.name}
                           className={`h-12 w-12 rounded-lg object-contain p-1 border-2 border-espresso dark:border-slate-600 shadow-brutal-sm dark:shadow-none hover:shadow-brutal dark:hover:shadow-[0_0_15px_rgba(96,165,250,0.3)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all ${company.logo.endsWith('.svg') ? 'bg-white dark:bg-white' : 'bg-paper dark:bg-slate-800'}`}
@@ -298,19 +298,19 @@ export default function Milestones() {
                         <span className="text-xs font-mono hidden sm:block">
                           {company.roles.length} role{company.roles.length > 1 ? "s" : ""}
                         </span>
-                        <motion.div
+                        <m.div
                           animate={{ rotate: isExpanded ? 180 : 0 }}
                           transition={{ duration: 0.2 }}
                         >
                           <ChevronDown className="h-5 w-5" />
-                        </motion.div>
+                        </m.div>
                       </div>
                     </button>
 
                     {/* Roles (collapsible) */}
                     <AnimatePresence>
                       {isExpanded && (
-                        <motion.div
+                        <m.div
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: "auto" }}
                           exit={{ opacity: 0, height: 0 }}
@@ -318,7 +318,7 @@ export default function Milestones() {
                           className="overflow-hidden"
                         >
                           {company.roles.map((role, i) => (
-                            <motion.div
+                            <m.div
                               key={`${company.name}-${i}`}
                               initial={{ opacity: 0, y: 16 }}
                               whileInView={{ opacity: 1, y: 0 }}
@@ -374,10 +374,9 @@ export default function Milestones() {
                                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                                   {role.media.map((m, mi) => {
                                     const Img = (
-                                      <img
+                                      <img loading="lazy" decoding="async"
                                         src={bust(m.src)}
                                         alt={m.caption}
-                                        loading="lazy"
                                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                                       />
                                     );
@@ -416,12 +415,12 @@ export default function Milestones() {
                                   })}
                                 </div>
                               ) : null}
-                            </motion.div>
+                            </m.div>
                           ))}
-                        </motion.div>
+                        </m.div>
                       )}
                     </AnimatePresence>
-                  </motion.div>
+                  </m.div>
                 );
               })}
             </AnimatePresence>
@@ -430,13 +429,13 @@ export default function Milestones() {
 
         {/* Empty state */}
         {filteredCompanies.length === 0 && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="text-center py-12 text-espresso/50 dark:text-slate-500"
           >
             <p className="font-mono">No experiences found in this category.</p>
-          </motion.div>
+          </m.div>
         )}
       </div>
 

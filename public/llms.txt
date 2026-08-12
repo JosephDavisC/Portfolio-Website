@@ -1,0 +1,74 @@
+# Joseph Davis Chamdani
+
+> Personal portfolio of Joseph Davis Chamdani, an Informatics student at the University of Washington (Class of 2027) based in Seattle. He builds AI and data products: 1st place at the UW Claude Hackathon, a merged open-source contribution to NVIDIA's garak AI red-teaming toolkit, and AI/ML internships at Whitespace Solutions, Sector (cybersecurity), and Stockbit. The site also hosts "Ask Joseph," an AI assistant grounded in his real work that can answer questions and surface his projects, photos, and documents.
+
+## Ask Joseph (AI assistant)
+
+- The portfolio embeds a chat assistant grounded only in Joseph's verified work. It answers questions about his projects, experience, and skills, shows supporting media and links, and declines anything it cannot support. Best first stop for an agent evaluating his fit.
+
+## Pages
+
+- [Home](https://joechamdani.com/): Hero, about, skills, milestones, projects, credentials, awards, testimonials, blog, and contact.
+- [Projects](https://joechamdani.com/projects): Full project list with filtering across AI, Web, Games, and Data.
+- [Resume (PDF)](https://joechamdani.com/media/resume.pdf): One-page resume.
+
+## Featured projects
+
+- [AI Transfer Evaluation Tool](https://transfer.joechamdani.cloud): 1st place, UW Claude Hackathon 2025. Parses WA community college transcripts and maps courses to UW equivalents with Claude Vision. Built with Next.js, TypeScript, Claude API.
+- [IShowStream](https://github.com/JosephDavisC/IShowStream): Real-time Twitch chat analytics using a 5-agent system on Google Gemini, deployed on Cloud Run (Go, Python FastAPI, React).
+- [garak (NVIDIA)](https://github.com/JosephDavisC): Merged open-source contribution to NVIDIA's garak LLM red-teaming toolkit (CLI filtering, test coverage).
+- [ASR-Runner](https://github.com/JosephDavisC/ASR-Runner): Go tool automating attack-surface reconnaissance (subfinder, httpx, katana).
+- [JAM.AI](https://github.com/JosephDavisC/Jam.AI): GPT-powered diabetes health assistant (Flask, OpenAI).
+
+## Experience
+
+- [Whitespace Solutions, AI Product Intern](https://joechamdani.com/experience/whitespace): AI-powered product features and integrations.
+- [Information Consulting Group, Technology Operations Associate](https://joechamdani.com/experience/icg): Technology operations and consulting initiatives at a University of Washington student consulting group (current).
+- [Sector, AI Research and Development](https://joechamdani.com/experience/sector): AI automation for penetration testing and threat detection; authored three published research papers.
+- [Stockbit/Bibit, AI Engineer](https://joechamdani.com/experience/stockbit): OCR/KYC pipeline and fraud detection with Google Cloud AutoML.
+- [Touchten Games, Cutscene Guest Student](https://joechamdani.com/experience/touchten): Unity/C# cutscenes.
+- [VR Park, Game Developer](https://joechamdani.com/experience/vr-park): Multiplayer VR games in Unity.
+- BC Tech Club, President (2024–2025): Led the club and organized [BC Hacks 2024](https://joechamdani.com/blog/bc-hacks-2024).
+
+## Credentials
+
+- [Google Data Analytics](https://joechamdani.com/credential/google-data-analytics): Professional Certificate (SQL, R, Tableau).
+- [Google Project Management](https://joechamdani.com/credential/google-project-management): Professional Certificate (traditional and Agile).
+- [Unity 3D Programming](https://joechamdani.com/credential/starcamp-unity): Unity and C# game programming (Ideosource Venture Building).
+- [UX Research and Design](https://joechamdani.com/credential/starcamp-ux): User research, personas, and Figma prototyping (Ideosource Venture Building).
+
+## Awards and honors
+
+- 1st place, UW Claude Hackathon 2025 (Anthropic Claude Builder Club @ UW), for the AI Transfer Evaluation Tool.
+- UW Spence Transfer Fund Scholar (2026), University of Washington.
+- BC Foundation Scholarship (2024/25), Bellevue College.
+- 3rd place, Best Action Plan, Student Summit on Global Citizenship (BINUS School Bekasi, 2023).
+
+## Writing
+
+- [My Journey](https://joechamdani.com/blog/my-journey): Background and path into tech, from Jakarta to UW.
+- [BC Hacks 2024](https://joechamdani.com/blog/bc-hacks-2024): Organizing a college hackathon.
+
+## Interests
+
+- Tennis: right-handed with a one-handed backhand; plays on a Babolat Pure Aero.
+- Coffee: latte and iced americano.
+- Also drawn to AI product, business and entrepreneurship, data science, and product/UI design.
+
+## Contact
+
+- Email: joseph@joechamdani.com
+- LinkedIn: https://www.linkedin.com/in/joseph-chamdani/
+- GitHub: https://github.com/JosephDavisC
+
+## Optional
+
+- [Academic portfolio](https://uw.joechamdani.com): UW and Bellevue College coursework, research, and projects.
+- [INFO 200 Transfer Evaluation System](https://info200.joechamdani.cloud): The class prototype that seeded the hackathon tool (a separate project).
+- [INFO 340 Project](https://info340.joechamdani.com): UW Informatics INFO 340 course project.
+- [INFO 380 Project](https://info380.joechamdani.com): UW Informatics INFO 380 course project.
+- Devpost: https://devpost.com/joseph-chamdani
+- Medium: https://medium.com/@joseph.chamdani
+- X/Twitter: https://x.com/chamdani_davis
+- YouTube: https://www.youtube.com/@JosephDavisC
+- Instagram: https://www.instagram.com/josephdavisc/

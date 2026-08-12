@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Quote, Linkedin, Building2 } from 'lucide-react';
 
 type Rec = {
@@ -40,7 +40,7 @@ const Testimonials = () => {
   return (
     <section id="testimonials" className="py-16 px-6 bg-paper">
       <div className="max-w-6xl mx-auto">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, type: 'spring', stiffness: 100 }}
@@ -70,11 +70,11 @@ const Testimonials = () => {
           <p className="text-espresso/60 text-xl max-w-2xl mx-auto font-mono">
             Recommendations from people I have worked with.
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
           {recommendations.map((r, i) => (
-            <motion.figure
+            <m.figure
               key={r.author}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -124,7 +124,7 @@ const Testimonials = () => {
                   </p>
                 </div>
               </figcaption>
-            </motion.figure>
+            </m.figure>
           ))}
         </div>
       </div>

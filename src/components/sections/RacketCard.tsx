@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 
 type RacketCardProps = {
   title: string;
@@ -51,8 +51,7 @@ const RacketCard: React.FC<RacketCardProps> = ({
     : 'rgba(61, 43, 31, 0.2)';
 
   return (
-    <motion.div
-      layout="position"
+    <m.div
       whileHover={{ scale: 1.02, y: -4 }}
       whileTap={{ scale: 0.98 }}
       animate={{
@@ -75,7 +74,7 @@ const RacketCard: React.FC<RacketCardProps> = ({
 
       <AnimatePresence mode="wait" initial={false}>
         {showDetails ? (
-          <motion.ul
+          <m.ul
             key="specs"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
@@ -84,7 +83,7 @@ const RacketCard: React.FC<RacketCardProps> = ({
             className="text-espresso/80 dark:text-slate-300 text-base leading-relaxed space-y-1 overflow-hidden font-mono"
           >
             {specs.map((spec, idx) => (
-              <motion.li
+              <m.li
                 key={idx}
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -93,9 +92,9 @@ const RacketCard: React.FC<RacketCardProps> = ({
                 dangerouslySetInnerHTML={{ __html: spec }}
               />
             ))}
-          </motion.ul>
+          </m.ul>
         ) : (
-          <motion.p
+          <m.p
             key="placeholder"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
@@ -104,10 +103,10 @@ const RacketCard: React.FC<RacketCardProps> = ({
             className="text-espresso/50 dark:text-slate-400 text-sm text-center group-hover:text-espresso/70 dark:group-hover:text-slate-300 transition-colors overflow-hidden font-mono"
           >
             Click to view specs
-          </motion.p>
+          </m.p>
         )}
       </AnimatePresence>
-    </motion.div>
+    </m.div>
   );
 };
 
