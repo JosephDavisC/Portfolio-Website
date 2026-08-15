@@ -196,7 +196,7 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           {/* Freelance CTA */}
           <a
-            href="https://freelance.joechamdani.com/#contact"
+            href="https://freelance.joechamdani.com"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-brutal hidden md:inline-flex items-center gap-1.5 px-4 py-2 text-sm"
@@ -251,7 +251,7 @@ export default function Navbar() {
           )}
           <li className="pt-2">
             <a
-              href="https://freelance.joechamdani.com/#contact"
+              href="https://freelance.joechamdani.com"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}
