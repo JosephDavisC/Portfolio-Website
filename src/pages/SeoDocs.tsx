@@ -62,7 +62,8 @@ export default function SeoDocs() {
       <Helmet>
         <title>SEO & Technical Documentation | Joseph Davis Chamdani</title>
         <meta name="description" content="How I solved React SPA SEO challenges with static page generation. Complete technical documentation for joechamdani.com — custom SEO optimization, Open Graph meta tags, and modern web architecture." />
-        <link rel="canonical" href="https://joechamdani.com/seo-docs" />
+        <link rel="canonical" href="https://joechamdani.com/seo-docs/" />
+        <meta name="robots" content="noindex, nofollow" />
 
         {/* Open Graph / Facebook / WhatsApp */}
         <meta property="og:type" content="article" />

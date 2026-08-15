@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Not Found | Joseph Davis Chamdani</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <style>
+      :root {
+        --bg: #F9F7F2;
+        --ink: #3D2B1F;
+        --accent: #3A9012;
+        --border: #3D2B1F;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #141B2D;
+          --ink: hsl(210 40% 98%);
+          --accent: #60A5FA;
+          --border: rgba(255, 255, 255, 0.2);
+        }
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        background: var(--bg);
+        color: var(--ink);
+        font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+        text-align: center;
+      }
+      h1 {
+        font-family: 'Manrope', system-ui, sans-serif;
+        font-size: clamp(4rem, 15vw, 7rem);
+        letter-spacing: -0.02em;
+        line-height: 1;
+        margin-bottom: 0.5rem;
+      }
+      p { opacity: 0.75; font-size: 1.1rem; margin-bottom: 2rem; }
+      a.btn {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        border: 2px solid var(--border);
+        border-radius: 0.5rem;
+        color: var(--ink);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      a.btn:hover { border-color: var(--accent); color: var(--accent); }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>404</h1>
+      <p>Ace not found. This page doesn't exist.</p>
+      <a class="btn" href="/">&larr; Back to joechamdani.com</a>
+    </main>
+  </body>
+</html>

@@ -367,12 +367,4 @@
     </image:image>
   </url>
 
-  <!-- SEO Documentation Page -->
-  <url>
-    <loc>https://joechamdani.com/seo-docs/</loc>
-    <lastmod>2026-08-15</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
-  </url>
-
 </urlset>

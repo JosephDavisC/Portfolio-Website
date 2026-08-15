@@ -156,7 +156,7 @@ function generateHTML(slug, meta, assets) {
          AI crawlers (GPTBot, ClaudeBot, PerplexityBot) do not execute JS,
          so this block is the only page content they see. The full article
          body is extracted from ArticlePage.tsx at build time. -->
-    <div id="root"><main style="max-width:48rem;margin:0 auto;padding:3rem 1.5rem;font-family:system-ui,sans-serif"><h1>${meta.h1 || meta.title.split(' | ')[0]}</h1><p>By Joseph Davis Chamdani · ${meta.dateDisplay || ''}</p><p>${meta.description}</p>${meta.body || ''}<p><a href="/">Joseph Davis Chamdani — Portfolio</a></p></main></div>
+    <div id="root"><main style="max-width:48rem;margin:0 auto;padding:3rem 1.5rem;font-family:system-ui,sans-serif"><h1>${meta.h1 || meta.title.split(' | ')[0]}</h1><p>By Joseph Davis Chamdani · ${meta.dateDisplay || ''}</p><p>${meta.description}</p>${meta.body || ''}<nav><h2>More from Joseph</h2><p><a href="/">Joseph Davis Chamdani — Portfolio</a> · <a href="/projects/">Projects</a> · <a href="/experience/sector/">Sector</a> · <a href="/experience/stockbit/">Stockbit</a> · ${slug === 'my-journey' ? '<a href="/blog/bc-hacks-2024/">BC Hacks 2024</a>' : '<a href="/blog/my-journey/">My Journey: From Jakarta to UW</a>'}</p></nav></main></div>
 ${seoBlock}  </body>
 </html>`;
 }

@@ -142,6 +142,29 @@ function injectRootFallback(html, fallbackMain) {
   return html.replace('<div id="root"></div>', `<div id="root">${fallbackMain}</div>`);
 }
 
+// Related-links footer for fallback pages: gives crawlers a real internal
+// link graph (experience pages, projects, credentials) instead of dead ends.
+const experienceLinks = Object.entries(experiences)
+  .map(([slug, exp]) => `<a href="/experience/${slug}/">${esc(exp.company)}</a>`)
+  .join(' · ');
+const credentialLinks = credentials
+  .map((c) => `<a href="/credential/${c.slug}/">${esc(c.title)}</a>`)
+  .join(' · ');
+function relatedFooter(exceptHref = '') {
+  const links = [
+    `<a href="/">Joseph Davis Chamdani — Portfolio</a>`,
+    `<a href="/projects/">Projects</a>`,
+    experienceLinks,
+    credentialLinks,
+    `<a href="/blog/my-journey/">My Journey: From Jakarta to UW</a>`,
+    `<a href="/blog/bc-hacks-2024/">BC Hacks 2024</a>`,
+  ].join(' · ');
+  const filtered = exceptHref
+    ? links.replace(new RegExp(`<a href="${exceptHref}">[^<]*</a>( · )?`), '')
+    : links;
+  return `<nav><h2>More from Joseph</h2><p>${filtered}</p></nav>`;
+}
+
 // Build fallback content per route (keyed by page.path)
 const fallbackByPath = {
   projects: buildFallbackMain(
@@ -152,7 +175,12 @@ const fallbackByPath = {
             `<section><h2>${esc(p.title)}</h2><p>${esc(p.description)}</p><p>Tech: ${esc((p.tech || []).join(', '))}</p></section>`
         )
         .join('') +
-      `<p><a href="/">Joseph Davis Chamdani — Portfolio</a></p>`
+      relatedFooter('/projects/')
+  ),
+  'seo-docs': buildFallbackMain(
+    `<h1>SEO &amp; Technical Documentation</h1>` +
+      `<p>How this React single-page application solves SEO: build-time static page generation with per-route titles, descriptions, canonicals and Open Graph tags; crawler-visible fallback content inside the root element for AI crawlers that do not execute JavaScript; JSON-LD structured data (ProfilePage, BlogPosting, BreadcrumbList, EducationalOccupationalCredential); an image sitemap; and Apache-level canonical-host and 404 handling.</p>` +
+      relatedFooter()
   ),
 };
 
@@ -172,7 +200,7 @@ for (const [slug, exp] of Object.entries(experiences)) {
       ((exp.technologies || []).length
         ? `<p>Technologies: ${esc(exp.technologies.join(', '))}</p>`
         : '') +
-      `<p><a href="/">Joseph Davis Chamdani — Portfolio</a></p>`
+      relatedFooter(`/experience/${slug}/`)
   );
 }
 
@@ -185,7 +213,7 @@ for (const cred of credentials) {
       `<p>Issued by ${esc(cred.issuer)}${cred.issued ? ` · ${esc(cred.issued)}` : ''}</p>` +
       (cred.note ? `<p>${esc(cred.note)}</p>` : '') +
       (bullets ? `<ul>${bullets}</ul>` : '') +
-      `<p><a href="/">Joseph Davis Chamdani — Portfolio</a></p>`
+      relatedFooter(`/credential/${cred.slug}/`)
   );
 }
 
@@ -203,7 +231,8 @@ const pages = [
     title: "SEO & Technical Documentation | Joseph Davis Chamdani",
     description: "How I solved React SPA SEO challenges with static page generation. Custom SEO optimization, Open Graph meta tags, and modern web architecture.",
     image: 'https://joechamdani.com/Logo_Joseph.PNG',
-    url: 'https://joechamdani.com/seo-docs/'
+    url: 'https://joechamdani.com/seo-docs/',
+    noindex: true
   }
 ];
 
@@ -299,6 +328,14 @@ for (const page of pages) {
     /<link rel="canonical" href=".*?" \/>/,
     `<link rel="canonical" href="${page.url}" />`
   );
+
+  // Personal/internal pages stay out of the index
+  if (page.noindex) {
+    html = html.replace(
+      /<meta name="robots" content=".*?" \/>/,
+      `<meta name="robots" content="noindex, nofollow" />`
+    );
+  }
 
   // Replace OG tags
   html = html.replace(
