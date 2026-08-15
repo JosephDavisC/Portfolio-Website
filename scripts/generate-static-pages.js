@@ -83,6 +83,112 @@ for (const cred of credentials) {
   }
 }
 
+// Helper: escape text for safe HTML embedding
+function esc(s) {
+  return String(s ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+// Helper: "Aug 2025" -> "2025-08-01" (best-effort ISO date for schema)
+function toIsoDate(s) {
+  if (!s) return null;
+  const months = { jan: '01', feb: '02', mar: '03', apr: '04', may: '05', jun: '06', jul: '07', aug: '08', sep: '09', oct: '10', nov: '11', dec: '12' };
+  const m = String(s).toLowerCase().match(/([a-z]{3})[a-z]*\s+(\d{4})/);
+  return m && months[m[1]] ? `${m[2]}-${months[m[1]]}-01` : null;
+}
+
+// Helper: inject extra tags (JSON-LD, preloads) just before </head>
+function injectHeadExtras(html, tags) {
+  if (!tags) return html;
+  return html.replace('</head>', `${tags}\n  </head>`);
+}
+
+// Helper: BreadcrumbList JSON-LD for a two-level page
+function breadcrumbLd(name, url) {
+  return `<script type="application/ld+json">${JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://joechamdani.com/' },
+      { '@type': 'ListItem', position: 2, name, item: url },
+    ],
+  })}</script>`;
+}
+
+// Helper: strip the site-wide semantic <noscript> fallback (the homepage
+// resume block) from interior pages. Content-extraction libraries used by AI
+// crawlers pick the LARGER generic block over the page-specific prerender,
+// so on interior pages the duplicate actively hurts citability. The GTM
+// <noscript> iframe is untouched (this only matches the <main> variant).
+function stripSemanticNoscript(html) {
+  return html.replace(/<noscript>\s*<main[\s\S]*?<\/noscript>/, '');
+}
+
+// Helper: crawler-visible fallback content, injected inside #root so AI
+// crawlers (GPTBot, ClaudeBot, PerplexityBot — none execute JS) see real
+// page content, not an empty div. React replaces it the moment it mounts.
+// Inline-styled minimally so the brief pre-hydration paint looks clean in
+// both themes (colors inherit from the app CSS on <body>).
+function buildFallbackMain(inner) {
+  return `<main data-prerender style="max-width:64rem;margin:0 auto;padding:3rem 1.5rem">${inner}</main>`;
+}
+
+// Helper: inject fallback content into the empty #root of the base HTML
+function injectRootFallback(html, fallbackMain) {
+  if (!fallbackMain) return html;
+  return html.replace('<div id="root"></div>', `<div id="root">${fallbackMain}</div>`);
+}
+
+// Build fallback content per route (keyed by page.path)
+const fallbackByPath = {
+  projects: buildFallbackMain(
+    `<h1>Projects</h1><p>AI, web development, and game projects by Joseph Davis Chamdani.</p>` +
+      projects
+        .map(
+          (p) =>
+            `<section><h2>${esc(p.title)}</h2><p>${esc(p.description)}</p><p>Tech: ${esc((p.tech || []).join(', '))}</p></section>`
+        )
+        .join('') +
+      `<p><a href="/">Joseph Davis Chamdani — Portfolio</a></p>`
+  ),
+};
+
+for (const [slug, exp] of Object.entries(experiences)) {
+  const highlights = (exp.highlights || [])
+    .map((h) => `<li>${esc(h)}</li>`)
+    .join('');
+  const logoImg = exp.logo
+    ? `<img src="${esc(exp.logo)}" alt="${esc(exp.company)} logo" width="96" height="96" fetchpriority="high" style="object-fit:contain">`
+    : '';
+  fallbackByPath[`experience/${slug}`] = buildFallbackMain(
+    logoImg +
+      `<h1>${esc(exp.role)} — ${esc(exp.company)}</h1>` +
+      `<p>${esc(exp.type)} · ${esc(exp.duration)} · ${esc(exp.location)}</p>` +
+      `<p>${esc(exp.description)}</p>` +
+      (highlights ? `<h2>Highlights</h2><ul>${highlights}</ul>` : '') +
+      ((exp.technologies || []).length
+        ? `<p>Technologies: ${esc(exp.technologies.join(', '))}</p>`
+        : '') +
+      `<p><a href="/">Joseph Davis Chamdani — Portfolio</a></p>`
+  );
+}
+
+for (const cred of credentials) {
+  const bullets = (cred.highlights || [])
+    .map((b) => `<li>${esc(b)}</li>`)
+    .join('');
+  fallbackByPath[`credential/${cred.slug}`] = buildFallbackMain(
+    `<h1>${esc(cred.title)}</h1>` +
+      `<p>Issued by ${esc(cred.issuer)}${cred.issued ? ` · ${esc(cred.issued)}` : ''}</p>` +
+      (cred.note ? `<p>${esc(cred.note)}</p>` : '') +
+      (bullets ? `<ul>${bullets}</ul>` : '') +
+      `<p><a href="/">Joseph Davis Chamdani — Portfolio</a></p>`
+  );
+}
+
 // Static pages
 const pages = [
   {
@@ -90,14 +196,14 @@ const pages = [
     title: "Projects | Joseph's Portfolio",
     description: "Explore Joseph Chamdani's portfolio of AI, web development, and game projects.",
     image: 'https://joechamdani.com/Logo_Joseph.PNG',
-    url: 'https://joechamdani.com/projects'
+    url: 'https://joechamdani.com/projects/'
   },
   {
     path: 'seo-docs',
     title: "SEO & Technical Documentation | Joseph Davis Chamdani",
     description: "How I solved React SPA SEO challenges with static page generation. Custom SEO optimization, Open Graph meta tags, and modern web architecture.",
     image: 'https://joechamdani.com/Logo_Joseph.PNG',
-    url: 'https://joechamdani.com/seo-docs'
+    url: 'https://joechamdani.com/seo-docs/'
   }
 ];
 
@@ -109,7 +215,7 @@ for (const [slug, exp] of Object.entries(experiences)) {
     title: `${exp.seo.title} | Joseph Chamdani`,
     description: exp.seo.description,
     image: `https://joechamdani.com${image}`,
-    url: `https://joechamdani.com/experience/${slug}`
+    url: `https://joechamdani.com/experience/${slug}/`
   });
 }
 
@@ -123,8 +229,43 @@ for (const cred of credentials) {
     title: `${cred.title} — ${cred.issuer} | Joseph Chamdani`,
     description: `${cred.title} certification issued by ${cred.issuer}${cred.issued ? ` (${cred.issued})` : ''}. View credential details and certificate.`,
     image,
-    url: `https://joechamdani.com/credential/${cred.slug}`
+    url: `https://joechamdani.com/credential/${cred.slug}/`
   });
+}
+
+// Per-page head extras: LCP preloads + page-type JSON-LD (crawler-visible,
+// unlike the Helmet-injected schema which needs JS execution)
+const headExtrasByPath = {
+  projects: breadcrumbLd('Projects', 'https://joechamdani.com/projects/'),
+};
+
+for (const [slug, exp] of Object.entries(experiences)) {
+  const extras = [];
+  if (exp.logo) {
+    // The company logo is the LCP element on experience pages and is
+    // otherwise only discoverable after hydration + lazy-chunk load.
+    extras.push(`<link rel="preload" as="image" href="${esc(exp.logo)}" fetchpriority="high">`);
+  }
+  extras.push(breadcrumbLd(exp.company, `https://joechamdani.com/experience/${slug}/`));
+  headExtrasByPath[`experience/${slug}`] = extras.join('\n    ');
+}
+
+for (const cred of credentials) {
+  const url = `https://joechamdani.com/credential/${cred.slug}/`;
+  const credLd = `<script type="application/ld+json">${JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'EducationalOccupationalCredential',
+    name: cred.title,
+    credentialCategory: 'certificate',
+    url,
+    ...(toIsoDate(cred.issued) ? { dateCreated: toIsoDate(cred.issued) } : {}),
+    recognizedBy: { '@type': 'Organization', name: cred.issuer },
+    about: { '@type': 'Person', name: 'Joseph Davis Chamdani', url: 'https://joechamdani.com/' },
+  })}</script>`;
+  headExtrasByPath[`credential/${cred.slug}`] = [
+    credLd,
+    breadcrumbLd(cred.title, url),
+  ].join('\n    ');
 }
 
 // Read the base index.html from dist
@@ -204,6 +345,20 @@ for (const page of pages) {
   if (seoImages?.length) {
     html = injectSeoBlock(html, buildSeoImagesBlock(seoImages));
   }
+
+  // Inject crawler-visible fallback content into #root
+  html = injectRootFallback(html, fallbackByPath[page.path]);
+
+  // Drop the homepage's semantic <noscript> resume block on interior pages
+  // (it out-competes the page-specific content during AI/crawler extraction)
+  html = stripSemanticNoscript(html);
+
+  // Drop the homepage hero-image preload on interior pages (wasted bandwidth
+  // on pages that never render it above the fold)
+  html = html.replace(/\s*<link rel="preload" as="image" href="\/Joseph_Chamdani\.webp"[^>]*>/, '');
+
+  // Inject page-type JSON-LD + LCP preloads into <head>
+  html = injectHeadExtras(html, headExtrasByPath[page.path]);
 
   // Write the modified HTML
   fs.writeFileSync(path.join(pageDir, 'index.html'), html);
@@ -304,10 +459,22 @@ const uniqueHomepageImages = homepageImages.filter((img) => {
 });
 
 const homepageSeoBlock = buildSeoImagesBlock(uniqueHomepageImages);
+
+// ---------------------------------------------------------------------------
+// Homepage hero prerender
+// ---------------------------------------------------------------------------
+// Static copy of Hero.tsx's above-the-fold markup, injected into #root so the
+// hero paints from raw HTML before React hydrates (mobile LCP fix) and so
+// AI crawlers see real homepage content. Uses the exact Tailwind classes from
+// Hero.tsx (they are guaranteed to exist in the built CSS). React wipes this
+// on mount. KEEP IN SYNC with src/components/sections/Hero.tsx.
+const heroPrerender = `<section class="min-h-screen flex items-center justify-center px-6 py-20 relative bg-paper dark:bg-[#141B2D]"><div class="max-w-7xl mx-auto relative z-10"><div class="grid lg:grid-cols-2 gap-16 items-center"><div class="text-left"><div class="mb-8"><div class="mb-6"><h1 class="text-5xl md:text-7xl font-heading font-bold text-espresso dark:text-slate-100 leading-tight tracking-tight">Joseph Davis Chamdani</h1></div><p class="text-2xl md:text-3xl text-espresso/80 dark:text-slate-300 mb-4 font-light text-balance">I build <span class="text-court-dark dark:text-[#60A5FA] font-medium">AI and data products</span>, and I ship them.</p><p class="text-sm md:text-base text-espresso/60 dark:text-slate-400 max-w-2xl leading-relaxed mb-6 font-mono text-pretty">Informatics @ UW · Anthropic hackathon winner · NVIDIA open source contributor</p><div class="flex items-center gap-3 flex-wrap"><span class="inline-flex items-center gap-2 px-4 py-2 bg-espresso/5 dark:bg-slate-800 border-2 border-espresso/20 dark:border-slate-600 rounded-full text-espresso dark:text-slate-200 font-mono text-sm shadow-brutal-sm dark:shadow-none relative">Coffee Lover</span><span class="inline-flex items-center gap-2 px-4 py-2 bg-court/10 dark:bg-[#60A5FA]/10 border-2 border-court/30 dark:border-[#60A5FA]/30 rounded-full text-court-dark dark:text-[#60A5FA] font-mono text-sm shadow-brutal-sm dark:shadow-none">Tennis player</span></div></div><div class="flex flex-col sm:flex-row gap-4"><a href="#portfolio" class="btn-brutal-outline inline-flex items-center justify-center">See my work</a><a href="#contact" class="btn-brutal inline-flex items-center justify-center">Let's Connect</a></div></div><div class="flex justify-center lg:justify-end"><div class="relative"><div class="relative flex w-80 h-80 md:w-96 md:h-96 shrink-0 overflow-hidden rounded-full border-4 border-espresso shadow-brutal-lg z-10"><picture><source srcset="/Joseph_Chamdani.webp" type="image/webp"><img src="/Joseph_Chamdani.JPEG" alt="Joseph Davis Chamdani" class="aspect-square h-full w-full object-cover object-top" fetchpriority="high"></picture></div></div></div></div></div></section>`;
+
 const homepagePath = path.join(distPath, 'index.html');
 let homepageHtml = fs.readFileSync(homepagePath, 'utf8');
 homepageHtml = injectSeoBlock(homepageHtml, homepageSeoBlock);
+homepageHtml = injectRootFallback(homepageHtml, heroPrerender);
 fs.writeFileSync(homepagePath, homepageHtml);
-console.log(`[+] Injected ${uniqueHomepageImages.length} SEO image tags into homepage`);
+console.log(`[+] Injected ${uniqueHomepageImages.length} SEO image tags + hero prerender into homepage`);
 
 console.log('[+] Static pages generated successfully!');

@@ -1,5 +1,6 @@
 // src/pages/NotFound.tsx
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { m } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
@@ -19,6 +20,10 @@ const NotFound = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Page Not Found | Joseph Davis Chamdani</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       <Navbar />
       <div className="min-h-screen flex flex-col items-center justify-center bg-paper dark:bg-[#141B2D] px-4 text-center relative overflow-hidden pt-20">
       {/* Animated background elements */}

@@ -5,12 +5,47 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const distPath = path.join(__dirname, '..', 'dist');
 
+// Extract the real article body (h2/h3 + body paragraphs) for a slug from
+// ArticlePage.tsx at build time, so the crawler-visible static fallback stays
+// in sync with the rendered article. Caption paragraphs (text-sm/italic) are
+// skipped; body paragraphs use the text-lg class.
+function extractArticleBody(slug) {
+  const src = fs.readFileSync(
+    path.join(__dirname, '..', 'src', 'pages', 'ArticlePage.tsx'),
+    'utf8'
+  );
+  const marker = `case '${slug}':`;
+  const start = src.indexOf(marker);
+  if (start === -1) return '';
+  const rest = src.slice(start + marker.length);
+  const nextCase = rest.search(/case '|default:/);
+  const section = nextCase === -1 ? rest : rest.slice(0, nextCase);
+  const out = [];
+  const re = /<(h2|h3|p)([^>]*)>([\s\S]*?)<\/\1>/g;
+  let m;
+  while ((m = re.exec(section))) {
+    const [, tag, attrs, inner] = m;
+    if (tag === 'p' && !attrs.includes('text-lg')) continue;
+    const text = inner
+      .replace(/\{\s*(['"`])([\s\S]*?)\1\s*\}/g, '$2')
+      .replace(/\{[^}]*\}/g, ' ')
+      .replace(/<[^>]+>/g, ' ')
+      .replace(/&nbsp;/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+    if (text) out.push(`<${tag}>${text}</${tag}>`);
+  }
+  return out.join('');
+}
+
 const blogMeta = {
   'my-journey': {
     title: 'My Journey: From Jakarta to UW | Joseph Davis Chamdani',
     description: 'How I moved from Indonesia to Seattle at 15, skipped two years of high school, and made it to the University of Washington as a junior in Informatics.',
     image: 'https://joechamdani.com/article_media/journey/Graduation_Peace.png',
-    url: 'https://joechamdani.com/blog/my-journey',
+    url: 'https://joechamdani.com/blog/my-journey/',
+    datePublished: '2025-11-01',
+    dateDisplay: 'November 2025',
     images: [
       {
         src: '/article_media/journey/Graduation_Peace.png',
@@ -22,7 +57,9 @@ const blogMeta = {
     title: 'BC Hacks 2024 Lecture | Joseph Davis Chamdani',
     description: 'After helping organize and launch BC Hacks 2024, I was invited to give a lecture at Bellevue College about how to run a successful hackathon. This session was specially arranged for a group of 20+ Korean exchange students visiting from Korea.',
     image: 'https://joechamdani.com/article_media/bc-hacks-2024/Group_Photo.png',
-    url: 'https://joechamdani.com/blog/bc-hacks-2024',
+    url: 'https://joechamdani.com/blog/bc-hacks-2024/',
+    datePublished: '2024-07-01',
+    dateDisplay: 'July 2024',
     images: [
       {
         src: '/article_media/bc-hacks-2024/Group_Photo.png',
@@ -60,6 +97,27 @@ function getAssetReferences() {
 
 function generateHTML(slug, meta, assets) {
   const seoBlock = buildSeoImagesBlock(meta.images);
+  const blogPostingLd = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: meta.title.split(' | ')[0],
+    description: meta.description,
+    image: meta.image,
+    datePublished: meta.datePublished,
+    dateModified: meta.datePublished,
+    author: { '@type': 'Person', name: 'Joseph Davis Chamdani', url: 'https://joechamdani.com/' },
+    publisher: { '@type': 'Person', name: 'Joseph Davis Chamdani', url: 'https://joechamdani.com/' },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': meta.url },
+    url: meta.url,
+  });
+  const breadcrumbLd = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://joechamdani.com/' },
+      { '@type': 'ListItem', position: 2, name: meta.title.split(' | ')[0], item: meta.url },
+    ],
+  });
   return `<!DOCTYPE html>
 <html lang="en">
   <head>
@@ -68,6 +126,10 @@ function generateHTML(slug, meta, assets) {
 
     <title>${meta.title}</title>
     <meta name="description" content="${meta.description}" />
+    <link rel="canonical" href="${meta.url}" />
+    <meta name="robots" content="index, follow" />
+    <script type="application/ld+json">${blogPostingLd}</script>
+    <script type="application/ld+json">${breadcrumbLd}</script>
 
     <!-- Open Graph / Facebook / WhatsApp -->
     <meta property="og:type" content="article" />
@@ -90,7 +152,11 @@ function generateHTML(slug, meta, assets) {
     <link rel="stylesheet" crossorigin href="${assets.css}">
   </head>
   <body>
-    <div id="root"></div>
+    <!-- Crawler-visible fallback: replaced by React the moment it mounts.
+         AI crawlers (GPTBot, ClaudeBot, PerplexityBot) do not execute JS,
+         so this block is the only page content they see. The full article
+         body is extracted from ArticlePage.tsx at build time. -->
+    <div id="root"><main style="max-width:48rem;margin:0 auto;padding:3rem 1.5rem;font-family:system-ui,sans-serif"><h1>${meta.h1 || meta.title.split(' | ')[0]}</h1><p>By Joseph Davis Chamdani · ${meta.dateDisplay || ''}</p><p>${meta.description}</p>${meta.body || ''}<p><a href="/">Joseph Davis Chamdani — Portfolio</a></p></main></div>
 ${seoBlock}  </body>
 </html>`;
 }
@@ -107,6 +173,9 @@ if (!fs.existsSync(blogPath)) {
 
 // Generate HTML for each blog post
 Object.entries(blogMeta).forEach(([slug, meta]) => {
+  meta.body = extractArticleBody(slug);
+  const words = meta.body.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
+  console.log(`  [blog] ${slug}: extracted ${words} words of article body`);
   const postPath = path.join(blogPath, slug);
   if (!fs.existsSync(postPath)) {
     fs.mkdirSync(postPath, { recursive: true });

@@ -7,13 +7,14 @@
         "category": "Internships",
         "logo": "/logos/whitespace-solution-logo.svg",
         "website": "https://whitespace.id",
-        "meta": "Internship · 1 mo",
+        "meta": "Internship · 2 mos",
         "location": "Jakarta, Indonesia",
         "roles": [
           {
             "title": "AI Product Intern",
-            "dates": "Jul 2026 – Present · 1 mo",
+            "dates": "Jul 2026 – Present · 2 mos",
             "meta": "Hybrid",
+            "detailsLink": "/experience/whitespace",
             "bullets": [
               "Building AI-powered product features and integrations at Whitespace Solutions."
             ],
@@ -28,13 +29,14 @@
         "category": "Clubs",
         "logo": "/logos/ICG.png",
         "website": "https://www.linkedin.com/company/information-consulting-group/",
-        "meta": "Part-time · 3 mos",
+        "meta": "Part-time · 4 mos",
         "location": "Seattle, Washington, United States",
         "roles": [
           {
             "title": "Technology Operations Associate",
-            "dates": "May 2026 – Present · 3 mos",
+            "dates": "May 2026 – Present · 4 mos",
             "meta": "Hybrid",
+            "detailsLink": "/experience/icg",
             "bullets": [
               "Supporting technology operations and consulting initiatives at Information Consulting Group."
             ],
@@ -49,12 +51,12 @@
         "category": "Work",
         "logo": "/logos/UW_Logo.png",
         "website": "https://hfs.uw.edu/Dining",
-        "meta": "Part-time · 8 mos",
+        "meta": "Part-time · 1 yr",
         "location": "Seattle, Washington, United States",
         "roles": [
           {
             "title": "Student Assistant - Bay Laurel Catering",
-            "dates": "Sep 2025 – Present · 8 mos",
+            "dates": "Sep 2025 – Present · 1 yr",
             "meta": "On-site",
             "bullets": [
               "Support UW Housing and Food Services with catering operations, event setup, and daily food service."
@@ -190,6 +192,7 @@
             "title": "Cutscene Guest Student",
             "dates": "Jul 2023 – Aug 2023",
             "meta": "On-site",
+            "detailsLink": "/experience/touchten",
             "bullets": [
               "Developed cutscenes with Unity and C# for 'Piper's Cat Café'.",
               "Collaborated with game design on pacing and flow.",
@@ -214,6 +217,7 @@
             "title": "Game Developer",
             "dates": "Sep 2022 – Jan 2023",
             "meta": "Hybrid",
+            "detailsLink": "/experience/vr-park",
             "bullets": [
               "Helped build Dino VR, an interactive multiplayer VR game (Unity, C#).",
               "Integrated VR SDK plugins and multiplayer systems for immersive networking.",

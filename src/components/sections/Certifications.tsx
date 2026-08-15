@@ -1,7 +1,7 @@
 import React from "react";
 import { m } from "framer-motion";
 import { Award } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 40 },
@@ -55,12 +55,11 @@ const certifications: Cert[] = [
 ];
 
 export default function Certifications() {
-  const navigate = useNavigate();
-
-  const openCredential = (href: string) => {
+  // Real <a href> links (not button+navigate) so crawlers can discover the
+  // credential pages; the replaceState keeps back-button behavior identical.
+  const markCertOrigin = () => {
     const base = window.location.pathname || "/";
     window.history.replaceState(null, "", `${base}#certifications`);
-    navigate(href, { state: { from: `${base}#certifications` } });
   };
 
   return (
@@ -152,12 +151,14 @@ export default function Certifications() {
 
               {/* Button */}
               {cert.href && (
-                <button
-                  onClick={() => openCredential(cert.href!)}
+                <Link
+                  to={cert.href}
+                  state={{ from: "/#certifications" }}
+                  onClick={markCertOrigin}
                   className="btn-brutal w-full inline-flex items-center justify-center text-sm"
                 >
                   Show credential ↗
-                </button>
+                </Link>
               )}
             </m.article>
           ))}

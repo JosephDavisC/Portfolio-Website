@@ -291,9 +291,9 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
         <div className="prose max-w-none">
           <p className="text-espresso/80 text-lg leading-relaxed mb-8">
             I think this all started when me and my family went to Atlanta for a summer trip to visit my cousins.
-            When we were there, my dad suddenly got this idea — what if I studied in the U.S.? My dad even found a place
+            When we were there, my dad suddenly got this idea: what if I studied in the U.S.? My dad even found a place
             called Baylor High School, and believe it or not, I almost moved there. But my dad decided to keep me in
-            Highscope instead. (Yes, <span className="italic">Highscope Indonesia</span> — that's my school's actual name, not a typo of "high school" haha.)
+            Highscope instead. (Yes, <span className="italic">Highscope Indonesia</span>, that's my school's actual name, not a typo of "high school" haha.)
           </p>
 
           <p className="text-espresso/80 text-lg leading-relaxed mb-8">
@@ -323,7 +323,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
 
           <p className="text-espresso/80 text-lg leading-relaxed mb-6">
             I'd always been into tech, but I never actually tried coding before. That night changed everything. I
-            started learning and joined some bootcamps — web development, UI/UX, and later Unity 3D. I ended up really
+            started learning and joined some bootcamps: web development, UI/UX, and later Unity 3D. I ended up really
             liking it, and that's when I realized maybe this is what I want to do.
           </p>
 
@@ -357,7 +357,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
           </p>
 
           <p className="text-espresso/80 text-lg leading-relaxed mb-6">
-            Even though I only worked around 3–5 hours a week while in school, it lasted six months and taught me a lot.
+            Even though I only worked around 3 to 5 hours a week while in school, it lasted six months and taught me a lot.
             I learned how to work with people, handle tasks, and communicate better. More importantly, I met so many people
             in tech and realized this world is growing fast. It felt like the start of something big.
           </p>
@@ -459,7 +459,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
           <h2 id="starting-seattle" className="text-3xl font-heading font-bold text-court-dark dark:text-[#60A5FA] mb-6 mt-12">Starting a New Life in Seattle</h2>
           <p className="text-espresso/80 text-lg leading-relaxed mb-6">
             When I first moved to Seattle, I stayed with a host family. My parents helped me settle in, but once they left,
-            reality hit. I was completely alone in a new country. I had to figure everything out — cooking, laundry, and public
+            reality hit. I was completely alone in a new country. I had to figure everything out: cooking, laundry, and public
             transport. I definitely took Indonesia for granted, but living alone made me grow up faster.
           </p>
 
@@ -559,7 +559,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
 
           <p className="text-espresso/80 text-lg leading-relaxed mb-6">
             The next few quarters went by fast. I took more computer science and math classes and started planning the Bellevue
-            College Hackathon — BC Hacks 2024.
+            College Hackathon: BC Hacks 2024.
           </p>
 
           <p className="text-espresso/80 text-lg leading-relaxed mb-8">
@@ -622,7 +622,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
 
           <p className="text-espresso/80 text-lg leading-relaxed mb-8">
             Then came summer quarter, and for some reason, I decided to take four classes and do an internship at Stockbit as
-            an AI Engineer. I honestly don't know what I was thinking. But it turned out fine — I finished with straight A's
+            an AI Engineer. I honestly don't know what I was thinking. But it turned out fine. I finished with straight A's
             and learned a lot about AI, data, and automation.
           </p>
 
@@ -639,7 +639,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
 
           <h2 id="transferring-uw" className="text-3xl font-heading font-bold text-court-dark dark:text-[#60A5FA] mb-6 mt-12">Transferring to UW</h2>
           <p className="text-espresso/80 text-lg leading-relaxed mb-6">
-            Fall and winter 2024 were all about transfer applications. I applied to 13 universities — all the UCs, Georgia Tech,
+            Fall and winter 2024 were all about transfer applications. I applied to 13 universities: all the UCs, Georgia Tech,
             and UW. Sadly, I couldn't apply to East Coast schools because my credits wouldn't transfer since I was still technically
             a high school student.
           </p>
@@ -713,7 +713,7 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
 
           <h2 id="looking-back" className="text-3xl font-heading font-bold text-court-dark dark:text-[#60A5FA] mb-6 mt-12">Looking Back</h2>
           <p className="text-espresso/80 text-lg leading-relaxed mb-6">
-            Sometimes I still can't believe how much has happened — from being that kid who played games all day, to studying abroad
+            Sometimes I still can't believe how much has happened, from being that kid who played games all day, to studying abroad
             alone at 15, to now being at UW and working in AI.
           </p>
 
@@ -722,8 +722,8 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
           </p>
 
           <p className="text-espresso/80 text-lg leading-relaxed mb-6">
-            I didn't take the traditional path, but I'm glad I didn't. Everything that's happened — from Highscope to Bellevue College
-            to UW — made me who I am today.
+            I didn't take the traditional path, but I'm glad I didn't. Everything that's happened, from Highscope to Bellevue College
+            to UW, made me who I am today.
           </p>
 
           <p className="text-espresso/80 text-lg leading-relaxed mb-8">
@@ -828,7 +828,7 @@ const ArticlePage = () => {
           <div className="flex items-center gap-2 text-espresso/60 mb-4 font-mono">
             <Calendar className="h-4 w-4" />
             <span className="text-sm">
-              {article.location ? `${article.location} — ${article.date}` : article.date}
+              {article.location ? `${article.location} · ${article.date}` : article.date}
             </span>
           </div>
 
