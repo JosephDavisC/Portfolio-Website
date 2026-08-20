@@ -1,3 +1,4 @@
+import { track } from "@/lib/track";
 import React from 'react';
 import { m } from 'framer-motion';
 import { Mail, Linkedin, Github, Instagram, Youtube, Download } from 'lucide-react';
@@ -84,7 +85,7 @@ const Contact = () => {
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-4 mb-10 px-2 sm:px-0">
             <m.a
-              href="mailto:jchamd@uw.edu"
+              href="mailto:joseph@joechamdani.com"
               whileHover={{ y: -4 }}
               transition={{ type: "spring", stiffness: 300 }}
               className="flex flex-col items-center px-4 py-6 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-all group"
@@ -93,7 +94,7 @@ const Contact = () => {
                 <Mail className="h-6 w-6 text-court-dark dark:text-[#60A5FA]" />
               </div>
               <h4 className="font-heading font-semibold text-espresso dark:text-slate-100 mb-1">Email</h4>
-              <p className="text-espresso/60 dark:text-slate-400 text-sm font-mono">jchamd@uw.edu</p>
+              <p className="text-espresso/60 dark:text-slate-400 text-xs font-mono tracking-tight break-all text-center max-w-full">joseph@joechamdani.com</p>
             </m.a>
 
             <m.a
@@ -207,6 +208,7 @@ const Contact = () => {
               href="media/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => track("resume-download")}
               className="btn-brutal inline-flex items-center gap-2"
               whileHover={{ scale: 1.02, x: -2, y: -2 }}
               whileTap={{ scale: 0.98, x: 2, y: 2 }}

@@ -8,7 +8,7 @@
   <!-- Main Homepage -->
   <url>
     <loc>https://joechamdani.com/</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -119,6 +119,21 @@
       <image:caption>Joseph Chamdani slice follow-through with Diadem Elevate 98 racket</image:caption>
     </image:image>
     <image:image>
+      <image:loc>https://joechamdani.com/images/moments/Joseph_Chamdani_Padel_Forehand.webp</image:loc>
+      <image:title>Joseph Chamdani Playing Padel</image:title>
+      <image:caption>Joseph Chamdani playing padel, forehand at contact on an indoor court</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/images/moments/Joseph_Chamdani_Padel_Backhand.webp</image:loc>
+      <image:title>Joseph Chamdani Padel Backhand</image:title>
+      <image:caption>Joseph Chamdani playing padel, preparing a slice</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/images/moments/Joseph_Chamdani_Padel_Follow_Through.webp</image:loc>
+      <image:title>Joseph Chamdani Padel Follow-Through</image:title>
+      <image:caption>Joseph Chamdani playing padel, backhand follow-through</image:caption>
+    </image:image>
+    <image:image>
       <image:loc>https://joechamdani.com/images/moments/Joseph_Chamdani_Tennis.jpg</image:loc>
       <image:title>Joseph Chamdani Playing Tennis</image:title>
       <image:caption>Joseph Chamdani playing tennis — forehand shot on the court</image:caption>
@@ -148,7 +163,7 @@
   <!-- Projects Page -->
   <url>
     <loc>https://joechamdani.com/projects/</loc>
-    <lastmod>2026-02-27</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -347,7 +362,7 @@
 
   <url>
     <loc>https://joechamdani.com/experience/whitespace/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>

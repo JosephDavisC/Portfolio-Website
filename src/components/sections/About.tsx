@@ -94,7 +94,7 @@ export default function About() {
             </span>
           </h2>
           <p className="text-espresso/60 text-xl max-w-3xl mx-auto leading-relaxed font-mono">
-            Informatics @ UW. I build AI and data products people can actually trust.
+            Jakarta to Seattle, Running Start to UW, and a lot of shipped work in between.
           </p>
           <div className="flex flex-wrap justify-center gap-2 mt-7">
             {["UW Informatics", "Class of 2027", "Seattle, WA"].map((stat) => (
@@ -128,13 +128,13 @@ export default function About() {
 
             <div className="space-y-4 text-espresso/80 leading-relaxed text-[17px]">
               <p>
-                Originally from Jakarta, Indonesia, I moved to Seattle and accelerated my education through the Running Start program at Bellevue College, entering the University of Washington's Informatics program as a junior.
+                I build technology that augments human judgment instead of replacing it. Trust in an AI system does not come from a high confidence score. It comes from clear boundaries, honest limits, and behavior people can predict.
               </p>
               <p>
-                My work is driven by a commitment to building technology that augments human judgment rather than replacing it. I believe that trust in AI systems comes from clear boundaries and transparent limitations, not just high confidence scores.
+                Originally from Jakarta, Indonesia. I moved to Seattle at 15, accelerated through the Running Start program at Bellevue College, and entered the University of Washington's Informatics program as a junior.
               </p>
               <p>
-                I interned at Sector building AI automation for cybersecurity, and I led BC Tech Club where I organized BC Hacks 2024. I'm passionate about AI ethics, human-computer interaction, and building tools people actually use.
+                Right now I am an AI Product Intern at Whitespace Solutions, after building AI automation for cybersecurity at Sector and leading BC Tech Club through BC Hacks 2024. The through line is AI ethics, human-computer interaction, and tools people actually use.
               </p>
             </div>
           </m.article>

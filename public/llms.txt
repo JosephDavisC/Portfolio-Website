@@ -14,6 +14,8 @@
 
 ## Featured projects
 
+- [Freelance Client Portal](https://freelance.joechamdani.com): two-sided portal for Joseph's freelance practice; clients track live milestones, activity, and payments, an admin control room manages projects and site content with no redeploy (React, TypeScript, Supabase, Tailwind). Live demo: https://freelance.joechamdani.com/dashboard?demo=1
+- [Dragon Dance Collectibles](https://dragondance.id): bilingual English/Indonesian catalog site for a Jakarta Pokemon TCG and collectibles store, WhatsApp ordering, self-serve admin panel; delivered end to end as a paid client project (React 19, TypeScript, Supabase, Tailwind v4). Case study: https://freelance.joechamdani.com/work/dragondance/
 - [AI Transfer Evaluation Tool](https://transfer.joechamdani.cloud): 1st place, UW Claude Hackathon 2025. Parses WA community college transcripts and maps courses to UW equivalents with Claude Vision. Built with Next.js, TypeScript, Claude API.
 - [IShowStream](https://github.com/JosephDavisC/IShowStream): Real-time Twitch chat analytics using a 5-agent system on Google Gemini, deployed on Cloud Run (Go, Python FastAPI, React).
 - [garak (NVIDIA)](https://github.com/NVIDIA/garak/pull/1367): Merged open-source contribution to NVIDIA's garak LLM red-teaming toolkit (CLI filtering, test coverage).
@@ -22,7 +24,7 @@
 
 ## Experience
 
-- [Whitespace Solutions, AI Product Intern](https://joechamdani.com/experience/whitespace): AI-powered product features and integrations.
+- [Whitespace Solutions, AI Product Intern](https://joechamdani.com/experience/whitespace): competitive analysis that repositioned an AI sales coaching product, frontend and backend feature work, pre-launch QA (30+ defects triaged), live demos to shareholders and enterprise prospects (current).
 - [Information Consulting Group, Technology Operations Associate](https://joechamdani.com/experience/icg): Technology operations and consulting initiatives at a University of Washington student consulting group (current).
 - [Sector, AI Research and Development](https://joechamdani.com/experience/sector): AI automation for penetration testing and threat detection; authored three published research papers.
 - [Stockbit/Bibit, AI Engineer](https://joechamdani.com/experience/stockbit): OCR/KYC pipeline and fraud detection with Google Cloud AutoML.
@@ -51,7 +53,8 @@
 
 ## Interests
 
-- Tennis: right-handed with a one-handed backhand; plays on a Babolat Pure Aero.
+- Tennis: right-handed with a one-handed backhand; match racket is a Diadem Elevate V3 98.
+- Padel: newer addition to the racket-sports rotation; indoor courts, Babolat racket.
 - Coffee: latte and iced americano.
 - Also drawn to AI product, business and entrepreneurship, data science, and product/UI design.
 

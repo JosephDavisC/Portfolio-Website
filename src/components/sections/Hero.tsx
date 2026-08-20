@@ -151,6 +151,11 @@ const Hero = () => {
                 {", and I ship them."}
               </p>
 
+              {/* Differentiator: what kind of product work, in one line */}
+              <p className="text-base md:text-lg text-espresso/70 dark:text-slate-300 max-w-2xl leading-relaxed mb-4 text-pretty">
+                I sit between product and engineering: research what people actually do, build it, then test it until it survives someone else using it.
+              </p>
+
               {/* Proof line */}
               <p className="text-sm md:text-base text-espresso/60 dark:text-slate-400 max-w-2xl leading-relaxed mb-6 font-mono text-pretty">
                 {"Informatics @ "}

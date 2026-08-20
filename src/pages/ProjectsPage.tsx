@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Github, ExternalLink, BookOpen, ArrowLeft } from 'lucide-react';
+import { Github, ExternalLink, BookOpen, FileText, ArrowLeft } from 'lucide-react';
 import Navbar from '@/components/shared/Navbar';
 import projectsData from '@/data/projects.json';
 
@@ -23,13 +23,17 @@ interface Project {
   featured?: boolean;
   image: string;
   imageAlt?: string;
-  imageStyle?: 'cover-purple' | 'contain-white' | 'cover-top';
+  imageStyle?: 'cover-purple' | 'contain-white' | 'contain-navy' | 'cover-top';
   tech: string[];
   description: string;
   github?: string;
   demo?: string;
   demoLabel?: string;
+  demo2?: string;
+  demo2Label?: string;
   medium?: string;
+  mediumLabel?: string;
+  caseStudy?: string;
 }
 
 const getImageClasses = (style?: string) => {
@@ -38,6 +42,8 @@ const getImageClasses = (style?: string) => {
       return 'h-44 w-full object-contain bg-[#4c3183]';
     case 'contain-white':
       return 'h-44 w-full object-contain bg-white p-2';
+    case 'contain-navy':
+      return 'h-44 w-full object-contain bg-[#222a48]';
     case 'cover-top':
       return 'h-44 w-full object-cover object-bottom';
     default:
@@ -267,6 +273,28 @@ const ProjectsPage: React.FC = () => {
                             {project.demoLabel || "Demo"}
                           </a>
                         )}
+                        {project.demo2 && (
+                          <a
+                            href={project.demo2}
+                            className="btn-brutal-outline inline-flex items-center gap-2 px-4 py-2 text-sm"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <ExternalLink className="h-4 w-4" />
+                            {project.demo2Label || "Demo"}
+                          </a>
+                        )}
+                        {project.caseStudy && (
+                          <a
+                            href={project.caseStudy}
+                            className="btn-brutal-outline inline-flex items-center gap-2 px-4 py-2 text-sm"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <FileText className="h-4 w-4" />
+                            Case Study
+                          </a>
+                        )}
                         {project.medium && (
                           <a
                             href={project.medium}
@@ -275,7 +303,7 @@ const ProjectsPage: React.FC = () => {
                             rel="noopener noreferrer"
                           >
                             <BookOpen className="h-4 w-4" />
-                            Article
+                            {project.mediumLabel || "Article"}
                           </a>
                         )}
                       </div>

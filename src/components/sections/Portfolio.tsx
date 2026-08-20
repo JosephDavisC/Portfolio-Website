@@ -1,7 +1,8 @@
+import { track } from "@/lib/track";
 import React from 'react';
 import { m } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Github, ExternalLink, BookOpen, ArrowRight } from 'lucide-react';
+import { Github, ExternalLink, BookOpen, FileText, ArrowRight } from 'lucide-react';
 import projectsData from '@/data/projects.json';
 
 const projects = projectsData.filter(p => p.featured).slice(0, 4);
@@ -48,7 +49,13 @@ const Projects = () => {
                 <m.img
                   src={project.image}
                   alt={project.imageAlt || project.title}
-                  className="h-56 w-full object-cover object-center md:h-64"
+                  className={
+                    project.imageStyle === "contain-white"
+                      ? "h-56 w-full object-contain bg-white p-6 md:h-64"
+                      : project.imageStyle === "contain-navy"
+                        ? "h-56 w-full object-contain bg-[#222a48] md:h-64"
+                        : "h-56 w-full object-cover object-center md:h-64"
+                  }
                   loading="lazy"
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.4 }}
@@ -82,11 +89,12 @@ const Projects = () => {
               </p>
 
               {/* Action Links */}
-              {(project.github || project.demo) && (
+              {(project.github || project.demo || project.caseStudy) && (
                 <div className="flex flex-wrap gap-2 sm:gap-3 mt-auto pt-4 border-t-2 border-espresso/10">
                   {project.github && (
                     <m.a
                       href={project.github}
+                      onClick={() => track("project-link", { project: project.title, kind: "code" })}
                       className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-espresso/5 border-2 border-espresso/20 rounded-lg text-espresso font-medium text-xs sm:text-sm hover:bg-espresso hover:text-paper transition-all"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -100,6 +108,7 @@ const Projects = () => {
                   {project.demo && (
                     <m.a
                       href={project.demo}
+                      onClick={() => track("project-link", { project: project.title, kind: "demo" })}
                       className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-court/10 dark:bg-[#60A5FA]/10 border-2 border-court/30 dark:border-[#60A5FA]/30 rounded-lg text-court-dark dark:text-[#60A5FA] font-medium text-xs sm:text-sm hover:bg-court dark:hover:bg-[#60A5FA]/20 hover:text-paper dark:hover:text-[#60A5FA] dark:hover:border-[#60A5FA]/60 transition-all"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -111,9 +120,40 @@ const Projects = () => {
                       {project.demoLabel || "Demo"}
                     </m.a>
                   )}
+                  {project.demo2 && (
+                    <m.a
+                      href={project.demo2}
+                      onClick={() => track("project-link", { project: project.title, kind: "demo2" })}
+                      className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-court/10 dark:bg-[#60A5FA]/10 border-2 border-court/30 dark:border-[#60A5FA]/30 rounded-lg text-court-dark dark:text-[#60A5FA] font-medium text-xs sm:text-sm hover:bg-court dark:hover:bg-[#60A5FA]/20 hover:text-paper dark:hover:text-[#60A5FA] dark:hover:border-[#60A5FA]/60 transition-all"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`View ${project.title} ${project.demo2Label || 'demo'}`}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <ExternalLink className="h-4 w-4" />
+                      {project.demo2Label || "Demo"}
+                    </m.a>
+                  )}
+                  {project.caseStudy && (
+                    <m.a
+                      href={project.caseStudy}
+                      onClick={() => track("project-link", { project: project.title, kind: "case-study" })}
+                      className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-espresso/5 border-2 border-espresso/20 rounded-lg text-espresso font-medium text-xs sm:text-sm hover:bg-espresso hover:text-paper transition-all"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Read the ${project.title} case study`}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <FileText className="h-4 w-4" />
+                      Case Study
+                    </m.a>
+                  )}
                   {project.medium && (
                     <m.a
                       href={project.medium}
+                      onClick={() => track("project-link", { project: project.title, kind: "medium" })}
                       className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-espresso/5 border-2 border-espresso/20 rounded-lg text-espresso font-medium text-xs sm:text-sm hover:bg-espresso hover:text-paper transition-all"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -122,7 +162,7 @@ const Projects = () => {
                       whileTap={{ scale: 0.98 }}
                     >
                       <BookOpen className="h-4 w-4" />
-                      Article
+                      {project.mediumLabel || "Article"}
                     </m.a>
                   )}
                 </div>

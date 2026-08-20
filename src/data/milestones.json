@@ -14,9 +14,10 @@
             "title": "AI Product Intern",
             "dates": "Jul 2026 – Present · 2 mos",
             "meta": "Hybrid",
-            "detailsLink": "/experience/whitespace",
             "bullets": [
-              "Building AI-powered product features and integrations at Whitespace Solutions."
+              "Drove competitive analysis of 4 US and APAC sales-enablement platforms, directly informing a company-wide repositioning from knowledge platform to sales roleplay and coaching.",
+              "Built and shipped frontend features across the platform's product modules and contributed to backend development.",
+              "Ran pre-launch QA that surfaced and triaged 30+ defects ahead of the first live enterprise deployment; presented live demos to shareholders and enterprise prospects."
             ],
             "media": [
               { "src": "/logos/whitespace-solution-logo.svg", "caption": "Whitespace Solutions", "href": "https://whitespace.id" }
@@ -36,9 +37,8 @@
             "title": "Technology Operations Associate",
             "dates": "May 2026 – Present · 4 mos",
             "meta": "Hybrid",
-            "detailsLink": "/experience/icg",
             "bullets": [
-              "Supporting technology operations and consulting initiatives at Information Consulting Group."
+              "Supported technology operations and consulting initiatives at Information Consulting Group."
             ],
             "media": [
               { "src": "/logos/ICG.png", "caption": "Information Consulting Group", "href": "https://washingtonicg.org/" }
@@ -59,7 +59,7 @@
             "dates": "Sep 2025 – Present · 1 yr",
             "meta": "On-site",
             "bullets": [
-              "Support UW Housing and Food Services with catering operations, event setup, and daily food service."
+              "Supported UW Housing and Food Services with catering operations, event setup, and daily food service."
             ],
             "media": [
               { "src": "media/UW-Dining.png", "caption": "UW HFS Dining", "href": "https://hfs.uw.edu/Home" },
@@ -83,7 +83,7 @@
             "bullets": [
               "Built AI automation tools to speed up penetration testing and improve cybersecurity workflows.",
               "Developed automated threat detection systems that identify and flag security vulnerabilities.",
-              "Training AI models on XOps data to automate data processing, improving efficiency by 20% over manual regex based methods."
+              "Trained AI models on XOps operational data to automate processing, improving efficiency by 20% over manual regex-based methods."
             ],
             "detailsLink": "/experience/sector",
             "media": [
@@ -175,7 +175,8 @@
             ],
             "media": [
               { "src": "/logos/devnet-logo.jpg", "caption": "Dev.Net.HS", "href": "https://github.com/Dev-Net-HS" },
-              { "src": "/media/devnet-club-photo.jpeg", "caption": "Dev.Net.HS student tech club in Jakarta, 2023" }
+              { "src": "/media/devnet-club-photo.jpeg", "caption": "Dev.Net.HS student tech club in Jakarta, 2023" },
+              { "src": "/media/devnet-team-photo.webp", "caption": "Dev.Net.HS founding team in Jakarta, 2023" }
             ]
           }
         ]

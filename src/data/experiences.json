@@ -48,7 +48,7 @@
     "duration": "Jul 2026 – Present · 2 mos",
     "location": "Jakarta, Indonesia · Hybrid",
     "website": "https://whitespace.id",
-    "description": "Whitespace Solutions is a technology company based in Jakarta, Indonesia. As an AI Product Intern, I work on building and integrating AI-powered features into product workflows, collaborating closely with the product and engineering teams.",
+    "description": "Whitespace Solutions is a technology company in Jakarta, Indonesia building an AI sales coaching product. As an AI Product Intern I work across product and engineering: competitive analysis that helped reposition the product, frontend and backend feature work across the platform's modules, pre-launch QA ahead of the first live enterprise deployment, and live product demos alongside the founding team.",
     "theme": {
       "primary": "#F2902A",
       "primaryHover": "#F8A94E",
@@ -71,11 +71,17 @@
       ]
     },
     "highlights": [
-      "Building AI-powered product features and workflows",
-      "Collaborating with product and engineering teams on AI integration initiatives"
+      "Drove competitive analysis of 4 US and APAC sales-enablement platforms for an AI sales coaching product, directly informing a company-wide repositioning from knowledge platform to sales roleplay and coaching",
+      "Built and shipped frontend features across the platform's product modules and contributed to backend development",
+      "Ran pre-launch QA that surfaced and triaged 30+ defects ahead of the first live enterprise deployment",
+      "Presented live product demos to company shareholders and enterprise prospects alongside the founding team"
     ],
-    "technologies": ["AI/ML", "Product Development"],
-    "impact": []
+    "technologies": ["AI Product Development", "Frontend", "Backend", "QA", "Competitive Analysis"],
+    "impact": [
+      { "metric": "Platforms analyzed", "value": "4" },
+      { "metric": "Pre-launch defects triaged", "value": "30+" },
+      { "metric": "Enterprise deployment", "value": "1st live" }
+    ]
   },
   "sector": {
     "slug": "sector",

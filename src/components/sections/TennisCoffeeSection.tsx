@@ -63,14 +63,27 @@ const TennisRacketIcon: React.FC<{ className?: string }> = ({ className = "" }) 
   </svg>
 );
 
-const tennisImages = [
-  { src: "/images/moments/Joseph_Chamdani_Diadem_Forehand.webp", alt: "Joseph Forehand — Diadem" },
-  { src: "/images/moments/Joseph_Chamdani_Diadem_Slice.webp", alt: "Joseph Slice — Diadem" },
-  { src: "/images/moments/Joseph_Chamdani_Diadem_Slice_Follow_Through.webp", alt: "Joseph Slice Follow-Through — Diadem" },
-  { src: "/images/moments/Joseph_Chamdani_Tennis.jpg", alt: "Joseph Forehand — 1" },
-  { src: "/images/moments/Joseph_Chamdani_Tennis_4.jpg", alt: "Joseph Backhand — 4" },
-  { src: "/images/moments/Joseph_Chamdani_Tennis_2.jpg", alt: "Joseph Forehand — 2" },
-  { src: "/images/moments/Joseph_Chamdani_Tennis_3.JPG", alt: "Joseph & Denzel — 3" }
+type CourtImage = { src: string; alt: string; sport: "tennis" | "padel"; pos?: string };
+
+const tennisImages: CourtImage[] = [
+  { src: "/images/moments/Joseph_Chamdani_Diadem_Forehand.webp", alt: "Joseph Forehand — Diadem", sport: "tennis" },
+  { src: "/images/moments/Joseph_Chamdani_Diadem_Slice.webp", alt: "Joseph Slice — Diadem", sport: "tennis" },
+  { src: "/images/moments/Joseph_Chamdani_Diadem_Slice_Follow_Through.webp", alt: "Joseph Slice Follow-Through — Diadem", sport: "tennis" },
+  { src: "/images/moments/Joseph_Chamdani_Padel_Forehand.webp", alt: "Joseph playing padel, forehand at contact", sport: "padel", pos: "center 30%" },
+  { src: "/images/moments/Joseph_Chamdani_Padel_Backhand.webp", alt: "Joseph playing padel, preparing a slice", sport: "padel", pos: "center 28%" },
+  { src: "/images/moments/Joseph_Chamdani_Padel_Follow_Through.webp", alt: "Joseph playing padel, backhand follow-through", sport: "padel", pos: "center 25%" },
+  { src: "/images/moments/Joseph_Chamdani_Tennis.jpg", alt: "Joseph Forehand — 1", sport: "tennis" },
+  { src: "/images/moments/Joseph_Chamdani_Tennis_4.jpg", alt: "Joseph Backhand — 4", sport: "tennis" },
+  { src: "/images/moments/Joseph_Chamdani_Tennis_2.jpg", alt: "Joseph Forehand — 2", sport: "tennis" },
+  { src: "/images/moments/Joseph_Chamdani_Tennis_3.JPG", alt: "Joseph & Denzel — 3", sport: "tennis" }
+];
+
+const airViperSpecs = [
+  { label: "Use", value: "Padel sessions" },
+  { label: "Shape", value: "Diamond (power)" },
+  { label: "Surface", value: "3D Spin texture" },
+  { label: "Core", value: "X-EVA foam" },
+  { label: "Profile", value: "Head-heavy, attack-oriented" },
 ];
 
 const diademSpecs = [
@@ -106,6 +119,13 @@ function StringBed() {
 
 export default function TennisCoffeeSection() {
   const [tennisIdx, setTennisIdx] = useState(0);
+  const [sport, setSport] = useState<"all" | "tennis" | "padel">("all");
+  const [racketTab, setRacketTab] = useState<"tennis" | "padel">("tennis");
+  const courtImages = sport === "all" ? tennisImages : tennisImages.filter((p) => p.sport === sport);
+  const pickSport = (s: "all" | "tennis" | "padel") => {
+    setSport(s);
+    setTennisIdx(0);
+  };
   const [lbSrc, setLbSrc] = useState<string>("");
   const [lbAlt, setLbAlt] = useState<string>("");
 
@@ -114,8 +134,8 @@ export default function TennisCoffeeSection() {
     setLbAlt(alt || "");
   };
 
-  const nextTennis = () => setTennisIdx((i) => (i + 1) % tennisImages.length);
-  const prevTennis = () => setTennisIdx((i) => (i - 1 + tennisImages.length) % tennisImages.length);
+  const nextTennis = () => setTennisIdx((i) => (i + 1) % courtImages.length);
+  const prevTennis = () => setTennisIdx((i) => (i - 1 + courtImages.length) % courtImages.length);
 
   return (
     <section id="tennis-coffee" className="py-16 px-6 bg-paper-dark">
@@ -163,9 +183,26 @@ export default function TennisCoffeeSection() {
             viewport={{ once: true }}
             className="space-y-6"
           >
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center gap-3 mb-4 flex-wrap">
               <TennisBallIcon className="flex-shrink-0" />
               <h3 className="text-2xl font-heading font-bold text-court-dark dark:text-[#60A5FA]">On The Court</h3>
+              <div className="ml-auto flex gap-2" role="group" aria-label="Filter court photos by sport">
+                {(["all", "tennis", "padel"] as const).map((s) => (
+                  <button
+                    key={s}
+                    type="button"
+                    onClick={() => pickSport(s)}
+                    aria-pressed={sport === s}
+                    className={`px-3 py-1 rounded-full font-mono text-xs font-medium border-2 transition-all ${
+                      sport === s
+                        ? "bg-court dark:bg-[#60A5FA]/15 text-paper dark:text-[#60A5FA] border-espresso dark:border-[#60A5FA]/40 shadow-brutal-sm dark:shadow-none"
+                        : "bg-paper dark:bg-slate-800 text-espresso/70 dark:text-slate-300 border-espresso/20 dark:border-slate-600 hover:border-espresso/50 dark:hover:border-slate-400"
+                    }`}
+                  >
+                    {s === "all" ? "All" : s === "tennis" ? "Tennis" : "Padel"}
+                  </button>
+                ))}
+              </div>
             </div>
 
             {/* Tennis Photo Carousel */}
@@ -176,7 +213,7 @@ export default function TennisCoffeeSection() {
             >
               <button
                 type="button"
-                onClick={() => openLb(tennisImages[tennisIdx].src, tennisImages[tennisIdx].alt)}
+                onClick={() => openLb(courtImages[tennisIdx].src, courtImages[tennisIdx].alt)}
                 className="absolute top-3 right-3 z-10 rounded-full p-2 bg-paper/90 dark:bg-slate-800 text-espresso dark:text-slate-100 border-2 border-court dark:border-slate-500
                            opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-brutal-sm"
                 aria-label="View full size"
@@ -187,10 +224,11 @@ export default function TennisCoffeeSection() {
               <div className="relative h-[380px] w-full overflow-hidden">
                 <AnimatePresence mode="wait">
                   <m.img
-                    key={tennisIdx}
-                    src={tennisImages[tennisIdx].src}
-                    alt={tennisImages[tennisIdx].alt}
-                    className="absolute inset-0 h-full w-full object-cover object-[center_65%]"
+                    key={`${sport}-${tennisIdx}`}
+                    src={courtImages[tennisIdx].src}
+                    alt={courtImages[tennisIdx].alt}
+                    style={{ objectPosition: courtImages[tennisIdx].pos || "center 65%" }}
+                    className="absolute inset-0 h-full w-full object-cover"
                     initial={{ opacity: 0, x: 30 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -30 }}
@@ -219,7 +257,7 @@ export default function TennisCoffeeSection() {
 
                 {/* Dot Indicators */}
                 <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
-                  {tennisImages.map((_, i) => (
+                  {courtImages.map((_, i) => (
                     <button
                       key={i}
                       aria-label={`Go to photo ${i + 1}`}
@@ -332,11 +370,71 @@ export default function TennisCoffeeSection() {
           viewport={{ once: true }}
           className="mt-16"
         >
-          <div className="flex items-center gap-3 mb-8">
+          <div className="flex items-center gap-3 mb-8 flex-wrap">
             <TennisRacketIcon className="text-espresso dark:text-[#60A5FA] flex-shrink-0" />
             <h3 className="text-2xl font-heading font-bold text-espresso dark:text-slate-100">My Racket Setup</h3>
+            <div className="ml-auto flex gap-2" role="group" aria-label="Choose racket sport">
+              {(["tennis", "padel"] as const).map((s) => (
+                <button
+                  key={s}
+                  type="button"
+                  onClick={() => setRacketTab(s)}
+                  aria-pressed={racketTab === s}
+                  className={`px-3 py-1 rounded-full font-mono text-xs font-medium border-2 transition-all ${
+                    racketTab === s
+                      ? "bg-court dark:bg-[#60A5FA]/15 text-paper dark:text-[#60A5FA] border-espresso dark:border-[#60A5FA]/40 shadow-brutal-sm dark:shadow-none"
+                      : "bg-paper dark:bg-slate-800 text-espresso/70 dark:text-slate-300 border-espresso/20 dark:border-slate-600 hover:border-espresso/50 dark:hover:border-slate-400"
+                  }`}
+                >
+                  {s === "tennis" ? "Tennis" : "Padel"}
+                </button>
+              ))}
+            </div>
           </div>
 
+          {racketTab === "padel" ? (
+          <div className="card-brutal p-6 md:p-10">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <m.div
+                whileHover={{ rotate: 2, scale: 1.03 }}
+                transition={{ type: "spring", stiffness: 200, damping: 15 }}
+                className="flex justify-center"
+              >
+                <div className="rounded-xl border-2 border-espresso/20 dark:border-slate-600 bg-paper dark:bg-slate-800 p-6 w-full max-w-sm">
+                  <img loading="lazy" decoding="async"
+                    src="/images/rackets/babolat_air_viper_2026.webp"
+                    alt="Babolat Air Viper 2.6 2026 padel racket"
+                    className="mx-auto w-auto"
+                    style={{ height: "420px", objectFit: "contain" }}
+                  />
+                </div>
+              </m.div>
+
+              <div className="space-y-6">
+                <h4 className="text-3xl font-heading font-bold text-espresso dark:text-slate-100">
+                  Babolat Air Viper 2.6 (2026)
+                </h4>
+
+                <ul className="space-y-3">
+                  {airViperSpecs.map(({ label, value }) => (
+                    <li key={label} className="flex gap-3 font-mono text-base">
+                      <span className="font-bold text-espresso dark:text-[#60A5FA] min-w-[100px]">{label}</span>
+                      <span className="text-espresso/70 dark:text-slate-300">{value}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="flex items-start gap-3 rounded-lg border-2 border-court dark:border-[#60A5FA] bg-court/10 dark:bg-[#60A5FA]/10 px-4 py-3">
+                  <Wrench className="w-4 h-4 mt-0.5 flex-shrink-0 text-court-dark dark:text-[#60A5FA]" />
+                  <div>
+                    <p className="text-xs font-mono font-semibold uppercase tracking-widest text-court-dark dark:text-[#60A5FA] mb-1">The padel rotation</p>
+                    <p className="font-mono text-sm text-espresso/80 dark:text-slate-300">Newer addition to the racket sports lineup. No strings to obsess over, just foam, spin texture, and glass-wall geometry.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          ) : (
           <div className="card-brutal p-6 md:p-10">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               {/* Left — racket image */}
@@ -406,6 +504,7 @@ export default function TennisCoffeeSection() {
               </div>
             </div>
           </div>
+          )}
         </m.div>
       </div>
 

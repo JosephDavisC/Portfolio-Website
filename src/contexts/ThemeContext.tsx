@@ -20,11 +20,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       if (stored === "light" || stored === "dark") {
         return stored;
       }
-      // Check system preference
-      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        return "dark";
-      }
     }
+    // Default is light regardless of system preference; visitors can
+    // switch with the toggle and their choice is remembered
     return "light";
   });
 

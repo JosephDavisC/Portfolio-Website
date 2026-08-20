@@ -1,5 +1,31 @@
 [
   {
+    "title": "Freelance Client Portal",
+    "category": "Web",
+    "featured": true,
+    "image": "/Logo_Joseph.PNG",
+    "imageAlt": "Joseph Chamdani freelance logo",
+    "imageStyle": "contain-navy",
+    "tech": ["React", "TypeScript", "Supabase", "Tailwind"],
+    "description": "A two-sided portal for my freelance practice: clients log in to track live milestones, activity, and payments, while an admin control room manages projects, client access, and site content with no redeploy.",
+    "demo": "https://freelance.joechamdani.com",
+    "demoLabel": "Visit Site",
+    "demo2": "https://freelance.joechamdani.com/dashboard?demo=1",
+    "demo2Label": "Live Demo"
+  },
+  {
+    "title": "Dragon Dance Collectibles",
+    "category": "Web",
+    "featured": true,
+    "image": "/images/portfolio/dragondance.png",
+    "imageAlt": "Dragon Dance Collectibles storefront preview",
+    "tech": ["React 19", "TypeScript", "Supabase", "Tailwind v4"],
+    "description": "A bilingual (English/Indonesian) catalog website for a Jakarta Pokemon trading-card and collectibles store, with WhatsApp purchase links and a self-serve admin panel so the owner manages products independently. Delivered end to end as a paid client project, from written scope to launch.",
+    "demo": "https://dragondance.id",
+    "demoLabel": "Visit Site",
+    "caseStudy": "https://freelance.joechamdani.com/work/dragondance/"
+  },
+  {
     "title": "IShowStream",
     "category": "AI",
     "featured": true,
@@ -13,18 +39,6 @@
     "medium": "https://medium.com/@jessica.fiona2004/ishowstream-ai-that-reads-twitch-chat-so-streamers-dont-miss-a-moment-112342be7e32"
   },
   {
-    "title": "JAM AI",
-    "category": "AI",
-    "featured": true,
-    "image": "/images/portfolio/jam-ai.jpg",
-    "imageAlt": "JAM AI preview",
-    "tech": ["Python", "OpenAI", "Kaggle", "Javascript"],
-    "description": "GPT-powered health assistant for diabetes management. Fine-tuned GPT-3.5 on 600+ Q&A pairs to deliver personalized nutritional tips and medication reminders.",
-    "github": "https://github.com/JosephDavisC/Jam.AI",
-    "demo": "https://devpost.com/software/jam-ai",
-    "demoLabel": "Devpost"
-  },
-  {
     "title": "AI Transfer Evaluation Tool",
     "category": "AI",
     "featured": true,
@@ -35,7 +49,20 @@
     "github": "https://github.com/JosephDavisC/AI-Transfer-Evaluation-Tool",
     "demo": "https://transfer.joechamdani.cloud/",
     "demoLabel": "Live Demo",
-    "medium": "https://medium.com/@joseph.chamdani/designing-an-ai-system-for-transfer-credit-evaluation-3a6d5c48d63e"
+    "medium": "https://medium.com/@joseph.chamdani/designing-an-ai-system-for-transfer-credit-evaluation-3a6d5c48d63e",
+    "mediumLabel": "Case Study"
+  },
+  {
+    "title": "JAM AI",
+    "category": "AI",
+    "featured": true,
+    "image": "/images/portfolio/jam-ai.jpg",
+    "imageAlt": "JAM AI preview",
+    "tech": ["Python", "OpenAI", "Kaggle", "Javascript"],
+    "description": "GPT-powered health assistant for diabetes management. Fine-tuned GPT-3.5 on 600+ Q&A pairs to deliver personalized nutritional tips and medication reminders.",
+    "github": "https://github.com/JosephDavisC/Jam.AI",
+    "demo": "https://devpost.com/software/jam-ai",
+    "demoLabel": "Devpost"
   },
   {
     "title": "Dino Marine VR",
