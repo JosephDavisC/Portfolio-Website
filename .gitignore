@@ -54,3 +54,17 @@ scripts/sync-whitespace-landing.sh
 
 # Ideosource portfolio logos (hosted for ideosource.com hotlinking, FTP-only)
 public/ideosource/
+
+# Private job tracker (FTP-only, never committed)
+public/jobs/
+public/jobs-data/
+public/api/jobs.php
+public/api/jobs-config.php
+scripts/push-jobs.js
+
+# Ask Joseph chat widget (private, deployed via FTP only)
+src/components/shared/AskJoseph.tsx
+src/components/shared/askJosephPdf.ts
+public/api/transcript.php
+public/fonts/pdf/
+public/Logo_Joseph_Square.png
