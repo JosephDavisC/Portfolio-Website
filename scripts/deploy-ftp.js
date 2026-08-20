@@ -4,9 +4,19 @@ import * as path from 'path';
 import * as crypto from 'crypto';
 import { fileURLToPath } from 'url';
 import cliProgress from 'cli-progress';
+import { execFile } from 'child_process';
+import os from 'os';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+// Phone push via ntfy (no-op if ~/.config/ntfy/token doesn't exist)
+function ntfyPush(title, message, priority = 'default') {
+  try {
+    execFile(path.join(os.homedir(), '.local/bin/ntfy-push'),
+      ['-t', 'general', '-p', priority, '-T', title, message], () => {});
+  } catch (e) { /* never block the deploy on a push */ }
+}
 
 // Load FTP configuration
 let config;
@@ -249,10 +259,12 @@ async function deploy() {
 
     console.log('\n[+] All files uploaded successfully!');
     console.log('[+] Deployment complete!\n');
+    ntfyPush('joechamdani.com deployed', `${filesToUpload.length} files uploaded via FTP`);
 
   } catch (error) {
     progressBar.stop();
     console.error('\n[-] Deployment failed:', error.message);
+    ntfyPush('joechamdani.com deploy FAILED', error.message, 'high');
     process.exit(1);
   } finally {
     if (client) client.close();

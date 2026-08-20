@@ -465,6 +465,18 @@ const tennisAndCoffeeImages = [
     alt: 'Joseph Chamdani slice follow-through with Diadem Elevate 98 racket',
   },
   {
+    src: '/images/moments/Joseph_Chamdani_Padel_Forehand.webp',
+    alt: 'Joseph Chamdani playing padel, forehand at contact on an indoor court',
+  },
+  {
+    src: '/images/moments/Joseph_Chamdani_Padel_Backhand.webp',
+    alt: 'Joseph Chamdani playing padel, preparing a slice',
+  },
+  {
+    src: '/images/moments/Joseph_Chamdani_Padel_Follow_Through.webp',
+    alt: 'Joseph Chamdani playing padel, backhand follow-through',
+  },
+  {
     src: '/images/moments/Joseph_Chamdani_Tennis.jpg',
     alt: 'Joseph Chamdani playing tennis — forehand shot on the court',
   },
@@ -505,7 +517,38 @@ const homepageSeoBlock = buildSeoImagesBlock(uniqueHomepageImages);
 // AI crawlers see real homepage content. Uses the exact Tailwind classes from
 // Hero.tsx (they are guaranteed to exist in the built CSS). React wipes this
 // on mount. KEEP IN SYNC with src/components/sections/Hero.tsx.
-const heroPrerender = `<section class="min-h-screen flex items-center justify-center px-6 py-20 relative bg-paper dark:bg-[#141B2D]"><div class="max-w-7xl mx-auto relative z-10"><div class="grid lg:grid-cols-2 gap-16 items-center"><div class="text-left"><div class="mb-8"><div class="mb-6"><h1 class="text-5xl md:text-7xl font-heading font-bold text-espresso dark:text-slate-100 leading-tight tracking-tight">Joseph Davis Chamdani</h1></div><p class="text-2xl md:text-3xl text-espresso/80 dark:text-slate-300 mb-4 font-light text-balance">I build <span class="text-court-dark dark:text-[#60A5FA] font-medium">AI and data products</span>, and I ship them.</p><p class="text-sm md:text-base text-espresso/60 dark:text-slate-400 max-w-2xl leading-relaxed mb-6 font-mono text-pretty">Informatics @ UW · Anthropic hackathon winner · NVIDIA open source contributor</p><div class="flex items-center gap-3 flex-wrap"><span class="inline-flex items-center gap-2 px-4 py-2 bg-espresso/5 dark:bg-slate-800 border-2 border-espresso/20 dark:border-slate-600 rounded-full text-espresso dark:text-slate-200 font-mono text-sm shadow-brutal-sm dark:shadow-none relative">Coffee Lover</span><span class="inline-flex items-center gap-2 px-4 py-2 bg-court/10 dark:bg-[#60A5FA]/10 border-2 border-court/30 dark:border-[#60A5FA]/30 rounded-full text-court-dark dark:text-[#60A5FA] font-mono text-sm shadow-brutal-sm dark:shadow-none">Tennis player</span></div></div><div class="flex flex-col sm:flex-row gap-4"><a href="#portfolio" class="btn-brutal-outline inline-flex items-center justify-center">See my work</a><a href="#contact" class="btn-brutal inline-flex items-center justify-center">Let's Connect</a></div></div><div class="flex justify-center lg:justify-end"><div class="relative"><div class="relative flex w-80 h-80 md:w-96 md:h-96 shrink-0 overflow-hidden rounded-full border-4 border-espresso shadow-brutal-lg z-10"><picture><source srcset="/Joseph_Chamdani.webp" type="image/webp"><img src="/Joseph_Chamdani.JPEG" alt="Joseph Davis Chamdani" class="aspect-square h-full w-full object-cover object-top" fetchpriority="high"></picture></div></div></div></div></div></section>`;
+// Static navbar for the prerender: mirrors Navbar.tsx's classes so the page
+// skeleton looks complete from first paint (no navbar "pop-in" when React
+// mounts). Links are plain anchors; the theme pill and hamburger are inert
+// placeholders that React replaces with the live components.
+const navPrerender =
+  `<header class="fixed top-0 left-0 w-full z-[100] bg-paper/90 dark:bg-[#141B2D]/95 backdrop-blur-md border-b-2 border-espresso/10 dark:border-slate-700/30">` +
+  `<nav class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">` +
+  `<a href="/" class="flex items-center"><span class="relative h-12 w-12 rounded-full overflow-hidden border-2 border-espresso shadow-brutal-sm bg-[#1e3a5f] block"><picture><source srcset="/Logo_Joseph.webp" type="image/webp"><img src="/Logo_Joseph.PNG" alt="Logo" class="h-full w-full object-cover"></picture></span></a>` +
+  `<ul class="hidden md:flex items-center gap-1 text-sm">` +
+  [
+    ['#home', 'Home'],
+    ['#about', 'About'],
+    ['#milestones', 'Milestones'],
+    ['#portfolio', 'Portfolio'],
+    ['#certifications', 'Credentials'],
+    ['#blog', 'Blog'],
+    ['#tennis-coffee', 'Tennis &amp; Coffee'],
+    ['#contact', 'Contact'],
+  ]
+    .map(
+      ([href, name]) =>
+        `<li><a href="${href}" class="relative px-4 py-2 font-medium text-espresso/70 dark:text-slate-300">${name}</a></li>`
+    )
+    .join('') +
+  `</ul>` +
+  `<div class="flex items-center gap-3">` +
+  `<a href="https://freelance.joechamdani.com" class="btn-brutal hidden md:inline-flex items-center gap-1.5 px-4 py-2 text-sm">Work with me</a>` +
+  `<span class="h-8 w-16 rounded-full border-2 border-espresso/20 dark:border-slate-600 block" aria-hidden="true"></span>` +
+  `<span class="md:hidden p-2 border-2 border-espresso dark:border-slate-600 rounded-lg shadow-brutal-sm bg-paper dark:bg-slate-800 h-10 w-10 block" aria-hidden="true"></span>` +
+  `</div></nav></header>`;
+
+const heroPrerender = navPrerender + `<section class="min-h-screen flex items-center justify-center px-6 py-20 relative bg-paper dark:bg-[#141B2D]"><div class="max-w-7xl mx-auto relative z-10"><div class="grid lg:grid-cols-2 gap-16 items-center"><div class="text-left"><div class="mb-8"><div class="mb-6"><h1 class="text-5xl md:text-7xl font-heading font-bold text-espresso dark:text-slate-100 leading-tight tracking-tight">Joseph Davis Chamdani</h1></div><p class="text-2xl md:text-3xl text-espresso/80 dark:text-slate-300 mb-4 font-light text-balance">I build <span class="text-court-dark dark:text-[#60A5FA] font-medium">AI and data products</span>, and I ship them.</p><p class="text-base md:text-lg text-espresso/70 dark:text-slate-300 max-w-2xl leading-relaxed mb-4 text-pretty">I sit between product and engineering: research what people actually do, build it, then test it until it survives someone else using it.</p><p class="text-sm md:text-base text-espresso/60 dark:text-slate-400 max-w-2xl leading-relaxed mb-6 font-mono text-pretty">Informatics @ UW · Anthropic hackathon winner · NVIDIA open source contributor</p><div class="flex items-center gap-3 flex-wrap"><span class="inline-flex items-center gap-2 px-4 py-2 bg-espresso/5 dark:bg-slate-800 border-2 border-espresso/20 dark:border-slate-600 rounded-full text-espresso dark:text-slate-200 font-mono text-sm shadow-brutal-sm dark:shadow-none relative">Coffee Lover</span><span class="inline-flex items-center gap-2 px-4 py-2 bg-court/10 dark:bg-[#60A5FA]/10 border-2 border-court/30 dark:border-[#60A5FA]/30 rounded-full text-court-dark dark:text-[#60A5FA] font-mono text-sm shadow-brutal-sm dark:shadow-none">Tennis player</span></div></div><div class="flex flex-col sm:flex-row gap-4"><a href="#portfolio" class="btn-brutal-outline inline-flex items-center justify-center">See my work</a><a href="#contact" class="btn-brutal inline-flex items-center justify-center">Let's Connect</a></div></div><div class="flex justify-center lg:justify-end"><div class="relative"><div class="relative flex w-80 h-80 md:w-96 md:h-96 shrink-0 overflow-hidden rounded-full border-4 border-espresso shadow-brutal-lg z-10"><picture><source srcset="/Joseph_Chamdani.webp" type="image/webp"><img src="/Joseph_Chamdani.JPEG" alt="Joseph Davis Chamdani" class="aspect-square h-full w-full object-cover object-top" fetchpriority="high"></picture></div></div></div></div></div></section>`;
 
 const homepagePath = path.join(distPath, 'index.html');
 let homepageHtml = fs.readFileSync(homepagePath, 'utf8');
