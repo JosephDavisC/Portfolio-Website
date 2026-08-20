@@ -1,3 +1,4 @@
+import { track } from "@/lib/track";
 import { useState } from 'react';
 import { m } from 'framer-motion';
 import { useForm } from 'react-hook-form';
@@ -51,6 +52,7 @@ const ContactForm = () => {
       }
 
       setSubmitStatus('success');
+      track('contact-submit');
       toast.success('Message sent successfully! Check your email for confirmation.');
       reset();
 

@@ -1,3 +1,4 @@
+import { track } from "@/lib/track";
 import { useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Briefcase } from "lucide-react";
@@ -197,8 +198,9 @@ export default function Navbar() {
           {/* Freelance CTA */}
           <a
             href="https://freelance.joechamdani.com"
+            onClick={() => track("freelance-cta")}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener"
             className="btn-brutal hidden md:inline-flex items-center gap-1.5 px-4 py-2 text-sm"
           >
             <Briefcase className="w-4 h-4" />
@@ -253,8 +255,11 @@ export default function Navbar() {
             <a
               href="https://freelance.joechamdani.com"
               target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setIsOpen(false)}
+              rel="noopener"
+              onClick={() => {
+                track("freelance-cta");
+                setIsOpen(false);
+              }}
               className="btn-brutal flex items-center justify-center gap-2 py-3 text-lg"
             >
               <Briefcase className="w-5 h-5" />

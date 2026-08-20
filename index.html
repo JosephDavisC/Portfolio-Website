@@ -10,8 +10,9 @@
         document.documentElement.classList.add('no-transitions');
 
         // Apply saved theme
+        // Default is LIGHT; dark only when the visitor explicitly chose it
         var theme = localStorage.getItem('joechamdani-theme');
-        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        if (theme === 'dark') {
           document.documentElement.classList.add('dark');
         }
 
@@ -217,6 +218,7 @@
       `);
     </script>   
 
+    <script defer src="https://analytics.joechamdani.com/script.js" data-auto-track="false" data-website-id="df7eb4e2-3c63-4e63-bcdb-0a5aa5e01f47"></script>
   </head>
  
   <body>
@@ -234,15 +236,21 @@
         <p><strong>Joseph Davis Chamdani</strong></p>
         <p><strong>Informatics @ University of Washington</strong></p>
         <p>Software engineer and Informatics student at UW. Building products in AI, web development, and cybersecurity.</p>
+        <p>I sit between product and engineering: research what people actually do, build it, then test it until it survives someone else using it.</p>
 
         <h2>About</h2>
-        <p>Originally from Jakarta, Indonesia. Moved to Seattle and accelerated education through Running Start at Bellevue College, entering UW's Informatics program as a junior.</p>
-        <p>Interned at Sector building AI automation for cybersecurity. Led BC Tech Club and organized BC Hacks 2024. Passionate about AI ethics, human-computer interaction, and building tools people actually use.</p>
+        <p>I build technology that augments human judgment instead of replacing it. Trust in an AI system does not come from a high confidence score. It comes from clear boundaries, honest limits, and behavior people can predict.</p>
+        <p>Originally from Jakarta, Indonesia. Moved to Seattle at 15, accelerated through Running Start at Bellevue College, and entered UW's Informatics program as a junior.</p>
+        <p>Currently an AI Product Intern at Whitespace Solutions, after building AI automation for cybersecurity at Sector and leading BC Tech Club through BC Hacks 2024. The through line is AI ethics, human-computer interaction, and tools people actually use.</p>
         <p><strong>Languages:</strong> Python, JavaScript, TypeScript, Go, Java, C#, C++, R, HTML, CSS, SQL</p>
         <p><strong>Frameworks:</strong> React, Next.js, Node.js, Tailwind CSS, Framer Motion, Flask, FastAPI, Unity, .NET</p>
         <p><strong>Tools:</strong> Git, Google Cloud, BigQuery, AWS, Docker, Figma, MySQL, Tableau, OpenAI, Google Gemini, Claude API</p>
 
         <h2>Experience</h2>
+        <h3>AI Product Intern</h3>
+        <p>Whitespace Solutions | Jul 2026 - Present | Jakarta, Indonesia</p>
+        <p>Drove competitive analysis of 4 US and APAC sales-enablement platforms for an AI sales coaching product, informing a company-wide repositioning. Built and shipped frontend features and contributed to backend development. Ran pre-launch QA that surfaced 30+ defects ahead of the first live enterprise deployment.</p>
+
         <h3>Student Assistant - Local Point and Bay Laurel Catering</h3>
         <p>University of Washington | Sep 2025 - Present | Seattle, WA</p>
         <p>Cashier handling payments and student check-in. Supported catering operations and event services for UW Housing and Food Services.</p>
@@ -272,6 +280,14 @@
         <p>Built Dino VR, an interactive multiplayer VR game in Unity (C#). Integrated VR SDK plugins and multiplayer networking reaching 60+ daily players.</p>
 
         <h2>Projects</h2>
+        <h3>Freelance Client Portal</h3>
+        <p>Two-sided portal for my freelance practice: clients log in to track live milestones, activity, and payments; an admin control room manages projects, client access, and site content with no redeploy. Live at freelance.joechamdani.com.</p>
+        <p>Tech: React, TypeScript, Supabase, Tailwind</p>
+
+        <h3>Dragon Dance Collectibles</h3>
+        <p>Bilingual (English/Indonesian) catalog website for a Jakarta Pokemon trading-card and collectibles store, with WhatsApp purchase links and a self-serve admin panel. Delivered end to end as a paid client project. Live at dragondance.id.</p>
+        <p>Tech: React 19, TypeScript, Supabase, Tailwind v4</p>
+
         <h3>AI Transfer Evaluation Tool</h3>
         <p>First place at Anthropic Claude Hackathon 2025. Helps WA community college transfer students evaluate credits to UW using Claude Vision and 157+ verified equivalencies.</p>
         <p>Tech: Next.js 14, TypeScript, Claude API, Tailwind CSS, jsPDF</p>
