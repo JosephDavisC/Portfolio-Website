@@ -114,7 +114,7 @@ const Hero = () => {
       {/* Subtle mesh gradient background */}
       <div className="absolute inset-0 opacity-30 dark:opacity-20">
         <div className="absolute top-20 left-10 w-72 h-72 bg-court/20 dark:bg-[#60A5FA]/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-tennis/10 dark:bg-violet-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-tennis/10 dark:bg-sky-500/10 rounded-full blur-3xl" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-espresso/5 dark:bg-slate-500/5 rounded-full blur-3xl" />
       </div>
 

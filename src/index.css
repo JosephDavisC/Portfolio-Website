@@ -137,6 +137,7 @@
     a,
     button,
     [role="button"],
+    [role="link"],
     input[type="button"],
     input[type="submit"],
     input[type="checkbox"],
@@ -374,13 +375,13 @@ html {
   --tw-gradient-from: #4B2E83 !important;
 }
 
-.husky-mode.dark .dark\:via-violet-400,
-.dark.husky-mode .dark\:via-violet-400 {
+.husky-mode.dark .dark\:via-\[\#60A5FA\],
+.dark.husky-mode .dark\:via-\[\#60A5FA\] {
   --tw-gradient-via: #6B4BA3 !important;
 }
 
-.husky-mode.dark .dark\:to-pink-400,
-.dark.husky-mode .dark\:to-pink-400 {
+.husky-mode.dark .dark\:to-blue-600,
+.dark.husky-mode .dark\:to-blue-600 {
   --tw-gradient-to: #D0B787 !important;
 }
 
@@ -490,6 +491,10 @@ html {
 
 .dark .text-espresso {
   color: hsl(210 40% 98%);
+}
+
+.dark .text-espresso\/50 {
+  color: hsl(215 20.2% 58%);
 }
 
 .dark .text-espresso\/60 {

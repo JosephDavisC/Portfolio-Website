@@ -25,7 +25,7 @@ export default function ScrollProgress() {
         style={{ transform: `scaleX(${p})`, transition: "transform 80ms linear" }}
       >
         {/* Light mode: Court Green gradient, Dark mode: Neon gradient */}
-        <div className="h-full w-full bg-gradient-to-r from-court via-court-dark to-espresso dark:from-sky-400 dark:via-violet-400 dark:to-pink-400" />
+        <div className="h-full w-full bg-gradient-to-r from-court via-court-dark to-espresso dark:from-sky-400 dark:via-[#60A5FA] dark:to-blue-600" />
       </div>
     </div>
   );

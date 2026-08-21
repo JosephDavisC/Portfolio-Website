@@ -29,12 +29,12 @@ export default function ScrollUpButton() {
                    text-white/90 border border-white/15 backdrop-blur-md
                    bg-[#0b1220]/50 shadow-[0_8px_30px_rgba(0,0,0,0.35)]
                    transition hover:bg-white/10 focus:outline-none
-                   focus-visible:ring-2 focus-visible:ring-pink-400/60"
+                   focus-visible:ring-2 focus-visible:ring-sky-400/60"
       >
         <span
           aria-hidden
           className="pointer-events-none absolute -inset-px rounded-full
-                     bg-gradient-to-r from-blue-400/50 via-sky-400/30 to-pink-400/50
+                     bg-gradient-to-r from-blue-400/50 via-sky-400/30 to-blue-500/50
                      opacity-40 blur-[6px] transition group-hover:opacity-70"
         />
         <span aria-hidden className="absolute inset-0 rounded-full bg-gradient-to-b from-white/10 to-white/5" />
