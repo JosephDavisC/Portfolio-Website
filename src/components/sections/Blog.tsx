@@ -1,6 +1,6 @@
 import React from 'react';
 import { m } from 'framer-motion';
-import { ExternalLink, Calendar, ArrowRight } from 'lucide-react';
+import { ExternalLink, Calendar, ArrowRight, ChevronRight } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import articlesData from '@/data/articles.json';
 
@@ -11,6 +11,7 @@ export interface Article {
   location?: string;
   preview: string;
   thumbnail?: string;
+  readTime?: string;
   externalLink?: string;
   externalLinkText?: string;
   externalLinks?: { url: string; text: string }[];
@@ -20,26 +21,24 @@ export interface Article {
 
 export const articles: Article[] = articlesData;
 
+// "November 2025" -> "Nov 2025" for the unified meta line
+export const shortDate = (date: string) =>
+  date.replace(
+    /^(January|February|March|April|May|June|July|August|September|October|November|December)/,
+    (mo) => mo.slice(0, 3)
+  );
+
+const HOMEPAGE_ARTICLE_COUNT = 3;
+
 const ArticleCard: React.FC<{ article: Article; index: number; onOpenArticle: (id: string) => void }> = ({ article, index, onOpenArticle }) => {
   const hasImage = !!article.thumbnail;
+  const externalUrl = article.externalLinks?.[0]?.url || article.externalLink;
+  const isExternal = !article.hasFullArticle && !!externalUrl;
 
-  return (
-    <m.article
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -4 }}
-      transition={{ duration: 0.5, delay: index * 0.1, type: "spring", stiffness: 200 }}
-      viewport={{ once: true }}
-      className={`grid ${hasImage ? 'md:grid-cols-2' : 'md:grid-cols-1'} gap-8 items-center card-brutal p-6 md:p-8`}
-    >
+  const cardInner = (
+    <>
       {hasImage && (
-        <a
-          href={article.externalLinks?.[0]?.url || article.externalLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block overflow-hidden rounded-lg border-2 border-espresso relative group"
-          aria-label={`View ${article.title} article`}
-        >
+        <div className="block overflow-hidden rounded-lg border-2 border-espresso relative">
           <m.img
             src={article.thumbnail}
             alt={article.title}
@@ -47,19 +46,23 @@ const ArticleCard: React.FC<{ article: Article; index: number; onOpenArticle: (i
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.4 }}
           />
-        </a>
+        </div>
       )}
 
       <div className={hasImage ? '' : 'max-w-4xl mx-auto'}>
         <div className="flex items-center gap-2 text-espresso/60 mb-3 font-mono text-sm">
           <Calendar className="h-4 w-4" />
           <span>
-            {article.location ? `${article.location} — ${article.date}` : article.date}
+            {shortDate(article.date)}
+            {article.readTime ? ` · ${article.readTime}` : ''}
           </span>
         </div>
 
-        <h3 className="text-2xl md:text-3xl font-heading font-semibold text-espresso dark:text-slate-100 mb-4 group-hover:text-court-dark dark:group-hover:text-[#60A5FA] transition-colors">
+        <h3 className="text-2xl md:text-3xl font-heading font-semibold text-espresso dark:text-slate-100 mb-4 group-hover:text-court-dark dark:group-hover:text-[#60A5FA] transition-colors inline-flex items-center gap-2.5">
           {article.title}
+          {isExternal && (
+            <ExternalLink className="h-5 w-5 shrink-0 text-espresso/40 dark:text-slate-500" aria-label="External article" />
+          )}
         </h3>
 
         <p className="text-espresso/70 text-base md:text-lg leading-relaxed mb-6">
@@ -79,47 +82,50 @@ const ArticleCard: React.FC<{ article: Article; index: number; onOpenArticle: (i
           </div>
         )}
 
-        <div className="flex flex-wrap gap-4">
-          {article.hasFullArticle && (
-            <button
-              onClick={() => onOpenArticle(article.id)}
-              className="btn-brutal inline-flex items-center"
-            >
-              <ArrowRight className="h-5 w-5 mr-2" />
-              Read Full Article
-            </button>
-          )}
+        <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-court-dark dark:text-[#60A5FA]">
+          {isExternal ? article.externalLinks?.[0]?.text || 'Read the story' : 'Read the story'}
+          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+        </span>
+      </div>
+    </>
+  );
 
-          {article.externalLink && (
-            <a
-              href={article.externalLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center px-4 py-2 bg-espresso/5 text-espresso font-medium rounded-lg border-2 border-espresso/30 hover:bg-espresso hover:text-paper transition-all"
-            >
-              <ExternalLink className="h-5 w-5 mr-2" />
-              {article.externalLinkText || 'External Link'}
-            </a>
-          )}
+  const cardClass = `grid ${hasImage ? 'md:grid-cols-2' : 'md:grid-cols-1'} gap-8 items-center card-brutal p-6 md:p-8 group`;
+  const motionProps = {
+    initial: { opacity: 0, y: 40 },
+    whileInView: { opacity: 1, y: 0 },
+    whileHover: { y: -4 },
+    transition: { duration: 0.5, delay: index * 0.1, type: 'spring' as const, stiffness: 200 },
+    viewport: { once: true },
+  };
 
-          {/* External-only articles (no internal full article): surface each link as a button */}
-          {!article.hasFullArticle && article.externalLinks?.map((link, i) => (
-            <a
-              key={link.url}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={
-                i === 0
-                  ? "btn-brutal inline-flex items-center"
-                  : "inline-flex items-center px-4 py-2 bg-espresso/5 dark:bg-white/5 text-espresso dark:text-slate-100 font-medium rounded-lg border-2 border-espresso/30 dark:border-slate-600 hover:bg-espresso hover:text-paper dark:hover:border-[#60A5FA]/50 transition-all"
-              }
-            >
-              <ExternalLink className="h-5 w-5 mr-2" />
-              {link.text}
-            </a>
-          ))}
-        </div>
+  if (isExternal) {
+    return (
+      <m.article {...motionProps}>
+        <a
+          href={externalUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={cardClass}
+          aria-label={`Read ${article.title}`}
+        >
+          {cardInner}
+        </a>
+      </m.article>
+    );
+  }
+
+  return (
+    <m.article {...motionProps}>
+      <div
+        role="link"
+        tabIndex={0}
+        onClick={() => onOpenArticle(article.id)}
+        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onOpenArticle(article.id); } }}
+        className={cardClass}
+        aria-label={`Read ${article.title}`}
+      >
+        {cardInner}
       </div>
     </m.article>
   );
@@ -133,6 +139,8 @@ const Blog = () => {
     window.history.replaceState(null, "", `${base}#blog`);
     navigate(`/blog/${articleId}`, { state: { from: `${base}#blog` } });
   };
+
+  const visibleArticles = articles.slice(0, HOMEPAGE_ARTICLE_COUNT);
 
   return (
     <section id="blog" className="py-16 px-6 bg-paper">
@@ -170,22 +178,28 @@ const Blog = () => {
         </m.div>
 
         <div className="space-y-8">
-          {articles.map((article, index) => (
+          {visibleArticles.map((article, index) => (
             <ArticleCard key={article.id} article={article} index={index} onOpenArticle={openArticle} />
           ))}
         </div>
 
-        {articles.length === 1 && (
-          <m.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
-            className="text-center mt-12 text-espresso/60 font-mono"
-          >
-            <p>More articles coming soon...</p>
-          </m.div>
-        )}
+        <m.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="flex flex-col items-center gap-3 mt-12"
+        >
+          <Link to="/blog" className="btn-brutal-outline inline-flex items-center gap-2">
+            {articles.length > HOMEPAGE_ARTICLE_COUNT ? 'Show More Articles' : 'View All Articles'}
+            <ChevronRight className="h-5 w-5" />
+          </Link>
+          {articles.length > HOMEPAGE_ARTICLE_COUNT && (
+            <p className="text-espresso/50 font-mono text-sm">
+              Showing {visibleArticles.length} of {articles.length} articles
+            </p>
+          )}
+        </m.div>
       </div>
     </section>
   );

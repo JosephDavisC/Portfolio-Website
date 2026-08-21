@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import { useParams, Link, Navigate, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { m } from 'framer-motion';
-import { ArrowLeft, Calendar, ExternalLink } from 'lucide-react';
+import { ArrowLeft, Calendar, ExternalLink, ChevronRight } from 'lucide-react';
 import Navbar from '@/components/shared/Navbar';
 import Footer from '@/components/shared/Footer';
-import { articles } from '@/components/sections/Blog';
+import { articles, shortDate } from '@/components/sections/Blog';
 
 // Article content components - add full content for each article here
 const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
@@ -748,8 +748,8 @@ const ArticlePage = () => {
   const location = useLocation();
   const article = articles.find((a) => a.id === slug);
 
-  // Get the return path from state, or default to home with blog scroll
-  const from = (location.state as { from?: string })?.from || "/";
+  // Get the return path from state, or default to the blog index
+  const from = (location.state as { from?: string })?.from || "/blog";
 
   // Scroll to top when page loads
   useEffect(() => {
@@ -813,7 +813,7 @@ const ArticlePage = () => {
         transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
         className="pt-32 pb-6 px-6"
       >
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           {/* Back Button */}
           <Link
             to={from.split('#')[0] || "/"}
@@ -824,22 +824,9 @@ const ArticlePage = () => {
             Back to Blog
           </Link>
 
-          {/* Article Metadata */}
-          <div className="flex items-center gap-2 text-espresso/60 mb-4 font-mono">
-            <Calendar className="h-4 w-4" />
-            <span className="text-sm">
-              {article.location ? `${article.location} · ${article.date}` : article.date}
-            </span>
-          </div>
-
-          {/* Title */}
-          <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6 text-espresso">
-            {article.title}
-          </h1>
-
           {/* Tags */}
           {article.tags && article.tags.length > 0 && (
-            <div className="flex flex-wrap gap-2 mb-8">
+            <div className="flex flex-wrap gap-2 mb-5">
               {article.tags.map((tag) => (
                 <span
                   key={tag}
@@ -850,6 +837,26 @@ const ArticlePage = () => {
               ))}
             </div>
           )}
+
+          {/* Title */}
+          <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6 text-espresso">
+            {article.title}
+          </h1>
+
+          {/* Author chip + unified meta */}
+          <div className="flex items-center gap-3 pb-6 mb-8 border-b-2 border-espresso/15 dark:border-white/10">
+            <span className="w-10 h-10 shrink-0 rounded-full inline-flex items-center justify-center font-heading font-bold text-sm bg-court text-paper border-2 border-espresso dark:bg-[#60A5FA]/20 dark:text-[#60A5FA] dark:border-[#60A5FA]/50">
+              JC
+            </span>
+            <div className="flex flex-col">
+              <span className="text-sm font-semibold text-espresso dark:text-slate-100">Joseph Chamdani</span>
+              <span className="inline-flex items-center gap-1.5 text-espresso/60 font-mono text-sm">
+                <Calendar className="h-3.5 w-3.5" />
+                {shortDate(article.date)}
+                {article.readTime ? ` · ${article.readTime}` : ''}
+              </span>
+            </div>
+          </div>
 
           {/* Thumbnail */}
           {article.thumbnail && (
@@ -877,7 +884,7 @@ const ArticlePage = () => {
         className="pb-20 px-6"
       >
         {/* Center the content with max-w-4xl */}
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           {/* Main Content - Always centered */}
           <div>
             <ArticleContent articleId={article.id} />
@@ -915,11 +922,85 @@ const ArticlePage = () => {
             </div>
           )}
 
+          {/* Prev / Next */}
+          {(() => {
+            const index = articles.findIndex((a) => a.id === article.id);
+            const olderArticle = articles[index + 1];
+            const newerArticle = index > 0 ? articles[index - 1] : undefined;
+            const related = articles.filter((a) => a.id !== article.id).slice(0, 2);
+            const articleLink = (a: typeof articles[number]) => {
+              const externalUrl = !a.hasFullArticle ? a.externalLinks?.[0]?.url || a.externalLink : undefined;
+              return externalUrl
+                ? { href: externalUrl, external: true as const }
+                : { href: `/blog/${a.id}`, external: false as const };
+            };
+            const NavCell: React.FC<{ label: string; target?: typeof articles[number]; align: 'left' | 'right' }> = ({ label, target, align }) => {
+              const inner = (
+                <>
+                  <span className="font-mono text-xs text-espresso/50 dark:text-slate-500">{label}</span>
+                  <span className={`font-heading font-semibold text-sm md:text-base ${target ? 'text-espresso dark:text-slate-100 group-hover:text-court-dark dark:group-hover:text-[#60A5FA]' : 'text-espresso/40 dark:text-slate-600'} transition-colors`}>
+                    {target ? target.title : label === 'NEXT' ? 'No newer posts yet' : 'No older posts yet'}
+                  </span>
+                </>
+              );
+              const cellClass = `card-brutal p-4 md:p-5 flex flex-col gap-1.5 group ${align === 'right' ? 'items-end text-right' : ''} ${target ? '' : 'opacity-70'}`;
+              if (!target) return <div className={cellClass}>{inner}</div>;
+              const link = articleLink(target);
+              return link.external ? (
+                <a href={link.href} target="_blank" rel="noopener noreferrer" className={cellClass}>{inner}</a>
+              ) : (
+                <Link to={link.href} state={{ from: '/blog' }} className={cellClass}>{inner}</Link>
+              );
+            };
+            return (
+              <>
+                <nav className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4" aria-label="Article navigation">
+                  <NavCell label="PREVIOUS" target={olderArticle} align="left" />
+                  <NavCell label="NEXT" target={newerArticle} align="right" />
+                </nav>
+
+                {related.length > 0 && (
+                  <div className="mt-10">
+                    <h3 className="text-xl font-heading font-semibold text-espresso mb-4">Keep reading</h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {related.map((a) => {
+                        const link = articleLink(a);
+                        const inner = (
+                          <>
+                            {a.thumbnail && (
+                              <img src={`/${a.thumbnail}`} alt={a.title} loading="lazy" className="w-14 h-14 shrink-0 object-cover rounded-md border-2 border-espresso" />
+                            )}
+                            <div className="min-w-0">
+                              <span className="block font-heading font-semibold text-sm text-espresso dark:text-slate-100 group-hover:text-court-dark dark:group-hover:text-[#60A5FA] transition-colors">
+                                {a.title}
+                              </span>
+                              <span className="font-mono text-xs text-espresso/50 dark:text-slate-500">
+                                {shortDate(a.date)}
+                                {a.readTime ? ` · ${a.readTime}` : ''}
+                              </span>
+                            </div>
+                            <ChevronRight className="h-4 w-4 ml-auto shrink-0 text-espresso/30 dark:text-slate-600 group-hover:translate-x-1 transition-transform" />
+                          </>
+                        );
+                        const cardClass = 'card-brutal p-4 flex items-center gap-4 group';
+                        return link.external ? (
+                          <a key={a.id} href={link.href} target="_blank" rel="noopener noreferrer" className={cardClass}>{inner}</a>
+                        ) : (
+                          <Link key={a.id} to={link.href} state={{ from: '/blog' }} className={cardClass}>{inner}</Link>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+              </>
+            );
+          })()}
+
           {/* Back to Blog Button */}
           <div className="mt-12 text-center">
             <Link
-              to={from.split('#')[0] || "/"}
-              state={{ scrollTo: from.includes('#') ? from.split('#')[1] : "blog" }}
+              to={from.split('#')[0] || "/blog"}
+              state={{ scrollTo: from.includes('#') ? from.split('#')[1] : undefined }}
               className="btn-brutal-outline inline-flex items-center gap-2"
             >
               <ArrowLeft className="h-5 w-5" />

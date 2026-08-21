@@ -48,6 +48,7 @@
 
 ## Writing
 
+- [All articles](https://joechamdani.com/blog/): The blog index, with an RSS feed at https://joechamdani.com/rss.xml.
 - [My Journey](https://joechamdani.com/blog/my-journey): Background and path into tech, from Jakarta to UW.
 - [BC Hacks 2024](https://joechamdani.com/blog/bc-hacks-2024): Organizing a college hackathon.
 
@@ -75,3 +76,4 @@
 - [INFO 200 Transfer Evaluation System](https://info200.joechamdani.cloud): The class prototype that seeded the hackathon tool (a separate project).
 - [INFO 340 Project](https://info340.joechamdani.com): UW Informatics INFO 340 course project.
 - [INFO 380 Project](https://info380.joechamdani.com): UW Informatics INFO 380 course project.
+

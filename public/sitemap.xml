@@ -335,6 +335,14 @@
     </image:image>
   </url>
 
+  <!-- Blog Index -->
+  <url>
+    <loc>https://joechamdani.com/blog/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Blog Articles -->
   <url>
     <loc>https://joechamdani.com/blog/my-journey/</loc>

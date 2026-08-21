@@ -1,6 +1,7 @@
 [
   {
     "id": "my-journey",
+    "readTime": "6 min read",
     "title": "My Journey: From Jakarta to UW",
     "date": "November 2025",
     "location": "Seattle, WA",
@@ -11,6 +12,7 @@
   },
   {
     "id": "ishowstream-feature",
+    "readTime": "4 min read",
     "title": "IShowStream: AI That Reads Twitch Chat",
     "date": "November 2025",
     "location": "Google Cloud Run Hackathon",
@@ -26,6 +28,7 @@
   },
   {
     "id": "bc-hacks-2024",
+    "readTime": "5 min read",
     "title": "BC Hacks 2024 Lecture",
     "date": "July 2024",
     "location": "Bellevue College",

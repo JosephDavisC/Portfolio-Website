@@ -171,6 +171,113 @@ if (!fs.existsSync(blogPath)) {
   fs.mkdirSync(blogPath, { recursive: true });
 }
 
+// Blog index (/blog/) static page: crawler-visible article list + Blog JSON-LD.
+// External-only posts (no on-site article page) are listed with their external URL.
+function generateBlogIndexHTML(assets) {
+  const articles = JSON.parse(
+    fs.readFileSync(path.join(__dirname, '..', 'src', 'data', 'articles.json'), 'utf8')
+  );
+  const indexUrl = 'https://joechamdani.com/blog/';
+  const title = 'Blog & Articles · Joseph Davis Chamdani';
+  const description =
+    'Stories, experiences, and lessons learned along the way. Articles by Joseph Davis Chamdani on tennis, AI, and the road from Jakarta to Seattle.';
+  const postUrl = (a) =>
+    a.hasFullArticle
+      ? `https://joechamdani.com/blog/${a.id}/`
+      : (a.externalLinks?.[0]?.url || a.externalLink || `https://joechamdani.com/blog/${a.id}/`);
+  const blogLd = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    name: 'Blog & Articles by Joseph Davis Chamdani',
+    description,
+    url: indexUrl,
+    author: { '@type': 'Person', name: 'Joseph Davis Chamdani', url: 'https://joechamdani.com/' },
+    blogPost: articles.map((a) => ({
+      '@type': 'BlogPosting',
+      headline: a.title,
+      description: a.preview,
+      url: postUrl(a),
+      author: { '@type': 'Person', name: 'Joseph Davis Chamdani' },
+    })),
+  });
+  const listItems = articles
+    .map(
+      (a) =>
+        `<li><a href="${postUrl(a)}">${a.title}</a> — ${a.preview}${a.readTime ? ` (${a.readTime})` : ''}</li>`
+    )
+    .join('\n        ');
+  return `<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>${title}</title>
+    <meta name="description" content="${description}" />
+    <link rel="canonical" href="${indexUrl}" />
+    <meta name="robots" content="index, follow" />
+    <link rel="alternate" type="application/rss+xml" title="Joseph Davis Chamdani Blog" href="https://joechamdani.com/rss.xml" />
+    <script type="application/ld+json">${blogLd}</script>
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="${indexUrl}" />
+    <meta property="og:title" content="${title}" />
+    <meta property="og:description" content="${description}" />
+    <meta property="og:image" content="https://joechamdani.com/og-image.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${title}" />
+    <meta name="twitter:description" content="${description}" />
+
+    <script type="module" crossorigin src="${assets.js}"></script>
+    <link rel="stylesheet" crossorigin href="${assets.css}">
+  </head>
+  <body>
+    <!-- Crawler-visible fallback: replaced by React on mount. -->
+    <div id="root"><main style="max-width:48rem;margin:0 auto;padding:3rem 1.5rem;font-family:system-ui,sans-serif"><h1>Blog &amp; Articles</h1><p>Stories, experiences, and lessons learned along the way. By <a href="/">Joseph Davis Chamdani</a>.</p><ul>
+        ${listItems}
+      </ul><nav><p><a href="/">Home</a> · <a href="/projects/">Projects</a> · <a href="/rss.xml">RSS feed</a></p></nav></main></div>
+  </body>
+</html>`;
+}
+
+// RSS 2.0 feed at /rss.xml, built from articles.json + blogMeta dates.
+function generateRssXml() {
+  const articles = JSON.parse(
+    fs.readFileSync(path.join(__dirname, '..', 'src', 'data', 'articles.json'), 'utf8')
+  );
+  const esc = (s) =>
+    String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const items = articles
+    .map((a) => {
+      const link = a.hasFullArticle
+        ? `https://joechamdani.com/blog/${a.id}/`
+        : (a.externalLinks?.[0]?.url || a.externalLink || `https://joechamdani.com/blog/${a.id}/`);
+      const datePublished = blogMeta[a.id]?.datePublished || `${new Date(`${a.date} 1`).getFullYear()}-${String(new Date(`${a.date} 1`).getMonth() + 1).padStart(2, '0')}-01`;
+      const pubDate = new Date(`${datePublished}T08:00:00Z`).toUTCString();
+      return `    <item>
+      <title>${esc(a.title)}</title>
+      <link>${esc(link)}</link>
+      <guid isPermaLink="true">${esc(link)}</guid>
+      <pubDate>${pubDate}</pubDate>
+      <description>${esc(a.preview)}</description>
+    </item>`;
+    })
+    .join('\n');
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Joseph Davis Chamdani Blog</title>
+    <link>https://joechamdani.com/blog/</link>
+    <atom:link href="https://joechamdani.com/rss.xml" rel="self" type="application/rss+xml" />
+    <description>Stories, experiences, and lessons learned along the way. Tennis, AI, and the road from Jakarta to Seattle.</description>
+    <language>en-us</language>
+${items}
+  </channel>
+</rss>
+`;
+}
+
 // Generate HTML for each blog post
 Object.entries(blogMeta).forEach(([slug, meta]) => {
   meta.body = extractArticleBody(slug);
@@ -186,5 +293,13 @@ Object.entries(blogMeta).forEach(([slug, meta]) => {
   fs.writeFileSync(htmlPath, html);
   console.log(`✓ Generated ${htmlPath}`);
 });
+
+// Blog index static page
+fs.writeFileSync(path.join(blogPath, 'index.html'), generateBlogIndexHTML(assets));
+console.log(`✓ Generated ${path.join(blogPath, 'index.html')}`);
+
+// RSS feed
+fs.writeFileSync(path.join(distPath, 'rss.xml'), generateRssXml());
+console.log(`✓ Generated ${path.join(distPath, 'rss.xml')}`);
 
 console.log('Blog meta pages generated successfully!');

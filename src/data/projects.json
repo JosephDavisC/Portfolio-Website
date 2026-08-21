@@ -17,7 +17,7 @@
     "title": "Dragon Dance Collectibles",
     "category": "Web",
     "featured": true,
-    "image": "/images/portfolio/dragondance.png",
+    "image": "/images/portfolio/dragondance.webp",
     "imageAlt": "Dragon Dance Collectibles storefront preview",
     "tech": ["React 19", "TypeScript", "Supabase", "Tailwind v4"],
     "description": "A bilingual (English/Indonesian) catalog website for a Jakarta Pokemon trading-card and collectibles store, with WhatsApp purchase links and a self-serve admin panel so the owner manages products independently. Delivered end to end as a paid client project, from written scope to launch.",
