@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { m } from 'framer-motion';
@@ -23,8 +23,36 @@ const BlogPage = () => {
     navigate(`/blog/${article.id}`, { state: { from: '/blog' } });
   };
 
-  const [featured, ...rest] = articles;
-  const featuredExternal = !featured.hasFullArticle
+  // Filtering has to earn its place twice over. A tag needs enough posts to be
+  // worth a pill, AND the archive needs enough posts that filtering narrows
+  // anything: on a four-post blog, a tag with three posts still shows you
+  // almost everything. Both gates are met around seven posts, at which point
+  // this row appears on its own. No code change needed when it does.
+  const MIN_POSTS_PER_TAG = 3;
+  const MIN_POSTS_FOR_FILTERS = 6;
+
+  const filterTags = useMemo(() => {
+    if (articles.length < MIN_POSTS_FOR_FILTERS) return [];
+    const counts = new Map<string, number>();
+    articles.forEach((a) => a.tags?.forEach((t) => counts.set(t, (counts.get(t) || 0) + 1)));
+    return [...counts.entries()]
+      .filter(([, n]) => n >= MIN_POSTS_PER_TAG)
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+      .map(([tag, count]) => ({ tag, count }));
+  }, []);
+
+  const [activeTag, setActiveTag] = useState('All');
+  const isFiltered = activeTag !== 'All';
+
+  const visible = useMemo(
+    () => (isFiltered ? articles.filter((a) => a.tags?.includes(activeTag)) : articles),
+    [activeTag, isFiltered]
+  );
+
+  // The LATEST card means latest overall, so it only leads an unfiltered list.
+  // Inside a filter every match reads as an equal row.
+  const [featured, ...rest] = isFiltered ? [undefined, ...visible] : visible;
+  const featuredExternal = featured && !featured.hasFullArticle
     ? featured.externalLinks?.[0]?.url || featured.externalLink
     : undefined;
 
@@ -38,6 +66,9 @@ const BlogPage = () => {
         <meta property="og:url" content={pageUrl} />
         <meta property="og:title" content="Blog & Articles | Joseph Davis Chamdani" />
         <meta property="og:description" content="Stories, experiences, and lessons learned along the way." />
+        <meta property="og:image" content="https://joechamdani.com/preview.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://joechamdani.com/preview.png" />
       </Helmet>
 
       <Navbar />
@@ -86,7 +117,35 @@ const BlogPage = () => {
             </p>
           </m.div>
 
-          {/* Featured (latest) */}
+          {/* Tag filter: appears only once a tag has enough posts to be worth it */}
+          {filterTags.length > 0 && (
+            <m.nav
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+              className="flex flex-wrap justify-center gap-2 mb-10"
+              aria-label="Filter articles by topic"
+            >
+              {[{ tag: 'All', count: articles.length }, ...filterTags].map(({ tag, count }) => (
+                <button
+                  key={tag}
+                  onClick={() => setActiveTag(tag)}
+                  aria-pressed={activeTag === tag}
+                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-full font-mono text-sm font-medium border-2 transition-all ${
+                    activeTag === tag
+                      ? 'bg-court dark:bg-[#60A5FA]/15 text-paper dark:text-[#60A5FA] border-espresso dark:border-[#60A5FA]/40 shadow-brutal-sm dark:shadow-none'
+                      : 'bg-paper dark:bg-slate-800/50 text-espresso dark:text-slate-300 border-espresso/25 dark:border-slate-600 hover:border-espresso dark:hover:border-slate-500'
+                  }`}
+                >
+                  {tag}
+                  <span className="text-xs opacity-70">({count})</span>
+                </button>
+              ))}
+            </m.nav>
+          )}
+
+          {/* Featured (latest), unfiltered view only */}
+          {featured && (
           <m.article
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -113,11 +172,16 @@ const BlogPage = () => {
               aria-label={`Read ${featured.title}`}
             >
               {featured.thumbnail && (
-                <div className="overflow-hidden rounded-lg border-2 border-espresso">
+                <div
+                  className="overflow-hidden rounded-lg border-2 border-espresso"
+                  style={featured.thumbnailBg ? { backgroundColor: featured.thumbnailBg } : undefined}
+                >
                   <img
                     src={`/${featured.thumbnail}`}
                     alt={featured.title}
-                    className="w-full h-56 md:h-72 object-cover transition-transform duration-500 group-hover:scale-105"
+                    className={`w-full h-56 md:h-72 transition-transform duration-500 group-hover:scale-105 ${
+                      featured.thumbnailFit === 'contain' ? 'object-contain p-4' : 'object-cover'
+                    }`}
                   />
                 </div>
               )}
@@ -125,6 +189,9 @@ const BlogPage = () => {
                 <p className="text-espresso/60 font-mono text-sm mb-3">{meta(featured)}</p>
                 <h2 className="text-2xl md:text-3xl font-heading font-semibold text-espresso dark:text-slate-100 mb-4 group-hover:text-court-dark dark:group-hover:text-[#60A5FA] transition-colors">
                   {featured.title}
+                  {featuredExternal && (
+                    <ExternalLink className="inline-block h-5 w-5 ml-2.5 align-baseline text-espresso/40 dark:text-slate-500" aria-label="External article" />
+                  )}
                 </h2>
                 <p className="text-espresso/70 text-base md:text-lg leading-relaxed mb-5">
                   {featured.preview}
@@ -148,6 +215,7 @@ const BlogPage = () => {
               </div>
             </div>
           </m.article>
+          )}
 
           {/* List rows */}
           <div className="flex flex-col gap-5">
@@ -207,6 +275,12 @@ const BlogPage = () => {
               );
             })}
           </div>
+
+          {isFiltered && rest.length === 0 && (
+            <p className="text-center py-12 font-mono text-espresso/50 dark:text-slate-500">
+              No articles tagged {activeTag} yet.
+            </p>
+          )}
 
           {/* Follow strip */}
           <m.div

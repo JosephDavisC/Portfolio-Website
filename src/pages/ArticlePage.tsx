@@ -1,15 +1,386 @@
 import React, { useEffect } from 'react';
-import { useParams, Link, Navigate, useLocation } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { m } from 'framer-motion';
-import { ArrowLeft, Calendar, ExternalLink, ChevronRight } from 'lucide-react';
+import { ArrowLeft, Calendar, ExternalLink, ChevronRight, Share2, Link2, Linkedin, Twitter, MessageCircle, Mail } from 'lucide-react';
+import { toast } from 'sonner';
+import { track } from '@/lib/track';
+
+// Custom share popover (no native share sheet). One instance per placement.
+const ShareMenu: React.FC<{ articleId: string; title: string; direction: 'down' | 'up'; trigger: 'quiet' | 'button' }> = ({ articleId, title, direction, trigger }) => {
+  const [open, setOpen] = React.useState(false);
+  const url = `https://joechamdani.com/blog/${articleId}/`;
+  const encodedUrl = encodeURIComponent(url);
+  const encodedTitle = encodeURIComponent(title);
+
+  const shareTo = (method: string, href?: string) => {
+    track('article-share', { article: articleId, method });
+    if (href) window.open(href, '_blank', 'noopener,width=640,height=520');
+    setOpen(false);
+  };
+
+  const copyLink = async () => {
+    await navigator.clipboard.writeText(url);
+    toast.success('Link copied to clipboard');
+    shareTo('copy');
+  };
+
+  const options = [
+    { label: 'Copy link', icon: Link2, action: copyLink },
+    { label: 'LinkedIn', icon: Linkedin, action: () => shareTo('linkedin', `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`) },
+    { label: 'X', icon: Twitter, action: () => shareTo('x', `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`) },
+    { label: 'WhatsApp', icon: MessageCircle, action: () => shareTo('whatsapp', `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`) },
+    { label: 'Email', icon: Mail, action: () => shareTo('email', `mailto:?subject=${encodedTitle}&body=${encodedUrl}`) },
+  ];
+
+  return (
+    <div className="relative inline-block">
+      <button
+        onClick={() => setOpen((o) => !o)}
+        aria-haspopup="menu"
+        aria-expanded={open}
+        aria-label="Share this article"
+        className={
+          trigger === 'quiet'
+            ? 'inline-flex items-center gap-2 text-espresso/60 hover:text-espresso dark:text-slate-400 dark:hover:text-slate-200 transition-colors font-mono text-sm'
+            : 'btn-brutal-outline inline-flex items-center gap-2'
+        }
+      >
+        <Share2 className={trigger === 'quiet' ? 'h-4 w-4' : 'h-5 w-5'} />
+        Share
+      </button>
+      {open && (
+        <>
+          <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} aria-hidden="true" />
+          <div
+            role="menu"
+            className={`absolute z-50 w-44 card-brutal p-2 flex flex-col gap-0.5 ${
+              direction === 'down' ? 'right-0 top-full mt-2' : 'left-1/2 -translate-x-1/2 bottom-full mb-2'
+            }`}
+          >
+            {options.map((opt) => (
+              <button
+                key={opt.label}
+                role="menuitem"
+                onClick={opt.action}
+                className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-espresso dark:text-slate-100 hover:bg-court/15 hover:text-court-dark dark:hover:bg-[#60A5FA]/15 dark:hover:text-[#60A5FA] transition-colors text-left"
+              >
+                <opt.icon className="h-4 w-4 shrink-0" />
+                {opt.label}
+              </button>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
 import Navbar from '@/components/shared/Navbar';
 import Footer from '@/components/shared/Footer';
 import { articles, shortDate } from '@/components/sections/Blog';
+import NotFound from '@/pages/NotFound';
 
 // Article content components - add full content for each article here
 const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
   switch (articleId) {
+    case 'ssl-renewal-quietly-died':
+      return (
+        <div className="prose max-w-none">
+          <aside className="article-callout">
+            <p>The short version</p>
+            <p className="text-espresso/80 text-lg leading-relaxed">
+              Three of my nine sites were 7, 11 and 20 days from expired certificates. I decided CloudPanel had
+              deleted its own renewal command. It hadn't. The command is scoped to a user I wasn't running as, and
+              the rest of my sites were fine the whole time. I still don't know why those three weren't,
+              because the cron job was throwing its own errors away.
+            </p>
+          </aside>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-8">
+            I run nine websites on one small VPS. Portfolio projects, class demos, a status page, my personal
+            dashboard, an AI chatbot. Every one of them has an SSL certificate, and every certificate expires after
+            90 days. The whole point of the setup is that I never have to think about it. CloudPanel, the control
+            panel I use, renews everything at 5:15 every morning while I'm asleep.
+          </p>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-8">
+            At least that's what I thought was happening.
+          </p>
+
+          <h2 id="the-alert" className="text-3xl font-heading font-bold text-court-dark dark:text-[#60A5FA] mb-6 mt-12">The alert</h2>
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            One morning my cert monitor sent me this:
+          </p>
+
+          <div className="article-terminal">
+            <pre>{`(class project one): 7 days
+(class project two): 11 days
+(another project): 20 days`}</pre>
+          </div>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            Seven days. That number shouldn't exist on a server that's working. Renewal usually happens around 30
+            days before expiry, so anything under 30 means it's been failing quietly for weeks. Three of my nine
+            sites were counting down to a browser error page and I had no idea.
+          </p>
+
+          <h2 id="why-seven-days-scared-me" className="text-3xl font-heading font-bold text-court-dark dark:text-[#60A5FA] mb-6 mt-12">Why seven days scared me</h2>
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            An expired certificate doesn't make a site worse. It takes it down. Browsers throw a full screen warning
+            that says your connection is not private, with the word attackers in it. Almost nobody clicks past that.
+            Traffic doesn't drop, it just stops.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+            <div className="rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
+              <picture>
+                <source srcSet="/article_media/ssl-renewal-quietly-died/info380-working.webp" type="image/webp" />
+                <img
+                  src="/article_media/ssl-renewal-quietly-died/info380-working.png"
+                  alt="The INFO 380 course registration site working normally, showing a course search page with filters and a list of classes"
+                  width={1600}
+                  height={1075}
+                  loading="lazy"
+                  className="w-full h-auto object-contain md:object-cover md:h-56"
+                />
+              </picture>
+              <p className="text-espresso/60 text-sm text-center mt-3 italic font-mono px-4 pb-4">
+                What people were supposed to see
+              </p>
+            </div>
+            <div className="rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
+              <picture>
+                <source srcSet="/article_media/ssl-renewal-quietly-died/cert-warning.webp" type="image/webp" />
+                <img
+                  src="/article_media/ssl-renewal-quietly-died/cert-warning.png"
+                  alt="Full screen browser security warning for info380.joechamdani.com reading Your connection is not private, with the error NET::ERR_CERT_DATE_INVALID"
+                  width={1614}
+                  height={1006}
+                  loading="lazy"
+                  className="w-full h-auto object-contain md:object-cover md:h-56"
+                />
+              </picture>
+              <p className="text-espresso/60 text-sm text-center mt-3 italic font-mono px-4 pb-4">
+                What they got instead, for two months
+              </p>
+            </div>
+          </div>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            For a class project that's embarrassing and nothing more. But I also build sites for freelance clients,
+            and on a small shop the owner doesn't see an error, they just see a quiet day, while every customer
+            hits a screen that makes a real shop look fake. The only thing standing between that happening and not
+            happening is whether something is checking.
+          </p>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            Certificates used to last years. Let's Encrypt issues them for 90 days now, and the industry keeps
+            pushing that shorter, so renewal isn't something you can put on a calendar anymore. It has to be
+            automated, which means you have to trust the automation. If nothing is actively stopping you from
+            forgetting, you'll forget.
+          </p>
+
+          <h2 id="what-forgetting-looks-like" className="text-3xl font-heading font-bold text-court-dark dark:text-[#60A5FA] mb-6 mt-12">What forgetting looks like</h2>
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            I know exactly what that looks like, because it already happened to me once.
+          </p>
+
+          <div className="my-8 rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
+            <picture>
+              <source srcSet="/article_media/ssl-renewal-quietly-died/uptime-card.webp" type="image/webp" />
+              <img
+                src="/article_media/ssl-renewal-quietly-died/uptime-card.png"
+                alt="Uptime history for a class project site, two months of downtime from an expired certificate"
+                width={1440}
+                height={270}
+                className="w-full h-auto object-cover"
+              />
+            </picture>
+            <p className="text-espresso/60 text-sm text-center mt-3 italic font-mono px-4 pb-4">
+              info380.joechamdani.com on my status page, 90 days of history
+            </p>
+          </div>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            That's info380.joechamdani.com on my own status page, at 27 percent uptime over 90 days. The certificate
+            expired in early June and the site sat behind a browser warning for two months before I noticed. The fix
+            wasn't hard. I just forgot the site existed. No monitor on it, no alert, and no reason to open a class
+            project I'd already finished. Anyone who clicked it from my portfolio during those two months got a full
+            screen warning telling them to leave, and I had no idea.
+          </p>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            That one I can explain. Renewal proves you own a domain by writing a token into the site's standard
+            htdocs path, under <code className="article-inline-code">.well-known/acme-challenge/</code>, then
+            fetching it back over HTTP. I'd hand-edited that vhost so nginx served out of /var/www instead, where
+            no token ever appeared. Every validation came back 404 and nothing wrote it down. I repointed the root,
+            reissued, then standardized every other site, wrote a runbook, and built the cert monitor. I felt
+            pretty good about myself.
+          </p>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            So when the monitor went off a week later with three more sites counting down, the annoying part was
+            that all three were configured correctly. Whatever I'd fixed wasn't what was broken.
+          </p>
+
+          <h2 id="ruling-out-the-obvious" className="text-3xl font-heading font-bold text-court-dark dark:text-[#60A5FA] mb-6 mt-12">Ruling out the obvious</h2>
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            Renewal works through an HTTP-01 challenge. Let's Encrypt drops a token file on your server, then
+            fetches it back over the web to check you actually control the domain. If that round trip fails, you
+            don't get a certificate.
+          </p>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            So I tested it by hand on every site. Wrote a test file into each web root, requested it through the
+            front door the way Let's Encrypt would, followed the redirect to HTTPS, got the file back. All nine
+            passed. The plumbing was fine.
+          </p>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            Which meant, I decided, that the renewals weren't failing. They weren't running at all.
+          </p>
+
+          <h2 id="the-command-belongs-to-clp" className="text-3xl font-heading font-bold text-court-dark dark:text-[#60A5FA] mb-6 mt-12">The command exists. It belongs to clp.</h2>
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            The schedule lived in a cron file, which is just a list of commands the server runs on a timer:
+          </p>
+
+          <figure className="article-code">
+            <pre>{`15 5 * * * clp /usr/bin/bash -c "/usr/bin/clpctl lets-encrypt:renew:certificates" &> /dev/null`}</pre>
+          </figure>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            Every morning at 5:15, run the renew command. Looks fine. So I ran it myself to watch it work.
+          </p>
+
+          <div className="article-terminal">
+            <pre>{`There are no commands defined in the "lets-encrypt:renew" namespace.`}</pre>
+          </div>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            I took that at face value and decided CloudPanel had dropped the command in an update. That was wrong,
+            and it took a review of this post, after I'd published it, to make me go back and check properly.
+          </p>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            The command is still there. It's scoped to the clp user, and I ran it as root:
+          </p>
+
+          <div className="article-terminal">
+            <pre>{`$ clpctl                    # as root
+  lets-encrypt:install:certificate
+
+$ sudo -u clp clpctl
+  lets-encrypt:renew:certificates
+  lets-encrypt:renew:custom-domain:certificate`}</pre>
+          </div>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            Now look at the cron line again. The sixth field is clp. Cron was already running it as the one user
+            that has the command, so it was calling the right thing the right way the whole time.
+          </p>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            The renewals weren't dead either. My dashboard, status page, CDN and transfer tool all got fresh
+            certificates around 5:15 in the days before the alert, which is that same cron doing its job. Whatever
+            went wrong was specific to three sites. And I can't tell you what, because of the end of that line:
+          </p>
+
+          <figure className="article-code">
+            <pre>{`&> /dev/null`}</pre>
+          </figure>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            That throws away all output, errors included. Whatever those three were failing on, they failed on it
+            every morning and told nobody. The error that would have explained this went into /dev/null every day
+            for weeks, and the only reason I found out anything was wrong at all was a seven day threshold in a
+            script I'd written the week before.
+          </p>
+
+          <h2 id="the-fix" className="text-3xl font-heading font-bold text-court-dark dark:text-[#60A5FA] mb-6 mt-12">The fix</h2>
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            The immediate fix was easy. The command that issues a certificate is one root does have, and issuing
+            one is the same as renewing it. Three commands and all three sites had fresh certificates good until
+            November.
+          </p>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            The real fix wasn't replacing CloudPanel's automation, because it isn't broken. It's accepting that it
+            can fail on some sites without saying so, so it can't be the only thing between me and an expired
+            certificate. A script of mine runs every morning, checks how many days each certificate has left, and
+            reissues anything under 15:
+          </p>
+
+          <figure className="article-code">
+            <pre>{`#!/bin/bash
+# cron: 30 5 * * * /root/ssl-cert-autorenew.sh 15 >> /var/log/ssl-cert-autorenew.log 2>&1
+shopt -s nullglob   # an empty glob must not survive as a literal path
+
+THRESHOLD=\${1:-15}
+certs=(/etc/nginx/ssl-certificates/*.crt)
+[ \${#certs[@]} -gt 0 ] || { echo "NO CERTIFICATES FOUND"; exit 1; }
+
+for c in "\${certs[@]}"; do
+  d=$(basename "$c" .crt)
+  days=$(( ($(date -d "$(openssl x509 -enddate -noout -in "$c" | cut -d= -f2)" +%s) - $(date +%s)) / 86400 ))
+  if [ "$days" -lt "$THRESHOLD" ]; then
+    echo "$d: \${days}d left, reissuing"
+    clpctl lets-encrypt:install:certificate --domainName="$d"
+  fi
+done`}</pre>
+          </figure>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            The redirect is on the cron line, not on the commands inside, so if the loop itself dies the error
+            still lands in the log. That matters more than it sounds: if the certificate path ever moves, the glob
+            matches nothing and a script without that guard sails through doing nothing, quietly, which is the
+            exact failure I'm writing about. I also went back to CloudPanel's cron and took the <code className="article-inline-code">{'&> /dev/null'}</code> off
+            those two lines, so the stock sweep writes to a log now too.
+          </p>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            I left that cron running, so two things renew certificates on my box now. They rarely collide, since
+            mine only acts inside 15 days, but Let's Encrypt caps you at five identical certificates per week. If
+            you copy this and raise the threshold, or wrap it in a retry, that ceiling is where you'll land.
+          </p>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            A second script runs 30 minutes later. If any certificate is still under 7 days it pushes an alert to
+            my phone. And yes, I thought about what happens when my own script dies quietly too. That's why the
+            second one knows nothing about how renewal works. It only reads expiry dates off the certificates, so
+            it doesn't care what broke or why. For both to stay quiet, renewal actually has to be working.
+          </p>
+
+          <h2 id="the-part-that-still-bugs-me" className="text-3xl font-heading font-bold text-court-dark dark:text-[#60A5FA] mb-6 mt-12">The part that still bugs me</h2>
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            What gets me is how normal all of it felt. Certificates renewing and certificates quietly not renewing
+            looked identical from where I was standing. Nothing happened either way, the sites stayed up, I went
+            about my week. If I'd monitored whether the cron job ran, it would've been green every single day. It
+            did run. It ran the right command, as the right user, and three certificates still sat there running
+            out.
+          </p>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            The other thing I got wrong is that I was sure I knew why. I ran one command, got an error that looked
+            like an answer, and published it as the cause. The reason I could be that confident is the same reason
+            the problem lasted: the thing that would have corrected me was going into <code className="article-inline-code">/dev/null</code>.
+            Now anything on my server that matters either writes to a log I'll read or pushes to my phone.
+          </p>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-8">
+            I still don't know why those three didn't renew, and I can live with that because nothing in my setup
+            depends on me knowing. The script reissues on the expiry date, not on a theory about what went wrong.
+            Whatever the cause was, it would have been caught anyway.
+          </p>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-8">
+            My script checks every certificate every night and reissues anything inside 15 days, and there's a
+            second one behind it whose only job is to tell me when the first one stops. That's probably paranoid for nine small websites. But the two
+            months of red are still sitting on my status page and I'm leaving them there.
+          </p>
+        </div>
+      );
+
     case 'bc-hacks-2024':
       return (
         <div className="prose max-w-none">
@@ -674,11 +1045,19 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
             <div className="rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
-              <img
-                src="/article_media/journey/Graduation_Peace.webp"
-                alt="Bellevue College graduation"
-                className="w-full h-auto object-contain md:object-cover md:h-64"
-              />
+              <a
+                href="https://www.youtube.com/live/3eDZRphJX0Q?t=7916"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Watch this moment in the Bellevue College 2025 Commencement live stream"
+                className="block hover:opacity-90 transition-opacity"
+              >
+                <img
+                  src="/article_media/journey/Graduation_Peace.webp"
+                  alt="Bellevue College graduation"
+                  className="w-full h-auto object-contain md:object-cover md:h-64"
+                />
+              </a>
               <p className="text-espresso/60 text-sm text-center mt-3 italic font-mono px-4 pb-4">
                 Graduation day - two years condensed into one incredible journey
               </p>
@@ -693,6 +1072,28 @@ const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
                 Last photo with my host family before moving out
               </p>
             </div>
+          </div>
+
+          <div className="my-8 rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
+            <a
+              href="https://www.instagram.com/reels/DPwwE1xgB-0/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Watch the Bellevue College International feature on Instagram"
+              className="block hover:opacity-90 transition-opacity"
+            >
+              <img
+                src="/article_media/journey/bc-international-feature.webp"
+                alt="Bellevue College International Instagram feature about Joseph Chamdani completing the International High School Completion program"
+                className="w-full h-auto object-contain"
+                width={1640}
+                height={1206}
+                loading="lazy"
+              />
+            </a>
+            <p className="text-espresso/60 text-sm text-center mt-3 italic font-mono px-4 pb-4">
+              Bellevue College International featured me on their Instagram, October 2025. Click to watch the reel.
+            </p>
           </div>
 
           <p className="text-espresso/80 text-lg leading-relaxed mb-8">
@@ -761,10 +1162,12 @@ const ArticlePage = () => {
     return () => clearTimeout(timer);
   }, [slug]);
 
-  // If article doesn't exist, redirect to home
+  // Unknown slug: render the real 404 page (the server already sends a 404
+  // status for these via .htaccess; the client must not soft-redirect home)
   if (!article) {
-    return <Navigate to="/" replace />;
+    return <NotFound />;
   }
+
 
   // SEO metadata
   const pageTitle = `${article.title} | Joseph Davis Chamdani`;
@@ -772,7 +1175,7 @@ const ArticlePage = () => {
   const pageUrl = `https://joechamdani.com/blog/${article.id}`;
   const imageUrl = article.thumbnail
     ? `https://joechamdani.com/${article.thumbnail}`
-    : 'https://joechamdani.com/og-image.png'; // fallback image
+    : 'https://joechamdani.com/preview.png'; // fallback image
 
   return (
     <div className="min-h-screen bg-paper">
@@ -814,15 +1217,18 @@ const ArticlePage = () => {
         className="pt-32 pb-6 px-6"
       >
         <div className="max-w-3xl mx-auto">
-          {/* Back Button */}
-          <Link
-            to={from.split('#')[0] || "/"}
-            state={{ scrollTo: from.includes('#') ? from.split('#')[1] : "blog" }}
-            className="inline-flex items-center text-espresso/60 hover:text-espresso transition-colors mb-8 group font-mono"
-          >
-            <ArrowLeft className="h-5 w-5 mr-2 group-hover:-translate-x-1 transition-transform" />
-            Back to Blog
-          </Link>
+          {/* Back Button + Share */}
+          <div className="flex items-center justify-between mb-8">
+            <Link
+              to={from.split('#')[0] || "/"}
+              state={{ scrollTo: from.includes('#') ? from.split('#')[1] : "blog" }}
+              className="inline-flex items-center text-espresso/60 hover:text-espresso transition-colors group font-mono"
+            >
+              <ArrowLeft className="h-5 w-5 mr-2 group-hover:-translate-x-1 transition-transform" />
+              Back to Blog
+            </Link>
+            <ShareMenu articleId={article.id} title={article.title} direction="down" trigger="quiet" />
+          </div>
 
           {/* Tags */}
           {article.tags && article.tags.length > 0 && (
@@ -859,20 +1265,28 @@ const ArticlePage = () => {
           </div>
 
           {/* Thumbnail */}
-          {article.thumbnail && (
-            <a
-              href={article.externalLinks?.[0]?.url || article.externalLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block mb-6 rounded-xl overflow-hidden shadow-brutal border-2 border-espresso hover:opacity-90 transition-opacity"
-            >
+          {article.thumbnail && (() => {
+            const thumbHref = article.thumbnailHref || article.externalLinks?.[0]?.url || article.externalLink;
+            const img = (
               <img
                 src={`/${article.thumbnail}`}
                 alt={article.title}
                 className="w-full object-cover"
               />
-            </a>
-          )}
+            );
+            return thumbHref ? (
+              <a
+                href={thumbHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block mb-6 rounded-xl overflow-hidden shadow-brutal border-2 border-espresso hover:opacity-90 transition-opacity"
+              >
+                {img}
+              </a>
+            ) : (
+              <div className="mb-6 rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">{img}</div>
+            );
+          })()}
         </div>
       </m.div>
 
@@ -927,7 +1341,9 @@ const ArticlePage = () => {
             const index = articles.findIndex((a) => a.id === article.id);
             const olderArticle = articles[index + 1];
             const newerArticle = index > 0 ? articles[index - 1] : undefined;
-            const related = articles.filter((a) => a.id !== article.id).slice(0, 2);
+            const related = articles
+              .filter((a) => a.id !== article.id && a.id !== olderArticle?.id && a.id !== newerArticle?.id)
+              .slice(0, 2);
             const articleLink = (a: typeof articles[number]) => {
               const externalUrl = !a.hasFullArticle ? a.externalLinks?.[0]?.url || a.externalLink : undefined;
               return externalUrl
@@ -996,8 +1412,8 @@ const ArticlePage = () => {
             );
           })()}
 
-          {/* Back to Blog Button */}
-          <div className="mt-12 text-center">
+          {/* Back to Blog + Share */}
+          <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
             <Link
               to={from.split('#')[0] || "/blog"}
               state={{ scrollTo: from.includes('#') ? from.split('#')[1] : undefined }}
@@ -1006,6 +1422,7 @@ const ArticlePage = () => {
               <ArrowLeft className="h-5 w-5" />
               Back to All Articles
             </Link>
+            <ShareMenu articleId={article.id} title={article.title} direction="up" trigger="button" />
           </div>
           </div>
         </div>

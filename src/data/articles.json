@@ -1,7 +1,36 @@
 [
   {
+    "id": "ssl-renewal-quietly-died",
+    "readTime": "7 min read",
+    "title": "The Day My SSL Auto-Renewal Quietly Died",
+    "date": "August 23, 2026",
+    "location": "Seattle, WA",
+    "preview": "My VPS renewed its own certificates every night for months. Then one alert told me three sites were about to expire, and the answer I was confident about turned out to be wrong.",
+    "thumbnail": "article_media/ssl-renewal-quietly-died/uptime-history.webp",
+    "thumbnailFit": "contain",
+    "thumbnailBg": "#121826",
+    "tags": ["Infrastructure", "Debugging"],
+    "hasFullArticle": true
+  },
+  {
+    "id": "transfer-tool-design",
+    "readTime": "6 min read",
+    "title": "Designing an AI System for Transfer Credit Evaluation",
+    "date": "December 2025",
+    "preview": "The system design behind our hackathon-winning tool that parses WA community college transcripts and maps courses to UW equivalents.",
+    "thumbnail": "images/portfolio/transfer-tool-logo.webp",
+    "thumbnailFit": "contain",
+    "thumbnailBg": "#4c3183",
+    "tags": ["AI", "Education", "Hackathon"],
+    "hasFullArticle": false,
+    "externalLinks": [
+      { "url": "https://medium.com/@joseph.chamdani/designing-an-ai-system-for-transfer-credit-evaluation-3a6d5c48d63e", "text": "Read on Medium" }
+    ]
+  },
+  {
     "id": "my-journey",
     "readTime": "6 min read",
+    "thumbnailHref": "https://www.youtube.com/live/3eDZRphJX0Q?t=7916",
     "title": "My Journey: From Jakarta to UW",
     "date": "November 2025",
     "location": "Seattle, WA",
@@ -13,10 +42,11 @@
   {
     "id": "ishowstream-feature",
     "readTime": "4 min read",
+    "author": "Juwita Jessica Pangestu",
     "title": "IShowStream: AI That Reads Twitch Chat",
     "date": "November 2025",
     "location": "Google Cloud Run Hackathon",
-    "preview": "A feature on IShowStream, our five-agent system that reads Twitch chat in real time so streamers never miss a moment. Written by my teammate Jessica Fiona.",
+    "preview": "A feature on IShowStream, our five-agent system that reads Twitch chat in real time so streamers never miss a moment. Written by my teammate Juwita Jessica Pangestu.",
     "thumbnail": "media/ishowstream.webp",
     "tags": ["AI", "Google Cloud", "Hackathon"],
     "hasFullArticle": false,

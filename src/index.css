@@ -608,3 +608,79 @@ main,
 section {
   will-change: background-color;
 }
+
+/* ===============================
+   Article code blocks and callouts
+   For technical posts. Markup pattern is documented in the
+   new-article skill so writers do not reinvent it per post.
+================================= */
+.article-code {
+  @apply my-8 rounded-xl border-2 border-espresso bg-paper-dark overflow-x-auto;
+  box-shadow: 2px 2px 0px 0px #3D2B1F;
+}
+
+.article-code pre {
+  @apply m-0 p-5 font-mono text-sm leading-relaxed text-espresso;
+  white-space: pre;
+}
+
+.article-code figcaption {
+  @apply px-5 py-2 font-mono text-xs text-espresso/60 border-t-2 border-espresso/15;
+}
+
+/* Shell / terminal output: dark in both themes, like a real terminal */
+.article-terminal {
+  @apply my-8 rounded-xl border-2 border-espresso overflow-x-auto;
+  background: #141B2D;
+  box-shadow: 2px 2px 0px 0px #3D2B1F;
+}
+
+.article-terminal pre {
+  @apply m-0 p-5 font-mono text-sm leading-relaxed;
+  color: #CBD5E1;
+  white-space: pre;
+}
+
+/* Inline code inside body copy */
+.article-inline-code {
+  @apply font-mono text-[0.9em] px-1.5 py-0.5 rounded border border-espresso/20 bg-espresso/5 text-court-dark;
+}
+
+/* Aside box for a note, warning, or lesson learned */
+.article-callout {
+  @apply my-8 p-5 rounded-xl border-2 border-court bg-court/10;
+}
+
+.article-callout > :first-child {
+  @apply font-heading font-semibold mb-2 text-court-dark;
+}
+
+.dark .article-code {
+  @apply bg-white/5 border-white/10;
+  box-shadow: none;
+}
+
+.dark .article-code pre {
+  color: hsl(210 40% 90%);
+}
+
+.dark .article-code figcaption {
+  @apply text-slate-400 border-white/10;
+}
+
+.dark .article-terminal {
+  @apply border-white/10;
+  box-shadow: none;
+}
+
+.dark .article-inline-code {
+  @apply border-white/15 bg-white/10 text-[#60A5FA];
+}
+
+.dark .article-callout {
+  @apply border-[#60A5FA]/40 bg-[#60A5FA]/10;
+}
+
+.dark .article-callout > :first-child {
+  @apply text-[#60A5FA];
+}

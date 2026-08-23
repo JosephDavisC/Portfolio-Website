@@ -11,6 +11,10 @@ export interface Article {
   location?: string;
   preview: string;
   thumbnail?: string;
+  thumbnailFit?: string;
+  thumbnailBg?: string;
+  thumbnailHref?: string;
+  author?: string;
   readTime?: string;
   externalLink?: string;
   externalLinkText?: string;
@@ -38,11 +42,14 @@ const ArticleCard: React.FC<{ article: Article; index: number; onOpenArticle: (i
   const cardInner = (
     <>
       {hasImage && (
-        <div className="block overflow-hidden rounded-lg border-2 border-espresso relative">
+        <div
+          className="block overflow-hidden rounded-lg border-2 border-espresso relative"
+          style={article.thumbnailBg ? { backgroundColor: article.thumbnailBg } : undefined}
+        >
           <m.img
             src={article.thumbnail}
             alt={article.title}
-            className="w-full h-56 md:h-64 object-cover"
+            className={`w-full h-56 md:h-64 ${article.thumbnailFit === 'contain' ? 'object-contain p-4' : 'object-cover'}`}
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.4 }}
           />
