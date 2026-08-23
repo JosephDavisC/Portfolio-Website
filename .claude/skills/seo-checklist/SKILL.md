@@ -10,6 +10,14 @@ static HTML via build-time prerender + `.htaccess`. Every content change must ke
 paths true. When in doubt, the deeper runbook is `Freelance/.claude/skills/seo-ready/`
 in the ecosystem folder; this file is the repo-specific short form.
 
+## Publishing policy (Joseph's rule, 2026-08-22)
+
+New posts are written and published ON THIS SITE, never Medium-first. Medium is
+distribution only: optionally syndicate a published post via Medium's import tool,
+which sets the canonical back to joechamdani.com. The two existing Medium pieces
+(IShowStream by Jessica, the Transfer Tool design article) stay on Medium as external
+index entries with the "Read on Medium" treatment; never republish their text here.
+
 ## When you ADD OR EDIT a blog article
 
 1. `src/data/articles.json` is the source of truth (id, title, date, readTime, preview,
@@ -64,3 +72,21 @@ in the ecosystem folder; this file is the repo-specific short form.
 2. Ask Joseph to request indexing in Google Search Console for new or materially
    changed URLs (he owns the GSC property).
 3. If OG tags changed on an existing URL, LinkedIn Post Inspector to bust its cache.
+
+## When a local HTTP check returns 403 (probably not your bug)
+
+Hostinger's CDN (`server: hcdn`) serves a JavaScript browser-challenge page to IPs on its
+blocklist. Symptom: the site loads fine in Joseph's browser, but `curl` from his Mac returns
+403 for every page, browser user agent or not. That is his IP being flagged, not a site fault,
+and it makes every local post-deploy verification lie.
+
+Verify from an unblocked IP instead:
+
+```sh
+ssh vps 'curl -s -o /dev/null -w "%{http_code}\n" https://<domain>/'
+```
+
+Confirmed 2026-08-23: the same URLs returned 403 from Joseph's connection and 200 from the VPS
+in the same minute. FTP deploys are unaffected (different protocol), only HTTP verification is
+misleading. If it persists more than a couple of hours, Joseph asks Hostinger support to remove
+his IP from the CDN blocklist specifically, which is a separate system from the VPS blocklist.

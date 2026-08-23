@@ -4,6 +4,7 @@
     "companies": [
       {
         "name": "Whitespace Solutions",
+        "featured": true,
         "category": "Internships",
         "logo": "/logos/whitespace-solution-logo.svg",
         "website": "https://whitespace.id",
@@ -70,6 +71,7 @@
       },
       {
         "name": "Sector - CyberSecurity",
+        "featured": true,
         "category": "Internships",
         "logo": "/logos/Sector_Icon_logo.png",
         "website": "https://sector.co.id",
@@ -94,6 +96,7 @@
       },
       {
         "name": "BC Tech Club",
+        "featured": true,
         "category": "Clubs",
         "logo": "/logos/bc-tech-club.jpg",
         "website": "https://bctechclub.com/",
@@ -132,6 +135,7 @@
       },
       {
         "name": "Stockbit / Bibit",
+        "featured": true,
         "category": "Internships",
         "logo": "/logos/stockbit.webp",
         "website": "https://stockbit.com/",

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { m, AnimatePresence } from "framer-motion";
-import { Calendar, MapPin, X, ChevronDown, ChevronUp, Briefcase, Users, GraduationCap, ArrowRight } from "lucide-react";
+import { Calendar, MapPin, X, ChevronDown, ChevronUp, ChevronRight, Briefcase, Users, GraduationCap, ArrowRight } from "lucide-react";
 import data from "@/data/milestones.json";
 
 /* Cache-bust for images: appends a version so browsers/CDN fetch a fresh copy
@@ -25,6 +25,7 @@ type Role = {
 type Company = {
   name: string;
   category: string;
+  featured?: boolean;
   logo: string;
   website?: string | null;
   meta: string;
@@ -102,8 +103,16 @@ const MetaRow = ({ items }: { items: React.ReactNode[] }) => {
 };
 
 /* ---------- Component ---------- */
-export default function Milestones() {
+type MilestonesProps = {
+  /** "home" shows the newest few with a View All link; "full" is the /experience page */
+  variant?: "home" | "full";
+};
+
+const HOME_COMPANY_COUNT = 4;
+
+export default function Milestones({ variant = "home" }: MilestonesProps) {
   const { companies, linkedinFallback, categories } = data as MilestonesData;
+  const isHome = variant === "home";
   const [lightboxSrc, setLightboxSrc] = useState<string>("");
   const [activeCategory, setActiveCategory] = useState<string>("All");
   const [expandedCompanies, setExpandedCompanies] = useState<Set<string>>(
@@ -112,9 +121,15 @@ export default function Milestones() {
 
   // Filter companies by category
   const filteredCompanies = useMemo(() => {
+    if (isHome) {
+      // Curated highlight reel: the roles worth leading with, flagged in
+      // milestones.json. Falls back to the most recent if none are flagged.
+      const featured = companies.filter((c) => c.featured);
+      return featured.length ? featured : companies.slice(0, HOME_COMPANY_COUNT);
+    }
     if (activeCategory === "All") return companies;
     return companies.filter((c) => c.category === activeCategory);
-  }, [companies, activeCategory]);
+  }, [companies, activeCategory, isHome]);
 
   // Toggle individual company
   const toggleCompany = (name: string) => {
@@ -142,8 +157,12 @@ export default function Milestones() {
   const allCollapsed = filteredCompanies.every((c) => !expandedCompanies.has(c.name));
 
   return (
-    <section id="milestones" className="py-16 px-6 bg-paper-dark dark:bg-[#0F1521]">
+    <section
+      id={isHome ? "milestones" : undefined}
+      className={isHome ? "py-16 px-6 bg-paper-dark dark:bg-[#0F1521]" : "px-0"}
+    >
       <div className="max-w-5xl mx-auto">
+        {isHome && (
         <m.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -174,8 +193,10 @@ export default function Milestones() {
             My professional journey and experiences along the way
           </p>
         </m.div>
+        )}
 
-        {/* Category Filter Tabs */}
+        {/* Category Filter Tabs (full page only) */}
+        {!isHome && (
         <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -203,8 +224,10 @@ export default function Milestones() {
             </button>
           ))}
         </m.div>
+        )}
 
-        {/* Expand/Collapse All Buttons */}
+        {/* Expand/Collapse All Buttons (full page only) */}
+        {!isHome && (
         <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -237,6 +260,7 @@ export default function Milestones() {
             Collapse All
           </button>
         </m.div>
+        )}
 
         <div className="relative">
           {/* Timeline line */}
@@ -426,6 +450,25 @@ export default function Milestones() {
             </AnimatePresence>
           </div>
         </div>
+
+        {/* View all (homepage only) */}
+        {isHome && companies.length > HOME_COMPANY_COUNT && (
+          <m.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex flex-col items-center gap-3 mt-12"
+          >
+            <Link to="/experience" className="btn-brutal-outline inline-flex items-center gap-2">
+              View All Experience
+              <ChevronRight className="h-5 w-5" />
+            </Link>
+            <p className="text-espresso/50 dark:text-slate-500 font-mono text-sm">
+              A few highlights. See all {companies.length} places I have worked, built, and led
+            </p>
+          </m.div>
+        )}
 
         {/* Empty state */}
         {filteredCompanies.length === 0 && (
