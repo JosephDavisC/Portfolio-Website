@@ -28,7 +28,7 @@
   {
     "title": "IShowStream",
     "category": "AI",
-    "featured": true,
+    "featured": false,
     "image": "/media/IShowStream_Logo.png",
     "imageAlt": "IShowStream preview",
     "tech": ["React", "Python", "Go", "Gemini AI", "Google Cloud"],
@@ -55,11 +55,11 @@
   {
     "title": "JAM AI",
     "category": "AI",
-    "featured": true,
+    "featured": false,
     "image": "/images/portfolio/jam-ai.jpg",
     "imageAlt": "JAM AI preview",
     "tech": ["Python", "OpenAI", "Kaggle", "Javascript"],
-    "description": "GPT-powered health assistant for diabetes management. Fine-tuned GPT-3.5 on 600+ Q&A pairs to deliver personalized nutritional tips and medication reminders.",
+    "description": "Hackathon prototype from UWB Hacks AI 2024, built with a team of three. Fine-tuned GPT-3.5 on 600+ Q&A pairs with a Flask backend and an interactive JavaScript frontend.",
     "github": "https://github.com/JosephDavisC/Jam.AI",
     "demo": "https://devpost.com/software/jam-ai",
     "demoLabel": "Devpost"
@@ -67,7 +67,7 @@
   {
     "title": "Dino Marine VR",
     "category": "Games",
-    "featured": true,
+    "featured": false,
     "image": "/images/portfolio/dino-marine.png",
     "imageAlt": "Dino Marine VR preview",
     "tech": ["Unity", "C#", "VR"],
@@ -99,7 +99,7 @@
   {
     "title": "garak (NVIDIA)",
     "category": "AI",
-    "featured": false,
+    "featured": true,
     "image": "/images/portfolio/garak.png",
     "imageAlt": "garak CLI filtering contribution to NVIDIA",
     "imageStyle": "cover-top",

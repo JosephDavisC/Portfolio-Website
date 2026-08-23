@@ -177,6 +177,26 @@ const fallbackByPath = {
         .join('') +
       relatedFooter('/projects/')
   ),
+  experience: buildFallbackMain(
+    `<h1>Experience &amp; Milestones</h1>` +
+      `<p>Every internship, club, and job on Joseph Davis Chamdani's path, from Jakarta to Seattle.</p>` +
+      milestones.companies
+        .map((c) => {
+          const roles = (c.roles || [])
+            .map(
+              (r) =>
+                `<h3>${esc(r.title)}</h3><p>${esc(r.dates)}${r.meta ? ` · ${esc(r.meta)}` : ''}</p>` +
+                ((r.bullets || []).length
+                  ? `<ul>${r.bullets.map((b) => `<li>${esc(b)}</li>`).join('')}</ul>`
+                  : '') +
+                (r.detailsLink ? `<p><a href="${esc(r.detailsLink)}/">More about ${esc(c.name)}</a></p>` : '')
+            )
+            .join('');
+          return `<section><h2>${esc(c.name)}</h2><p>${esc(c.category)}${c.meta ? ` · ${esc(c.meta)}` : ''}${c.location ? ` · ${esc(c.location)}` : ''}</p>${roles}</section>`;
+        })
+        .join('') +
+      relatedFooter('/experience/')
+  ),
   'seo-docs': buildFallbackMain(
     `<h1>SEO &amp; Technical Documentation</h1>` +
       `<p>How this React single-page application solves SEO: build-time static page generation with per-route titles, descriptions, canonicals and Open Graph tags; crawler-visible fallback content inside the root element for AI crawlers that do not execute JavaScript; JSON-LD structured data (ProfilePage, BlogPosting, BreadcrumbList, EducationalOccupationalCredential); an image sitemap; and Apache-level canonical-host and 404 handling.</p>` +
@@ -227,6 +247,14 @@ const pages = [
     url: 'https://joechamdani.com/projects/'
   },
   {
+    path: 'experience',
+    title: 'Experience · Joseph Davis Chamdani',
+    description:
+      "Every internship, club, and job on Joseph Davis Chamdani's path: AI work at Whitespace, Sector, and Stockbit, game development at Touchten and VR Park.",
+    image: 'https://joechamdani.com/preview.png',
+    url: 'https://joechamdani.com/experience/'
+  },
+  {
     path: 'seo-docs',
     title: "SEO & Technical Documentation | Joseph Davis Chamdani",
     description: "How I solved React SPA SEO challenges with static page generation. Custom SEO optimization, Open Graph meta tags, and modern web architecture.",
@@ -266,6 +294,7 @@ for (const cred of credentials) {
 // unlike the Helmet-injected schema which needs JS execution)
 const headExtrasByPath = {
   projects: breadcrumbLd('Projects', 'https://joechamdani.com/projects/'),
+  experience: breadcrumbLd('Experience', 'https://joechamdani.com/experience/'),
 };
 
 for (const [slug, exp] of Object.entries(experiences)) {

@@ -8,7 +8,7 @@
   <!-- Main Homepage -->
   <url>
     <loc>https://joechamdani.com/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -335,24 +335,63 @@
     </image:image>
   </url>
 
+  <!-- Experience Index -->
+  <url>
+    <loc>https://joechamdani.com/experience/</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Blog Index -->
   <url>
     <loc>https://joechamdani.com/blog/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-08-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Blog Articles -->
   <url>
+    <loc>https://joechamdani.com/blog/ssl-renewal-quietly-died/</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://joechamdani.com/article_media/ssl-renewal-quietly-died/uptime-history.png</image:loc>
+      <image:title>Uptime history for a class project site</image:title>
+      <image:caption>Uptime history calendar for info380.joechamdani.com showing June, July, and August 2026 with two months of downtime</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/article_media/ssl-renewal-quietly-died/info380-working.png</image:loc>
+      <image:title>The INFO 380 course registration site working</image:title>
+      <image:caption>The INFO 380 course registration site working normally, showing a course search page with filters and a list of classes</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/article_media/ssl-renewal-quietly-died/cert-warning.png</image:loc>
+      <image:title>Browser security warning for an expired certificate</image:title>
+      <image:caption>Full screen browser security warning for info380.joechamdani.com reading Your connection is not private, with the error NET::ERR_CERT_DATE_INVALID</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/article_media/ssl-renewal-quietly-died/uptime-card.png</image:loc>
+      <image:title>Status page card showing 27 percent uptime</image:title>
+      <image:caption>Uptime history for a class project site, two months of downtime from an expired certificate</image:caption>
+    </image:image>
+  </url>
+  <url>
     <loc>https://joechamdani.com/blog/my-journey/</loc>
-    <lastmod>2025-11-15</lastmod>
+    <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://joechamdani.com/article_media/journey/Graduation_Peace.png</image:loc>
       <image:title>Joseph Chamdani at Graduation</image:title>
       <image:caption>Joseph Chamdani at graduation — from Jakarta, Indonesia to the University of Washington</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/article_media/journey/bc-international-feature.webp</image:loc>
+      <image:title>Bellevue College International feature</image:title>
+      <image:caption>Bellevue College International featured Joseph Chamdani for completing the International High School Completion program, October 2025</image:caption>
     </image:image>
   </url>
 
