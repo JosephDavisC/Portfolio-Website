@@ -42,15 +42,55 @@ index entries with the "Read on Medium" treatment; never republish their text he
    maintained; forgetting it is the classic miss.
 3. `public/llms.txt`: add the page if it is content an AI reader should know about.
 4. Head: `<title>` 50-60 chars joined with "·", meta description ~155 chars, canonical,
-   OG + Twitter tags, JSON-LD that fits the page type. Person schema always uses
+   OG + Twitter tags (see "Share previews" below, and check the image resolves),
+   JSON-LD that fits the page type. Person schema always uses
    `@id: "https://joechamdani.com/#joseph"`.
 5. Internal links: at least one existing page must link to the new page. Orphan pages
    rank for nothing.
 
+## Share previews (og:image) - every public page, no exceptions
+
+A link with no preview image looks broken when shared. Every indexable page needs a
+share image, and the image has to actually exist.
+
+1. Required tags, absolute URLs (never relative): `og:image`, `twitter:card` =
+   summary_large_image, `twitter:image`.
+   `og:image:width` / `og:image:height` are OPTIONAL and must be TRUE if present.
+   `generate-static-pages.js` strips them on interior pages on purpose, because
+   those pages use logos and certificates that are not 1200x630, and wrong
+   dimensions render worse than none. Only the homepage declares them (preview.png
+   is square, declared 2048x2048). Do not "fix" a page by adding invented sizes.
+2. **Verify the file resolves.** A 404 og:image renders as a blank card and nothing
+   warns you. This has shipped before: the blog index pointed at `/og-image.png`,
+   which does not exist. The real site-wide default is `/preview.png`.
+3. **Two code paths, both must carry it.** The build-time static page
+   (`generate-static-pages.js` or `generate-blog-meta.js`) is what crawlers and
+   social scrapers read; the `react-helmet-async` block in the page component is
+   what a client-side navigation produces. Setting only one leaves the other blank.
+4. Which image: page-specific when one exists (article thumbnail, company logo,
+   certificate). Otherwise `https://joechamdani.com/preview.png`. 1200x630 is the
+   target ratio for a large card.
+5. After changing OG tags on a URL that has already been shared, bust the caches:
+   LinkedIn Post Inspector and the X card validator. They cache the old blank card
+   for a long time otherwise.
+
+Verify in the DIST, per page:
+
+```bash
+grep -o 'og:image" content="[^"]*"' dist/<page>/index.html
+# then confirm the file exists in dist (mind URL-encoded spaces)
+```
+
 ## Hard rules (apply to every word you write)
 
-- NO em dashes or en dashes anywhere: copy, titles, meta, alt text, llms.txt. Period,
-  comma, or colon instead. Titles join with "·". Hyphens inside compound words are fine.
+- No em dashes or en dashes in PROSE: blog and article body copy, and the written
+  content of the site (section text, descriptions a visitor reads as sentences).
+  Period, comma, or colon instead.
+  This is NOT a site-wide typography ban. Joseph confirmed on 23 Aug 2026 that dashes
+  are fine in titles, sitemap entries, alt text, captions, and separators. Do not
+  sweep them out of chrome, and do not "fix" the en dashes in date ranges like
+  "Aug 2025 – Feb 2026" in milestones.json and experiences.json. Those are settled:
+  no change. Two sessions over-applied the old wording of this rule and had to revert.
 - No invented metrics, no testimonial paraphrasing, plain direct voice.
 - No `#hash` fragments visible in URLs from navigation.
 
