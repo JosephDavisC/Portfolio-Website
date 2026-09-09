@@ -1,9 +1,15 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { checkWebpTwins } from './check-webp-twins.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+// Fail the build before anything is written if an image rendered through
+// <picture> has no .webp twin. Runs as part of the build so a missing twin is
+// caught before any output is produced.
+checkWebpTwins();
 
 // Load experience data for dynamic page generation
 const experiencesPath = path.join(__dirname, '..', 'src', 'data', 'experiences.json');
@@ -31,10 +37,24 @@ function buildSeoImagesBlock(images) {
       seen.add(img.src);
       return true;
     })
-    .map(
-      (img) =>
-        `    <img src="${img.src}" alt="${(img.alt || '').replace(/"/g, '&quot;')}" loading="lazy">`
-    )
+    .map((img) => {
+      const alt = (img.alt || '').replace(/"/g, '&quot;');
+      const tag = `<img src="${img.src}" alt="${alt}" loading="lazy">`;
+      // This block is `hidden`, but browsers still fetch images in a
+      // display:none subtree, so these crawler-only tags would otherwise pull the
+      // full-size original. Wrapping in <picture> keeps the <img src> on the
+      // original, which is what crawlers read and what the sitemap and og:image
+      // declare, while browsers take the .webp. Only emitted when the twin
+      // exists: a <source> pointing at a missing file renders broken instead of
+      // falling back.
+      const webp = img.src.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+      const hasTwin =
+        webp !== img.src &&
+        fs.existsSync(path.join(__dirname, '..', 'public', webp));
+      return hasTwin
+        ? `    <picture><source srcset="${webp}" type="image/webp">${tag}</picture>`
+        : `    ${tag}`;
+    })
     .join('\n');
   return `  <div id="seo-images" hidden aria-hidden="true">\n${tags}\n  </div>\n`;
 }
@@ -60,9 +80,17 @@ const seoImagesByPath = {
 
 for (const [slug, exp] of Object.entries(experiences)) {
   const imgs = [];
-  if (exp.ogImage) imgs.push({ src: exp.ogImage, alt: exp.seo?.title || exp.company });
+  // teamPhoto first: when it doubles as the ogImage (common), the dedup in
+  // buildSeoImagesBlock keeps whichever alt was pushed first, and the caption is
+  // a far better alt for image search than the page's SEO title.
   if (exp.teamPhoto?.image)
     imgs.push({ src: exp.teamPhoto.image, alt: exp.teamPhoto.caption || `${exp.company} team` });
+  if (exp.ogImage) imgs.push({ src: exp.ogImage, alt: exp.seo?.title || exp.company });
+  // Gallery shots sit beside the team photo on the page, so they belong in the
+  // crawler image block too. Without this they render for humans but are
+  // invisible to Google Images, which only sees the prerendered HTML.
+  for (const shot of exp.gallery ?? [])
+    imgs.push({ src: shot.image, alt: shot.caption || `${exp.company} photo` });
   if (exp.videoDemo?.thumbnail)
     imgs.push({
       src: exp.videoDemo.thumbnail,
@@ -211,6 +239,13 @@ for (const [slug, exp] of Object.entries(experiences)) {
   const logoImg = exp.logo
     ? `<img src="${esc(exp.logo)}" alt="${esc(exp.company)} logo" width="96" height="96" fetchpriority="high" style="object-fit:contain">`
     : '';
+  const testimonials = (exp.testimonials || [])
+    .map(
+      (t) =>
+        `<blockquote><p>${esc(t.quote)}</p>` +
+        `<cite>${esc(t.author)}, ${esc(t.role)}, ${esc(t.company)}</cite></blockquote>`
+    )
+    .join('');
   fallbackByPath[`experience/${slug}`] = buildFallbackMain(
     logoImg +
       `<h1>${esc(exp.role)} — ${esc(exp.company)}</h1>` +
@@ -220,6 +255,11 @@ for (const [slug, exp] of Object.entries(experiences)) {
       ((exp.technologies || []).length
         ? `<p>Technologies: ${esc(exp.technologies.join(', '))}</p>`
         : '') +
+      // Recommendations are rendered client-side only, so until now neither Google
+      // nor any AI crawler could see them: they are third-party endorsements naming
+      // a real person and role, which is exactly the kind of E-E-A-T signal worth
+      // exposing. <blockquote> + <cite> so the attribution stays machine-readable.
+      (testimonials ? `<h2>What people say</h2>${testimonials}` : '') +
       relatedFooter(`/experience/${slug}/`)
   );
 }
@@ -506,19 +546,19 @@ const tennisAndCoffeeImages = [
     alt: 'Joseph Chamdani playing padel, backhand follow-through',
   },
   {
-    src: '/images/moments/Joseph_Chamdani_Tennis.jpg',
+    src: '/images/moments/Joseph_Chamdani_Tennis.webp',
     alt: 'Joseph Chamdani playing tennis — forehand shot on the court',
   },
   {
-    src: '/images/moments/Joseph_Chamdani_Tennis_4.jpg',
+    src: '/images/moments/Joseph_Chamdani_Tennis_4.webp',
     alt: 'Joseph Chamdani playing tennis — one-handed backhand',
   },
   {
-    src: '/images/moments/Joseph_Chamdani_Tennis_2.jpg',
+    src: '/images/moments/Joseph_Chamdani_Tennis_2.webp',
     alt: 'Joseph Chamdani playing tennis — forehand during match',
   },
   {
-    src: '/images/moments/Joseph_Chamdani_Tennis_3.JPG',
+    src: '/images/moments/Joseph_Chamdani_Tennis_3.webp',
     alt: 'Joseph Chamdani with tennis partner on the court',
   },
   {

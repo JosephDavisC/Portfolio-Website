@@ -3,6 +3,8 @@ import { Link, useParams, Navigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { m } from "framer-motion";
 import Navbar from "@/components/shared/Navbar";
+import OptimizedImage from "@/components/shared/OptimizedImage";
+import Lightbox from "@/components/sections/Lightbox";
 import {
   ArrowLeft,
   Calendar,
@@ -68,7 +70,18 @@ type VideoDemo = {
 type TeamPhoto = {
   image: string;
   caption: string;
+  /** CSS object-position, e.g. "center 62%". Tall photos crop badly from the
+      top: the default would frame the ceiling and cut the people out. */
+  objectPosition?: string;
 } | null;
+
+/** Extra shots shown beside the team photo. href turns the card into a link. */
+type GalleryItem = {
+  image: string;
+  caption: string;
+  href?: string;
+  objectPosition?: string;
+};
 
 type Testimonial = {
   quote: string;
@@ -76,6 +89,9 @@ type Testimonial = {
   role: string;
   company: string;
   linkedin?: string;
+  /** Optional headshot. Cards without one keep the original text-only layout,
+      so existing experiences (Sector) are unchanged. */
+  image?: string;
 };
 
 type Theme = {
@@ -112,6 +128,7 @@ type Experience = {
   impact: { metric: string; value: string }[];
   testimonials?: Testimonial[];
   teamPhoto?: TeamPhoto;
+  gallery?: GalleryItem[];
   products: Product[];
   researchPapers: ResearchPaper[];
   videoDemo: VideoDemo;
@@ -223,6 +240,9 @@ function VideoPlayer({ videoDemo, theme }: { videoDemo: NonNullable<VideoDemo>; 
 
 export default function InternshipPage() {
   const { slug } = useParams<{ slug: string }>();
+  // Declared before the `if (!internship)` early return below: hooks cannot be
+  // conditional. Uses the shared Lightbox, mounted only while open.
+  const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null);
 
   // Get the internship data based on slug
   const experiences = experiencesData as ExperiencesData;
@@ -419,10 +439,19 @@ export default function InternshipPage() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="grid grid-cols-3 gap-4 mb-8"
         >
-          {internship.impact.map((item, i) => (
+          {internship.impact.map((item, i) => {
+            // The grid is 3 wide. A trailing row with 1 or 2 items would leave a
+            // ragged stub, so the remainder stretches to fill the row instead:
+            // 4 items -> last spans 3, 5 items -> last two span 1.5 each (col-span-3
+            // splits evenly via the 2-col sub-grid below). Mirrors the same trick
+            // the testimonials block already uses for its odd last card.
+            const rem = internship.impact.length % 3;
+            const isTail = rem !== 0 && i >= internship.impact.length - rem;
+            const span = isTail ? (rem === 1 ? 'col-span-3' : 'col-span-3 md:col-span-1') : '';
+            return (
             <div
               key={i}
-              className="card-brutal p-4 md:p-6 text-center"
+              className={`card-brutal p-4 md:p-6 text-center ${span}`}
             >
               <div
                 className="text-2xl md:text-3xl font-bold mb-1"
@@ -434,7 +463,8 @@ export default function InternshipPage() {
                 {item.metric}
               </div>
             </div>
-          ))}
+            );
+          })}
         </m.div>
 
         {/* Main Content Grid */}
@@ -729,9 +759,13 @@ export default function InternshipPage() {
                               onMouseLeave={(e) => e.currentTarget.style.borderColor = ''}
                             >
                               <div className="aspect-square relative">
-                                <img
+                                {/* pictureClassName must carry block w-full h-full: a bare
+                                    <picture> is display:inline with no height, so the img's
+                                    h-full would resolve to zero and collapse the tile. */}
+                                <OptimizedImage
                                   src={post.image}
                                   alt={post.title}
+                                  pictureClassName="block w-full h-full"
                                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-espresso/80 via-transparent to-transparent dark:from-slate-900/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-3">
@@ -798,20 +832,34 @@ export default function InternshipPage() {
                     "{testimonial.quote}"
                   </blockquote>
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm font-semibold text-espresso dark:text-slate-200">
-                        {testimonial.author}
-                      </span>
-                      <span className="text-xs text-espresso/40 dark:text-slate-500">·</span>
-                      <span className="text-xs text-espresso/60 dark:text-slate-400 font-mono">
-                        {testimonial.role}
-                      </span>
+                    <div className="flex items-center gap-3 min-w-0">
+                      {testimonial.image && (
+                        <OptimizedImage
+                          src={testimonial.image}
+                          alt={`${testimonial.author}, ${testimonial.role}`}
+                          pictureClassName="block shrink-0"
+                          className="h-10 w-10 rounded-full object-cover border-2 border-espresso/20 dark:border-slate-600"
+                        />
+                      )}
+                      <div className="flex flex-wrap items-center gap-x-2 min-w-0">
+                        <span className="text-sm font-semibold text-espresso dark:text-slate-200">
+                          {testimonial.author}
+                        </span>
+                        <span className="text-xs text-espresso/40 dark:text-slate-500">·</span>
+                        <span className="text-xs text-espresso/60 dark:text-slate-400 font-mono">
+                          {testimonial.role}
+                        </span>
+                      </div>
                     </div>
                     {testimonial.linkedin && (
                       <a
                         href={testimonial.linkedin}
                         target="_blank"
                         rel="noopener noreferrer"
+                        // The link's only child is an icon, so without this a screen
+                        // reader announces it as bare "link" and Lighthouse flags
+                        // "links do not have a discernible name".
+                        aria-label={`${testimonial.author} on LinkedIn (opens in a new tab)`}
                         className="text-espresso/40 dark:text-slate-500 hover:dark:text-[#0A66C2] transition-colors"
                         style={{ ['--hover-color' as string]: theme.primary }}
                         onMouseEnter={(e) => e.currentTarget.style.color = theme.primary}
@@ -850,23 +898,67 @@ export default function InternshipPage() {
               </h2>
             </div>
 
-            <div className="card-brutal overflow-hidden">
-              <div className="relative">
-                <img
-                  src={internship.teamPhoto.image}
-                  alt={internship.teamPhoto.caption}
-                  className="w-full h-auto object-cover"
-                />
-                {/* Gradient overlay at bottom */}
-                <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-espresso/60 dark:from-slate-900/80 to-transparent" />
-              </div>
-              <div className="px-6 py-4 border-t-2 border-espresso/10 dark:border-slate-700 bg-paper dark:bg-slate-800/50">
-                <p className="text-sm text-espresso/70 dark:text-slate-300 font-mono text-center">
-                  {internship.teamPhoto.caption}
-                </p>
-              </div>
+            {/* The main team photo sits alongside any gallery items (extra photos,
+                a LinkedIn post) rather than running full width, so a page with
+                several images reads as one row of cards instead of one huge photo.
+                A lone team photo keeps the old single-column look. */}
+            <div className={`grid gap-4 ${internship.gallery?.length ? 'sm:grid-cols-2 lg:grid-cols-3' : ''}`}>
+              {[
+                internship.teamPhoto,
+                ...(internship.gallery ?? []),
+              ].map((shot, i) => {
+                const card = (
+                  <>
+                    <div className="relative">
+                      <OptimizedImage
+                        src={shot.image}
+                        alt={shot.caption}
+                        pictureClassName="block w-full"
+                        className="w-full h-56 sm:h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                        style={{ objectPosition: shot.objectPosition || "center" }}
+                      />
+                      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-espresso/60 dark:from-slate-900/80 to-transparent" />
+                    </div>
+                    <div className="px-4 py-3 border-t-2 border-espresso/10 dark:border-slate-700 bg-paper dark:bg-slate-800/50">
+                      <p className="text-sm text-espresso/70 dark:text-slate-300 font-mono text-center">
+                        {shot.caption}
+                      </p>
+                    </div>
+                  </>
+                );
+                const href = (shot as GalleryItem).href;
+                // A card that links somewhere keeps linking; only the rest open
+                // the viewer. Same rule the article delegation uses for images
+                // already wrapped in an <a>.
+                return href ? (
+                  <a
+                    key={i}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="card-brutal overflow-hidden group block"
+                    aria-label={`${shot.caption} (opens in a new tab)`}
+                  >
+                    {card}
+                  </a>
+                ) : (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={() => setLightbox({ src: shot.image, alt: shot.caption })}
+                    className="card-brutal overflow-hidden group block text-left cursor-zoom-in"
+                    aria-label={`View ${shot.caption} full size`}
+                  >
+                    {card}
+                  </button>
+                );
+              })}
             </div>
           </m.div>
+        )}
+
+        {lightbox && (
+          <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />
         )}
 
         {/* CTA */}

@@ -29,7 +29,7 @@ This site represents Joseph Davis Chamdani, the University of Washington Informa
 ## Experience
 
 - [All experience](https://joechamdani.com/experience/): Full timeline of every internship, club, and job.
-- [Whitespace Solutions, AI Product Intern](https://joechamdani.com/experience/whitespace): competitive analysis that repositioned an AI sales coaching product, frontend and backend feature work, pre-launch QA (30+ defects triaged), live demos to shareholders and enterprise prospects (current).
+- [Whitespace Solutions, AI Product Intern](https://joechamdani.com/experience/whitespace): Jul 2026 to Sep 2026, Jakarta, hybrid. Shipped features end to end on a live AI sales-training platform across the database, the backend API and the React front end, and took the platform's semantic search into production, tuned against a golden set to 9 of 10 on top-3 accuracy. Also drove competitive analysis of 4 US and APAC sales-enablement platforms that repositioned the product, ran pre-launch QA (30+ defects triaged), and gave live demos to shareholders and enterprise prospects.
 - [Information Consulting Group, Technology Operations Associate](https://joechamdani.com/experience/icg): Technology operations and consulting initiatives at a University of Washington student consulting group (current).
 - [Sector, AI Research and Development](https://joechamdani.com/experience/sector): AI automation for penetration testing and threat detection; authored three published research papers.
 - [Stockbit/Bibit, AI Engineer](https://joechamdani.com/experience/stockbit): OCR/KYC pipeline and fraud detection with Google Cloud AutoML.

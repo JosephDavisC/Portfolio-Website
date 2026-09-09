@@ -8,19 +8,22 @@
         "category": "Internships",
         "logo": "/logos/whitespace-solution-logo.svg",
         "website": "https://whitespace.id",
-        "meta": "Internship · 2 mos",
+        "meta": "Internship · 3 mos",
         "location": "Jakarta, Indonesia",
         "roles": [
           {
             "title": "AI Product Intern",
-            "dates": "Jul 2026 – Present · 2 mos",
+            "dates": "Jul 2026 – Sep 2026 · 3 mos",
             "meta": "Hybrid",
+            "detailsLink": "/experience/whitespace",
             "bullets": [
-              "Drove competitive analysis of 4 US and APAC sales-enablement platforms, directly informing a company-wide repositioning from knowledge platform to sales roleplay and coaching.",
-              "Built and shipped frontend features across the platform's product modules and contributed to backend development.",
-              "Ran pre-launch QA that surfaced and triaged 30+ defects ahead of the first live enterprise deployment; presented live demos to shareholders and enterprise prospects."
+              "Built and shipped features end to end on the team's live AI sales-training platform, across the database, the backend API and the React front end.",
+              "Shipped the platform's semantic search into the production codebase, tuned against a golden set until it hit 9 of 10 on top-3 accuracy.",
+              "Owned the product side alongside the code: drove competitive analysis of 4 US and APAC sales-enablement platforms and presented live product demos to company shareholders and enterprise prospects."
             ],
             "media": [
+              { "src": "/Milestones/Whitespace/team-demo.jpg", "caption": "Demo day with the Whitespace Solutions team, the platform on screen" },
+              { "src": "/Milestones/Whitespace/team-office.jpg", "caption": "Last day at the Whitespace Solutions office" },
               { "src": "/logos/whitespace-solution-logo.svg", "caption": "Whitespace Solutions", "href": "https://whitespace.id" }
             ]
           }
@@ -31,12 +34,12 @@
         "category": "Clubs",
         "logo": "/logos/ICG.png",
         "website": "https://www.linkedin.com/company/information-consulting-group/",
-        "meta": "Part-time · 4 mos",
+        "meta": "Part-time · 5 mos",
         "location": "Seattle, Washington, United States",
         "roles": [
           {
             "title": "Technology Operations Associate",
-            "dates": "May 2026 – Present · 4 mos",
+            "dates": "May 2026 – Present · 5 mos",
             "meta": "Hybrid",
             "bullets": [
               "Supported technology operations and consulting initiatives at Information Consulting Group."
@@ -52,19 +55,19 @@
         "category": "Work",
         "logo": "/logos/UW_Logo.png",
         "website": "https://hfs.uw.edu/Dining",
-        "meta": "Part-time · 1 yr",
+        "meta": "Part-time · 1 yr 1 mo",
         "location": "Seattle, Washington, United States",
         "roles": [
           {
             "title": "Student Assistant - Bay Laurel Catering",
-            "dates": "Sep 2025 – Present · 1 yr",
+            "dates": "Sep 2025 – Present · 1 yr 1 mo",
             "meta": "On-site",
             "bullets": [
               "Supported UW Housing and Food Services with catering operations, event setup, and daily food service."
             ],
             "media": [
-              { "src": "media/UW-Dining.png", "caption": "UW HFS Dining", "href": "https://hfs.uw.edu/Home" },
-              { "src": "media/bay-laurel.jpg", "caption": "UW Bay Laurel", "href": "https://hfs.uw.edu/Bay-Laurel-Catering" }
+              { "src": "/media/UW-Dining.png", "caption": "UW HFS Dining", "href": "https://hfs.uw.edu/Home" },
+              { "src": "/media/bay-laurel.jpg", "caption": "UW Bay Laurel", "href": "https://hfs.uw.edu/Bay-Laurel-Catering" }
             ]
           }
         ]
@@ -113,7 +116,7 @@
               "Delivered a lecture to visiting Korean exchange students about running BC Hacks 2024."
             ],
             "media": [
-              { "src": "media/BCHACKS_Thumbnail.webp", "caption": "BC Hacks Lecture", "href": "https://joechamdani.com/blog/bc-hacks-2024" },
+              { "src": "/media/BCHACKS_Thumbnail.webp", "caption": "BC Hacks Lecture", "href": "https://joechamdani.com/blog/bc-hacks-2024" },
               { "src": "/media/bc-2.jpeg", "caption": "BC Tech Club", "href": "https://bctechclub.com/" },
               { "src": "/media/bc-officers.jpeg", "caption": "BC Tech Club officer team at Bellevue College, 2024" }
             ]

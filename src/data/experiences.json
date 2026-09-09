@@ -6,7 +6,7 @@
     "ogImage": "/logos/ICG.png",
     "role": "Technology Operations Associate",
     "type": "Part-time",
-    "duration": "May 2026 – Present · 4 mos",
+    "duration": "May 2026 – Present · 5 mos",
     "location": "Seattle, Washington, United States · Hybrid",
     "website": "https://www.linkedin.com/company/information-consulting-group/",
     "description": "Information Consulting Group (ICG) is a consulting organization based in Seattle, WA. As a Technology Operations Associate, I support technology operations and consulting initiatives, collaborating with the team on operational and technical projects.",
@@ -42,13 +42,14 @@
     "slug": "whitespace",
     "company": "Whitespace Solutions",
     "logo": "/logos/whitespace-solution-logo.svg",
-    "ogImage": "/logos/whitespace-solution-logo.svg",
+    "logoBg": "#FFFFFF",
+    "ogImage": "/Milestones/Whitespace/team-demo.jpg",
     "role": "AI Product Intern",
     "type": "Internship",
-    "duration": "Jul 2026 – Present · 2 mos",
+    "duration": "Jul 2026 – Sep 2026 · 3 mos",
     "location": "Jakarta, Indonesia · Hybrid",
     "website": "https://whitespace.id",
-    "description": "Whitespace Solutions is a technology company in Jakarta, Indonesia building an AI sales coaching product. As an AI Product Intern I work across product and engineering: competitive analysis that helped reposition the product, frontend and backend feature work across the platform's modules, pre-launch QA ahead of the first live enterprise deployment, and live product demos alongside the founding team.",
+    "description": "Whitespace Solutions is a technology company in Jakarta, Indonesia building an AI sales-training platform. As an AI Product Intern I shipped features end to end across the database, the backend API and the React front end, and took the platform's semantic search into production, tuning it against a golden set until it reached 9 of 10 on top-3 accuracy. Alongside the code I owned product work: competitive analysis of 4 US and APAC sales-enablement platforms that informed a company-wide repositioning, pre-launch QA ahead of the first live enterprise deployment, and live product demos to company shareholders and enterprise prospects.",
     "theme": {
       "primary": "#F2902A",
       "primaryHover": "#F8A94E",
@@ -60,27 +61,69 @@
     },
     "seo": {
       "title": "Whitespace Solutions Internship - AI Product Intern",
-      "description": "AI Product Intern at Whitespace Solutions, Jakarta. Building AI-powered product features and collaborating with product and engineering teams.",
+      "description": "Joseph Chamdani was AI Product Intern at Whitespace Solutions in Jakarta from July to September 2026, shipping full-stack features and production semantic search on an AI sales-training platform.",
       "keywords": [
         "Joseph Chamdani",
         "AI Product Intern",
         "Whitespace Solutions",
         "Jakarta",
         "AI internship",
-        "product development"
+        "product development",
+        "semantic search",
+        "AI sales training platform",
+        "React",
+        "full-stack internship"
       ]
     },
     "highlights": [
-      "Drove competitive analysis of 4 US and APAC sales-enablement platforms for an AI sales coaching product, directly informing a company-wide repositioning from knowledge platform to sales roleplay and coaching",
-      "Built and shipped frontend features across the platform's product modules and contributed to backend development",
+      "Built and shipped features end to end on the team's live AI sales-training platform, across the database, the backend API and the React front end",
+      "Shipped the platform's semantic search into the production codebase, tuned against a golden set until it hit 9 of 10 on top-3 accuracy",
+      "Drove competitive analysis of 4 US and APAC sales-enablement platforms, directly informing a company-wide repositioning from knowledge platform to sales roleplay and coaching",
       "Ran pre-launch QA that surfaced and triaged 30+ defects ahead of the first live enterprise deployment",
       "Presented live product demos to company shareholders and enterprise prospects alongside the founding team"
     ],
-    "technologies": ["AI Product Development", "Frontend", "Backend", "QA", "Competitive Analysis"],
+    "technologies": ["AI Product Development", "React", "Backend API", "Databases", "Semantic Search", "QA", "Competitive Analysis"],
     "impact": [
+      { "metric": "Semantic search top-3 accuracy", "value": "9/10" },
       { "metric": "Platforms analyzed", "value": "4" },
       { "metric": "Pre-launch defects triaged", "value": "30+" },
       { "metric": "Enterprise deployment", "value": "1st live" }
+    ],
+    "testimonials": [
+        {
+          "quote": "I had the pleasure of supervising Joseph while he worked as an intern in my firm and worked on product development as well as internal tooling. He adapted quickly to our AI-native workflows and quickly became an important part of the team. Joseph demonstrates strong sense of ownership, creativity in the application of tools, and consistency in delivering productive output. Most importantly, he exemplifies what I think is most important in the new post-AI landscape, agility, willingness to try new things, while also working well with others. I have no doubt he will be a valuable part of any team he joins.",
+          "author": "Stevien Washington",
+          "role": "Co-Founder",
+          "company": "Whitespace Solutions",
+          "linkedin": "https://www.linkedin.com/in/stevien-washington-177893193/",
+          "image": "/Milestones/Whitespace/people/stevien-washington.jpg"
+        },
+        {
+          "quote": "I had the pleasure of working with Jo during his internship in Whitespace, and I was genuinely impressed by his initiative, ownership, and ability to learn new things very quickly. Despite being much younger than me and still an intern, Jo never felt like one—he consistently worked with the maturity, proactiveness, and responsibility of a full-time team member. He played an important role in turning your product ideas into tangible mockups and concepts, and many of those outcomes would not have been possible without his contribution. Beyond his work, Jo also motivated me to explore and learn more about AI and technology. Keep inspiring, Jo!",
+          "author": "Muhammad Sirajudin Abbas",
+          "role": "Business Analyst",
+          "company": "Whitespace Solutions",
+          "linkedin": "https://www.linkedin.com/in/sirajudin-abbas/",
+          "image": "/Milestones/Whitespace/people/muhammad-sirajudin-abbas.jpg"
+        }
+      ],
+    "teamPhoto": {
+      "image": "/Milestones/Whitespace/team-demo.jpg",
+      "caption": "Demo day with the team, the AI sales-training platform on screen",
+      "objectPosition": "center 62%"
+    },
+    "gallery": [
+      {
+        "image": "/Milestones/Whitespace/team-group.jpg",
+        "caption": "The Whitespace Solutions team in Jakarta",
+        "objectPosition": "center 45%"
+      },
+      {
+        "image": "/Milestones/Whitespace/linkedin-farewell.png",
+        "caption": "Wrapping up the internship on LinkedIn",
+        "objectPosition": "center top",
+        "href": "https://www.linkedin.com/posts/joseph-chamdani_two-months-ago-i-walked-into-whitespace-solutions-ugcPost-7500917781966802945-fAL4/"
+      }
     ]
   },
   "sector": {

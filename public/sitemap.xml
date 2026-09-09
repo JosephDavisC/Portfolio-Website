@@ -134,22 +134,22 @@
       <image:caption>Joseph Chamdani playing padel, backhand follow-through</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://joechamdani.com/images/moments/Joseph_Chamdani_Tennis.jpg</image:loc>
+      <image:loc>https://joechamdani.com/images/moments/Joseph_Chamdani_Tennis.webp</image:loc>
       <image:title>Joseph Chamdani Playing Tennis</image:title>
       <image:caption>Joseph Chamdani playing tennis — forehand shot on the court</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://joechamdani.com/images/moments/Joseph_Chamdani_Tennis_4.jpg</image:loc>
+      <image:loc>https://joechamdani.com/images/moments/Joseph_Chamdani_Tennis_4.webp</image:loc>
       <image:title>Joseph Chamdani — Backhand</image:title>
       <image:caption>Joseph Chamdani playing tennis — one-handed backhand</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://joechamdani.com/images/moments/Joseph_Chamdani_Tennis_2.jpg</image:loc>
+      <image:loc>https://joechamdani.com/images/moments/Joseph_Chamdani_Tennis_2.webp</image:loc>
       <image:title>Joseph Chamdani — Match</image:title>
       <image:caption>Joseph Chamdani playing tennis — forehand during match</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://joechamdani.com/images/moments/Joseph_Chamdani_Tennis_3.JPG</image:loc>
+      <image:loc>https://joechamdani.com/images/moments/Joseph_Chamdani_Tennis_3.webp</image:loc>
       <image:title>Joseph Chamdani on Court</image:title>
       <image:caption>Joseph Chamdani with tennis partner on the court</image:caption>
     </image:image>
@@ -409,9 +409,19 @@
 
   <url>
     <loc>https://joechamdani.com/experience/whitespace/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://joechamdani.com/Milestones/Whitespace/team-demo.jpg</image:loc>
+      <image:title>Whitespace Solutions demo day</image:title>
+      <image:caption>Joseph Chamdani with the Whitespace Solutions team in Jakarta, the AI sales-training platform on screen</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/Milestones/Whitespace/team-group.jpg</image:loc>
+      <image:title>The Whitespace Solutions team</image:title>
+      <image:caption>The Whitespace Solutions team at the Jakarta office</image:caption>
+    </image:image>
     <image:image>
       <image:loc>https://joechamdani.com/logos/whitespace-solution-logo.svg</image:loc>
       <image:title>Whitespace Solutions - AI Product Intern</image:title>
