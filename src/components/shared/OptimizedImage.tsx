@@ -12,9 +12,19 @@ interface OptimizedImageProps extends React.ImgHTMLAttributes<HTMLImageElement> 
 /**
  * Converts image path to WebP path
  * /images/photo.jpg -> /images/photo.webp
+ *
+ * Exported because framer-motion images (Portfolio, ProjectsPage, Milestones)
+ * cannot go through <OptimizedImage>: it renders a plain <img> and would drop
+ * the motion props. Those sites hand-roll <picture><source/><m.img/></picture>
+ * and need the same path rule so there is one definition of it.
  */
-function getWebPPath(src: string): string {
+export function getWebPPath(src: string): string {
   return src.replace(/\.(jpg|jpeg|png|JPG|JPEG|PNG)$/i, ".webp");
+}
+
+/** True when a .webp twin is worth requesting for this src. */
+export function hasWebP(src: string): boolean {
+  return /\.(jpg|jpeg|png)$/i.test(src);
 }
 
 /**

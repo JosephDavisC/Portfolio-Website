@@ -2,6 +2,7 @@ import React, { useEffect, useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { m, AnimatePresence } from "framer-motion";
 import { Calendar, MapPin, X, ChevronDown, ChevronUp, ChevronRight, Briefcase, Users, GraduationCap, ArrowRight } from "lucide-react";
+import { getWebPPath, hasWebP } from "@/components/shared/OptimizedImage";
 import data from "@/data/milestones.json";
 
 /* Cache-bust for images: appends a version so browsers/CDN fetch a fresh copy
@@ -397,12 +398,22 @@ export default function Milestones({ variant = "home" }: MilestonesProps) {
                               {role.media?.length ? (
                                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                                   {role.media.map((m, mi) => {
+                                    // The <picture> must carry block w-full h-full: it sits
+                                    // inside the <a>/<button> that owns the tile height, and a
+                                    // bare <picture> is display:inline, which would collapse
+                                    // the img's h-full to zero. hasWebP skips .svg entries,
+                                    // which have no twin and must not get a <source>.
                                     const Img = (
-                                      <img loading="lazy" decoding="async"
-                                        src={bust(m.src)}
-                                        alt={m.caption}
-                                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                                      />
+                                      <picture className="block w-full h-full">
+                                        {hasWebP(m.src) && (
+                                          <source srcSet={bust(getWebPPath(m.src))} type="image/webp" />
+                                        )}
+                                        <img loading="lazy" decoding="async"
+                                          src={bust(m.src)}
+                                          alt={m.caption}
+                                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                        />
+                                      </picture>
                                     );
                                     return (
                                       <figure

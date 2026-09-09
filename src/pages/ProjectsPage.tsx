@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { Github, ExternalLink, BookOpen, FileText, ArrowLeft } from 'lucide-react';
 import Navbar from '@/components/shared/Navbar';
+import { getWebPPath, hasWebP } from '@/components/shared/OptimizedImage';
 import projectsData from '@/data/projects.json';
 
 const fadeInUp = {
@@ -212,14 +213,21 @@ const ProjectsPage: React.FC = () => {
                     className="card-brutal p-5 flex flex-col group"
                   >
                     <figure className="relative overflow-hidden rounded-lg border-2 border-espresso dark:border-slate-600">
-                      <m.img
-                        src={project.image}
-                        alt={project.imageAlt || project.title}
-                        className={`${getImageClasses(project.imageStyle)}`}
-                        loading="lazy"
-                        whileHover={{ scale: 1.05 }}
-                        transition={{ duration: 0.4 }}
-                      />
+                      {/* See Portfolio.tsx for why this is a hand-rolled <picture>
+                          instead of <OptimizedImage>: m.img carries motion props. */}
+                      <picture className="block">
+                        {hasWebP(project.image) && (
+                          <source srcSet={getWebPPath(project.image)} type="image/webp" />
+                        )}
+                        <m.img
+                          src={project.image}
+                          alt={project.imageAlt || project.title}
+                          className={`${getImageClasses(project.imageStyle)}`}
+                          loading="lazy"
+                          whileHover={{ scale: 1.05 }}
+                          transition={{ duration: 0.4 }}
+                        />
+                      </picture>
                       <span className="absolute top-3 right-3 px-3 py-1 bg-tennis dark:bg-slate-800 text-espresso dark:text-slate-100 font-mono text-xs font-bold border-2 border-espresso dark:border-slate-600 rounded-full shadow-brutal-sm">
                         {project.category}
                       </span>

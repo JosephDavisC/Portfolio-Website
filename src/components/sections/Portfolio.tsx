@@ -3,6 +3,7 @@ import React from 'react';
 import { m } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Github, ExternalLink, BookOpen, FileText, ArrowRight } from 'lucide-react';
+import { getWebPPath, hasWebP } from '@/components/shared/OptimizedImage';
 import projectsData from '@/data/projects.json';
 
 const projects = projectsData.filter(p => p.featured).slice(0, 4);
@@ -46,20 +47,30 @@ const Projects = () => {
             >
               {/* Project Image */}
               <figure className="relative overflow-hidden rounded-lg border-2 border-espresso mb-5">
-                <m.img
-                  src={project.image}
-                  alt={project.imageAlt || project.title}
-                  className={
-                    project.imageStyle === "contain-white"
-                      ? "h-56 w-full object-contain bg-white p-6 md:h-64"
-                      : project.imageStyle === "contain-navy"
-                        ? "h-56 w-full object-contain bg-[#222a48] md:h-64"
-                        : "h-56 w-full object-cover object-center md:h-64"
-                  }
-                  loading="lazy"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.4 }}
-                />
+                {/* Hand-rolled <picture> rather than <OptimizedImage>: that renders a
+                    plain <img> and would drop whileHover/transition. The <source> is
+                    only safe because every image in projects.json has a .webp twin,
+                    which scripts/check-webp-twins.js enforces at build time. A missing
+                    twin does NOT fall back to the <img>, it renders broken. */}
+                <picture className="block">
+                  {hasWebP(project.image) && (
+                    <source srcSet={getWebPPath(project.image)} type="image/webp" />
+                  )}
+                  <m.img
+                    src={project.image}
+                    alt={project.imageAlt || project.title}
+                    className={
+                      project.imageStyle === "contain-white"
+                        ? "h-56 w-full object-contain bg-white p-6 md:h-64"
+                        : project.imageStyle === "contain-navy"
+                          ? "h-56 w-full object-contain bg-[#222a48] md:h-64"
+                          : "h-56 w-full object-cover object-center md:h-64"
+                    }
+                    loading="lazy"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.4 }}
+                  />
+                </picture>
                 {/* Category Badge */}
                 <span className="absolute top-3 left-3 px-3 py-1 bg-tennis dark:bg-slate-800 text-espresso dark:text-slate-100 font-mono text-xs font-bold border-2 border-espresso dark:border-slate-600 rounded-full shadow-brutal-sm">
                   {project.category}

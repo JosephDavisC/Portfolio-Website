@@ -2,6 +2,7 @@ import { useState } from "react";
 import { m, AnimatePresence } from "framer-motion";
 import { ZoomIn, ChevronLeft, ChevronRight, Coffee, Wrench } from "lucide-react";
 import Lightbox from "@/components/sections/Lightbox";
+import OptimizedImage from "@/components/shared/OptimizedImage";
 
 // Tennis Ball SVG icon (no emoji) - detailed version
 const TennisBallIcon: React.FC<{ className?: string }> = ({ className = "" }) => (
@@ -72,10 +73,10 @@ const tennisImages: CourtImage[] = [
   { src: "/images/moments/Joseph_Chamdani_Padel_Forehand.webp", alt: "Joseph playing padel, forehand at contact", sport: "padel", pos: "center 30%" },
   { src: "/images/moments/Joseph_Chamdani_Padel_Backhand.webp", alt: "Joseph playing padel, preparing a slice", sport: "padel", pos: "center 28%" },
   { src: "/images/moments/Joseph_Chamdani_Padel_Follow_Through.webp", alt: "Joseph playing padel, backhand follow-through", sport: "padel", pos: "center 25%" },
-  { src: "/images/moments/Joseph_Chamdani_Tennis.jpg", alt: "Joseph Forehand — 1", sport: "tennis" },
-  { src: "/images/moments/Joseph_Chamdani_Tennis_4.jpg", alt: "Joseph Backhand — 4", sport: "tennis" },
-  { src: "/images/moments/Joseph_Chamdani_Tennis_2.jpg", alt: "Joseph Forehand — 2", sport: "tennis" },
-  { src: "/images/moments/Joseph_Chamdani_Tennis_3.JPG", alt: "Joseph & Denzel — 3", sport: "tennis" }
+  { src: "/images/moments/Joseph_Chamdani_Tennis.webp", alt: "Joseph Forehand — 1", sport: "tennis" },
+  { src: "/images/moments/Joseph_Chamdani_Tennis_4.webp", alt: "Joseph Backhand — 4", sport: "tennis" },
+  { src: "/images/moments/Joseph_Chamdani_Tennis_2.webp", alt: "Joseph Forehand — 2", sport: "tennis" },
+  { src: "/images/moments/Joseph_Chamdani_Tennis_3.webp", alt: "Joseph & Denzel — 3", sport: "tennis" }
 ];
 
 const airViperSpecs = [
@@ -444,9 +445,14 @@ export default function TennisCoffeeSection() {
                 className="flex justify-center"
               >
                 <div className="rounded-xl border-2 border-espresso/20 dark:border-slate-600 bg-paper dark:bg-slate-800 p-6 w-full max-w-sm">
-                  <img loading="lazy" decoding="async"
+                  {/* pictureClassName="block" matters: Tailwind preflight makes <img>
+                      display:block so mx-auto centres it, but it does not touch
+                      <picture>, which stays inline and would shrink-wrap instead. */}
+                  <OptimizedImage
                     src="/images/rackets/diadem_elevate.jpg"
                     alt="Diadem Elevate V3 98"
+                    decoding="async"
+                    pictureClassName="block"
                     className="mx-auto w-auto"
                     style={{ height: "420px", objectFit: "contain" }}
                   />

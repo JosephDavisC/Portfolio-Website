@@ -3,6 +3,7 @@ import { Link, useParams, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { ArrowLeft, Download, ExternalLink, PlayCircle } from "lucide-react";
 import Navbar from "@/components/shared/Navbar";
+import OptimizedImage, { getWebPPath } from "@/components/shared/OptimizedImage";
 import creds from "@/data/credentials.json";
 
 /* ---------- Types ---------- */
@@ -185,10 +186,15 @@ export default function CredentialPage() {
           ) : cred.fallbackImage ? (
             // Mobile & tablets: always show image
             <div className="bg-paper-dark flex items-center justify-center">
-              <img
+              {/* OptimizedImage serves the .webp twin while cred.fallbackImage keeps
+                  its .png path, which is what generate-static-pages.js reads for this
+                  page's og:image. LinkedIn does not render WebP previews reliably, so
+                  the meta tag must stay PNG even though the browser gets WebP. */}
+              <OptimizedImage
                 src={cred.fallbackImage}
                 alt={cred.title}
                 loading="eager"
+                pictureClassName="block w-full"
                 className="block w-full h-auto max-h-[82vh] object-contain"
                 onError={(e) => {
                   (e.currentTarget as HTMLImageElement).style.display = "none";
@@ -262,7 +268,12 @@ export default function CredentialPage() {
                         className="w-full h-full"
                         controls
                         playsInline
-                        poster={video.poster || cred.fallbackImage}
+                        // A poster attribute takes a single URL, so it cannot go
+                        // through <picture>. Pointing it straight at the .webp is
+                        // safe here: posters are not an SEO surface (not og:image,
+                        // not in the sitemap), and check-webp-twins.js guarantees
+                        // every credentials.json image has a twin.
+                        poster={getWebPPath(video.poster || cred.fallbackImage || '')}
                       >
                         <source src={video.url} />
                         Your browser doesn't support HTML5 video.
