@@ -180,20 +180,6 @@ async function deploy() {
     client = await createClient();
     console.log('[+] Connected!\n');
 
-    // Delete removed files from server
-    if (filesToDelete.length > 0) {
-      console.log(`[*] Deleting ${filesToDelete.length} old files...`);
-      for (const remotePath of filesToDelete) {
-        try {
-          await client.remove(remotePath);
-          console.log(`    [-] ${remotePath}`);
-        } catch (e) {
-          // File might not exist on server
-        }
-      }
-      console.log('[+] Cleanup done!\n');
-    }
-
     // Ensure directories exist for files we're uploading
     const dirsNeeded = new Set();
     for (const f of filesToUpload) {
@@ -253,6 +239,30 @@ async function deploy() {
 
     progressBar.update(filesToUpload.length, { filename: 'Done!' });
     progressBar.stop();
+
+    // Delete superseded files only AFTER every upload has succeeded.
+    //
+    // Deleting first opened a window where the old asset chunks were already
+    // gone and the new ones had not finished uploading, so a visitor loading the
+    // site in that window got HTML pointing at chunks that 404'd, and a blank
+    // page until the upload caught up. Doing it last means the server always
+    // holds a complete version: the old one throughout the upload, the new one
+    // after. Superseded chunks linger a few extra seconds, which is harmless.
+    //
+    // If an upload throws, this is never reached, so a failed deploy leaves the
+    // previous version intact rather than half removed.
+    if (filesToDelete.length > 0) {
+      console.log(`\n[*] Removing ${filesToDelete.length} superseded files...`);
+      for (const remotePath of filesToDelete) {
+        try {
+          await client.remove(remotePath);
+          console.log(`    [-] ${remotePath}`);
+        } catch (e) {
+          // File might not exist on server
+        }
+      }
+      console.log('[+] Cleanup done!');
+    }
 
     // Save manifest after successful deploy
     saveManifest(files);
