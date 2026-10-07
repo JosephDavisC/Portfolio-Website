@@ -68,3 +68,7 @@ src/components/shared/askJosephPdf.ts
 public/api/transcript.php
 public/fonts/pdf/
 public/Logo_Joseph_Square.png
+
+# Private page (personal, deployed via FTP only, never public on GitHub)
+public/owe/
+public/api/owe-config.php

@@ -134,7 +134,7 @@ export default function About() {
                 Originally from Jakarta, Indonesia. I moved to Seattle at 15, accelerated through a high school completion program at Bellevue College, and entered the University of Washington's Informatics program as a junior.
               </p>
               <p>
-                Right now I am an AI Product Intern at Whitespace Solutions, after building AI automation for cybersecurity at Sector and leading BC Tech Club through BC Hacks 2024. The through line is AI ethics, human-computer interaction, and tools people actually use.
+                Most recently I was an AI Product Intern at Whitespace Solutions, shipping full-stack features and production semantic search on an AI sales-training platform, after building AI automation for cybersecurity at Sector and leading BC Tech Club through BC Hacks 2024. The through line is AI ethics, human-computer interaction, and tools people actually use.
               </p>
             </div>
           </m.article>

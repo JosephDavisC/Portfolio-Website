@@ -34,12 +34,12 @@
         "category": "Clubs",
         "logo": "/logos/ICG.png",
         "website": "https://www.linkedin.com/company/information-consulting-group/",
-        "meta": "Part-time · 5 mos",
+        "meta": "Part-time · 6 mos",
         "location": "Seattle, Washington, United States",
         "roles": [
           {
             "title": "Technology Operations Associate",
-            "dates": "May 2026 – Present · 5 mos",
+            "dates": "May 2026 – Present · 6 mos",
             "meta": "Hybrid",
             "bullets": [
               "Supported technology operations and consulting initiatives at Information Consulting Group."
@@ -51,16 +51,37 @@
         ]
       },
       {
+        "name": "Software Engineering Career Club at UW",
+        "category": "Clubs",
+        "logo": "/logos/swecc.png",
+        "website": "https://swecc.org/",
+        "meta": "Part-time · 6 mos",
+        "location": "Seattle, Washington, United States",
+        "roles": [
+          {
+            "title": "Technical Officer",
+            "dates": "May 2026 – Present · 6 mos",
+            "meta": "Hybrid",
+            "bullets": [
+              "Help run the club's career events and keep its website updated."
+            ],
+            "media": [
+              { "src": "/logos/swecc.png", "caption": "SWECC", "href": "https://swecc.org/" }
+            ]
+          }
+        ]
+      },
+      {
         "name": "University of Washington",
         "category": "Work",
         "logo": "/logos/UW_Logo.png",
         "website": "https://hfs.uw.edu/Dining",
-        "meta": "Part-time · 1 yr 1 mo",
+        "meta": "Part-time · 1 yr 2 mos",
         "location": "Seattle, Washington, United States",
         "roles": [
           {
             "title": "Student Assistant - Bay Laurel Catering",
-            "dates": "Sep 2025 – Present · 1 yr 1 mo",
+            "dates": "Sep 2025 – Present · 1 yr 2 mos",
             "meta": "On-site",
             "bullets": [
               "Supported UW Housing and Food Services with catering operations, event setup, and daily food service."
@@ -166,7 +187,7 @@
       {
         "name": "Dev.Net.HS",
         "category": "Clubs",
-        "logo": "/logos/devnet-logo.jpg",
+        "logo": "/logos/devnet-logo-hd.jpg",
         "website": "https://github.com/Dev-Net-HS",
         "meta": "Part-time · 1 yr 1 mo",
         "location": "Jakarta, Indonesia",
@@ -181,7 +202,7 @@
               "Continued advising remotely on projects and event planning."
             ],
             "media": [
-              { "src": "/logos/devnet-logo.jpg", "caption": "Dev.Net.HS", "href": "https://github.com/Dev-Net-HS" },
+              { "src": "/logos/devnet-logo-hd.jpg", "caption": "Dev.Net.HS", "href": "https://github.com/Dev-Net-HS" },
               { "src": "/media/devnet-club-photo.jpeg", "caption": "Dev.Net.HS student tech club in Jakarta, 2023" },
               { "src": "/media/devnet-team-photo.webp", "caption": "Dev.Net.HS founding team in Jakarta, 2023" }
             ]
