@@ -127,7 +127,7 @@
 @layer base {
   @media (pointer: fine) {
     :root {
-      cursor: url("/cursors/jo-normal.png") 16 16, auto;
+      cursor: url("/cursors/jo-normal-32.png") 16 16, auto;
     }
 
     :where(*) {
@@ -146,7 +146,7 @@
     .clickable,
     .btn,
     .cursor-pointer {
-      cursor: url("/cursors/jo-thumb.png") 16 16, pointer;
+      cursor: url("/cursors/jo-thumb-32.png") 16 16, pointer;
     }
 
     input[type="text"],
@@ -165,8 +165,8 @@
 
 /* Utility classes */
 @layer utilities {
-  .cursor-jo { cursor: url("/cursors/jo-normal.png") 16 16, auto; }
-  .cursor-jo-thumb { cursor: url("/cursors/jo-thumb.png") 16 16, pointer; }
+  .cursor-jo { cursor: url("/cursors/jo-normal-32.png") 16 16, auto; }
+  .cursor-jo-thumb { cursor: url("/cursors/jo-thumb-32.png") 16 16, pointer; }
 }
 
 /* Neobrutalist Card Component - Refined with smaller shadows */
@@ -683,4 +683,36 @@ section {
 
 .dark .article-callout > :first-child {
   @apply text-[#60A5FA];
+}
+
+/* ===============================
+   Article images: click-to-enlarge affordance
+   Images in the blog body open in the lightbox. Without a signifier nobody
+   discovers that, so hovering has to say "this does something": the custom
+   thumb cursor, a small lift, and a slight brightening.
+   Images already wrapped in a link keep the plain pointer, since they navigate
+   away rather than opening the viewer.
+================================= */
+.article-body img {
+  cursor: url("/cursors/jo-thumb-32.png") 16 16, zoom-in;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), filter 0.3s ease;
+}
+
+.article-body img:hover {
+  transform: scale(1.02);
+  filter: brightness(1.04);
+}
+
+/* A linked image navigates instead of zooming, so it should not promise a viewer */
+.article-body a img {
+  cursor: url("/cursors/jo-thumb-32.png") 16 16, pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .article-body img {
+    transition: none;
+  }
+  .article-body img:hover {
+    transform: none;
+  }
 }

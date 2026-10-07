@@ -58,7 +58,7 @@ const RacketCard: React.FC<RacketCardProps> = ({
         borderColor: showDetails ? activeBorderColor : inactiveBorderColor
       }}
       transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
-      style={{ cursor: 'url("/cursors/jo-thumb.png") 16 16, pointer' }}
+      style={{ cursor: 'url("/cursors/jo-thumb-32.png") 16 16, pointer' }}
       className={`group card-brutal p-6 ${hoverBorderClass}`}
       onClick={() => setShowDetails(!showDetails)}
     >

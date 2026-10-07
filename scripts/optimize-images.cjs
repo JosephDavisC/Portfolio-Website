@@ -17,11 +17,14 @@ const CONFIG = {
     maxWidth: 800,
     quality: 80
   },
-  // Logo - small icon
+  // Logo - navbar icon AND the Freelance Client Portal project card, which
+  // renders it at ~176 CSS px via object-contain. 100 was enough for the 48px
+  // navbar on its own, but once the project cards began serving the webp
+  // through <picture>, the card upscaled a 100px source and looked soft.
   logo: {
     path: 'Logo_Joseph',
-    maxWidth: 100,
-    quality: 85
+    maxWidth: 640,
+    quality: 90
   },
   // Default for all other images
   default: {

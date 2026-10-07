@@ -3,7 +3,7 @@
     "title": "Freelance Client Portal",
     "category": "Web",
     "featured": true,
-    "image": "/Logo_Joseph.PNG",
+    "image": "/images/portfolio/freelance-portal.png",
     "imageAlt": "Joseph Chamdani freelance logo",
     "imageStyle": "contain-navy",
     "tech": ["React", "TypeScript", "Supabase", "Tailwind"],
