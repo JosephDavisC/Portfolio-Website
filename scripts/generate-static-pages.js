@@ -2,14 +2,16 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { checkWebpTwins } from './check-webp-twins.js';
+import { checkContentRules } from './check-content-rules.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Fail the build before anything is written if an image rendered through
-// <picture> has no .webp twin. Runs as part of the build so a missing twin is
-// caught before any output is produced.
+// Build guards. Each one exists because the bug it describes actually shipped
+// and was invisible in dev. They run as part of the build, so they also stop a
+// deploy. See the file headers for what each covers.
 checkWebpTwins();
+checkContentRules();
 
 // Load experience data for dynamic page generation
 const experiencesPath = path.join(__dirname, '..', 'src', 'data', 'experiences.json');
