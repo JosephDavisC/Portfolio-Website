@@ -166,9 +166,8 @@ const Projects = () => {
                       href={project.medium}
                       onClick={() => track("project-link", { project: project.title, kind: "medium" })}
                       className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-espresso/5 border-2 border-espresso/20 rounded-lg text-espresso font-medium text-xs sm:text-sm hover:bg-espresso hover:text-paper transition-all"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`Read ${project.title} article on Medium`}
+                      {...(project.medium.startsWith('http') && { target: "_blank", rel: "noopener noreferrer" })}
+                      aria-label={`Read the ${project.title} article${project.medium.startsWith('http') ? ' on Medium' : ''}`}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >

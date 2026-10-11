@@ -353,6 +353,37 @@
 
   <!-- Blog Articles -->
   <url>
+    <loc>https://joechamdani.com/blog/personal-dashboard/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://joechamdani.com/article_media/personal-dashboard/cover.png</image:loc>
+      <image:title>Personal Dashboard cover</image:title>
+      <image:caption>Personal Dashboard cover: the headline One screen for my daily life with a Now open source badge, a browser window showing the dashboard home in light mode, and two chibi illustrations of Joseph</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/article_media/personal-dashboard/shifts-light.png</image:loc>
+      <image:title>Shifts and earnings page</image:title>
+      <image:caption>Shifts page in light mode showing hours, net pay, gross pay and a weekly net pay chart split by job</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/article_media/personal-dashboard/applications-dark.png</image:loc>
+      <image:title>Job application tracker</image:title>
+      <image:caption>Applications page in dark mode with response rate and a table of job applications with fictional companies</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/article_media/personal-dashboard/diary-light.png</image:loc>
+      <image:title>Diary timeline</image:title>
+      <image:caption>Diary timeline in light mode with daily entries showing mood and tags</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/article_media/personal-dashboard/chat-dark.png</image:loc>
+      <image:title>Dashboard AI chat</image:title>
+      <image:caption>Dashboard Chat page in dark mode with suggested prompts</image:caption>
+    </image:image>
+  </url>
+  <url>
     <loc>https://joechamdani.com/blog/ssl-renewal-quietly-died/</loc>
     <lastmod>2026-08-23</lastmod>
     <changefreq>monthly</changefreq>

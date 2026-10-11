@@ -1,17 +1,30 @@
 [
   {
-    "title": "Freelance Client Portal",
+    "title": "Personal Dashboard",
     "category": "Web",
     "featured": true,
-    "image": "/images/portfolio/freelance-portal.png",
-    "imageAlt": "Joseph Chamdani freelance logo",
-    "imageStyle": "contain-navy",
-    "tech": ["React", "TypeScript", "Supabase", "Tailwind"],
-    "description": "A two-sided portal for my freelance practice: clients log in to track live milestones, activity, and payments, while an admin control room manages projects, client access, and site content with no redeploy.",
-    "demo": "https://freelance.joechamdani.com",
-    "demoLabel": "Visit Site",
-    "demo2": "https://freelance.joechamdani.com/dashboard?demo=1",
-    "demo2Label": "Live Demo"
+    "image": "/images/portfolio/personal-dashboard.png",
+    "imageAlt": "Personal Dashboard home screen in dark mode",
+    "tech": ["Next.js", "TypeScript", "PostgreSQL", "Claude API", "Docker"],
+    "description": "A self-hosted, open source dashboard for my daily life: calendar, tasks, work shifts with automatic pay, job applications, a diary, and an AI chat with tools over all of it. Built in 15 days, installed on my phone as a PWA, and used every day since February 2026.",
+    "github": "https://github.com/JosephDavisC/Personal-Dashboard",
+    "demo": "https://dashboard-demo.joechamdani.com",
+    "demoLabel": "Live Demo",
+    "medium": "/blog/personal-dashboard/",
+    "mediumLabel": "Blog"
+  },
+  {
+    "title": "IShowStream",
+    "category": "AI",
+    "featured": true,
+    "image": "/media/IShowStream_Logo.png",
+    "imageAlt": "IShowStream preview",
+    "tech": ["React", "Python", "Go", "Gemini AI", "Google Cloud"],
+    "description": "StreamSense is a real-time Twitch chat analysis platform powered by Google's Agent Development Kit (ADK) and Gemini AI, deployed on Cloud Run.",
+    "github": "https://github.com/JosephDavisC/IShowStream",
+    "demo": "https://ishowstream-234sus25va-uc.a.run.app/",
+    "demoLabel": "Live Demo",
+    "medium": "https://medium.com/@jessica.fiona2004/ishowstream-ai-that-reads-twitch-chat-so-streamers-dont-miss-a-moment-112342be7e32"
   },
   {
     "title": "Dragon Dance Collectibles",
@@ -26,17 +39,18 @@
     "caseStudy": "https://freelance.joechamdani.com/work/dragondance/"
   },
   {
-    "title": "IShowStream",
-    "category": "AI",
+    "title": "Freelance Client Portal",
+    "category": "Web",
     "featured": false,
-    "image": "/media/IShowStream_Logo.png",
-    "imageAlt": "IShowStream preview",
-    "tech": ["React", "Python", "Go", "Gemini AI", "Google Cloud"],
-    "description": "StreamSense is a real-time Twitch chat analysis platform powered by Google's Agent Development Kit (ADK) and Gemini AI, deployed on Cloud Run.",
-    "github": "https://github.com/JosephDavisC/IShowStream",
-    "demo": "https://ishowstream-234sus25va-uc.a.run.app/",
-    "demoLabel": "Live Demo",
-    "medium": "https://medium.com/@jessica.fiona2004/ishowstream-ai-that-reads-twitch-chat-so-streamers-dont-miss-a-moment-112342be7e32"
+    "image": "/images/portfolio/freelance-portal.png",
+    "imageAlt": "Joseph Chamdani freelance logo",
+    "imageStyle": "contain-navy",
+    "tech": ["React", "TypeScript", "Supabase", "Tailwind"],
+    "description": "A two-sided portal for my freelance practice: clients log in to track live milestones, activity, and payments, while an admin control room manages projects, client access, and site content with no redeploy.",
+    "demo": "https://freelance.joechamdani.com",
+    "demoLabel": "Visit Site",
+    "demo2": "https://freelance.joechamdani.com/dashboard?demo=1",
+    "demo2Label": "Live Demo"
   },
   {
     "title": "AI Transfer Evaluation Tool",

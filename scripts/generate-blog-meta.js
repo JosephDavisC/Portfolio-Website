@@ -139,6 +139,41 @@ function extractArticleBody(slug) {
 }
 
 const blogMeta = {
+  'personal-dashboard': {
+    title: 'One Screen for My Daily Life, Now Open Source | Joseph Davis Chamdani',
+    description: "A self-hosted dashboard for my calendar, tasks, shifts and pay, job hunt and diary, built in 15 days. How it works, and how I open sourced it without leaking my life.",
+    image: 'https://joechamdani.com/article_media/personal-dashboard/og.jpg',
+    url: 'https://joechamdani.com/blog/personal-dashboard/',
+    datePublished: '2026-10-10',
+    dateModified: '2026-10-10',
+    dateDisplay: 'October 2026',
+    images: [
+      {
+        src: '/article_media/personal-dashboard/cover.png',
+        alt: 'Personal Dashboard cover: the headline One screen for my daily life with a Now open source badge, a browser window showing the dashboard home in light mode, and two chibi illustrations of Joseph'
+      },
+      {
+        src: '/article_media/personal-dashboard/shifts-light.png',
+        alt: 'Shifts page in light mode showing October hours, net pay, gross pay, shift count by job, and a weekly net pay bar chart split by job'
+      },
+      {
+        src: '/article_media/personal-dashboard/applications-dark.png',
+        alt: 'Applications page in dark mode with totals, response rate, active and offer counts, and a table of job applications with fictional companies'
+      },
+      {
+        src: '/article_media/personal-dashboard/diary-light.png',
+        alt: 'Diary timeline in light mode with daily entries showing mood, tags and the number of shifts and tasks from that day'
+      },
+      {
+        src: '/article_media/personal-dashboard/chat-dark.png',
+        alt: 'Dashboard Chat page in dark mode with suggested prompts for a dashboard summary, today\'s calendar, Claude API usage and site status'
+      },
+      {
+        src: '/article_media/personal-dashboard/mobile-shifts.png',
+        alt: 'Shifts page on an iPhone in dark mode with hours, net pay, gross pay and a bottom tab bar'
+      }
+    ]
+  },
   'ssl-renewal-quietly-died': {
     title: 'The Day My SSL Auto-Renewal Quietly Died | Joseph Davis Chamdani',
     description: 'My VPS renewed its own certificates every night for months. Then one alert told me three sites were about to expire, and the answer I was confident about turned out to be wrong.',
@@ -236,10 +271,13 @@ function getAssetReferences() {
   // Extract CSS and JS references
   const cssMatch = indexHtml.match(/href="(\/assets\/index-[^"]+\.css)"/);
   const jsMatch = indexHtml.match(/src="(\/assets\/index-[^"]+\.js)"/);
+  // Copied verbatim so blog pages count visits exactly like the homepage does
+  const analyticsMatch = indexHtml.match(/<script[^>]*analytics\.joechamdani\.com[^>]*><\/script>/);
 
   return {
     css: cssMatch ? cssMatch[1] : '',
-    js: jsMatch ? jsMatch[1] : ''
+    js: jsMatch ? jsMatch[1] : '',
+    analytics: analyticsMatch ? analyticsMatch[0] : ''
   };
 }
 
@@ -319,6 +357,7 @@ function generateHTML(slug, meta, assets) {
     <meta name="twitter:image" content="${meta.image}" />
 
     <!-- Load the main app's CSS and JS -->
+    ${assets.analytics}
     <script type="module" crossorigin src="${assets.js}"></script>
     <link rel="stylesheet" crossorigin href="${assets.css}">
   </head>
@@ -403,6 +442,7 @@ function generateBlogIndexHTML(assets) {
     <meta name="twitter:description" content="${description}" />
     <meta name="twitter:image" content="https://joechamdani.com/preview.png" />
 
+    ${assets.analytics}
     <script type="module" crossorigin src="${assets.js}"></script>
     <link rel="stylesheet" crossorigin href="${assets.css}">
   </head>

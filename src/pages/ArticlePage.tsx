@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useParams, Link, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { m } from 'framer-motion';
-import { ArrowLeft, Calendar, ExternalLink, ChevronRight, Share2, Link2, Linkedin, Twitter, MessageCircle, Mail } from 'lucide-react';
+import { ArrowLeft, Calendar, ExternalLink, Github, ChevronRight, Share2, Link2, Linkedin, Twitter, MessageCircle, Mail } from 'lucide-react';
 import { toast } from 'sonner';
 import { track } from '@/lib/track';
 
@@ -84,6 +84,450 @@ import Lightbox from '@/components/sections/Lightbox';
 // Article content components - add full content for each article here
 const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
   switch (articleId) {
+    case 'personal-dashboard':
+      return (
+        <div className="prose max-w-none">
+          <aside className="article-callout">
+            <p>The short version</p>
+            <p className="text-espresso/80 text-lg leading-relaxed">
+              I built one screen for my daily life: calendar, tasks, work shifts and pay, job applications, a diary,
+              and the sites I run. 259 commits in 15 days, live on my own server on day 3, and used every day since
+              February 2026. For eight months it was only mine. Now the code is public, and you can click through a
+              read only <a href="https://dashboard-demo.joechamdani.com" target="_blank" rel="noopener noreferrer" className="underline font-semibold">live demo</a> without
+              installing anything.
+            </p>
+          </aside>
+
+          <div className="flex flex-wrap gap-3 mt-6 mb-4">
+            <a
+              href="https://github.com/JosephDavisC/Personal-Dashboard"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-brutal inline-flex items-center gap-2 no-underline"
+            >
+              <Github className="h-4 w-4" />
+              View on GitHub
+            </a>
+            <a
+              href="https://dashboard-demo.joechamdani.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-brutal-outline inline-flex items-center gap-2 no-underline"
+            >
+              <ExternalLink className="h-4 w-4" />
+              Try the live demo
+            </a>
+          </div>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-8 flex flex-wrap items-center gap-2">
+            <span className="font-semibold text-espresso dark:text-slate-100 mr-1">Built with</span>
+            <span className="px-3 py-1 text-sm font-mono rounded-full border-2 border-espresso/20 dark:border-white/15 bg-espresso/5 dark:bg-white/5">Next.js</span>
+            <span className="px-3 py-1 text-sm font-mono rounded-full border-2 border-espresso/20 dark:border-white/15 bg-espresso/5 dark:bg-white/5">React</span>
+            <span className="px-3 py-1 text-sm font-mono rounded-full border-2 border-espresso/20 dark:border-white/15 bg-espresso/5 dark:bg-white/5">TypeScript</span>
+            <span className="px-3 py-1 text-sm font-mono rounded-full border-2 border-espresso/20 dark:border-white/15 bg-espresso/5 dark:bg-white/5">PostgreSQL</span>
+            <span className="px-3 py-1 text-sm font-mono rounded-full border-2 border-espresso/20 dark:border-white/15 bg-espresso/5 dark:bg-white/5">Prisma</span>
+            <span className="px-3 py-1 text-sm font-mono rounded-full border-2 border-espresso/20 dark:border-white/15 bg-espresso/5 dark:bg-white/5">Docker</span>
+            <span className="px-3 py-1 text-sm font-mono rounded-full border-2 border-espresso/20 dark:border-white/15 bg-espresso/5 dark:bg-white/5">Claude API</span>
+          </p>
+
+          <h2 id="too-many-tabs" className="text-3xl font-heading font-bold text-court-dark dark:text-[#60A5FA] mb-6 mt-12">Too many tabs</h2>
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            I'm an organized person and I like seeing everything on one screen. My life was not on one screen. Notes
+            were in Google Keep, classes were in a calendar, and everything else was spread across a dozen other tabs.
+            Every new task or deadline meant opening another one, and I kept forgetting where I'd put things.
+          </p>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            Work was the worst part. I'm a student at UW and I work shifts on campus, so what I make each week
+            actually matters to me. My schedule lived in Humanity and my pay lived in Workday, and neither of them
+            answers the one question I actually had: how much am I making this week? You either wait for the pay
+            period or count it by hand.
+          </p>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-8">
+            So I built the screen I wanted.
+          </p>
+
+          <h2 id="fifteen-days" className="text-3xl font-heading font-bold text-court-dark dark:text-[#60A5FA] mb-6 mt-12">Fifteen days</h2>
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            The timing wasn't random. At the start of 2026 I was trying to get my life organized and keep track
+            of it, and that's where the idea came from. It was also around the time AI models got good enough
+            to help me build the things I'd always wanted to make.
+          </p>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            The first commit landed on February 9, 2026: a Next.js app, a Prisma database, Google sign in and an
+            empty dashboard shell. By February 11, day 3, it was live on my VPS, with GitHub Actions deploying every
+            push.
+          </p>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            259 of the 272 commits landed in the first 15 days, between February 9 and February 23. The busiest
+            day was February 18, with 40 commits: job follow up reminders, a contacts database
+            that syncs with Google, streaming responses for the chat, and a proper editor for the diary.
+          </p>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            I built it with Claude Code as my pair, but I didn't just start typing. I planned it in phases. Phase 0A
+            was local setup, 0B was deployment, and after that every feature got a phase of its own. I also kept a
+            decision log for every choice that wasn't obvious, so when I came back to something weeks later I could
+            read why it was built that way instead of guessing.
+          </p>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            A lot of that came from INFO 380, Product and Information Systems Management, which I was taking at UW
+            that same quarter. It got me thinking about my choices before writing any code: why I was building this,
+            what problem it actually had to solve, and what it really needed.
+          </p>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            Claude Code was fastest at the parts that follow a pattern: scaffolding, API routes, the PWA setup and
+            the UI. Where it struggled was the edge cases in shift detection. My shifts sync from Humanity into my
+            Google Calendar, and the dashboard finds them there by keyword, with labels like Set, Reset and Attended,
+            plus labels I hadn't planned for. Unknown labels and the same shift showing up twice were the cases I
+            had to work through myself.
+          </p>
+
+          <h3 id="four-days-from-the-sprint" className="text-2xl font-heading font-bold text-espresso dark:text-slate-100 mb-4 mt-10">Four days from the sprint</h3>
+          <div className="border-l-2 border-court dark:border-[#60A5FA] pl-5 my-6 space-y-3">
+            <p className="text-espresso/80 text-lg leading-relaxed"><strong>Feb 9.</strong> Project scaffold: Next.js, Prisma, Google sign in, dashboard shell.</p>
+            <p className="text-espresso/80 text-lg leading-relaxed"><strong>Feb 11.</strong> Deployed to the VPS with GitHub Actions. Drag to move and resize events, weather, PWA support, site monitoring with uptime history, cross device sync.</p>
+            <p className="text-espresso/80 text-lg leading-relaxed"><strong>Feb 17.</strong> Claude usage metrics, a weekly summary email, iOS push notifications, the AI chatbot with tool use.</p>
+            <p className="text-espresso/80 text-lg leading-relaxed"><strong>Feb 22 and 23.</strong> A tennis tracker for rackets, restrings, strings, sessions and stroke ratings. The last commit of the sprint.</p>
+          </div>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-8">
+            After that it went quiet on purpose. Two commits in March. Three in April, for job assessment fields and
+            status history. Eight in August, when I reworked Google sign in and moved the AI chat to Claude Haiku 4.5
+            to make it cheaper to run.
+          </p>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-8">
+            By the end of it, my copy was 272 commits and over 60,000 lines of code, with 143 API routes and 38 tools
+            for the AI chat. The public version is a bit smaller, because I took out everything that only made sense
+            on my own server.
+          </p>
+
+          <h2 id="the-tour" className="text-3xl font-heading font-bold text-court-dark dark:text-[#60A5FA] mb-6 mt-12">The tour</h2>
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            Here's the open source version running on demo data, light mode first and then dark. Every person,
+            company and number in it is made up.
+          </p>
+
+          <figure className="my-8 rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
+            <video
+              controls
+              playsInline
+              muted
+              preload="none"
+              poster="/article_media/personal-dashboard/tour-poster.jpg"
+              width={1280}
+              height={800}
+              className="w-full h-auto block bg-black"
+              aria-label="66 second tour of the Personal Dashboard on demo data: home, tasks with drag and drop, diary, tennis, then the switch to dark mode"
+            >
+              <source src="/article_media/personal-dashboard/tour.mp4" type="video/mp4" />
+            </video>
+            <p className="text-espresso/60 text-sm text-center mt-3 italic font-mono px-4 pb-4">
+              A 66 second tour, demo data only
+            </p>
+          </figure>
+
+          <h3 id="shifts-and-earnings" className="text-2xl font-heading font-bold text-espresso dark:text-slate-100 mb-4 mt-10">Shifts and earnings</h3>
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            This is the page I open every day, and the reason the whole thing exists. It pulls my shifts straight
+            out of my calendar, works out which job each one belongs to from keywords, and calculates gross and net
+            pay. The question Humanity and Workday couldn't answer is now the top of the page: what I've made this
+            week. There's a weekly chart, a week view, and CSV export when I want the raw numbers.
+          </p>
+
+          <div className="my-8 rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
+            <picture>
+              <source srcSet="/article_media/personal-dashboard/shifts-light.webp" type="image/webp" />
+              <img
+                src="/article_media/personal-dashboard/shifts-light.png"
+                alt="Shifts page in light mode showing October hours, net pay, gross pay, shift count by job, and a weekly net pay bar chart split by job"
+                width={1600}
+                height={1000}
+                loading="lazy"
+                className="w-full h-auto object-cover"
+              />
+            </picture>
+            <p className="text-espresso/60 text-sm text-center mt-3 italic font-mono px-4 pb-4">
+              Hours, pay and the weekly chart
+            </p>
+          </div>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            It works on my phone too. I never put it in an app store. It's a PWA, installed from Safari to my home
+            screen, and it sends push notifications for upcoming shifts, tasks that are due, sites that go down, and
+            a reminder to write in the diary.
+          </p>
+
+          <div className="grid grid-cols-2 gap-4 sm:gap-6 my-8 max-w-xl mx-auto">
+            <div className="rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
+              <picture>
+                <source srcSet="/article_media/personal-dashboard/mobile-home.webp" type="image/webp" />
+                <img
+                  src="/article_media/personal-dashboard/mobile-home.png"
+                  alt="Dashboard home screen on an iPhone in dark mode with today's shift, tasks and pay this week"
+                  width={595}
+                  height={1000}
+                  loading="lazy"
+                  className="w-full h-auto"
+                />
+              </picture>
+            </div>
+            <div className="rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
+              <picture>
+                <source srcSet="/article_media/personal-dashboard/mobile-shifts.webp" type="image/webp" />
+                <img
+                  src="/article_media/personal-dashboard/mobile-shifts.png"
+                  alt="Shifts page on an iPhone in dark mode with hours, net pay, gross pay and a bottom tab bar"
+                  width={595}
+                  height={1000}
+                  loading="lazy"
+                  className="w-full h-auto"
+                />
+              </picture>
+            </div>
+          </div>
+
+          <h3 id="everything-else" className="text-2xl font-heading font-bold text-espresso dark:text-slate-100 mb-4 mt-10">Everything else</h3>
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            The home page puts it all together: a greeting, today's events, upcoming tasks and shifts, pay this
+            week, the weather, the health of my sites, and quick links. The calendar is my full Google Calendar
+            inside the dashboard, with multiple calendars and drag to create, move and resize. Tasks is a kanban
+            board with drag and drop, priorities and photos.
+          </p>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            Applications replaced the Notion table I used for my job search. It keeps status history, reminds me
+            to follow up, and tracks assessments.
+          </p>
+
+          <div className="my-8 rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
+            <picture>
+              <source srcSet="/article_media/personal-dashboard/applications-dark.webp" type="image/webp" />
+              <img
+                src="/article_media/personal-dashboard/applications-dark.png"
+                alt="Applications page in dark mode with totals, response rate, active and offer counts, and a table of job applications with fictional companies"
+                width={1600}
+                height={1000}
+                loading="lazy"
+                className="w-full h-auto object-cover"
+              />
+            </picture>
+            <p className="text-espresso/60 text-sm text-center mt-3 italic font-mono px-4 pb-4">
+              The job tracker that replaced my Notion table (fictional companies)
+            </p>
+          </div>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            The diary is one entry per day with mood, tags, photos and video. It pulls in that day's shifts, tasks
+            and events on its own, and Claude can write a structured summary of the day.
+          </p>
+
+          <div className="my-8 rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
+            <picture>
+              <source srcSet="/article_media/personal-dashboard/diary-light.webp" type="image/webp" />
+              <img
+                src="/article_media/personal-dashboard/diary-light.png"
+                alt="Diary timeline in light mode with daily entries showing mood, tags and the number of shifts and tasks from that day"
+                width={1600}
+                height={1000}
+                loading="lazy"
+                className="w-full h-auto object-cover"
+              />
+            </picture>
+            <p className="text-espresso/60 text-sm text-center mt-3 italic font-mono px-4 pb-4">
+              Each entry knows what else happened that day
+            </p>
+          </div>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            The AI chat is Claude with tools over all of my data. I can ask it in plain language to read anything in
+            the dashboard, and to create or update tasks, calendar events, job applications, diary entries and
+            contacts, and it actually does it instead of telling me how. Then there are contacts, the Important page, media, backups, sites, settings, and a tennis page,
+            since I play and wanted to track my rackets and restrings.
+          </p>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            Under the hood, every message starts with a system prompt built from my own setup: today's date and time,
+            my pay settings, my shift locations, and the status values for tasks, jobs and tennis. It has a few house
+            rules too. It always reads real data through its tools before answering, it lists every match when a
+            contact search is ambiguous instead of guessing, and it edits diary entries in place instead of
+            overwriting them. Conversations, images included, are saved so I can pick them up on any device, and the
+            system prompt and tool list are cached so repeat messages cost less.
+          </p>
+
+          <div className="my-8 rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
+            <picture>
+              <source srcSet="/article_media/personal-dashboard/chat-dark.webp" type="image/webp" />
+              <img
+                src="/article_media/personal-dashboard/chat-dark.png"
+                alt="Dashboard Chat page in dark mode with suggested prompts for a dashboard summary, today's calendar, Claude API usage and site status"
+                width={1600}
+                height={1000}
+                loading="lazy"
+                className="w-full h-auto object-cover"
+              />
+            </picture>
+            <p className="text-espresso/60 text-sm text-center mt-3 italic font-mono px-4 pb-4">
+              Claude, with tools over everything in the dashboard
+            </p>
+          </div>
+
+          <h2 id="what-i-actually-use" className="text-3xl font-heading font-bold text-court-dark dark:text-[#60A5FA] mb-6 mt-12">What I actually use</h2>
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            Shifts and earnings. I open it every day to check what I'm making this week.
+          </p>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-8">
+            The diary, the Important page and my own chatbot are a different story. I built them, used them for a
+            while, and then stopped. I kept them anyway. The point was never that every page gets opened every day.
+            The point was one place for everything, so when I do need one of them, I know exactly where it is.
+          </p>
+
+          <h2 id="problems-i-ran-into" className="text-3xl font-heading font-bold text-court-dark dark:text-[#60A5FA] mb-6 mt-12">Problems I ran into</h2>
+
+          <h3 id="iphone-push" className="text-2xl font-heading font-bold text-espresso dark:text-slate-100 mb-4 mt-10">iPhone push without an Apple developer account</h3>
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            I assumed push notifications on an iPhone meant paying Apple for a developer account. For a PWA, they
+            don't. Standard Web Push with VAPID keys works on iOS 16.4 and later. The catch is that it only works
+            when the app is opened from the home screen icon. Open the same page in a Safari tab and nothing comes
+            through.
+          </p>
+
+          <h3 id="finding-shifts" className="text-2xl font-heading font-bold text-espresso dark:text-slate-100 mb-4 mt-10">Finding shifts in a calendar</h3>
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            My shifts land in my calendar under whatever labels the scheduling app gives them, so the dashboard
+            detects them by keyword. The tricky part was duplicates. The same shift can show up on two calendars,
+            so it removes the copy and keeps the shorter label.
+          </p>
+
+          <h3 id="weekly-logout" className="text-2xl font-heading font-bold text-espresso dark:text-slate-100 mb-4 mt-10">Google logged me out every week</h3>
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            For a while I had to sign in again every single week. The likely cause was my OAuth consent screen
+            sitting in Testing mode, where Google expires refresh tokens after 7 days. I published the app and now
+            store one shared refresh token that all my devices use.
+          </p>
+
+          <h3 id="dark-mode-email" className="text-2xl font-heading font-bold text-espresso dark:text-slate-100 mb-4 mt-10">Emails in dark mode</h3>
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            Gmail and iOS Mail both rewrite email colors in dark mode, and they don't ask first. To keep the weekly
+            summary email readable I had to build it the old school way, with table based layouts and an explicit
+            color on everything.
+          </p>
+
+          <h3 id="one-wrong-calendar" className="text-2xl font-heading font-bold text-espresso dark:text-slate-100 mb-4 mt-10">One wrong calendar broke the whole page</h3>
+          <p className="text-espresso/80 text-lg leading-relaxed mb-8">
+            A shared calendar got deleted, and suddenly the calendar page never finished loading. One missing
+            calendar made every calendar request fail with it. Now a missing calendar just returns nothing, and the
+            rest of the page loads like normal.
+          </p>
+
+          <h2 id="why-share-it-now" className="text-3xl font-heading font-bold text-court-dark dark:text-[#60A5FA] mb-6 mt-12">Why share it now</h2>
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            For about eight months this lived only on my own server. I never published it because in my head it was
+            my dashboard. It was built around my life and nobody else's, so I didn't see why anyone else would want it.
+          </p>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-8">
+            The more I thought about it, the more I wanted other people to have it. Run your own dashboard, bend it
+            to fit your life, or just take the idea and build something of your own.
+          </p>
+
+          <h2 id="open-sourcing-it-safely" className="text-3xl font-heading font-bold text-court-dark dark:text-[#60A5FA] mb-6 mt-12">Open sourcing it without leaking my life</h2>
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            A personal app isn't like a library, so this part took more care than any feature.
+          </p>
+
+          <h3 id="a-new-repo" className="text-2xl font-heading font-bold text-espresso dark:text-slate-100 mb-4 mt-10">A new repo, not a flipped switch</h3>
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            I never made the private repo public. Its history still has personal data sitting in old commits, and
+            deleting a file today doesn't remove it from those. The public version is a new repo with a fresh
+            history.
+          </p>
+
+          <h3 id="audit-first" className="text-2xl font-heading font-bold text-espresso dark:text-slate-100 mb-4 mt-10">Audit first, copy second</h3>
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            Before copying anything, I did a full inventory of the personal data in the code. It found what I
+            expected: my emails, my server's IP address, my pay rate. It also found what I didn't expect: three
+            coworkers' names, emails and phone numbers, and two friends' emails, hardcoded right in the code. None of
+            that made it into the public repo.
+          </p>
+
+          <h3 id="making-it-yours" className="text-2xl font-heading font-bold text-espresso dark:text-slate-100 mb-4 mt-10">Making it someone else's</h3>
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            Some features only made sense for my own servers, so they came out: VPS monitoring, the security audit
+            page, internal docs, deploy notifications and my contact form inbox. Everything that was my personal
+            setup became a template. Pay rate, job locations, name, timezone and weather cities now live in two
+            config files.
+          </p>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            Then I made it work for a stranger in one command. Demo mode fills it with invented data, fictional
+            people and fictional companies, so <code className="article-inline-code">docker compose up</code> shows
+            a working dashboard with no setup at all. Every screenshot and the video in this post come from that
+            demo. I also added optional Cloudflare R2 storage for media, tested end to end against an S3 compatible
+            server, including a 150 MB file.
+          </p>
+
+          <h3 id="checking-before-every-push" className="text-2xl font-heading font-bold text-espresso dark:text-slate-100 mb-4 mt-10">Checking before every push</h3>
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            Every commit went through gitleaks to scan for secrets. On top of that I searched for my name, my emails,
+            my domains and my server details. Then I cloned it fresh from GitHub, built it with no cache, and checked
+            every page worked.
+          </p>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-8">
+            Going through everything that carefully turned up real bugs too, like a greeting that said good evening
+            in the morning, and photo deletes that never actually removed the file.
+          </p>
+
+          <h2 id="try-it" className="text-3xl font-heading font-bold text-court-dark dark:text-[#60A5FA] mb-6 mt-12">Try it</h2>
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            The fastest way to see it is the live demo at <a href="https://dashboard-demo.joechamdani.com" target="_blank" rel="noopener noreferrer" className="underline font-semibold">dashboard-demo.joechamdani.com</a>. It's read only and runs
+            on the same invented data as the screenshots, so you can click through every page without installing
+            anything. The server refuses every change, and the demo data resets once a day.
+          </p>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            The code is on GitHub at <a href="https://github.com/JosephDavisC/Personal-Dashboard" target="_blank" rel="noopener noreferrer" className="underline font-semibold">JosephDavisC/Personal-Dashboard</a>. Clone it, run docker compose up, and you get
+            the demo. When you want it to be yours, start with the two config files: your name, your timezone, your
+            jobs and pay rate, and the cities you want weather for.
+          </p>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            It's built with Next.js, PostgreSQL, Docker and the Claude API. The full stack is in the <a href="https://github.com/JosephDavisC/Personal-Dashboard#readme" target="_blank" rel="noopener noreferrer" className="underline font-semibold">README</a>.
+          </p>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-8">
+            I built it because I wanted one screen for my daily life. If you end up with one for yours, whether it's
+            this one reworked to fit you or something you build from scratch, I'd love to see it.
+          </p>
+
+          <div className="flex flex-wrap gap-3 mb-8">
+            <a
+              href="https://github.com/JosephDavisC/Personal-Dashboard"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-brutal inline-flex items-center gap-2 no-underline"
+            >
+              View on GitHub
+            </a>
+            <a
+              href="https://dashboard-demo.joechamdani.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-brutal-outline inline-flex items-center gap-2 no-underline"
+            >
+              Try the live demo
+            </a>
+          </div>
+        </div>
+      );
     case 'ssl-renewal-quietly-died':
       return (
         <div className="prose max-w-none">
@@ -1221,8 +1665,10 @@ const ArticlePage = () => {
   const pageTitle = `${article.title} | Joseph Davis Chamdani`;
   const pageDescription = article.preview;
   const pageUrl = `https://joechamdani.com/blog/${article.id}`;
-  const imageUrl = article.thumbnail
-    ? `https://joechamdani.com/${article.thumbnail}`
+  // Share previews need a raster image: LinkedIn and Facebook do not render WebP
+  const shareImage = article.ogImage || article.thumbnail;
+  const imageUrl = shareImage
+    ? `https://joechamdani.com/${shareImage}`
     : 'https://joechamdani.com/preview.png'; // fallback image
 
   return (

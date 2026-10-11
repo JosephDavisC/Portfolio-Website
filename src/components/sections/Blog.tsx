@@ -11,6 +11,7 @@ export interface Article {
   location?: string;
   preview: string;
   thumbnail?: string;
+  ogImage?: string;
   thumbnailFit?: string;
   thumbnailBg?: string;
   thumbnailHref?: string;

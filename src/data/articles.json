@@ -1,5 +1,19 @@
 [
   {
+    "id": "personal-dashboard",
+    "readTime": "9 min read",
+    "title": "One Screen for My Daily Life, Now Open Source",
+    "date": "October 2026",
+    "location": "Seattle, WA",
+    "preview": "A self-hosted dashboard for my calendar, tasks, shifts and pay, job hunt and diary, built in 15 days. How it works, and how I open sourced it without leaking my life.",
+    "thumbnail": "article_media/personal-dashboard/cover.webp",
+    "ogImage": "article_media/personal-dashboard/og.jpg",
+    "thumbnailFit": "contain",
+    "thumbnailBg": "#F9F7F2",
+    "tags": ["Web", "Open Source", "AI"],
+    "hasFullArticle": true
+  },
+  {
     "id": "ssl-renewal-quietly-died",
     "readTime": "7 min read",
     "title": "The Day My SSL Auto-Renewal Quietly Died",
