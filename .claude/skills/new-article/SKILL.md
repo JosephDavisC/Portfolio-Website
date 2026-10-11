@@ -10,6 +10,10 @@ does not render, or renders for humans while being invisible to Google and AI
 readers. Companion skills: `seo-checklist` (run it after), `ai-grounding-update`
 (tell the chatbot), `house-commits` (commit style).
 
+Past bugs and near-misses from this repo, grouped by the mistake that caused them,
+are in the `known-failure-modes` skill. Worth reading before verifying a claim or
+editing anything shared.
+
 ## Publishing policy
 
 Posts are written and published ON THIS SITE, never Medium first. Medium is

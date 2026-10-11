@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useParams, Link, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { m } from 'framer-motion';
@@ -79,6 +79,7 @@ import Navbar from '@/components/shared/Navbar';
 import Footer from '@/components/shared/Footer';
 import { articles, shortDate } from '@/components/sections/Blog';
 import NotFound from '@/pages/NotFound';
+import Lightbox from '@/components/sections/Lightbox';
 
 // Article content components - add full content for each article here
 const ArticleContent: React.FC<{ articleId: string }> = ({ articleId }) => {
@@ -335,7 +336,9 @@ done`}</pre>
             still lands in the log. That matters more than it sounds: if the certificate path ever moves, the glob
             matches nothing and a script without that guard sails through doing nothing, quietly, which is the
             exact failure I'm writing about. I also went back to CloudPanel's cron and took the <code className="article-inline-code">{'&> /dev/null'}</code> off
-            those two lines, so the stock sweep writes to a log now too.
+            those two lines, so the stock sweep writes to a log now too. One caveat if you want to copy any of
+            this: clpctl is CloudPanel's own CLI, so the reissue line only works on a CloudPanel box. On a normal
+            setup the same job is certbot renew or acme.sh, and the rest of the script is the same.
           </p>
 
           <p className="text-espresso/80 text-lg leading-relaxed mb-6">
@@ -632,6 +635,29 @@ done`}</pre>
               Celebrating the winning teams at BC Hacks 2024
             </p>
           </div>
+
+          <p className="text-espresso/80 text-lg leading-relaxed mb-6">
+            Our club filmed the whole weekend and cut it into a timelapse: setup, check-in, the
+            workshops, teams working through the night, and the award ceremony, compressed into a
+            few minutes. It is the closest thing to being in the room.
+          </p>
+
+          <figure className="my-8 rounded-xl overflow-hidden shadow-brutal border-2 border-espresso">
+            <div className="relative w-full" style={{ aspectRatio: '16 / 9' }}>
+              <iframe
+                src="https://www.youtube.com/embed/a9VI0c_ta3s"
+                title="BCHACKS 2024 Timelapse, June 8 to 9, 2024"
+                loading="lazy"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                className="absolute inset-0 h-full w-full border-0"
+              />
+            </div>
+            <figcaption className="text-espresso/60 text-sm text-center mt-3 italic font-mono px-4 pb-4">
+              BCHACKS 2024 timelapse, filmed and edited by BC Tech Club
+            </figcaption>
+          </figure>
 
           <p className="text-espresso/80 text-lg leading-relaxed mb-8">
             But honestly, the best part wasn't the prizes. It was seeing students collaborate, learn
@@ -1162,6 +1188,28 @@ const ArticlePage = () => {
     return () => clearTimeout(timer);
   }, [slug]);
 
+  // Article images open full size. Done by delegation on the content wrapper
+  // rather than wiring every <img>: the three posts carry roughly 40 images
+  // between them, all hand written in the case blocks, and touching each one
+  // would churn the prose for no behavioural gain. Images already inside a link
+  // are skipped, so a photo that navigates somewhere keeps doing that.
+  // Declared above the early return below, because hooks cannot be conditional.
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null);
+
+  useEffect(() => {
+    const root = contentRef.current;
+    if (!root) return;
+    const onClick = (e: MouseEvent) => {
+      const img = (e.target as HTMLElement)?.closest?.('img') as HTMLImageElement | null;
+      if (!img || !root.contains(img) || img.closest('a')) return;
+      e.preventDefault();
+      setLightbox({ src: img.currentSrc || img.src, alt: img.alt });
+    };
+    root.addEventListener('click', onClick);
+    return () => root.removeEventListener('click', onClick);
+  }, [slug, article]);
+
   // Unknown slug: render the real 404 page (the server already sends a 404
   // status for these via .htaccess; the client must not soft-redirect home)
   if (!article) {
@@ -1299,8 +1347,9 @@ const ArticlePage = () => {
       >
         {/* Center the content with max-w-4xl */}
         <div className="max-w-3xl mx-auto">
-          {/* Main Content - Always centered */}
-          <div>
+          {/* Main Content - Always centered. article-body drives the
+              click-to-enlarge hover affordance in index.css. */}
+          <div ref={contentRef} className="article-body">
             <ArticleContent articleId={article.id} />
 
           {/* External Links Section */}
@@ -1429,6 +1478,10 @@ const ArticlePage = () => {
       </m.div>
 
       <Footer />
+
+      {lightbox && (
+        <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />
+      )}
     </div>
   );
 };

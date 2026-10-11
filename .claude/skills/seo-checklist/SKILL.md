@@ -10,6 +10,10 @@ static HTML via build-time prerender + `.htaccess`. Every content change must ke
 paths true. When in doubt, the deeper runbook is `Freelance/.claude/skills/seo-ready/`
 in the ecosystem folder; this file is the repo-specific short form.
 
+Past bugs and near-misses from this repo, grouped by the mistake that caused them,
+are in the `known-failure-modes` skill. Worth reading before verifying a claim or
+editing anything shared.
+
 ## Publishing policy (Joseph's rule, 2026-08-22)
 
 New posts are written and published ON THIS SITE, never Medium-first. Medium is
