@@ -20,7 +20,7 @@
     "image": "/media/IShowStream_Logo.png",
     "imageAlt": "IShowStream preview",
     "tech": ["React", "Python", "Go", "Gemini AI", "Google Cloud"],
-    "description": "StreamSense is a real-time Twitch chat analysis platform powered by Google's Agent Development Kit (ADK) and Gemini AI, deployed on Cloud Run.",
+    "description": "IShowStream is a real-time Twitch chat analysis platform powered by Google's Agent Development Kit (ADK) and Gemini AI, deployed on Cloud Run.",
     "github": "https://github.com/JosephDavisC/IShowStream",
     "demo": "https://ishowstream-234sus25va-uc.a.run.app/",
     "demoLabel": "Live Demo",

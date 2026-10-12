@@ -18,6 +18,7 @@ This site represents Joseph Davis Chamdani, the University of Washington Informa
 
 ## Featured projects
 
+- [Personal Dashboard](https://github.com/JosephDavisC/Personal-Dashboard): open source, self-hosted dashboard for his daily life (calendar, tasks, work shifts with automatic pay, job applications, diary, and an AI chat built on Claude with tools over the data). Next.js, TypeScript, PostgreSQL, Prisma, Docker. Built in 15 days in February 2026 and used daily since. Live demo: https://dashboard-demo.joechamdani.com. Write-up: https://joechamdani.com/blog/personal-dashboard/
 - [Freelance Client Portal](https://freelance.joechamdani.com): two-sided portal for Joseph's freelance practice; clients track live milestones, activity, and payments, an admin control room manages projects and site content with no redeploy (React, TypeScript, Supabase, Tailwind). Live demo: https://freelance.joechamdani.com/dashboard?demo=1
 - [Dragon Dance Collectibles](https://dragondance.id): bilingual English/Indonesian catalog site for a Jakarta Pokemon TCG and collectibles store, WhatsApp ordering, self-serve admin panel; delivered end to end as a paid client project (React 19, TypeScript, Supabase, Tailwind v4). Case study: https://freelance.joechamdani.com/work/dragondance/
 - [AI Transfer Evaluation Tool](https://transfer.joechamdani.cloud): 1st place, UW Claude Hackathon 2025. Parses WA community college transcripts and maps courses to UW equivalents with Claude Vision. Built with Next.js, TypeScript, Claude API.
