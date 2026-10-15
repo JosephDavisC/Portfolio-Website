@@ -1,29 +1,29 @@
 import React from 'react';
 import { m } from 'framer-motion';
 import { Quote, Linkedin, Building2 } from 'lucide-react';
+import OptimizedImage from '@/components/shared/OptimizedImage';
+import experiences from '@/data/experiences.json';
 
 type Rec = {
   quote: string;
   author: string;
   role: string;
-  date: string;
+  date?: string;
   image: string;
   linkedin: string;
   company: string;
 };
 
-// Verbatim LinkedIn recommendations (received).
+// Verbatim LinkedIn recommendations (received). Work recommendations come from
+// experiences.json so the homepage and each experience page always agree; the
+// homepage shows a chosen few, the experience pages show them all.
+const HOMEPAGE = ['Stevien Washington', 'Muhammad Sirajudin Abbas', 'Arfiki Kenan'];
+const fromExperiences = (['whitespace', 'sector'] as const)
+  .flatMap((slug) => (experiences[slug].testimonials ?? []) as Rec[])
+  .filter((r) => HOMEPAGE.includes(r.author));
+
 const recommendations: Rec[] = [
-  {
-    quote:
-      "Despite the different time zone, Jo consistently delivers exceptional work and adds great value to the team. Not only did he contribute to building an automated vulnerability detection system, but he also produced an outstanding research paper. His insights and expertise play a crucial role in shaping the direction of our ongoing projects. Jo's ability to analyze complex problems and propose effective solutions significantly enhances our team's performance.",
-    author: 'Arfiki Kenan',
-    role: 'Entrepreneur · Trader · Athlete',
-    date: 'Feb 2026',
-    image: '/images/testimonials/arfiki-kenan.webp',
-    linkedin: 'https://www.linkedin.com/in/arfikikenan/',
-    company: 'Sector',
-  },
+  ...fromExperiences,
   {
     quote:
       "I've had the pleasure of working closely with Joseph since our time at Bellevue College, where we collaborated through the Bellevue College Tech Club, BC Hacks, and several hackathons including UW Bothell Hacks. What makes Joseph exceptional is how quickly he picks up new concepts and turns them into working solutions, often learning entire frameworks mid-hackathon and shipping features by the deadline. He thrives in fast-paced environments and has this rare ability to stay calm and focused when things get chaotic. But what really makes working with Joseph rewarding is his reliability and positive energy.",
@@ -102,10 +102,10 @@ const Testimonials = () => {
                   aria-label={`${r.author} on LinkedIn`}
                   className="shrink-0"
                 >
-                  <img
+                  <OptimizedImage
                     src={r.image}
                     alt={r.author}
-                    loading="lazy"
+                    pictureClassName="block"
                     className="w-12 h-12 rounded-full object-cover border-2 border-court dark:border-[#60A5FA] hover:border-court-dark dark:hover:border-white transition-colors"
                   />
                 </a>
@@ -120,7 +120,7 @@ const Testimonials = () => {
                     <Linkedin className="h-4 w-4 text-court-dark dark:text-[#60A5FA]" />
                   </a>
                   <p className="text-sm text-espresso/60 dark:text-slate-400 font-mono">
-                    {r.role} · {r.date}
+                    {r.date ? `${r.role} · ${r.date}` : r.role}
                   </p>
                 </div>
               </figcaption>
