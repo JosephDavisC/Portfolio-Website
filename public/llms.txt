@@ -36,15 +36,15 @@ This site represents Joseph Davis Chamdani, the University of Washington Informa
 - [Stockbit/Bibit, AI Engineer](https://joechamdani.com/experience/stockbit): OCR/KYC pipeline and fraud detection with Google Cloud AutoML.
 - [Touchten Games, Cutscene Guest Student](https://joechamdani.com/experience/touchten): Unity/C# cutscenes.
 - [VR Park, Game Developer](https://joechamdani.com/experience/vr-park): Multiplayer VR games in Unity.
-- [Ideosource Venture Building, Game Developer and Experience Center Operator](https://joechamdani.com/experience/vr-park): Multiplayer VR development and metaverse demos in Jakarta and Bali, 2022 to 2023.
+- [StarCamp Asia, Game Developer and Experience Center Operator](https://joechamdani.com/experience/vr-park): Multiplayer VR development and metaverse demos in Jakarta and Bali, 2022 to 2023.
 - BC Tech Club, President (2024–2025): Led the club and organized [BC Hacks 2024](https://joechamdani.com/blog/bc-hacks-2024).
 
 ## Credentials
 
 - [Google Data Analytics](https://joechamdani.com/credential/google-data-analytics): Professional Certificate (SQL, R, Tableau).
 - [Google Project Management](https://joechamdani.com/credential/google-project-management): Professional Certificate (traditional and Agile).
-- [Unity 3D Programming](https://joechamdani.com/credential/starcamp-unity): Unity and C# game programming (Ideosource Venture Building).
-- [UX Research and Design](https://joechamdani.com/credential/starcamp-ux): User research, personas, and Figma prototyping (Ideosource Venture Building).
+- [Unity 3D Programming](https://joechamdani.com/credential/starcamp-unity): Unity and C# game programming (StarCamp Asia).
+- [UX Research and Design](https://joechamdani.com/credential/starcamp-ux): User research, personas, and Figma prototyping (StarCamp Asia).
 
 ## Awards and honors
 

@@ -38,19 +38,19 @@ const certifications: Cert[] = [
   },
   {
     name: "Unity 3D Programming",
-    issuer: "Ideosource Venture Building",
+    issuer: "StarCamp Asia",
     year: "Issued Jul 2022",
     href: "/credential/starcamp-unity",
-    logo: "/logos/ideosource.webp",
-    logoAlt: "Ideosource",
+    logo: "/logos/starcamp-logo.webp",
+    logoAlt: "StarCamp Asia",
   },
   {
     name: "UX Research & UX Design",
-    issuer: "Ideosource Venture Building",
+    issuer: "StarCamp Asia",
     year: "Issued Sep 2022",
     href: "/credential/starcamp-ux",
-    logo: "/logos/ideosource.webp",
-    logoAlt: "Ideosource",
+    logo: "/logos/starcamp-logo.webp",
+    logoAlt: "StarCamp Asia",
   },
 ];
 

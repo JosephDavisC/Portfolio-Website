@@ -260,10 +260,10 @@
         ]
       },
       {
-        "name": "Ideosource Venture Building",
+        "name": "StarCamp Asia",
         "category": "Internships",
-        "logo": "/logos/ideosource.webp",
-        "website": "https://www.linkedin.com/company/ideosource.com",
+        "logo": "/logos/starcamp-logo.jpg",
+        "website": "https://www.linkedin.com/company/starcampasia/posts/?feedView=all",
         "meta": "Internship · 2 mos",
         "location": "Bali, Indonesia",
         "roles": [
@@ -277,9 +277,9 @@
               "Represented the company at NXC Summit Bali demonstrating metaverse tech."
             ],
             "media": [
-              { "src": "/media/nxc-1.webp", "caption": "Demonstrating metaverse technology at NXC Summit Bali, 2022 (Antaranews.com coverage)", "href": "https://www.antaranews.com/berita/3097153/starcamp-demonstrasikan-teknologi-metaverse-di-nxc-summit-bali" },
-              { "src": "/media/nxc-2.png", "caption": "VR demo at NXC Summit Bali, 2022 (YouTube coverage)", "href": "https://www.youtube.com/watch?v=0slx3VTl-Lw" },
-              { "src": "/media/starcamp-certificate.png", "caption": "Experience Center Operator internship certificate, Bali, 2022" }
+              { "src": "/media/nxc-1.webp", "caption": "StarCamp Asia demonstrating metaverse technology at NXC Summit Bali, 2022 (Antaranews.com coverage)", "href": "https://www.antaranews.com/berita/3097153/starcamp-demonstrasikan-teknologi-metaverse-di-nxc-summit-bali" },
+              { "src": "/media/nxc-2.png", "caption": "StarCamp Asia VR demo at NXC Summit Bali, 2022 (YouTube coverage)", "href": "https://www.youtube.com/watch?v=0slx3VTl-Lw" },
+              { "src": "/media/starcamp-certificate.png", "caption": "StarCamp Asia Experience Center Operator internship certificate, Bali, 2022" }
             ]
           }
         ]
