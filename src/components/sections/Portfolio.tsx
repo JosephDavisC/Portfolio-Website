@@ -151,8 +151,7 @@ const Projects = () => {
                       href={project.caseStudy}
                       onClick={() => track("project-link", { project: project.title, kind: "case-study" })}
                       className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-espresso/5 border-2 border-espresso/20 rounded-lg text-espresso font-medium text-xs sm:text-sm hover:bg-espresso hover:text-paper transition-all"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      {...(project.caseStudy.startsWith('http') && { target: "_blank", rel: "noopener noreferrer" })}
                       aria-label={`Read the ${project.title} case study`}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}

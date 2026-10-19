@@ -64,7 +64,8 @@
     "demo": "https://transfer.joechamdani.cloud/",
     "demoLabel": "Live Demo",
     "medium": "https://medium.com/@joseph.chamdani/designing-an-ai-system-for-transfer-credit-evaluation-3a6d5c48d63e",
-    "mediumLabel": "Case Study"
+    "mediumLabel": "Medium",
+    "caseStudy": "/projects/transfer-tool/"
   },
   {
     "title": "JAM AI",
