@@ -1745,7 +1745,7 @@ const ArticlePage = () => {
 
           {/* Author chip + unified meta */}
           <div className="flex items-center gap-3 pb-6 mb-8 border-b-2 border-espresso/15 dark:border-white/10">
-            <span className="w-10 h-10 shrink-0 rounded-full inline-flex items-center justify-center font-heading font-bold text-sm bg-court text-paper border-2 border-espresso dark:bg-[#60A5FA]/20 dark:text-[#60A5FA] dark:border-[#60A5FA]/50">
+            <span className="w-10 h-10 shrink-0 rounded-full inline-flex items-center justify-center font-heading font-bold text-sm bg-court text-espresso border-2 border-espresso dark:bg-[#60A5FA]/20 dark:text-[#60A5FA] dark:border-[#60A5FA]/50">
               JC
             </span>
             <div className="flex flex-col">

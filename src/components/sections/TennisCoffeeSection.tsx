@@ -196,7 +196,7 @@ export default function TennisCoffeeSection() {
                     aria-pressed={sport === s}
                     className={`px-3 py-1 rounded-full font-mono text-xs font-medium border-2 transition-all ${
                       sport === s
-                        ? "bg-court dark:bg-[#60A5FA]/15 text-paper dark:text-[#60A5FA] border-espresso dark:border-[#60A5FA]/40 shadow-brutal-sm dark:shadow-none"
+                        ? "bg-court dark:bg-[#60A5FA]/15 text-espresso dark:text-[#60A5FA] border-espresso dark:border-[#60A5FA]/40 shadow-brutal-sm dark:shadow-none"
                         : "bg-paper dark:bg-slate-800 text-espresso/70 dark:text-slate-300 border-espresso/20 dark:border-slate-600 hover:border-espresso/50 dark:hover:border-slate-400"
                     }`}
                   >
@@ -383,7 +383,7 @@ export default function TennisCoffeeSection() {
                   aria-pressed={racketTab === s}
                   className={`px-3 py-1 rounded-full font-mono text-xs font-medium border-2 transition-all ${
                     racketTab === s
-                      ? "bg-court dark:bg-[#60A5FA]/15 text-paper dark:text-[#60A5FA] border-espresso dark:border-[#60A5FA]/40 shadow-brutal-sm dark:shadow-none"
+                      ? "bg-court dark:bg-[#60A5FA]/15 text-espresso dark:text-[#60A5FA] border-espresso dark:border-[#60A5FA]/40 shadow-brutal-sm dark:shadow-none"
                       : "bg-paper dark:bg-slate-800 text-espresso/70 dark:text-slate-300 border-espresso/20 dark:border-slate-600 hover:border-espresso/50 dark:hover:border-slate-400"
                   }`}
                 >
