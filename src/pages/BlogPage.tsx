@@ -133,7 +133,7 @@ const BlogPage = () => {
                   aria-pressed={activeTag === tag}
                   className={`inline-flex items-center gap-2 px-4 py-2 rounded-full font-mono text-sm font-medium border-2 transition-all ${
                     activeTag === tag
-                      ? 'bg-court dark:bg-[#60A5FA]/15 text-paper dark:text-[#60A5FA] border-espresso dark:border-[#60A5FA]/40 shadow-brutal-sm dark:shadow-none'
+                      ? 'bg-court dark:bg-[#60A5FA]/15 text-espresso dark:text-[#60A5FA] border-espresso dark:border-[#60A5FA]/40 shadow-brutal-sm dark:shadow-none'
                       : 'bg-paper dark:bg-slate-800/50 text-espresso dark:text-slate-300 border-espresso/25 dark:border-slate-600 hover:border-espresso dark:hover:border-slate-500'
                   }`}
                 >

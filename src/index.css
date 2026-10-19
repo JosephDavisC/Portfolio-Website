@@ -200,7 +200,8 @@
 
   /* Button styles */
   .btn-brutal {
-    @apply px-6 py-3 bg-court text-paper font-semibold border-2 border-espresso rounded-lg;
+    /* espresso on court green is 5.4:1; paper on it was 2.3:1 */
+    @apply px-6 py-3 bg-court text-espresso font-semibold border-2 border-espresso rounded-lg;
     box-shadow: 2px 2px 0px 0px #3D2B1F;
     transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
@@ -491,6 +492,13 @@ html {
 
 .dark .text-espresso {
   color: hsl(210 40% 98%);
+}
+
+/* Light mode: espresso at 60% is 3.75:1 on paper, under WCAG AA's 4.5:1. Deepen it to
+   72% (about 5.3:1) here rather than renaming the class across every component. Dark mode
+   keeps its own value below. */
+html:not(.dark) .text-espresso\/60 {
+  color: rgb(61 43 31 / 0.72);
 }
 
 .dark .text-espresso\/50 {

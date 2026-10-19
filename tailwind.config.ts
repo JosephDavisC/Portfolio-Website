@@ -26,7 +26,8 @@ export default {
 				court: {
 					DEFAULT: '#4CBB17',
 					light: '#6DD035',
-					dark: '#3A9012',
+					// 4.8:1 on paper, so green link and label text passes WCAG AA (was #3A9012, 3.8:1)
+					dark: '#2E7D12',
 				},
 				espresso: {
 					DEFAULT: '#3D2B1F',
