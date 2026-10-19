@@ -6,6 +6,7 @@ import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
 import OptimizedImage from "@/components/shared/OptimizedImage";
 import NotFound from "@/pages/NotFound";
+import Lightbox from "@/components/sections/Lightbox";
 import pages from "@/data/projectPages.json";
 
 type Competitor = { name: string; good: string; gap: string; source: string };
@@ -89,6 +90,26 @@ const SectionTitle = ({ icon: Icon, children }: { icon: React.ElementType; child
 const ProjectPage = () => {
   const { slug } = useParams();
   const page = (pages as unknown as Record<string, Page>)[slug || ""];
+
+  // Images open full size in the shared Lightbox, the same way blog articles do: one
+  // delegated listener on the content wrapper. Images inside a link (the who's-who
+  // hotspots sit beside the photo, not around it) keep their own behaviour.
+  // Declared above the early return, because hooks cannot be conditional.
+  const contentRef = React.useRef<HTMLDivElement>(null);
+  const [lightbox, setLightbox] = React.useState<{ src: string; alt: string } | null>(null);
+  React.useEffect(() => {
+    const root = contentRef.current;
+    if (!root) return;
+    const onClick = (e: MouseEvent) => {
+      const img = (e.target as HTMLElement)?.closest?.("img") as HTMLImageElement | null;
+      if (!img || !root.contains(img) || img.closest("a")) return;
+      e.preventDefault();
+      setLightbox({ src: img.currentSrc || img.src, alt: img.alt });
+    };
+    root.addEventListener("click", onClick);
+    return () => root.removeEventListener("click", onClick);
+  }, [slug, page]);
+
   if (!page) return <NotFound />;
   const url = `https://joechamdani.com/projects/${page.slug}/`;
 
@@ -106,7 +127,7 @@ const ProjectPage = () => {
       </Helmet>
       <Navbar />
       <main className="pt-28 pb-24 px-6">
-        <div className="max-w-4xl mx-auto">
+        <div ref={contentRef} className="article-body max-w-4xl mx-auto">
           <Link to="/projects" className="inline-flex items-center gap-2 text-espresso/60 dark:text-slate-400 hover:text-espresso dark:hover:text-slate-200 font-mono text-sm">
             <ArrowLeft className="h-4 w-4" /> All projects
           </Link>
@@ -261,6 +282,7 @@ const ProjectPage = () => {
         </div>
       </main>
       <Footer />
+      {lightbox && <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />}
     </div>
   );
 };
