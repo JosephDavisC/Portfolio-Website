@@ -29,6 +29,10 @@ const milestones = JSON.parse(fs.readFileSync(milestonesPath, 'utf8'));
 const projectsPath = path.join(__dirname, '..', 'src', 'data', 'projects.json');
 const projects = JSON.parse(fs.readFileSync(projectsPath, 'utf8'));
 
+// Project case-study pages (/projects/<slug>/), one per entry
+const projectPagesPath = path.join(__dirname, '..', 'src', 'data', 'projectPages.json');
+const projectPages = JSON.parse(fs.readFileSync(projectPagesPath, 'utf8'));
+
 // Helper: build hidden SEO image block from an array of { src, alt }
 function buildSeoImagesBlock(images) {
   if (!images.length) return '';
@@ -195,6 +199,26 @@ function relatedFooter(exceptHref = '') {
   return `<nav><h2>More from Joseph</h2><p>${filtered}</p></nav>`;
 }
 
+// Crawler-visible copy for a project case-study page, section by section
+function projectPageFallback(p) {
+  const s = p.solution;
+  return buildFallbackMain(
+    `<h1>${esc(p.name)}</h1><p>${esc(p.oneLiner)}</p><p>${esc(p.badge)} · ${esc(p.meta)}</p>` +
+      `<p>${p.links.map((l) => `<a href="${esc(l.href)}">${esc(l.label)}</a>`).join(' · ')}</p>` +
+      `<section><h2>The problem</h2>${p.problem.body.map((t) => `<p>${esc(t)}</p>`).join('')}</section>` +
+      `<section><h2>Who it's for</h2><p>${esc(p.audience.who)}</p><p>${esc(p.audience.why)}</p></section>` +
+      `<section><h2>What students use today</h2>${p.competitors
+        .map((c) => `<h3>${esc(c.name)}</h3><p>Does well: ${esc(c.good)}</p><p>The gap: ${esc(c.gap)}</p><p><a href="${esc(c.source)}">Source</a></p>`)
+        .join('')}</section>` +
+      `<section><h2>My solution</h2><p>${esc(s.insight)}</p><p>${esc(s.feature)}</p>${s.steps
+        .map((st) => `<h3>${esc(st.title)}</h3><p>${esc(st.body)}</p>`)
+        .join('')}${(p.outputs || []).map((o) => `<h3>${esc(o.title)}</h3><p>${esc(o.body)}</p>`).join('')}<p>${esc(p.scopeNote)}</p></section>` +
+      `<section><h2>Team and result</h2><p>My role: ${esc(p.team.role)}</p><p>${esc(p.team.result)}</p><p>With ${p.team.members.slice(1).map((m) => `<a href="${esc(m.url)}">${esc(m.name)}</a>`).join(', ')}</p></section>` +
+      (p.next?.body ? `<section><h2>What I'd build next</h2><p>${esc(p.next.body)}</p></section>` : '') +
+      relatedFooter('/projects/')
+  );
+}
+
 // Build fallback content per route (keyed by page.path)
 const fallbackByPath = {
   projects: buildFallbackMain(
@@ -306,6 +330,18 @@ const pages = [
   }
 ];
 
+// Generate project case-study pages from projectPages.json
+for (const [slug, p] of Object.entries(projectPages)) {
+  pages.push({
+    path: `projects/${slug}`,
+    title: p.seo.title,
+    description: p.seo.description,
+    image: `https://joechamdani.com${p.ogImage || '/preview.png'}`,
+    url: `https://joechamdani.com/projects/${slug}/`
+  });
+  fallbackByPath[`projects/${slug}`] = projectPageFallback(p);
+}
+
 // Generate experience pages from experiences.json
 for (const [slug, exp] of Object.entries(experiences)) {
   const image = exp.ogImage || exp.teamPhoto?.image || exp.logo;
@@ -332,11 +368,29 @@ for (const cred of credentials) {
   });
 }
 
+const projectHeadExtras = Object.fromEntries(
+  Object.entries(projectPages).map(([slug, p]) => {
+    const url = `https://joechamdani.com/projects/${slug}/`;
+    const ld = `<script type="application/ld+json">${JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'CreativeWork',
+      name: p.name,
+      description: p.seo.description,
+      url,
+      image: `https://joechamdani.com${p.ogImage || '/preview.png'}`,
+      award: p.badge,
+      creator: { '@type': 'Person', '@id': 'https://joechamdani.com/#joseph', name: 'Joseph Davis Chamdani' },
+    })}</script>`;
+    return [`projects/${slug}`, [ld, breadcrumbLd(p.name, url)].join('\n    ')];
+  })
+);
+
 // Per-page head extras: LCP preloads + page-type JSON-LD (crawler-visible,
 // unlike the Helmet-injected schema which needs JS execution)
 const headExtrasByPath = {
   projects: breadcrumbLd('Projects', 'https://joechamdani.com/projects/'),
   experience: breadcrumbLd('Experience', 'https://joechamdani.com/experience/'),
+  ...projectHeadExtras,
 };
 
 for (const [slug, exp] of Object.entries(experiences)) {

@@ -1,0 +1,85 @@
+{
+  "transfer-tool": {
+    "slug": "transfer-tool",
+    "name": "AI Transfer Evaluation Tool",
+    "oneLiner": "Shows Washington community college students how their credits transfer to UW, in seconds instead of days.",
+    "badge": "1st place, UW Claude Hackathon 2025",
+    "meta": "Hackathon project · Nov 2025 · team of 4",
+    "links": [
+      { "label": "Try the live demo", "href": "https://transfer.joechamdani.cloud/", "primary": true },
+      { "label": "Code on GitHub", "href": "https://github.com/JosephDavisC/AI-Transfer-Evaluation-Tool" },
+      { "label": "Devpost", "href": "https://devpost.com/software/ai-transfer-evaluation-tool" }
+    ],
+    "video": { "youtubeId": "F8It4V7N1hg", "title": "AI Transfer Evaluation Tool demo" },
+    "ogImage": "/images/projects/transfer-tool/og.png",
+    "seo": {
+      "title": "AI Transfer Evaluation Tool · Joseph Davis Chamdani",
+      "description": "How I built a tool that shows Washington community college students how their credits transfer to UW: the problem, who it is for, the alternatives, and the product."
+    },
+    "problem": {
+      "body": [
+        "The answers already exist. UW publishes how each community college course transfers. But a student has to look up every course on their transcript one at a time, keep their own tally, and still guess whether a course without a listed match will count.",
+        "For a full transcript that is hours of cross-referencing across tabs, and the official answer only comes later, from an advisor or after admission."
+      ]
+    },
+    "audience": {
+      "who": "A Washington community college student planning a transfer to UW Seattle, transcript in hand.",
+      "why": "Every course that doesn't transfer can mean another quarter of tuition and a later graduation. They need to know early, while they can still pick different classes."
+    },
+    "competitors": [
+      {
+        "name": "UW Equivalency Guide",
+        "good": "Official and free. Lists how courses from each Washington community and technical college map to UW credit.",
+        "gap": "One college and one course at a time. The student cross-references their own transcript by hand, and the guide notes its contents are subject to change.",
+        "source": "https://admit.washington.edu/apply/transfer/equivalency-guide"
+      },
+      {
+        "name": "Transferology",
+        "good": "A shared network where participating schools publish reviewed course equivalencies, including the University of Washington.",
+        "gap": "A separate account, and it only knows courses a school has already reviewed. It shows matches, not a planning summary for UW requirements.",
+        "source": "https://www.northseattle.edu/programs/college-transfer/university-equivalency-guides"
+      },
+      {
+        "name": "Asking an advisor",
+        "good": "The most trusted answer. UW's Transfer Center, opened in fall 2025, offers drop-in advising for transfer students.",
+        "gap": "Human time is limited, so a full transcript review means waiting. The routine lookups crowd out the questions that really need a person.",
+        "source": "https://www.washington.edu/uaa/2025/10/20/uw-opens-the-transfer-center/"
+      }
+    ],
+    "solution": {
+      "insight": "The equivalency data already exists. The slow, error-prone part is reading a transcript against it, course by course, so that is the part to automate.",
+      "feature": "Upload a transcript as a PDF, an image, or pasted text. Claude Vision reads every course, then each one is matched against 157 verified Bellevue College to UW equivalencies and sorted into direct matches, semantic matches, elective credit, and courses an advisor should review. The report applies UW's 90 credit transfer cap and exports as a PDF, with a drafted email for the courses that need a human.",
+      "steps": [
+        { "title": "Read", "body": "Claude Vision turns a PDF, photo, or pasted transcript into structured course data." },
+        { "title": "Match", "body": "Exact matches come from 157 verified equivalencies; Claude compares descriptions for the rest and flags anything uncertain." },
+        { "title": "Act", "body": "Download the report as a PDF for the advising appointment, and send an AI written email that asks the advisor about exactly the courses that still need a person." }
+      ],
+      "images": [
+        { "src": "/images/projects/transfer-tool/demo-input.png", "alt": "Transfer Evaluation Portal demo with a preloaded Bellevue College sample transcript ready to evaluate", "caption": "Step 1: a transcript in (the public demo uses a preloaded sample)" },
+        { "src": "/images/projects/transfer-tool/demo-result.png", "alt": "Transfer Evaluation Report showing 125 credits attempted, 90 transferring under the UW cap, and courses tagged exact, semantic, elective and review", "caption": "The report: credits under the 90 credit cap, every course tagged by match type" }
+      ]
+    },
+    "outputs": [
+      { "title": "AI written advisor email", "body": "One click writes the email to the transfer advisor from the evaluation itself: who the student is, what already transfers, and the specific courses that need a decision, with why each one is in question.", "src": "/images/projects/transfer-tool/demo-email.png", "alt": "Advisor Request Email generated by the tool, with a subject line and a body that lists MATH 255 Vector Calculus as needing review and summarizes the completed CS and math sequences", "w": 900, "h": 984 },
+      { "title": "Downloadable PDF report", "body": "The whole evaluation as a clean PDF: credits attempted, credits transferring under the 90 credit cap, and every course with its UW equivalent and match type, ready to bring to an advising appointment.", "src": "/images/projects/transfer-tool/demo-report.png", "alt": "First page of the Transfer Credit Evaluation Report PDF showing 125 credits attempted, 90 transferring, 15 direct transfers, and course cards tagged elective or exact", "w": 900, "h": 1095 }
+    ],
+    "scopeNote": "The verified equivalency data covers Bellevue College to UW. Other colleges fall back to semantic matching and advisor review flags.",
+    "team": {
+      "role": "Lead developer: UI, transcript parsing, and the Claude API integration.",
+      "members": [
+        { "name": "Joseph Davis Chamdani", "url": "https://www.linkedin.com/in/joseph-chamdani/" },
+        { "name": "Juwita Jessica Pangestu", "url": "https://www.linkedin.com/in/juwita-jessica-pangestu/" },
+        { "name": "Winson Teh", "url": "https://www.linkedin.com/in/winsonteh/" },
+        { "name": "Kenneth Wu", "url": "https://www.linkedin.com/in/kenneth-wu-836833330/" }
+      ],
+      "photo": { "src": "/images/projects/transfer-tool/winning-moment.jpg", "alt": "Three members of the team on stage at the UW Claude Hackathon 2025, holding Claude tote bags under a slide reading AI Transfer Evaluation Tool, next to the Anthropic logo", "caption": "On stage after winning 1st place at the UW Claude Hackathon 2025",
+        "people": [
+          { "name": "Winson Teh", "url": "https://www.linkedin.com/in/winsonteh/", "box": [34.5, 41, 11, 41] },
+          { "name": "Joseph Davis Chamdani", "note": "me", "url": "https://www.linkedin.com/in/joseph-chamdani/", "box": [46.5, 42, 10.5, 40] },
+          { "name": "Juwita Jessica Pangestu", "url": "https://www.linkedin.com/in/juwita-jessica-pangestu/", "box": [57.5, 48, 9, 34] },
+          { "name": "Kenneth Wu", "note": "joining on Winson's phone", "url": "https://www.linkedin.com/in/kenneth-wu-836833330/", "box": [33.4, 54.5, 4, 8] }
+        ] },
+      "result": "Won 1st place at the UW Claude Hackathon 2025, built in 3 hours. Still live as a public demo."
+    }
+  }
+}
