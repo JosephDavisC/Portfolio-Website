@@ -11,7 +11,7 @@
       { "label": "Devpost", "href": "https://devpost.com/software/ai-transfer-evaluation-tool" }
     ],
     "video": { "youtubeId": "F8It4V7N1hg", "title": "AI Transfer Evaluation Tool demo" },
-    "ogImage": "/images/projects/transfer-tool/og.png",
+    "ogImage": "/images/projects/transfer-tool/og-v2.png",
     "seo": {
       "title": "AI Transfer Evaluation Tool · Joseph Davis Chamdani",
       "description": "How I built a tool that shows Washington community college students how their credits transfer to UW: the problem, who it is for, the alternatives, and the product."
