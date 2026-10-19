@@ -18,13 +18,36 @@
             "detailsLink": "/experience/whitespace",
             "bullets": [
               "Built and shipped features end to end on the team's live AI sales-training platform, across the database, the backend API and the React front end.",
-              "Shipped the platform's semantic search into the production codebase, tuned against a golden set until it hit 9 of 10 on top-3 accuracy.",
+              "Built semantic search for the product's knowledge library on its shared embedding and vector layer, with hybrid ranking, a relevance floor and an AI-label check. Fixed a vector-store bug that silently lost writes and a failure that made chat answer 'no knowledge' on a full library.",
               "Owned the product side alongside the code: drove competitive analysis of 4 US and APAC sales-enablement platforms and presented live product demos to company shareholders and enterprise prospects."
             ],
             "media": [
               { "src": "/Milestones/Whitespace/team-demo.jpg", "caption": "Demo day with the Whitespace Solutions team, the platform on screen" },
               { "src": "/Milestones/Whitespace/team-office.jpg", "caption": "Last day at the Whitespace Solutions office" },
               { "src": "/logos/whitespace-solution-logo.svg", "caption": "Whitespace Solutions", "href": "https://whitespace.id" }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Software Engineering Career Club at UW",
+        "category": "Clubs",
+        "logo": "/logos/swecc.png",
+        "website": "https://swecc.org/",
+        "meta": "Part-time · 6 mos",
+        "location": "Seattle, Washington, United States",
+        "roles": [
+          {
+            "title": "Technical Officer",
+            "dates": "May 2026 – Present · 6 mos",
+            "meta": "Hybrid",
+            "bullets": [
+              "Help run the club's career events and keep its website updated.",
+              "Helping organize the club's spring 2027 mentorship cohort.",
+              "Member of SWECC Labs, the club's project team."
+            ],
+            "media": [
+              { "src": "/logos/swecc.png", "caption": "SWECC", "href": "https://swecc.org/" }
             ]
           }
         ]
@@ -46,49 +69,6 @@
             ],
             "media": [
               { "src": "/logos/ICG.png", "caption": "Information Consulting Group", "href": "https://washingtonicg.org/" }
-            ]
-          }
-        ]
-      },
-      {
-        "name": "Software Engineering Career Club at UW",
-        "category": "Clubs",
-        "logo": "/logos/swecc.png",
-        "website": "https://swecc.org/",
-        "meta": "Part-time · 6 mos",
-        "location": "Seattle, Washington, United States",
-        "roles": [
-          {
-            "title": "Technical Officer",
-            "dates": "May 2026 – Present · 6 mos",
-            "meta": "Hybrid",
-            "bullets": [
-              "Help run the club's career events and keep its website updated."
-            ],
-            "media": [
-              { "src": "/logos/swecc.png", "caption": "SWECC", "href": "https://swecc.org/" }
-            ]
-          }
-        ]
-      },
-      {
-        "name": "University of Washington",
-        "category": "Work",
-        "logo": "/logos/UW_Logo.png",
-        "website": "https://hfs.uw.edu/Dining",
-        "meta": "Part-time · 1 yr 2 mos",
-        "location": "Seattle, Washington, United States",
-        "roles": [
-          {
-            "title": "Student Assistant - Bay Laurel Catering",
-            "dates": "Sep 2025 – Present · 1 yr 2 mos",
-            "meta": "On-site",
-            "bullets": [
-              "Supported UW Housing and Food Services with catering operations, event setup, and daily food service."
-            ],
-            "media": [
-              { "src": "/media/UW-Dining.png", "caption": "UW HFS Dining", "href": "https://hfs.uw.edu/Home" },
-              { "src": "/media/bay-laurel.jpg", "caption": "UW Bay Laurel", "href": "https://hfs.uw.edu/Bay-Laurel-Catering" }
             ]
           }
         ]

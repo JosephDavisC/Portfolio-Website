@@ -49,7 +49,7 @@
     "duration": "Jul 2026 – Sep 2026 · 3 mos",
     "location": "Jakarta, Indonesia · Hybrid",
     "website": "https://whitespace.id",
-    "description": "Whitespace Solutions is a technology company in Jakarta, Indonesia building an AI sales-training platform. As an AI Product Intern I shipped features end to end across the database, the backend API and the React front end, and took the platform's semantic search into production, tuning it against a golden set until it reached 9 of 10 on top-3 accuracy. Alongside the code I owned product work: competitive analysis of 4 US and APAC sales-enablement platforms that informed a company-wide repositioning, pre-launch QA ahead of the first live enterprise deployment, and live product demos to company shareholders and enterprise prospects.",
+    "description": "Whitespace Solutions is a technology company in Jakarta, Indonesia building an AI sales-training platform. As an AI Product Intern I shipped features end to end across the database, the backend API and the React front end. I also built semantic search for the product's knowledge library on its shared embedding and vector layer, with hybrid ranking, a relevance floor and an AI-label check, and fixed a vector-store bug that silently lost writes and a failure that made chat answer 'no knowledge' on a full library. Alongside the code I owned product work: competitive analysis of 4 US and APAC sales-enablement platforms that informed a company-wide repositioning, pre-launch QA ahead of the first live enterprise deployment, and live product demos to company shareholders and enterprise prospects.",
     "theme": {
       "primary": "#F2902A",
       "primaryHover": "#F8A94E",
@@ -61,7 +61,7 @@
     },
     "seo": {
       "title": "Whitespace Solutions Internship - AI Product Intern",
-      "description": "Joseph Chamdani was AI Product Intern at Whitespace Solutions in Jakarta from July to September 2026, shipping full-stack features and production semantic search on an AI sales-training platform.",
+      "description": "Joseph Chamdani was AI Product Intern at Whitespace Solutions in Jakarta from July to September 2026, shipping full-stack features and semantic search on an AI sales-training platform.",
       "keywords": [
         "Joseph Chamdani",
         "AI Product Intern",
@@ -77,14 +77,13 @@
     },
     "highlights": [
       "Built and shipped features end to end on the team's live AI sales-training platform, across the database, the backend API and the React front end",
-      "Shipped the platform's semantic search into the production codebase, tuned against a golden set until it hit 9 of 10 on top-3 accuracy",
+      "Built semantic search for the product's knowledge library on its shared embedding and vector layer, with hybrid ranking, a relevance floor and an AI-label check. Fixed a vector-store bug that silently lost writes and a failure that made chat answer 'no knowledge' on a full library.",
       "Drove competitive analysis of 4 US and APAC sales-enablement platforms, directly informing a company-wide repositioning from knowledge platform to sales roleplay and coaching",
       "Ran pre-launch QA that surfaced and triaged 30+ defects ahead of the first live enterprise deployment",
       "Presented live product demos to company shareholders and enterprise prospects alongside the founding team"
     ],
     "technologies": ["AI Product Development", "React", "Backend API", "Databases", "Semantic Search", "QA", "Competitive Analysis"],
     "impact": [
-      { "metric": "Semantic search top-3 accuracy", "value": "9/10" },
       { "metric": "Platforms analyzed", "value": "4" },
       { "metric": "Pre-launch defects triaged", "value": "30+" },
       { "metric": "Enterprise deployment", "value": "1st live" }
