@@ -1,6 +1,7 @@
 import React from "react";
 import { m } from "framer-motion";
 import { MapPin, Code2 } from "lucide-react";
+import MiniJoe from "@/components/shared/MiniJoe";
 
 interface Skill {
   name: string;
@@ -124,6 +125,7 @@ export default function About() {
                 <MapPin className="h-6 w-6 text-court-dark dark:text-[#60A5FA]" />
               </div>
               <h3 className="text-2xl font-heading font-semibold text-espresso">The Journey</h3>
+              <MiniJoe className="ml-auto -mt-6 -mb-2 md:-mt-8 h-24 md:h-28" />
             </header>
 
             <div className="space-y-4 text-espresso/80 leading-relaxed text-[17px]">
