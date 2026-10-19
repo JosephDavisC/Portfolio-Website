@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
-import { m, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence, LazyMotion, useReducedMotion } from 'framer-motion';
+
+// The app loads framer's lighter domAnimation set; the filter's slide-into-place needs
+// layout animation (domMax). Load it for this page only, so other pages stay light.
+const loadLayoutFeatures = () => import('framer-motion').then((mod) => mod.domMax);
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { Github, ExternalLink, BookOpen, FileText, ArrowLeft } from 'lucide-react';
@@ -7,16 +11,16 @@ import Navbar from '@/components/shared/Navbar';
 import { getWebPPath, hasWebP } from '@/components/shared/OptimizedImage';
 import projectsData from '@/data/projects.json';
 
-const fadeInUp = {
-  initial: { opacity: 0, y: 40 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -20 },
-  transition: { duration: 0.5, type: "spring", stiffness: 200 }
-};
-
-const staggerContainer = {
-  animate: { transition: { staggerChildren: 0.08 } }
-};
+// Filtering animates in place: cards that leave fade out, cards that stay slide to their
+// new slot, new cards fade in, all at once. A short tween, not a spring, so nothing
+// overshoots, and the stagger is capped so a long list never trickles in.
+const EASE = [0.22, 1, 0.36, 1] as const;
+const cardMotion = (i: number, reduce: boolean | null) => ({
+  initial: reduce ? { opacity: 0 } : { opacity: 0, y: 10, scale: 0.98 },
+  animate: { opacity: 1, y: 0, scale: 1, transition: { duration: reduce ? 0 : 0.22, ease: EASE, delay: reduce ? 0 : Math.min(i * 0.03, 0.15) } },
+  exit: { opacity: 0, scale: reduce ? 1 : 0.98, transition: { duration: reduce ? 0 : 0.15, ease: EASE } },
+  transition: { layout: { duration: reduce ? 0 : 0.3, ease: EASE } },
+});
 
 interface Project {
   title: string;
@@ -58,6 +62,7 @@ const categories = ['All', ...Array.from(new Set(projects.map(p => p.category)))
 
 const ProjectsPage: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('All');
+  const reduceMotion = useReducedMotion();
 
   const filteredProjects = activeCategory === 'All'
     ? projects
@@ -194,22 +199,21 @@ const ProjectsPage: React.FC = () => {
               ))}
             </m.nav>
 
-            <AnimatePresence mode="wait">
-              <m.section
-                key={activeCategory}
-                variants={staggerContainer}
-                initial="initial"
-                animate="animate"
-                exit="exit"
-                className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-                aria-label={`${activeCategory} projects`}
-              >
-                {filteredProjects.map((project) => (
+            <LazyMotion features={loadLayoutFeatures}>
+            <section
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+              aria-label={`${activeCategory} projects`}
+            >
+              <AnimatePresence mode="popLayout" initial={false}>
+                {filteredProjects.map((project, i) => (
                   <m.article
                     key={project.title}
-                    variants={fadeInUp}
-                    whileHover={{ y: -4 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    layout={!reduceMotion}
+                    {...cardMotion(i, reduceMotion)}
+                    whileHover={reduceMotion ? undefined : { y: -4, transition: { duration: 0.2, ease: EASE } }}
+                    // card-brutal transitions "all" on an overshooting curve; scoped here so CSS
+                    // doesn't fight the per-frame transform and opacity motion writes
+                    style={{ transitionProperty: 'box-shadow, border-color, background-color, color' }}
                     className="card-brutal p-5 flex flex-col group"
                   >
                     <figure className="relative overflow-hidden rounded-lg border-2 border-espresso dark:border-slate-600">
@@ -316,8 +320,9 @@ const ProjectsPage: React.FC = () => {
                     )}
                   </m.article>
                 ))}
-              </m.section>
-            </AnimatePresence>
+              </AnimatePresence>
+            </section>
+            </LazyMotion>
 
             {filteredProjects.length === 0 && (
               <m.div
