@@ -494,6 +494,13 @@ html {
   color: hsl(210 40% 98%);
 }
 
+/* Light mode: espresso at 60% is 3.75:1 on paper, under WCAG AA's 4.5:1. Deepen it to
+   72% (about 5.3:1) here rather than renaming the class across every component. Dark mode
+   keeps its own value below. */
+html:not(.dark) .text-espresso\/60 {
+  color: rgb(61 43 31 / 0.72);
+}
+
 .dark .text-espresso\/50 {
   color: hsl(215 20.2% 58%);
 }
