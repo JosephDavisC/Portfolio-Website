@@ -154,7 +154,7 @@ export default function About() {
             <m.img
               src="/images/chibis/jo_stress.webp"
               alt="Stressed Joe learning all these technologies"
-              className="absolute top-4 right-4 w-20 h-20 md:w-24 md:h-24 opacity-20 pointer-events-none"
+              className="absolute top-2 right-2 w-14 h-14 sm:top-4 sm:right-4 sm:w-20 sm:h-20 md:w-24 md:h-24 pointer-events-none"
               animate={{
                 rotate: [-5, 5, -5],
                 y: [0, -8, 0],
