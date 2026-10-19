@@ -14,7 +14,7 @@
     "ogImage": "/images/projects/transfer-tool/og-v2.png",
     "seo": {
       "title": "AI Transfer Evaluation Tool · Joseph Davis Chamdani",
-      "description": "How I built a tool that shows Washington community college students how their credits transfer to UW: the problem, who it is for, the alternatives, and the product."
+      "description": "A tool that shows Washington community college students how their credits transfer to UW: the problem, who it is for, the alternatives, and the product."
     },
     "problem": {
       "body": [
@@ -75,7 +75,7 @@
       "photo": { "src": "/images/projects/transfer-tool/winning-moment.jpg", "alt": "Three members of the team on stage at the UW Claude Hackathon 2025, holding Claude tote bags under a slide reading AI Transfer Evaluation Tool, next to the Anthropic logo", "caption": "On stage after winning 1st place at the UW Claude Hackathon 2025",
         "people": [
           { "name": "Winson Teh", "url": "https://www.linkedin.com/in/winsonteh/", "box": [34.5, 41, 11, 41] },
-          { "name": "Joseph Davis Chamdani", "note": "me", "url": "https://www.linkedin.com/in/joseph-chamdani/", "box": [46.5, 42, 10.5, 40] },
+          { "name": "Joseph Davis Chamdani", "note": "lead developer", "url": "https://www.linkedin.com/in/joseph-chamdani/", "box": [46.5, 42, 10.5, 40] },
           { "name": "Juwita Jessica Pangestu", "url": "https://www.linkedin.com/in/juwita-jessica-pangestu/", "box": [57.5, 48, 9, 34] },
           { "name": "Kenneth Wu", "note": "joining on Winson's phone", "url": "https://www.linkedin.com/in/kenneth-wu-836833330/", "box": [33.4, 54.5, 4, 8] }
         ] },

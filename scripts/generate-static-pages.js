@@ -210,11 +210,11 @@ function projectPageFallback(p) {
       `<section><h2>What students use today</h2>${p.competitors
         .map((c) => `<h3>${esc(c.name)}</h3><p>Does well: ${esc(c.good)}</p><p>The gap: ${esc(c.gap)}</p><p><a href="${esc(c.source)}">Source</a></p>`)
         .join('')}</section>` +
-      `<section><h2>My solution</h2><p>${esc(s.insight)}</p><p>${esc(s.feature)}</p>${s.steps
+      `<section><h2>The solution</h2><p>${esc(s.insight)}</p><p>${esc(s.feature)}</p>${s.steps
         .map((st) => `<h3>${esc(st.title)}</h3><p>${esc(st.body)}</p>`)
         .join('')}${(p.outputs || []).map((o) => `<h3>${esc(o.title)}</h3><p>${esc(o.body)}</p>`).join('')}<p>${esc(p.scopeNote)}</p></section>` +
-      `<section><h2>Team and result</h2><p>My role: ${esc(p.team.role)}</p><p>${esc(p.team.result)}</p><p>With ${p.team.members.slice(1).map((m) => `<a href="${esc(m.url)}">${esc(m.name)}</a>`).join(', ')}</p></section>` +
-      (p.next?.body ? `<section><h2>What I'd build next</h2><p>${esc(p.next.body)}</p></section>` : '') +
+      `<section><h2>Team and result</h2><p>Joseph's role: ${esc(p.team.role)}</p><p>${esc(p.team.result)}</p><p>With ${p.team.members.slice(1).map((m) => `<a href="${esc(m.url)}">${esc(m.name)}</a>`).join(', ')}</p></section>` +
+      (p.next?.body ? `<section><h2>What's next</h2><p>${esc(p.next.body)}</p></section>` : '') +
       relatedFooter('/projects/')
   );
 }

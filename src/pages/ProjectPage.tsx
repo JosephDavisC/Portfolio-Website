@@ -178,9 +178,9 @@ const ProjectPage = () => {
             </div>
           </section>
 
-          {/* My solution */}
+          {/* The solution */}
           <section className="mb-14">
-            <SectionTitle icon={Lightbulb}>My solution</SectionTitle>
+            <SectionTitle icon={Lightbulb}>The solution</SectionTitle>
             <blockquote className="border-l-4 border-court dark:border-[#60A5FA] pl-5 text-xl md:text-2xl font-heading font-semibold leading-snug text-espresso dark:text-slate-100">
               {page.solution.insight}
             </blockquote>
@@ -237,7 +237,7 @@ const ProjectPage = () => {
               </figure>
             ))}
             <div className="card-brutal p-6">
-              <p className="text-lg text-espresso dark:text-slate-100"><span className="font-semibold">My role:</span> {page.team.role}</p>
+              <p className="text-lg text-espresso dark:text-slate-100"><span className="font-semibold">Joseph's role:</span> {page.team.role}</p>
               <p className="mt-3 text-lg leading-relaxed text-espresso/80 dark:text-slate-300">{page.team.result}</p>
               <p className="mt-3 font-mono text-sm text-espresso/60 dark:text-slate-400">
                 With{" "}
@@ -254,7 +254,7 @@ const ProjectPage = () => {
           {/* What's next: only when there is real copy for it */}
           {page.next?.body && (
             <section>
-              <SectionTitle icon={Lightbulb}>What I'd build next</SectionTitle>
+              <SectionTitle icon={Lightbulb}>What's next</SectionTitle>
               <p className="text-lg leading-relaxed text-espresso/80 dark:text-slate-300">{page.next.body}</p>
             </section>
           )}
