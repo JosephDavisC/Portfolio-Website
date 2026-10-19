@@ -2,50 +2,78 @@
   <img src="https://joechamdani.com/Logo_Joseph.PNG" alt="Joseph Davis Chamdani Logo" width="120" align="left"/>
 </a>
 
-# Joseph Davis Chamdani – Portfolio v2.0
+# Joseph Davis Chamdani · Portfolio v2.2
 
 [![Website](https://img.shields.io/badge/Website-joechamdani.com-6f42c1?style=for-the-badge&logo=vercel&logoColor=white)](https://joechamdani.com)
-[![Version](https://img.shields.io/badge/Version-2.0.0-4CBB17?style=for-the-badge)](https://joechamdani.com)
-
+[![Version](https://img.shields.io/badge/Version-2.2.0-4CBB17?style=for-the-badge)](https://github.com/JosephDavisC/Portfolio-Website/releases/tag/v2.2.0)
 
 ---
 
 ## About
 
-This is my personal **portfolio website** where I showcase my background, projects, certifications, experiences, and interests.
+This is my personal **portfolio website**, where I showcase my background, projects, experience, writing and certifications.
 
-The site also highlights my journey as an **Informatics student @ University of Washington** and includes personal touches like my love for tennis and coffee.
+It follows my path as an **Informatics student at the University of Washington**, with personal touches like my love for tennis and coffee.
 
-Live Site: **[joechamdani.com](https://joechamdani.com)**
+Live site: **[joechamdani.com](https://joechamdani.com)**
+
+![Homepage in light mode](public/images/readme/v2.2-home-light.webp)
 
 ---
 
-## Design Evolution
+## What's new in v2.2
 
-Version 2.0 marks a complete redesign—moving away from generic dark-mode templates toward a **Tactile, Paper-Textured aesthetic** that reflects who I am.
+- **Project case studies.** [`/projects/transfer-tool`](https://joechamdani.com/projects/transfer-tool/) walks through the AI Transfer Evaluation Tool like a product interview answer: the problem, who it's for, the alternatives (with sources), the solution and what it produces. The team photo has a hover and tap "who's who". Case studies are data-driven, so the next one is a JSON entry, not new code.
+- **A real blog.** A `/blog` index with an RSS feed, editorial cards, and articles with images that open full size.
+- **An experience page.** `/experience` has the full timeline, with a detail page for each internship, including photos and recommendations.
+- **WCAG AA contrast in light mode.** Buttons, links and muted text were retuned. Contrast failures dropped from 247 to 84 across seven pages, without changing the palette.
+- **Built for search engines and AI readers.** Every page is prerendered with real content, canonical URLs and structured data, and an `llms.txt` gives AI assistants an accurate map of the site.
 
-### Key Highlights
+Full notes: [v2.2.0 release](https://github.com/JosephDavisC/Portfolio-Website/releases/tag/v2.2.0). Changes are made through documented pull requests with before and after screenshots, for example [#2](https://github.com/JosephDavisC/Portfolio-Website/pull/2) and [#3](https://github.com/JosephDavisC/Portfolio-Website/pull/3).
 
-- **Organic Palette**: The color system draws inspiration from two of my passions—**Tennis** (Court Green `#4CBB17`) and **Coffee** (Espresso Brown `#3D2B1F`). This creates a warm, approachable feel in light mode.
+---
 
-- **Custom Interactions**: Physics-based tennis ball particle systems, animated coffee steam SVGs, and hand-crafted micro-interactions replace generic UI patterns. Every animation is purposefully designed—no generic libraries or emoji fallbacks.
+## Design
 
-- **Dual-Identity Theme System**: A custom-engineered theme toggle allows seamless switching between the new light mode (paper textures, neobrutalist shadows) and a refined dark mode (glassmorphism, neon blue accents). Both modes transition with a premium 500ms fade.
+The v2 redesign moved away from generic dark templates toward a **tactile, paper-textured, neobrutalist** look that reflects who I am.
 
-- **Neobrutalist Design Language**: Cards feature tactile offset shadows, hand-drawn scribble underlines, and playful hover states that make the interface feel tangible and crafted.
+- **Organic palette.** The colors come from two of my passions: **tennis** (Court Green `#4CBB17`) and **coffee** (Espresso `#3D2B1F`).
+- **Custom interactions.** Tennis ball particles, animated coffee steam and hand-built micro-interactions, all purpose-made.
+- **Two themes.** A warm light mode with paper textures and offset shadows, and a dark mode with glassmorphism and neon blue accents. Both switch with a smooth 500ms fade.
+- **Neobrutalist details.** Cards with offset shadows, hand-drawn scribble underlines and playful hover states that make the interface feel tangible.
+
+![Homepage in dark mode](public/images/readme/v2.2-home-dark.webp)
+
+---
+
+## Features
+
+- **Homepage sections:** hero, about, milestones, portfolio, certifications, awards, blog, tennis and coffee, recommendations, contact
+- **Projects page** with category filters (AI, Web, Games, Data), plus case study pages
+- **Blog** with article pages, an RSS feed and click-to-enlarge images
+- **Experience timeline** with a detail page per role
+- **Credential pages** for each certificate
+- **Contact form** with a custom PHP backend and an auto-reply
+- **SEO:** prerendered pages, Open Graph images for LinkedIn, Facebook, X and WhatsApp, a sitemap with image entries, and JSON-LD
+- **Accessibility:** AA contrast in light mode, keyboard focus states and reduced-motion support
+- **Responsive** on every screen size, with easter eggs hidden throughout
+
+| Case study | Blog |
+|---|---|
+| ![AI Transfer Evaluation Tool case study](public/images/readme/v2.2-case-study.webp) | ![Blog index in dark mode](public/images/readme/v2.2-blog.webp) |
 
 ---
 
 ## Tech Stack
 
-- **React (TypeScript)** – Frontend framework
-- **TailwindCSS** – Styling
-- **Framer Motion** – Animations
-- **Lucide React Icons** – Icons
-- **Vite** – Build tool
-- **React Router** – Client-side routing for blog pages
-- **React Helmet** – SEO meta tags management
-- **Hostinger** – Hosting
+- **React + TypeScript**: frontend
+- **Vite**: build tool
+- **Tailwind CSS**: styling
+- **Framer Motion**: animations
+- **React Router**: client-side routing
+- **React Helmet Async**: per-page meta tags
+- **Lucide React**: icons
+- **Hostinger**: hosting
 
 ---
 
@@ -53,122 +81,56 @@ Version 2.0 marks a complete redesign—moving away from generic dark-mode templ
 
 ```
 src/
- ├── components/       # Reusable React components
- │    ├── sections/   # Main page sections
- │    │    ├── Hero.tsx
- │    │    ├── About.tsx
- │    │    ├── Portfolio.tsx
- │    │    ├── Blog.tsx
- │    │    ├── Certifications.tsx
- │    │    ├── Milestones.tsx
- │    │    ├── Talks.tsx
- │    │    ├── TennisCoffeeSection.tsx
- │    │    └── Contact.tsx
- │    └── shared/     # Shared components
- │         ├── Navbar.tsx
- │         ├── Footer.tsx
- │         ├── ContactForm.tsx
- │         └── RacketCard.tsx
- │
- ├── contexts/         # React contexts
- │    └── ThemeContext.tsx  # Theme state management
- │
- ├── data/             # JSON data for content
- │    ├── milestones.json
- │    ├── credentials.json
- │    ├── projects.json
- │    └── articles.json
- │
- ├── hooks/            # Custom React hooks
- ├── lib/              # Utilities
- ├── pages/            # Page-level components
- │    ├── Index.tsx   # Homepage
- │    ├── ProjectsPage.tsx  # All projects with filtering
- │    └── ArticlePage.tsx  # Blog article pages
- ├── App.tsx           # Main app entry with routing
- └── main.tsx          # Vite bootstrap
+ ├── components/
+ │    ├── sections/        # Homepage sections (Hero, About, Milestones, Portfolio,
+ │    │                    #   Certifications, Awards, Blog, TennisCoffee, Testimonials,
+ │    │                    #   Contact) and the shared image Lightbox
+ │    └── shared/          # Navbar, Footer, ContactForm, ThemeToggle, OptimizedImage, ...
+ ├── contexts/             # ThemeContext (light and dark)
+ ├── data/                 # Content lives here as JSON
+ │    ├── projects.json         # Project cards
+ │    ├── projectPages.json     # Case study pages
+ │    ├── articles.json         # Blog posts
+ │    ├── experiences.json      # Experience detail pages
+ │    ├── milestones.json       # Timeline
+ │    └── credentials.json      # Certificates
+ └── pages/                # Index, ProjectsPage, ProjectPage, BlogPage, ArticlePage,
+                           #   ExperiencePage, InternshipPage, CredentialPage, NotFound
 
-public/
- ├── article_media/    # Blog article images
- │    └── bc-hacks-2024/
- ├── images/           # Portfolio images
- │    ├── chibis/     # Custom chibi illustrations
- │    ├── moments/    # Tennis & coffee photos
- │    └── rackets/    # Tennis racket images
- ├── cursors/          # Custom cursor images
- ├── logos/            # Logos
- └── media/            # Media files (screenshots, certs, etc.)
+public/                    # Images (with .webp twins), article media, logos, sitemap, llms.txt
 
 scripts/
- └── generate-blog-meta.js  # Generates static HTML for SEO
+ ├── generate-static-pages.js   # Prerenders pages with real content and meta tags
+ ├── generate-blog-meta.js      # Prerenders blog articles, builds RSS
+ ├── check-webp-twins.js        # Build guard: every image has a .webp twin
+ └── check-content-rules.js     # Build guard: share images, media paths, sitemap images
 ```
 
----
-
-## Features
-
-- **Hero, About, Portfolio, Blog & Articles, Certifications, Milestones, Talks**
-- **Blog Section** with full article pages and SEO meta tags for social media sharing
-- **Projects Page** with category filtering (AI, Web, Games, Data)
-- **Lifestyle Section** (Tennis & Coffee) with racket specs and photo carousel
-- **Contact Form** with custom PHP backend and auto-reply confirmation
-- **Dual-Identity Theme System**: Warm Light Mode + Sleek Dark Mode
-- **Custom-engineered SVG animations and particle systems** (No generic emojis)
-- **Responsive layout for all devices**
-- **Live links to projects, certificates, and experiences**
-- **SEO optimized** with Open Graph tags for LinkedIn, Facebook, Twitter, WhatsApp
-- **Easter Eggs**: Hidden interactions throughout the site
+Most content changes are a JSON edit. The build guards fail the build on mistakes that would otherwise only show up in production, such as a share image LinkedIn can't render or a sitemap image that doesn't exist.
 
 ---
 
-## Screenshots
-
-### Light Mode
-
-![Light Mode](public/images/readme/Website-v2-Joseph-Light.png)
-
-### Dark Mode
-
-![Dark Mode](public/images/readme/Website-v2-Joseph-Dark.png)
-
----
-
-## Setup & Installation
-
-Clone the repo and install dependencies:
+## Setup
 
 ```bash
 git clone https://github.com/JosephDavisC/Portfolio-Website.git
 cd Portfolio-Website
 npm install
-```
-
-Run locally:
-
-```bash
-npm run dev
-```
-
-Build for production:
-
-```bash
-npm run build
+npm run dev      # local dev server
+npm run build    # production build, prerendering and build guards
 ```
 
 ---
 
-## Deployment
+## Version history
 
-This site is deployed on **Hostinger** with a custom domain: [joechamdani.com](https://joechamdani.com).
+- **v2.2** (Oct 2026): case studies, the blog and experience pages, AA contrast, and prerendering for search and AI readers
+- **v2.1** (Aug 2026): awards, testimonials, a performance pass and `llms.txt`
+- **v2.0** (Jan 2026): the paper-textured neobrutalist redesign
+- **v1.0** (Nov 2025): the original dark glassmorphism design
 
----
-
-## Legacy Version (v1.0)
-
-The original v1.0 design is preserved through the in-app theme toggle. The dark mode maintains the glassmorphism aesthetic and neon accents from v1.0, allowing visitors to experience both design philosophies.
+The v1.0 look lives on in today's dark mode.
 
 ![v1.0 Design](public/media/preview-website.png)
 
-You can view a walkthrough of the original v1.0 design here: [Watch v1.0 Walkthrough on YouTube](https://youtu.be/PpamoGkq0po)
-
----
+Walkthrough of the original v1.0 design: [Watch on YouTube](https://youtu.be/PpamoGkq0po)
