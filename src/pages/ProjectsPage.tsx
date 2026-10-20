@@ -137,7 +137,7 @@ const ProjectsPage: React.FC = () => {
             <Link
               to="/"
               state={{ scrollTo: 'portfolio' }}
-              className="inline-flex items-center text-espresso/60 dark:text-slate-400 hover:text-espresso dark:hover:text-slate-200 transition-colors mb-8 group font-mono"
+              className="link-underline inline-flex items-center text-espresso/60 dark:text-slate-400 hover:text-espresso dark:hover:text-slate-200 transition-colors mb-8 group font-mono"
             >
               <ArrowLeft className="h-4 w-4 mr-2 group-hover:-translate-x-1 transition-transform" />
               Back to Home

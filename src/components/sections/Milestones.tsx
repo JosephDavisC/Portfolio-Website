@@ -291,7 +291,7 @@ export default function Milestones({ variant = "home" }: MilestonesProps) {
                     {/* Company header (clickable) */}
                     <button
                       onClick={() => toggleCompany(company.name)}
-                      className="w-full text-left mb-4 flex items-center gap-3 group relative z-10"
+                      className="w-full text-left mb-4 -mx-2 px-2 py-1.5 rounded-xl flex items-center gap-3 group relative z-10 transition-colors hover:bg-espresso/[0.05] dark:hover:bg-white/[0.05]"
                     >
                       <a
                         href={company.website || linkedinFallback}
@@ -328,6 +328,7 @@ export default function Milestones({ variant = "home" }: MilestonesProps) {
                           {company.roles.length} role{company.roles.length > 1 ? "s" : ""}
                         </span>
                         <m.div
+                          className="transition-transform group-hover:translate-y-0.5 motion-reduce:transition-none"
                           animate={{ rotate: isExpanded ? 180 : 0 }}
                           transition={{ duration: 0.2 }}
                         >

@@ -57,11 +57,11 @@ export default function ThemeToggle() {
     <m.button
       onClick={toggleTheme}
       className={`
-        relative w-16 h-8 rounded-full
+        group relative w-16 h-8 rounded-full
         border-2 transition-colors duration-400 flex items-center px-1
         ${isDark
-          ? "bg-slate-900 border-slate-700"
-          : "bg-paper border-espresso/30"
+          ? "bg-slate-900 border-slate-700 hover:border-[#60A5FA]/60"
+          : "bg-paper border-espresso/30 hover:border-espresso/70"
         }
       `}
       whileTap={{ scale: 0.95 }}
@@ -89,7 +89,9 @@ export default function ThemeToggle() {
         </span>
       </div>
 
-      {/* Thumb */}
+      {/* Thumb, in a wrapper that leans it toward the other side on hover (the wrapper
+          moves, not the thumb, so it never fights framer's x) */}
+      <span className={`flex transition-transform duration-200 motion-reduce:transition-none ${isDark ? "group-hover:-translate-x-[3px]" : "group-hover:translate-x-[3px]"}`}>
       <m.div
         className={`
           w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0
@@ -120,6 +122,7 @@ export default function ThemeToggle() {
           {isDark ? <MoonIcon /> : <SunIcon />}
         </m.span>
       </m.div>
+      </span>
     </m.button>
   );
 }

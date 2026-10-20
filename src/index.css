@@ -207,8 +207,8 @@
   }
 
   .btn-brutal:hover {
-    box-shadow: 3px 3px 0px 0px #3D2B1F;
-    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0px 0px #3D2B1F;
+    transform: translate(-2px, -2px);
   }
 
   .btn-brutal:active {
@@ -225,8 +225,44 @@
 
   .btn-brutal-outline:hover {
     @apply bg-espresso text-paper;
-    box-shadow: 3px 3px 0px 0px #3D2B1F;
-    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0px 0px #3D2B1F;
+    transform: translate(-2px, -2px);
+  }
+
+  /* An underline that slides in from the left on hover. .nav-link previews the
+     active-section bar; .link-underline is for quiet text links (Back to ..., Share). */
+  .nav-link,
+  .link-underline {
+    position: relative;
+  }
+  .nav-link::after,
+  .link-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    border-radius: 9999px;
+    background: #4CBB17;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .nav-link::after { bottom: -4px; height: 3px; }
+  .link-underline::after { bottom: -3px; height: 2px; }
+  .nav-link:hover::after,
+  .link-underline:hover::after,
+  .link-underline:focus-visible::after {
+    transform: scaleX(1);
+  }
+  /* the active link already shows its own bar */
+  .nav-link[aria-current="page"]::after { display: none; }
+  .dark .nav-link::after,
+  .dark .link-underline::after {
+    background: #60A5FA;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .nav-link::after,
+    .link-underline::after { transition: none; }
   }
 
   /* Tag/Badge styles */
