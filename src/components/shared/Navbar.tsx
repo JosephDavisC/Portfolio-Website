@@ -167,6 +167,22 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 w-full z-[100] bg-paper/90 dark:bg-[#141B2D]/95 backdrop-blur-md border-b-2 border-espresso/10 dark:border-slate-700/30 transition-colors duration-500">
+      {/* First focus stop on every page: jumps keyboard users past the nav */}
+      <a
+        href="#main-content"
+        onClick={(e) => {
+          e.preventDefault();
+          const header = e.currentTarget.closest("header");
+          const target = (document.querySelector("main") ?? header?.nextElementSibling) as HTMLElement | null;
+          if (!target) return;
+          target.setAttribute("tabindex", "-1");
+          target.focus({ preventScroll: true });
+          target.scrollIntoView({ block: "start" });
+        }}
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-[110] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-paper focus:text-espresso focus:font-semibold focus:border-2 focus:border-espresso focus:shadow-brutal-sm dark:focus:bg-slate-900 dark:focus:text-slate-100 dark:focus:border-[#60A5FA]/50 dark:focus:shadow-none"
+      >
+        Skip to content
+      </a>
       <nav className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
         {/* Logo */}
         <Link

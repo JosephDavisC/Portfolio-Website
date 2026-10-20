@@ -288,18 +288,15 @@ export default function Milestones({ variant = "home" }: MilestonesProps) {
                     {/* Timeline dot */}
                     <span className="absolute left-0 top-3 h-3 w-3 rounded-full bg-court dark:bg-[#60A5FA] border-2 border-espresso dark:border-[#60A5FA] shadow-brutal-sm dark:shadow-none" />
 
-                    {/* Company header (clickable) */}
-                    <button
-                      onClick={() => toggleCompany(company.name)}
-                      className="w-full text-left mb-4 -mx-2 px-2 py-1.5 rounded-xl flex items-center gap-3 group relative z-10 transition-colors hover:bg-espresso/[0.05] dark:hover:bg-white/[0.05]"
-                    >
+                    {/* Company header: the logo links out, the rest toggles the roles. They are
+                        siblings, not a link inside a button, so each is its own focus stop. */}
+                    <div className="w-full mb-4 -mx-2 px-2 py-1.5 rounded-xl flex items-center gap-3 group relative z-10 transition-colors hover:bg-espresso/[0.05] dark:hover:bg-white/[0.05]">
                       <a
                         href={company.website || linkedinFallback}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="shrink-0"
                         aria-label={`${company.name} website`}
-                        onClick={(e) => e.stopPropagation()}
                       >
                         <img loading="lazy" decoding="async"
                           src={bust(company.logo)}
@@ -307,12 +304,18 @@ export default function Milestones({ variant = "home" }: MilestonesProps) {
                           className={`h-12 w-12 rounded-lg object-contain p-1 border-2 border-espresso dark:border-slate-600 shadow-brutal-sm dark:shadow-none hover:shadow-brutal dark:hover:shadow-[0_0_15px_rgba(96,165,250,0.3)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all ${company.logo.endsWith('.svg') ? 'bg-white dark:bg-white' : 'bg-paper dark:bg-slate-800'}`}
                         />
                       </a>
+                      <button
+                        type="button"
+                        onClick={() => toggleCompany(company.name)}
+                        aria-expanded={isExpanded}
+                        className="flex-1 min-w-0 flex items-center gap-3 text-left"
+                      >
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2">
                           <h3 className="text-xl font-heading font-semibold text-espresso dark:text-slate-100 truncate">
                             {company.name}
                           </h3>
-                          <span className="px-2 py-0.5 text-[10px] font-mono font-semibold rounded-full bg-espresso/10 dark:bg-slate-700 text-espresso/60 dark:text-slate-400 border border-espresso/20 dark:border-slate-600">
+                          <span className="px-2 py-0.5 text-[10px] font-mono font-semibold rounded-full bg-espresso/10 dark:bg-slate-700 text-espresso/60 dark:text-slate-300 border border-espresso/20 dark:border-slate-600">
                             {company.category}
                           </span>
                         </div>
@@ -323,7 +326,7 @@ export default function Milestones({ variant = "home" }: MilestonesProps) {
                           ]}
                         />
                       </div>
-                      <div className="flex items-center gap-2 text-espresso/50 dark:text-slate-500 group-hover:text-espresso dark:group-hover:text-slate-300 transition-colors">
+                      <div className="flex items-center gap-2 text-espresso/70 dark:text-slate-400 group-hover:text-espresso dark:group-hover:text-slate-300 transition-colors">
                         <span className="text-xs font-mono hidden sm:block">
                           {company.roles.length} role{company.roles.length > 1 ? "s" : ""}
                         </span>
@@ -335,7 +338,8 @@ export default function Milestones({ variant = "home" }: MilestonesProps) {
                           <ChevronDown className="h-5 w-5" />
                         </m.div>
                       </div>
-                    </button>
+                      </button>
+                    </div>
 
                     {/* Roles (collapsible) */}
                     <AnimatePresence>
@@ -480,7 +484,7 @@ export default function Milestones({ variant = "home" }: MilestonesProps) {
               View All Experience
               <ChevronRight className="h-5 w-5" />
             </Link>
-            <p className="text-espresso/50 dark:text-slate-500 font-mono text-sm">
+            <p className="text-espresso/70 dark:text-slate-400 font-mono text-sm">
               A few highlights. See all {companies.length} places I have worked, built, and led
             </p>
           </m.div>
@@ -491,7 +495,7 @@ export default function Milestones({ variant = "home" }: MilestonesProps) {
           <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-center py-12 text-espresso/50 dark:text-slate-500"
+            className="text-center py-12 text-espresso/70 dark:text-slate-400"
           >
             <p className="font-mono">No experiences found in this category.</p>
           </m.div>
