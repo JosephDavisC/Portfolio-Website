@@ -26,19 +26,14 @@ export default function ScrollUpButton() {
         onClick={scrollTop}
         aria-label="Back to top"
         className="group relative inline-flex h-12 w-12 items-center justify-center rounded-full
-                   text-white/90 border border-white/15 backdrop-blur-md
-                   bg-[#0b1220]/50 shadow-[0_8px_30px_rgba(0,0,0,0.35)]
-                   transition hover:bg-white/10 focus:outline-none
-                   focus-visible:ring-2 focus-visible:ring-sky-400/60"
+                   bg-paper text-espresso border-2 border-espresso shadow-brutal-sm
+                   transition-all duration-150 hover:shadow-brutal-lg hover:-translate-x-0.5 hover:-translate-y-0.5
+                   dark:bg-white/5 dark:text-slate-100 dark:border-white/15 dark:backdrop-blur-md dark:shadow-none
+                   dark:hover:border-[#60A5FA]/50 dark:hover:shadow-[0_0_16px_rgba(96,165,250,0.3)] dark:hover:translate-x-0
+                   focus:outline-none focus-visible:ring-2 focus-visible:ring-court dark:focus-visible:ring-[#60A5FA]
+                   motion-reduce:transition-none motion-reduce:hover:translate-x-0 motion-reduce:hover:translate-y-0"
       >
-        <span
-          aria-hidden
-          className="pointer-events-none absolute -inset-px rounded-full
-                     bg-gradient-to-r from-blue-400/50 via-sky-400/30 to-blue-500/50
-                     opacity-40 blur-[6px] transition group-hover:opacity-70"
-        />
-        <span aria-hidden className="absolute inset-0 rounded-full bg-gradient-to-b from-white/10 to-white/5" />
-        <ArrowUp className="relative h-5 w-5 drop-shadow-sm" strokeWidth={3.2} />
+        <ArrowUp className="relative h-5 w-5 transition-transform duration-200 group-hover:-translate-y-0.5 motion-reduce:transition-none" strokeWidth={3} />
         <span className="sr-only">Scroll to top</span>
       </button>
     </div>
