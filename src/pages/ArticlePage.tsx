@@ -42,7 +42,7 @@ const ShareMenu: React.FC<{ articleId: string; title: string; direction: 'down' 
         aria-label="Share this article"
         className={
           trigger === 'quiet'
-            ? 'inline-flex items-center gap-2 text-espresso/60 hover:text-espresso dark:text-slate-400 dark:hover:text-slate-200 transition-colors font-mono text-sm'
+            ? 'link-underline inline-flex items-center gap-2 text-espresso/60 hover:text-espresso dark:text-slate-400 dark:hover:text-slate-200 transition-colors font-mono text-sm'
             : 'btn-brutal-outline inline-flex items-center gap-2'
         }
       >

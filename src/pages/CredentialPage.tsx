@@ -82,9 +82,9 @@ export default function CredentialPage() {
             <Link
               to={from.split('#')[0] || "/"}
               state={{ scrollTo: from.includes('#') ? from.split('#')[1] : "certifications" }}
-              className="inline-flex items-center gap-2 text-espresso/60 dark:text-slate-400 hover:text-espresso dark:hover:text-slate-200 font-mono"
+              className="link-underline group inline-flex items-center gap-2 text-espresso/60 dark:text-slate-400 hover:text-espresso dark:hover:text-slate-200 font-mono transition-colors"
             >
-              <ArrowLeft className="h-4 w-4" /> Back to Credentials
+              <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1 motion-reduce:transition-none" /> Back to Credentials
             </Link>
             <h1 className="text-3xl font-heading font-semibold mt-6 text-espresso dark:text-slate-100">Credential not found</h1>
           </div>
@@ -149,9 +149,9 @@ export default function CredentialPage() {
             <Link
               to={from.split('#')[0] || "/"}
               state={{ scrollTo: from.includes('#') ? from.split('#')[1] : "certifications" }}
-              className="inline-flex items-center gap-2 text-espresso/70 dark:text-slate-400 hover:text-espresso dark:hover:text-slate-200 font-mono"
+              className="link-underline group inline-flex items-center gap-2 text-espresso/70 dark:text-slate-400 hover:text-espresso dark:hover:text-slate-200 font-mono transition-colors"
             >
-              <ArrowLeft className="h-4 w-4" /> Back to Credentials
+              <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1 motion-reduce:transition-none" /> Back to Credentials
             </Link>
 
           <div className="flex items-center gap-3">

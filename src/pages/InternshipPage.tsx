@@ -340,9 +340,9 @@ export default function InternshipPage() {
             <Link
               to="/"
               state={{ scrollTo: "milestones" }}
-              className="inline-flex items-center gap-2 text-espresso/60 dark:text-slate-400 hover:text-espresso dark:hover:text-slate-200 font-mono mb-8 transition-colors"
+              className="link-underline group inline-flex items-center gap-2 text-espresso/60 dark:text-slate-400 hover:text-espresso dark:hover:text-slate-200 font-mono mb-8 transition-colors"
             >
-              <ArrowLeft className="h-4 w-4" /> Back to Milestones
+              <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1 motion-reduce:transition-none" /> Back to Milestones
             </Link>
           </m.div>
 

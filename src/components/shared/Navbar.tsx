@@ -134,7 +134,7 @@ export default function Navbar() {
             <li key={link.href} className="relative">
               <Link
                 to={`/${link.href}`}
-                className="px-2 py-1 font-medium text-espresso/70 dark:text-slate-300 hover:text-espresso dark:hover:text-white transition-colors"
+                className="nav-link px-2 py-1 font-medium text-espresso/70 dark:text-slate-300 hover:text-espresso dark:hover:text-white transition-colors"
               >
                 {link.short || link.name}
               </Link>
@@ -147,7 +147,7 @@ export default function Navbar() {
             <a
               href={link.href}
               onClick={handleNavClick(link.href)}
-              className={`relative px-2 py-1 font-medium transition-all ${
+              className={`nav-link px-2 py-1 font-medium transition-all ${
                 isActive
                   ? "text-court-dark dark:text-[#60A5FA]"
                   : "text-espresso/70 dark:text-slate-300 hover:text-espresso dark:hover:text-white"
