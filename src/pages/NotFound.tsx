@@ -52,8 +52,8 @@ const NotFound = () => {
           className="mb-2"
         >
           <picture>
-            <source srcSet="/images/avatar/mini-joe-lost.webp" type="image/webp" />
-            <img src="/images/avatar/mini-joe-lost.png" alt="Mini Joe holding his head, lost on a missing page" width={520} height={782} className="w-40 md:w-52 mx-auto object-contain" />
+            <source srcSet="/images/404/waakk.webp" type="image/webp" />
+            <img src="/images/404/waakk.PNG" alt="Lost character" className="w-48 md:w-64 mx-auto drop-shadow-2xl object-contain" />
           </picture>
         </m.div>
 
