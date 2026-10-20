@@ -1,6 +1,7 @@
 import React from "react";
 import { m } from "framer-motion";
 import { MapPin, Code2 } from "lucide-react";
+import MiniJoe from "@/components/shared/MiniJoe";
 
 interface Skill {
   name: string;
@@ -124,6 +125,7 @@ export default function About() {
                 <MapPin className="h-6 w-6 text-court-dark dark:text-[#60A5FA]" />
               </div>
               <h3 className="text-2xl font-heading font-semibold text-espresso">The Journey</h3>
+              <MiniJoe className="ml-auto -mt-6 -mb-2 md:-mt-8 h-24 md:h-28" />
             </header>
 
             <div className="space-y-4 text-espresso/80 leading-relaxed text-[17px]">
@@ -152,7 +154,7 @@ export default function About() {
             <m.img
               src="/images/chibis/jo_stress.webp"
               alt="Stressed Joe learning all these technologies"
-              className="absolute top-4 right-4 w-20 h-20 md:w-24 md:h-24 opacity-20 pointer-events-none"
+              className="absolute top-2 right-2 w-14 h-14 sm:top-4 sm:right-4 sm:w-20 sm:h-20 md:w-24 md:h-24 pointer-events-none"
               animate={{
                 rotate: [-5, 5, -5],
                 y: [0, -8, 0],
