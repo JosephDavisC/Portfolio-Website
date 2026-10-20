@@ -163,7 +163,7 @@ const Hero = () => {
                   href="https://www.washington.edu"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-court-dark dark:text-[#60A5FA] hover:text-court dark:hover:text-[#93C5FD] transition-colors"
+                  className="text-court-dark dark:text-[#60A5FA] hover:text-court dark:hover:text-[#93C5FD] underline decoration-1 underline-offset-2 transition-colors"
                 >
                   UW
                 </a>
@@ -230,7 +230,6 @@ const Hero = () => {
                 whileHover={{ scale: 1.02, x: -2, y: -2 }}
                 whileTap={{ scale: 0.98, x: 2, y: 2 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                aria-label="Scroll to Contact section"
               >
                 <Mail className="mr-3 h-5 w-5 transition-transform group-hover:scale-110" />
                 Let&apos;s Connect

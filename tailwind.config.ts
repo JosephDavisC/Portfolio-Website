@@ -27,7 +27,7 @@ export default {
 					DEFAULT: '#4CBB17',
 					light: '#6DD035',
 					// 4.8:1 on paper, so green link and label text passes WCAG AA (was #3A9012, 3.8:1)
-					dark: '#2E7D12',
+					dark: '#2A7310', /* 4.5:1 on the bg-court/20 chips; #2E7D12 was 4.1 */
 				},
 				espresso: {
 					DEFAULT: '#3D2B1F',

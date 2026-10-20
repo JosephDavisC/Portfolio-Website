@@ -537,8 +537,29 @@ html:not(.dark) .text-espresso\/60 {
   color: rgb(61 43 31 / 0.72);
 }
 
+/* Same fix for the fainter labels (dates, skill group names, tags, "N roles"): at 40% and
+   50% espresso they read at 2.3 to 2.9:1. Text only; borders and fills keep their tint. */
+html:not(.dark) .text-espresso\/40,
+html:not(.dark) .text-espresso\/50 {
+  color: rgb(61 43 31 / 0.72);
+}
+
+/* Dark mode: slate-500 and slate-600 text sit at 3.2 to 3.5:1 on the deep slate; lift both
+   to slate-400 (about 7:1). */
+html.dark .dark\:text-slate-500,
+html.dark .dark\:text-slate-600 {
+  color: #94a3b8;
+}
+
+/* Blue chips in dark mode (blue text on a 20% blue fill) read at 4.3:1; a lighter blue
+   brings them to about 6:1 without changing the fill. */
+html.dark .dark\:bg-\[\#60A5FA\]\/20.dark\:text-\[\#60A5FA\] {
+  color: #93C5FD;
+}
+
+.dark .text-espresso\/40,
 .dark .text-espresso\/50 {
-  color: hsl(215 20.2% 58%);
+  color: hsl(215 20.2% 65.1%);
 }
 
 .dark .text-espresso\/60 {
