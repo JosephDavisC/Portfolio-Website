@@ -8,7 +8,7 @@ import data from "@/data/milestones.json";
 /* Cache-bust for images: appends a version so browsers/CDN fetch a fresh copy
    instead of serving a stale/corrupt cached one (images are cached immutable).
    Bump this number if a stale image ever sticks again. */
-const IMG_V = "2";
+const IMG_V = "3";
 const bust = (src: string) =>
   src ? `${src}${src.includes("?") ? "&" : "?"}v=${IMG_V}` : src;
 
@@ -78,12 +78,16 @@ function Lightbox({
       >
         <X className="h-6 w-6" />
       </button>
-      <img loading="lazy" decoding="async"
-        src={bust(src)}
-        alt={alt || "image"}
-        className="max-h-[85vh] max-w-[92vw] object-contain rounded-xl border-2 border-espresso shadow-brutal-lg"
-        onClick={(e) => e.stopPropagation()}
-      />
+      {/* the WebP twin when there is one: the originals behind it are up to several MB */}
+      <picture>
+        {hasWebP(src) && <source srcSet={bust(getWebPPath(src))} type="image/webp" />}
+        <img loading="lazy" decoding="async"
+          src={bust(src)}
+          alt={alt || "image"}
+          className="max-h-[85vh] max-w-[92vw] object-contain rounded-xl border-2 border-espresso shadow-brutal-lg"
+          onClick={(e) => e.stopPropagation()}
+        />
+      </picture>
     </div>
   );
 }
