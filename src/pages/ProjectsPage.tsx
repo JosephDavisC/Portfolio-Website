@@ -251,7 +251,7 @@ const ProjectsPage: React.FC = () => {
                         </span>
                       ))}
                       {project.tech.length > 4 && (
-                        <span className="px-2 py-0.5 bg-espresso/5 dark:bg-slate-700/80 text-espresso/50 dark:text-slate-400 border border-espresso/20 dark:border-slate-500/50 rounded-full text-xs font-mono">
+                        <span className="px-2 py-0.5 bg-espresso/5 dark:bg-slate-700/80 text-espresso/70 dark:text-slate-300 border border-espresso/20 dark:border-slate-500/50 rounded-full text-xs font-mono">
                           +{project.tech.length - 4}
                         </span>
                       )}

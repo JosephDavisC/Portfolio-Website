@@ -186,7 +186,7 @@ const ContactForm = () => {
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="btn-brutal w-full sm:w-auto px-8 py-6 text-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-x-0 disabled:hover:translate-y-0"
+              className="btn-brutal [html:not(.dark)_&]:text-espresso w-full sm:w-auto px-8 py-6 text-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-x-0 disabled:hover:translate-y-0"
             >
               {isSubmitting ? (
                 <>

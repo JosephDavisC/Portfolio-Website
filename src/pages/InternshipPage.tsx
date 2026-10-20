@@ -24,6 +24,8 @@ import {
   Camera
 } from "lucide-react";
 import experiencesData from "@/data/experiences.json";
+import { useTheme } from "@/contexts/ThemeContext";
+import { readableOn, textOn } from "@/lib/contrast";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -138,7 +140,7 @@ type ExperiencesData = {
   [key: string]: Experience;
 };
 
-function VideoPlayer({ videoDemo, theme }: { videoDemo: NonNullable<VideoDemo>; theme: Theme }) {
+function VideoPlayer({ videoDemo, theme, accentText }: { videoDemo: NonNullable<VideoDemo>; theme: Theme; accentText: string }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -226,7 +228,7 @@ function VideoPlayer({ videoDemo, theme }: { videoDemo: NonNullable<VideoDemo>; 
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 font-medium text-sm hover:underline"
-              style={{ color: theme.primary }}
+              style={{ color: accentText }}
             >
               Watch Full Video
               <ArrowUpRight className="h-4 w-4" />
@@ -243,6 +245,7 @@ export default function InternshipPage() {
   // Declared before the `if (!internship)` early return below: hooks cannot be
   // conditional. Uses the shared Lightbox, mounted only while open.
   const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null);
+  const { theme: colorMode } = useTheme();
 
   // Get the internship data based on slug
   const experiences = experiencesData as ExperiencesData;
@@ -263,6 +266,9 @@ export default function InternshipPage() {
     borderTint: "border-orange-500/30",
     textColor: "text-[#F97316]"
   };
+  // Company colours like Whitespace orange read at about 2:1 on paper, so text and
+  // icons use a darkened twin in light mode; dark mode keeps the brand colour.
+  const accentText = colorMode === "dark" ? theme.primary : readableOn(theme.primary);
 
   // Get SEO data (with fallback)
   const seo = internship.seo || {
@@ -384,7 +390,7 @@ export default function InternshipPage() {
                   style={{
                     backgroundColor: `${theme.primary}20`,
                     borderColor: `${theme.primary}50`,
-                    color: theme.primary
+                    color: accentText
                   }}
                 >
                   {internship.type}
@@ -395,7 +401,7 @@ export default function InternshipPage() {
               </h1>
               <p
                 className="text-xl font-semibold"
-                style={{ color: theme.primary }}
+                style={{ color: accentText }}
               >
                 {internship.company}
               </p>
@@ -405,11 +411,11 @@ export default function InternshipPage() {
           {/* Meta Info */}
           <div className="flex flex-wrap gap-4 md:gap-6 text-espresso/70 dark:text-slate-300 font-mono text-sm">
             <div className="flex items-center gap-2">
-              <Calendar className="h-4 w-4" style={{ color: theme.primary }} />
+              <Calendar className="h-4 w-4" style={{ color: accentText }} />
               {internship.duration}
             </div>
             <div className="flex items-center gap-2">
-              <MapPin className="h-4 w-4" style={{ color: theme.primary }} />
+              <MapPin className="h-4 w-4" style={{ color: accentText }} />
               {internship.location}
             </div>
             {internship.website && (
@@ -418,7 +424,7 @@ export default function InternshipPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 transition-colors hover:opacity-80"
-                style={{ color: theme.primary }}
+                style={{ color: accentText }}
               >
                 <ExternalLink className="h-4 w-4" />
                 Company Website
@@ -455,7 +461,7 @@ export default function InternshipPage() {
             >
               <div
                 className="text-2xl md:text-3xl font-bold mb-1"
-                style={{ color: theme.primary }}
+                style={{ color: accentText }}
               >
                 {item.value}
               </div>
@@ -484,7 +490,7 @@ export default function InternshipPage() {
                   borderColor: `${theme.primary}50`
                 }}
               >
-                <Rocket className="h-5 w-5" style={{ color: theme.primary }} />
+                <Rocket className="h-5 w-5" style={{ color: accentText }} />
               </div>
               <h2 className="text-xl font-heading font-semibold text-espresso dark:text-slate-100">
                 Key Accomplishments
@@ -505,7 +511,7 @@ export default function InternshipPage() {
                 >
                   <CheckCircle2
                     className="h-5 w-5 mt-0.5 flex-shrink-0"
-                    style={{ color: theme.primary }}
+                    style={{ color: accentText }}
                   />
                   <span className="text-espresso/80 dark:text-slate-300 leading-relaxed">
                     {highlight}
@@ -561,7 +567,7 @@ export default function InternshipPage() {
                   borderColor: `${theme.primary}50`
                 }}
               >
-                <Package className="h-5 w-5" style={{ color: theme.primary }} />
+                <Package className="h-5 w-5" style={{ color: accentText }} />
               </div>
               <h2 className="text-xl font-heading font-semibold text-espresso dark:text-slate-100">
                 Products Built
@@ -594,7 +600,7 @@ export default function InternshipPage() {
                         >
                           {product.name}
                         </h3>
-                        <span className="px-2.5 py-0.5 bg-green-500/20 text-green-600 dark:text-green-400 text-xs font-mono font-semibold rounded-full border border-green-500/30">
+                        <span className="px-2.5 py-0.5 bg-green-500/20 text-green-800 dark:text-green-400 text-xs font-mono font-semibold rounded-full border border-green-500/30">
                           {product.status}
                         </span>
                       </div>
@@ -621,8 +627,8 @@ export default function InternshipPage() {
                         href={product.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2 text-paper font-semibold rounded-lg border-2 border-espresso dark:border-slate-600 shadow-brutal-sm dark:shadow-none hover:shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all text-sm"
-                        style={{ backgroundColor: theme.primary }}
+                        className="inline-flex items-center gap-2 px-4 py-2 font-semibold rounded-lg border-2 border-espresso dark:border-slate-600 shadow-brutal-sm dark:shadow-none hover:shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all text-sm"
+                        style={{ backgroundColor: theme.primary, color: textOn(theme.primary) }}
                       >
                         View
                         <ArrowUpRight className="h-4 w-4" />
@@ -652,7 +658,7 @@ export default function InternshipPage() {
               </h2>
             </div>
 
-            <VideoPlayer videoDemo={internship.videoDemo} theme={theme} />
+            <VideoPlayer videoDemo={internship.videoDemo} theme={theme} accentText={accentText} />
           </m.div>
         )}
 
@@ -702,8 +708,8 @@ export default function InternshipPage() {
                             </span>
                             <span className={`text-xs font-mono px-2 py-0.5 rounded-full ${
                               paper.status === "Published"
-                                ? "bg-green-500/20 text-green-600 dark:text-green-400 border border-green-500/30"
-                                : "bg-yellow-500/20 text-yellow-600 dark:text-yellow-400 border border-yellow-500/30"
+                                ? "bg-green-500/20 text-green-800 dark:text-green-400 border border-green-500/30"
+                                : "bg-yellow-500/20 text-yellow-800 dark:text-yellow-400 border border-yellow-500/30"
                             }`}>
                               {paper.status}
                             </span>
@@ -723,8 +729,8 @@ export default function InternshipPage() {
                             href={paper.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 text-sm px-5 py-2.5 text-paper font-semibold rounded-xl border-2 border-espresso dark:border-slate-600 shadow-brutal-sm dark:shadow-none hover:shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
-                            style={{ backgroundColor: theme.primary }}
+                            className="inline-flex items-center gap-2 text-sm px-5 py-2.5 font-semibold rounded-xl border-2 border-espresso dark:border-slate-600 shadow-brutal-sm dark:shadow-none hover:shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+                            style={{ backgroundColor: theme.primary, color: textOn(theme.primary) }}
                           >
                             <FileText className="h-4 w-4" />
                             Read Full Report
@@ -811,7 +817,7 @@ export default function InternshipPage() {
                   borderColor: `${theme.primary}50`
                 }}
               >
-                <Users className="h-5 w-5" style={{ color: theme.primary }} />
+                <Users className="h-5 w-5" style={{ color: accentText }} />
               </div>
               <h2 className="text-xl font-heading font-semibold text-espresso dark:text-slate-100">
                 References
@@ -891,7 +897,7 @@ export default function InternshipPage() {
                   borderColor: `${theme.primary}50`
                 }}
               >
-                <Camera className="h-5 w-5" style={{ color: theme.primary }} />
+                <Camera className="h-5 w-5" style={{ color: accentText }} />
               </div>
               <h2 className="text-xl font-heading font-semibold text-espresso dark:text-slate-100">
                 The Team
