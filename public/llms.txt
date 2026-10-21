@@ -88,9 +88,9 @@ Coverage of Joseph's work, written by others:
 - GitHub: https://github.com/JosephDavisC
 - Devpost: https://devpost.com/joseph-chamdani
 - Medium: https://medium.com/@joseph.chamdani
-- X/Twitter: https://x.com/chamdani_davis
 - YouTube: https://www.youtube.com/@JosephDavisC
 - Instagram: https://www.instagram.com/josephdavisc/
+- Instagram (animated series "Joe Builds Things"): https://www.instagram.com/joebuildthings/
 
 ## Optional
 
