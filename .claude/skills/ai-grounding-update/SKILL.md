@@ -65,4 +65,5 @@ about changed, there is nothing to sync.
 ## After writing it
 
 Tell Joseph in one line that the note is written and where, plus the single most
-important thing the bot will learn from it. He relays it or opens that session.
+important thing the bot will learn from it. Then send it to the Ask Joseph chat yourself
+with the `ask-joseph-chat` skill instead of making him relay it.
