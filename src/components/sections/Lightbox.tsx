@@ -17,20 +17,25 @@ import { X } from "lucide-react";
 export default function Lightbox({
   src,
   alt,
+  video,
   onClose,
 }: {
   src: string;
   alt?: string;
+  // A vertical embed (YouTube Short) shown in place of the image. The iframe only
+  // exists while the viewer is open, so nothing loads from YouTube until a click.
+  video?: { src: string; title: string };
   onClose: () => void;
 }) {
+  const open = Boolean(src || video);
   useEffect(() => {
-    // Guard on src, and keep it in the deps. Some callers render <Lightbox> with
+    // Guard on open (an image src or a video), and keep it in the deps. Some callers render <Lightbox> with
     // an empty src permanently mounted (TennisCoffeeSection does this on the
     // landing page) and rely on the `if (!src) return null` below to hide it.
     // That return happens AFTER this effect, so without this guard the scroll
     // lock fires on a viewer nobody opened and never unmounts to release it,
     // which froze the landing page.
-    if (!src) return;
+    if (!open) return;
 
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
     window.addEventListener("keydown", onKey);
@@ -43,9 +48,9 @@ export default function Lightbox({
       window.removeEventListener("keydown", onKey);
       document.body.style.overflow = prevOverflow;
     };
-  }, [src, onClose]);
+  }, [open, onClose]);
 
-  if (!src) return null;
+  if (!open) return null;
 
   return (
     <div
@@ -53,22 +58,39 @@ export default function Lightbox({
       onClick={onClose}
       role="dialog"
       aria-modal="true"
-      aria-label={alt || "Image viewer"}
+      aria-label={video?.title || alt || "Image viewer"}
     >
       <button
         className="absolute top-4 right-4 h-11 w-11 inline-flex items-center justify-center rounded-lg bg-paper dark:bg-slate-800 border-2 border-espresso dark:border-slate-600 shadow-brutal-sm dark:shadow-none text-espresso dark:text-slate-100 hover:shadow-brutal dark:hover:border-[#60A5FA]/50 transition-all"
         style={{ top: "max(1rem, env(safe-area-inset-top))", right: "max(1rem, env(safe-area-inset-right))" }}
         onClick={onClose}
-        aria-label="Close image"
+        aria-label={video ? "Close video" : "Close image"}
       >
         <X className="h-6 w-6" />
       </button>
+      {video ? (
+        <div
+          className="aspect-[9/16] max-w-[92vw] overflow-hidden rounded-xl border-2 border-espresso dark:border-slate-600 shadow-brutal-lg dark:shadow-none bg-black"
+          style={{ height: "min(85vh, calc(92vw * 16 / 9))" }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <iframe
+            src={video.src}
+            title={video.title}
+            className="h-full w-full"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          />
+        </div>
+      ) : (
       <img
         src={src}
         alt={alt || "image"}
         className="max-h-[85vh] max-w-[92vw] object-contain rounded-xl border-2 border-espresso dark:border-slate-600 shadow-brutal-lg dark:shadow-none"
         onClick={(e) => e.stopPropagation()}
       />
+      )}
     </div>
   );
 }
