@@ -194,9 +194,14 @@
   </url>
   <url>
     <loc>https://joechamdani.com/projects/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://joechamdani.com/images/portfolio/joe-builds-things.jpg</image:loc>
+      <image:title>Joe Builds Things</image:title>
+      <image:caption>Joe Builds Things: voxel Joe and his AI sidekick robot at a desk, from Joseph's short comedy series</image:caption>
+    </image:image>
     <image:image>
       <image:loc>https://joechamdani.com/media/IShowStream_Logo.png</image:loc>
       <image:title>IShowStream</image:title>
