@@ -18,10 +18,7 @@ It follows my path as an **Informatics student at the University of Washington**
 Live site: **[joechamdani.com](https://joechamdani.com)**
 
 <a href="https://joechamdani.com">
-  <picture>
-    <source srcset=".github/readme/reel.avif" type="image/avif">
-    <img src="public/images/readme/v2.2-home-light.webp" alt="Scrolling through the homepage in light mode, switching to dark mode with a circle reveal from the toggle, and scrolling back up">
-  </picture>
+  <img src=".github/readme/reel.avif" alt="Scrolling through the homepage in light mode, switching to dark mode with a circle reveal from the toggle, and scrolling back up">
 </a>
 
 <sub>Recorded frame by frame at 60 fps from a production build.</sub>
