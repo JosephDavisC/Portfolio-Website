@@ -665,6 +665,14 @@ html.no-transitions *::after {
   transition: none !important;
 }
 
+/* Theme switch: the circle reveal is animated from ThemeContext, so drop the
+   default cross-fade (it would ghost the two themes over each other) */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
 /* Performance optimization for main containers */
 body,
 header,
