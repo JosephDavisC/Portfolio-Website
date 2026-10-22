@@ -1,5 +1,32 @@
 [
   {
+    "title": "Joe Builds Things",
+    "category": "AI",
+    "featured": false,
+    "image": "/images/portfolio/joe-builds-things.jpg",
+    "imageAlt": "Voxel Joe and his AI sidekick, a small robot with a screen face, at a desk",
+    "tech": [
+      "Remotion",
+      "React",
+      "Three.js",
+      "TypeScript",
+      "Python",
+      "Whisper"
+    ],
+    "description": "A short comedy series about a college student and his overly helpful AI sidekick, made with a code pipeline I built. A script written as JSON goes in and a finished vertical 3D short comes out, with voices cloned locally, every take checked by Whisper, and sound effects generated in Python. Season 1 started October 20, 2026.",
+    "demo": "https://www.instagram.com/joebuildthings/",
+    "demoLabel": "Instagram",
+    "demo2": "https://www.youtube.com/@JosephDavisC",
+    "demo2Label": "YouTube",
+    "demo3": "https://www.tiktok.com/@josephdavisc",
+    "demo3Label": "TikTok",
+    "video": {
+      "youtubeId": "nNa5JfGEd3s",
+      "label": "Watch Ep 2",
+      "title": "Joe Builds Things, Episode 2: Rotate Every Key"
+    }
+  },
+  {
     "title": "Personal Dashboard",
     "category": "Web",
     "featured": true,

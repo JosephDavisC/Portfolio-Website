@@ -6,7 +6,8 @@ import { m, AnimatePresence, LazyMotion, useReducedMotion } from 'framer-motion'
 const loadLayoutFeatures = () => import('framer-motion').then((mod) => mod.domMax);
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Github, ExternalLink, BookOpen, FileText, ArrowLeft } from 'lucide-react';
+import { Github, ExternalLink, BookOpen, FileText, ArrowLeft, Play } from 'lucide-react';
+import Lightbox from '@/components/sections/Lightbox';
 import Navbar from '@/components/shared/Navbar';
 import { getWebPPath, hasWebP } from '@/components/shared/OptimizedImage';
 import projectsData from '@/data/projects.json';
@@ -36,9 +37,13 @@ interface Project {
   demoLabel?: string;
   demo2?: string;
   demo2Label?: string;
+  demo3?: string;
+  demo3Label?: string;
   medium?: string;
   mediumLabel?: string;
   caseStudy?: string;
+  // A YouTube video (a Short plays vertical) opened in the shared viewer
+  video?: { youtubeId: string; label: string; title: string };
 }
 
 const getImageClasses = (style?: string) => {
@@ -63,6 +68,7 @@ const categories = ['All', ...Array.from(new Set(projects.map(p => p.category)))
 const ProjectsPage: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('All');
   const reduceMotion = useReducedMotion();
+  const [video, setVideo] = useState<Project['video'] | null>(null);
 
   const filteredProjects = activeCategory === 'All'
     ? projects
@@ -261,8 +267,18 @@ const ProjectsPage: React.FC = () => {
                       {project.description}
                     </p>
 
-                    {(project.github || project.demo || project.medium) && (
+                    {(project.github || project.demo || project.medium || project.video) && (
                       <div className="flex flex-wrap gap-3 mt-auto pt-4 border-t-2 border-espresso/10 dark:border-slate-700">
+                        {project.video && (
+                          <button
+                            type="button"
+                            onClick={() => setVideo(project.video)}
+                            className="btn-brutal inline-flex items-center gap-2 px-4 py-2 text-sm"
+                          >
+                            <Play className="h-4 w-4" />
+                            {project.video.label}
+                          </button>
+                        )}
                         {project.github && (
                           <a
                             href={project.github}
@@ -296,6 +312,17 @@ const ProjectsPage: React.FC = () => {
                             {project.demo2Label || "Demo"}
                           </a>
                         )}
+                        {project.demo3 && (
+                          <a
+                            href={project.demo3}
+                            className="btn-brutal-outline inline-flex items-center gap-2 px-4 py-2 text-sm"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <ExternalLink className="h-4 w-4" />
+                            {project.demo3Label || "Demo"}
+                          </a>
+                        )}
                         {project.caseStudy && (
                           <a
                             href={project.caseStudy}
@@ -323,6 +350,17 @@ const ProjectsPage: React.FC = () => {
               </AnimatePresence>
             </section>
             </LazyMotion>
+
+            {video && (
+              <Lightbox
+                src=""
+                video={{
+                  src: `https://www.youtube.com/embed/${video.youtubeId}?autoplay=1&rel=0&playsinline=1`,
+                  title: video.title,
+                }}
+                onClose={() => setVideo(null)}
+              />
+            )}
 
             {filteredProjects.length === 0 && (
               <m.div
