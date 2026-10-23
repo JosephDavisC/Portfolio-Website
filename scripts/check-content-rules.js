@@ -13,6 +13,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { latestEpisode } from '../src/lib/episodes.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -231,6 +232,38 @@ function checkSitemapImagesExist() {
   return checked;
 }
 
+/* ------------------------------------------------------------------ *
+ * 6. The newest episode of every series is in the hand-kept copies.
+ *
+ * The series page, its JSON-LD and the /projects Watch button all follow
+ * src/data/episodes.json on their own. Three files do not: the <noscript>
+ * block in index.html, public/llms.txt and the sitemap's image entries are
+ * edited by hand, so a new episode can go live while crawlers and AI readers
+ * still see the previous one as the latest.
+ * ------------------------------------------------------------------ */
+function checkLatestEpisodeEverywhere() {
+  const series = readJson('src/data/episodes.json');
+  const indexHtml = read('index.html');
+  const noscript = (indexHtml.match(/<noscript>\s*<main[\s\S]*?<\/noscript>/) || [''])[0];
+  const llms = read('public/llms.txt');
+  const sitemapImages = [...read('public/sitemap.xml').matchAll(/<image:loc>\s*([^<]+?)\s*<\/image:loc>/g)].map((m) => m[1]);
+  let checked = 0;
+  for (const [slug, eps] of Object.entries(series)) {
+    const ep = latestEpisode(eps);
+    if (!ep) continue;
+    checked++;
+    const short = `youtube.com/shorts/${ep.youtubeId}`;
+    const name = `${slug} Ep ${ep.n} "${ep.title}"`;
+    if (!noscript.includes(short))
+      fail('latest-episode', `index.html <noscript> does not link the newest episode, ${name}`, `point the Projects entry's latest episode link in the <noscript> block at https://www.${short}`);
+    if (!llms.includes(short))
+      fail('latest-episode', `public/llms.txt does not list the newest episode, ${name}`, `add a line for it under the series in llms.txt with https://www.${short}`);
+    if (!sitemapImages.some((u) => u.endsWith(ep.cover)))
+      fail('latest-episode', `sitemap.xml has no <image:image> for the newest episode's cover, ${ep.cover}`, `add an <image:image> with <image:loc>https://joechamdani.com${ep.cover}</image:loc> to the /projects/${slug}/ entry`);
+  }
+  return checked;
+}
+
 export function checkContentRules() {
   const counts = {
     'og:image format': checkOgImageFormat(),
@@ -238,6 +271,7 @@ export function checkContentRules() {
     'html cache policy': checkHtmlCachePolicy(),
     'ended roles': checkEndedRolesNotPresent(),
     'sitemap images': checkSitemapImagesExist(),
+    'latest episode copies': checkLatestEpisodeEverywhere(),
   };
 
   if (problems.length) {
