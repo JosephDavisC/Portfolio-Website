@@ -1,6 +1,6 @@
 # Changelog
 
-The history of joechamdani.com, newest first. Each version links its GitHub Release, which has the full notes. Dates are the day the release was published on GitHub; where the tagged commit landed on an earlier day, that is noted. PR numbers link to the pull request.
+The history of joechamdani.com, newest first. Each version links its GitHub Release, which has the full notes. All dates are Pacific time (America/Los_Angeles). A version's date is the day its GitHub Release was published. PR numbers link to the pull request.
 
 ## Next (proposed v2.4.0)
 
@@ -11,11 +11,12 @@ Merged to main after v2.3.0, not tagged yet.
 - **Joe Builds Things on /projects.** A new card for the short comedy series, with Instagram, YouTube and TikTok links and a Watch Ep 2 button that opens the YouTube Short in a vertical player. The shared lightbox gained a video mode, and nothing loads from YouTube until someone clicks. ([#11](https://github.com/JosephDavisC/Portfolio-Website/pull/11))
 - **Mono font fix.** The JetBrains Mono file held the Greek subset instead of Latin. It was replaced with the Latin file under a new name so cached copies cannot stick. (49767fc, 23 Oct 2026)
 - **Analytics page speed.** The self-hosted Umami snippet now also measures page speed. Automatic pageviews stay off so the manual pageview tracking does not double count. (ebc3a3b, 23 Oct 2026)
+- **Analytics ignores URL hashes.** The Umami snippet sets `data-exclude-hash`, so the events Umami records on its own drop the `#` part of the URL, matching the manual pageviews, which already send only the path and query. (23 Oct 2026)
 - **This changelog** and a build check that runs on every pull request and every push to main.
 
-## v2.3.0: mini Joe, motion and full AA contrast (22 Oct 2026)
+## v2.3.0: mini Joe, motion and full AA contrast (21 Oct 2026)
 
-[Release notes](https://github.com/JosephDavisC/Portfolio-Website/releases/tag/v2.3.0). Tagged commit dd94aa9 landed on 21 Oct 2026.
+[Release notes](https://github.com/JosephDavisC/Portfolio-Website/releases/tag/v2.3.0)
 
 - **Mini Joe.** A small 3D version of Joseph in the About section's Journey card, with a drag to rotate viewer that only loads its 3D code on click. ([#6](https://github.com/JosephDavisC/Portfolio-Website/pull/6))
 - **Motion.** Underlines slide in on nav and text links, buttons lift further, and the theme toggle, timeline rows and scroll to top button respond to hover. ([#8](https://github.com/JosephDavisC/Portfolio-Website/pull/8)) Project filters animate in place, about five times faster. ([#5](https://github.com/JosephDavisC/Portfolio-Website/pull/5))
@@ -48,9 +49,9 @@ Merged to main after v2.3.0, not tagged yet.
 - **Performance pass.** LazyMotion, analytics deferred to first interaction, preloaded fonts and hero image, and lighter assets. Mobile score 71 to 82, mobile LCP 6.7s to 3.3s.
 - **Discoverability.** `llms.txt`, WebSite and SiteNavigationElement structured data, indexable images in the static HTML, and an expanded sitemap.
 
-## v2.0.0: the redesign (29 Jan 2026)
+## v2.0.0: the redesign (28 Jan 2026)
 
-[Release notes](https://github.com/JosephDavisC/Portfolio-Website/releases/tag/v2.0.0). Tagged commit 51a1b35 landed on 28 Jan 2026.
+[Release notes](https://github.com/JosephDavisC/Portfolio-Website/releases/tag/v2.0.0)
 
 - **New design system.** A paper textured neobrutalist look with Court Green and Espresso in light mode, and glassmorphism with neon blue accents in dark mode, with smooth theme transitions.
 - **Projects page** at `/projects` with category filtering (AI, Web, Games, Data), added 6 Jan 2026.
