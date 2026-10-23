@@ -1,0 +1,35 @@
+# Build check: proves the committed code installs and builds cleanly.
+# Runs the repo's real `npm run build`: vite build, blog meta generation,
+# then static page prerendering with its build guards (WebP twins, content
+# rules, sitemap images). It never deploys and needs no secrets.
+# Not covered: `tsc` (vite does not type check, and main has known type
+# errors in a few files) and `npm run lint`.
+name: Build
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          # No .nvmrc or engines field in the repo, so Node 22 LTS.
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
