@@ -3,6 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { checkWebpTwins } from './check-webp-twins.js';
 import { checkContentRules } from './check-content-rules.js';
+import { newestFirst, formatPosted, uploadDateTime } from '../src/lib/episodes.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -32,6 +33,12 @@ const projects = JSON.parse(fs.readFileSync(projectsPath, 'utf8'));
 // Project case-study pages (/projects/<slug>/), one per entry
 const projectPagesPath = path.join(__dirname, '..', 'src', 'data', 'projectPages.json');
 const projectPages = JSON.parse(fs.readFileSync(projectPagesPath, 'utf8'));
+
+// Episodes of series pages, keyed by series slug (the same file the app reads)
+const episodesBySeries = JSON.parse(
+  fs.readFileSync(path.join(__dirname, '..', 'src', 'data', 'episodes.json'), 'utf8')
+);
+const episodesFor = (slug) => episodesBySeries[slug] || [];
 
 // Helper: build hidden SEO image block from an array of { src, alt }
 function buildSeoImagesBlock(images) {
@@ -219,17 +226,11 @@ function projectPageFallback(p) {
   );
 }
 
-// Series pages (kind "series"): only published episodes are in the data, so
-// everything listed here is public. Newest first, same rule as src/lib/episodes.ts.
-const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-const formatPosted = (iso) => {
-  const [y, m, d] = iso.split('-').map(Number);
-  return `${MONTHS[m - 1]} ${d}, ${y}`;
-};
-const newestFirst = (eps) => [...eps].sort((a, b) => b.posted.localeCompare(a.posted) || b.n - a.n);
-
+// Series pages (kind "series"): only published episodes are in src/data/episodes.json,
+// so everything listed here is public. Ordering and dates come from src/lib/episodes.js,
+// the same helpers the page uses.
 function seriesPageFallback(p) {
-  const eps = newestFirst(p.episodes);
+  const eps = newestFirst(episodesFor(p.slug));
   const latest = eps[0];
   const epLinks = (e) =>
     `<a href="https://www.youtube.com/shorts/${esc(e.youtubeId)}">YouTube</a> · <a href="${esc(e.tiktok)}">TikTok</a> · <a href="${esc(e.instagram)}">Instagram</a>`;
@@ -242,7 +243,7 @@ function seriesPageFallback(p) {
       `<section><h2>Episodes</h2>${eps
         .map(
           (e) =>
-            `<article><img src="${esc(e.cover)}" alt="${esc(e.coverAlt)}" width="540" height="960" loading="lazy" style="width:135px;height:auto"><h3>Ep ${e.n}: ${esc(e.title)}</h3><p>Posted ${formatPosted(e.posted)}. ${esc(e.line)}</p><p>${epLinks(e)}</p></article>`
+            `<article><picture><source srcset="${esc(e.cover.replace(/\.(jpg|jpeg|png)$/i, '.webp'))}" type="image/webp"><img src="${esc(e.cover)}" alt="${esc(e.coverAlt)}" width="540" height="960" loading="lazy" style="width:135px;height:auto"></picture><h3>Ep ${e.n}: ${esc(e.title)}</h3><p>Posted ${formatPosted(e.posted)}. ${esc(e.line)}</p><p>${epLinks(e)}</p></article>`
         )
         .join('')}</section>` +
       `<section><h2>How it's made</h2><p>${esc(p.howItsMade.intro)}</p>${p.howItsMade.steps
@@ -254,7 +255,7 @@ function seriesPageFallback(p) {
 
 function seriesLd(p, url) {
   const creator = { '@type': 'Person', '@id': 'https://joechamdani.com/#joseph', name: 'Joseph Davis Chamdani' };
-  const eps = [...p.episodes].sort((a, b) => a.n - b.n);
+  const eps = [...episodesFor(p.slug)].sort((a, b) => a.n - b.n);
   return {
     '@context': 'https://schema.org',
     '@type': 'CreativeWorkSeries',
@@ -271,7 +272,7 @@ function seriesLd(p, url) {
       '@type': 'VideoObject',
       name: `${p.name}, Ep ${e.n}: ${e.title}`,
       description: e.line,
-      uploadDate: e.posted,
+      uploadDate: uploadDateTime(e.posted), // noon Pacific: the exact posting time is not recorded
       thumbnailUrl: `https://joechamdani.com${e.cover}`,
       embedUrl: `https://www.youtube.com/embed/${e.youtubeId}`,
       url: `https://www.youtube.com/shorts/${e.youtubeId}`,
@@ -406,7 +407,7 @@ for (const [slug, p] of Object.entries(projectPages)) {
   if (p.kind === 'series')
     seoImagesByPath[`projects/${slug}`] = [
       p.art,
-      ...newestFirst(p.episodes).map((e) => ({ src: e.cover, alt: e.coverAlt })),
+      ...newestFirst(episodesFor(slug)).map((e) => ({ src: e.cover, alt: e.coverAlt })),
     ];
 }
 

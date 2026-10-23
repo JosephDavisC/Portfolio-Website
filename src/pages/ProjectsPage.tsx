@@ -11,8 +11,8 @@ import Lightbox from '@/components/sections/Lightbox';
 import Navbar from '@/components/shared/Navbar';
 import { getWebPPath, hasWebP } from '@/components/shared/OptimizedImage';
 import projectsData from '@/data/projects.json';
-import projectPages from '@/data/projectPages.json';
-import { type Episode, latestEpisode } from '@/lib/episodes';
+import episodesBySeries from '@/data/episodes.json';
+import { type Episode, latestEpisode, shortEmbed } from '@/lib/episodes';
 
 // Filtering animates in place: cards that leave fade out, cards that stay slide to their
 // new slot, new cards fade in, all at once. A short tween, not a spring, so nothing
@@ -45,7 +45,7 @@ interface Project {
   mediumLabel?: string;
   caseStudy?: string;
   caseStudyLabel?: string;
-  // A series page in projectPages.json: the card's Watch button plays its latest episode
+  // A series in src/data/episodes.json: the card's Watch button plays its latest episode
   series?: string;
   // A YouTube video (a Short plays vertical) opened in the shared viewer
   video?: { youtubeId: string; label: string; title: string };
@@ -66,14 +66,14 @@ const getImageClasses = (style?: string) => {
   }
 };
 
-// A series card always features its newest episode, read from the series page data
-const seriesVideo = (slug: string): Project['video'] => {
-  const s = (projectPages as unknown as Record<string, { name: string; episodes?: Episode[] }>)[slug];
-  const ep = s?.episodes?.length ? latestEpisode(s.episodes) : undefined;
-  return ep && { youtubeId: ep.youtubeId, label: `Watch Ep ${ep.n}`, title: `${s.name}, Episode ${ep.n}: ${ep.title}` };
+// A series card always features its newest episode, read from src/data/episodes.json
+const seriesVideo = (p: Project): Project['video'] => {
+  const eps = (episodesBySeries as Record<string, Episode[]>)[p.series ?? ''];
+  const ep = eps?.length ? latestEpisode(eps) : undefined;
+  return ep && { youtubeId: ep.youtubeId, label: `Watch Ep ${ep.n}`, title: `${p.title}, Episode ${ep.n}: ${ep.title}` };
 };
 
-const projects = (projectsData as Project[]).map((p) => (p.series ? { ...p, video: seriesVideo(p.series) ?? p.video } : p));
+const projects = (projectsData as Project[]).map((p) => (p.series ? { ...p, video: seriesVideo(p) ?? p.video } : p));
 
 const categories = ['All', ...Array.from(new Set(projects.map(p => p.category)))];
 
@@ -367,7 +367,7 @@ const ProjectsPage: React.FC = () => {
               <Lightbox
                 src=""
                 video={{
-                  src: `https://www.youtube.com/embed/${video.youtubeId}?autoplay=1&rel=0&playsinline=1`,
+                  src: shortEmbed(video.youtubeId),
                   title: video.title,
                 }}
                 onClose={() => setVideo(null)}

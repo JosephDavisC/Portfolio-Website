@@ -8,6 +8,7 @@ import OptimizedImage from "@/components/shared/OptimizedImage";
 import Lightbox from "@/components/sections/Lightbox";
 import { track } from "@/lib/track";
 import { type Episode, newestFirst, formatPosted, shortEmbed } from "@/lib/episodes";
+import episodesBySeries from "@/data/episodes.json";
 
 // A series page under /projects/:slug (projectPages.json entries with kind "series").
 // Every episode opens in the shared Lightbox video mode, so nothing loads from
@@ -22,7 +23,6 @@ export type SeriesData = {
   accounts: { label: string; handle: string; href: string }[];
   ogImage: string;
   seo: { title: string; description: string };
-  episodes: Episode[];
   howItsMade: { intro: string; steps: { title: string; body: string }[] };
 };
 
@@ -38,15 +38,19 @@ const SectionTitle = ({ icon: Icon, children }: { icon: React.ElementType; child
   </h2>
 );
 
-// The 9:16 cover as a play button. Hover lifts the play badge and nudges the image;
-// motion-reduce keeps both still.
+// The 9:16 cover, clickable with a mouse or finger. It is out of the tab order and
+// hidden from screen readers: each episode already has one labelled play control
+// (its title, or the Watch button on the featured card), so the cover would only be
+// a duplicate stop. Hover lifts the play badge and nudges the image; motion-reduce
+// keeps both still.
 function CoverButton({ ep, onPlay, sizes, eager }: { ep: Episode; onPlay: () => void; sizes: string; eager?: boolean }) {
   return (
     <button
       type="button"
       onClick={onPlay}
-      aria-label={`Play Ep ${ep.n}, ${ep.title}`}
-      className={`group/cover relative block ${sizes} shrink-0 overflow-hidden rounded-lg border-2 border-espresso dark:border-slate-600 bg-espresso focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-court dark:focus-visible:ring-[#60A5FA]`}
+      tabIndex={-1}
+      aria-hidden="true"
+      className={`group/cover relative block ${sizes} shrink-0 overflow-hidden rounded-lg border-2 border-espresso dark:border-slate-600 bg-espresso`}
     >
       <OptimizedImage
         src={ep.cover}
@@ -66,19 +70,28 @@ function CoverButton({ ep, onPlay, sizes, eager }: { ep: Episode; onPlay: () => 
   );
 }
 
+const NewTab = () => <span className="sr-only"> (opens in a new tab)</span>;
+
+// Same three links, in the same order, as the crawler fallback in generate-static-pages.js
 const EpisodeLinks = ({ ep }: { ep: Episode }) => (
   <p className="flex flex-wrap gap-x-3 gap-y-1">
-    <a href={ep.tiktok} target="_blank" rel="noopener noreferrer" className={linkSmall} aria-label={`Ep ${ep.n} on TikTok`}>
-      TikTok <ExternalLink className="h-3 w-3" />
-    </a>
-    <a href={ep.instagram} target="_blank" rel="noopener noreferrer" className={linkSmall} aria-label={`Ep ${ep.n} on Instagram`}>
-      Instagram <ExternalLink className="h-3 w-3" />
-    </a>
+    {[
+      ["YouTube", `https://www.youtube.com/shorts/${ep.youtubeId}`],
+      ["TikTok", ep.tiktok],
+      ["Instagram", ep.instagram],
+    ].map(([label, href]) => (
+      <a key={label} href={href} target="_blank" rel="noopener noreferrer" className={linkSmall}>
+        <span className="sr-only">Ep {ep.n} on </span>
+        {label}
+        <NewTab />
+        <ExternalLink className="h-3 w-3" aria-hidden="true" />
+      </a>
+    ))}
   </p>
 );
 
 export default function SeriesPage({ page }: { page: SeriesData }) {
-  const episodes = newestFirst(page.episodes);
+  const episodes = newestFirst((episodesBySeries as Record<string, Episode[]>)[page.slug] ?? []);
   const latest = episodes[0];
   const [playing, setPlaying] = React.useState<Episode | null>(null);
   const play = (ep: Episode) => {
@@ -120,7 +133,9 @@ export default function SeriesPage({ page }: { page: SeriesData }) {
                 {page.accounts.map((a) => (
                   <li key={a.href}>
                     <a href={a.href} target="_blank" rel="noopener noreferrer" className="btn-brutal-outline inline-flex items-center gap-2 px-4 py-2 text-sm">
-                      {a.label} <span className="font-mono text-xs opacity-80">{a.handle}</span> <ExternalLink className="h-3.5 w-3.5" />
+                      {a.label} <span className="font-mono text-xs opacity-80">{a.handle}</span>
+                      <NewTab />
+                      <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
                     </a>
                   </li>
                 ))}
@@ -134,14 +149,15 @@ export default function SeriesPage({ page }: { page: SeriesData }) {
           {/* Latest episode, always computed from the data */}
           {latest && (
             <section className="mb-16" aria-labelledby="latest-heading">
-              <h2 id="latest-heading" className="sr-only">Latest episode</h2>
               <div className="card-brutal p-4 sm:p-6 flex gap-4 sm:gap-8 items-center">
                 <CoverButton ep={latest} onPlay={() => play(latest)} sizes="w-28 sm:w-44 md:w-52" eager />
                 <div className="min-w-0">
                   <p className="inline-flex items-center gap-1.5 font-mono text-xs font-bold uppercase tracking-wider text-court-dark dark:text-[#60A5FA]">
                     <Sparkles className="h-3.5 w-3.5" /> Latest · Ep {latest.n}
                   </p>
-                  <h3 className="mt-2 text-2xl md:text-4xl font-heading font-bold tracking-tight text-espresso dark:text-slate-100">{latest.title}</h3>
+                  <h2 id="latest-heading" className="mt-2 text-2xl md:text-4xl font-heading font-bold tracking-tight text-espresso dark:text-slate-100">
+                    <span className="sr-only">Latest episode: </span>{latest.title}
+                  </h2>
                   <p className="mt-1 font-mono text-xs sm:text-sm text-espresso/70 dark:text-slate-400">Posted {formatPosted(latest.posted)}</p>
                   <p className="mt-3 text-base md:text-lg leading-relaxed text-espresso/80 dark:text-slate-300">{latest.line}</p>
                   <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
@@ -167,6 +183,7 @@ export default function SeriesPage({ page }: { page: SeriesData }) {
                   </p>
                   <h3 className="mt-1 font-heading font-bold text-lg leading-tight text-espresso dark:text-slate-100">
                     <button type="button" onClick={() => play(ep)} className="text-left hover:text-court-dark dark:hover:text-[#60A5FA] transition-colors">
+                      <span className="sr-only">Play Ep {ep.n}: </span>
                       {ep.title}
                     </button>
                   </h3>

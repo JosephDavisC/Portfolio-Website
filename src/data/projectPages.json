@@ -99,41 +99,6 @@
       "title": "Joe Builds Things · Episodes · Joseph Davis Chamdani",
       "description": "Every episode of Joe Builds Things, a series of vertical 3D comedy shorts about a college student and an AI sidekick that helps way too much, made in code."
     },
-    "episodes": [
-      {
-        "n": 1,
-        "title": "I Said Staging",
-        "posted": "2026-10-20",
-        "line": "Joe asks his AI to push to staging. Just staging.",
-        "youtubeId": "s5g0TvcpCQI",
-        "tiktok": "https://www.tiktok.com/@josephdavisc/video/7699018012560477448",
-        "instagram": "https://www.instagram.com/p/Devg2RoMNi5/",
-        "cover": "/images/projects/joe-builds-things/ep01-cover.jpg",
-        "coverAlt": "Ep 1 cover: voxel Joe on the phone over the caption I told my AI to push to staging"
-      },
-      {
-        "n": 2,
-        "title": "Rotate Every Key",
-        "posted": "2026-10-21",
-        "line": "His host got breached, so the AI rotates every key. Every single one.",
-        "youtubeId": "nNa5JfGEd3s",
-        "tiktok": "https://www.tiktok.com/@josephdavisc/video/7699292388438707477",
-        "instagram": "https://www.instagram.com/reel/DexwikOMtA3/",
-        "cover": "/images/projects/joe-builds-things/ep02-cover.jpg",
-        "coverAlt": "Ep 2 cover: voxel Joe from the front with both hands on his head, over the caption my host got breached, 15 API keys"
-      },
-      {
-        "n": 3,
-        "title": "Let Me Fix That",
-        "posted": "2026-10-23",
-        "line": "He asks the AI to fix one bug. It fixes everything, including the app.",
-        "youtubeId": "kpZunpCussQ",
-        "tiktok": "https://www.tiktok.com/@josephdavisc/video/7699921095813549330",
-        "instagram": "https://www.instagram.com/reel/De2HbG8scpR/",
-        "cover": "/images/projects/joe-builds-things/ep03-cover.jpg",
-        "coverAlt": "Ep 3 cover: a worried voxel Joe over the caption I asked AI to fix one bug"
-      }
-    ],
     "howItsMade": {
       "intro": "A script written as JSON goes in and a finished vertical 3D short comes out, from a pipeline I built.",
       "steps": [
