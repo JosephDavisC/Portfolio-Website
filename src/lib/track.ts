@@ -47,8 +47,11 @@ export function initOutboundTracking() {
 
 // Manual pageview tracking with dedupe. Umami's auto-track double-fires on
 // Chrome iOS (its navigation layer emits extra history events; verified as
-// same-session rows ~10ms apart). The snippet sets data-auto-track="false"
-// and this sender fires instead: any same-URL send within 800ms is dropped.
+// same-session rows ~10ms apart). The snippet sets data-auto-pageview="false"
+// and this sender fires the only pageview: any same-URL send within 800ms is
+// dropped. Umami's auto-track init still runs, so it keeps its internal URL
+// current and handles data-umami-event clicks itself. data-performance needs
+// that init, so do not set data-auto-track="false" again.
 export function initPageTracking() {
   if (typeof window === "undefined") return;
   let lastUrl = "";
@@ -57,8 +60,8 @@ export function initPageTracking() {
     const url = location.pathname + location.search;
     const now = Date.now();
     if (url === lastUrl && now - lastAt < 800) return;
-    // with auto-track off, Umami's internal URL never updates, so the
-    // payload must carry url/title/referrer explicitly
+    // carry url/title/referrer explicitly so the pageview matches this
+    // sender's own URL and referrer chain, not Umami's internal state
     const referrer = lastUrl ? location.origin + lastUrl : document.referrer;
     lastUrl = url;
     lastAt = now;
