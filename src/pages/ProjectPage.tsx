@@ -7,6 +7,7 @@ import Footer from "@/components/shared/Footer";
 import OptimizedImage from "@/components/shared/OptimizedImage";
 import NotFound from "@/pages/NotFound";
 import Lightbox from "@/components/sections/Lightbox";
+import SeriesPage, { type SeriesData } from "@/pages/SeriesPage";
 import pages from "@/data/projectPages.json";
 
 type Competitor = { name: string; good: string; gap: string; source: string };
@@ -111,6 +112,8 @@ const ProjectPage = () => {
   }, [slug, page]);
 
   if (!page) return <NotFound />;
+  // A series (episodes) page shares the route and data file, not the case-study layout
+  if ((page as unknown as { kind?: string }).kind === "series") return <SeriesPage page={page as unknown as SeriesData} />;
   const url = `https://joechamdani.com/projects/${page.slug}/`;
 
   return (

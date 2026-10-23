@@ -6,11 +6,13 @@ import { m, AnimatePresence, LazyMotion, useReducedMotion } from 'framer-motion'
 const loadLayoutFeatures = () => import('framer-motion').then((mod) => mod.domMax);
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Github, ExternalLink, BookOpen, FileText, ArrowLeft, Play } from 'lucide-react';
+import { Github, ExternalLink, BookOpen, FileText, ArrowLeft, Play, Clapperboard } from 'lucide-react';
 import Lightbox from '@/components/sections/Lightbox';
 import Navbar from '@/components/shared/Navbar';
 import { getWebPPath, hasWebP } from '@/components/shared/OptimizedImage';
 import projectsData from '@/data/projects.json';
+import projectPages from '@/data/projectPages.json';
+import { type Episode, latestEpisode } from '@/lib/episodes';
 
 // Filtering animates in place: cards that leave fade out, cards that stay slide to their
 // new slot, new cards fade in, all at once. A short tween, not a spring, so nothing
@@ -42,6 +44,9 @@ interface Project {
   medium?: string;
   mediumLabel?: string;
   caseStudy?: string;
+  caseStudyLabel?: string;
+  // A series page in projectPages.json: the card's Watch button plays its latest episode
+  series?: string;
   // A YouTube video (a Short plays vertical) opened in the shared viewer
   video?: { youtubeId: string; label: string; title: string };
 }
@@ -61,7 +66,14 @@ const getImageClasses = (style?: string) => {
   }
 };
 
-const projects = projectsData as Project[];
+// A series card always features its newest episode, read from the series page data
+const seriesVideo = (slug: string): Project['video'] => {
+  const s = (projectPages as unknown as Record<string, { name: string; episodes?: Episode[] }>)[slug];
+  const ep = s?.episodes?.length ? latestEpisode(s.episodes) : undefined;
+  return ep && { youtubeId: ep.youtubeId, label: `Watch Ep ${ep.n}`, title: `${s.name}, Episode ${ep.n}: ${ep.title}` };
+};
+
+const projects = (projectsData as Project[]).map((p) => (p.series ? { ...p, video: seriesVideo(p.series) ?? p.video } : p));
 
 const categories = ['All', ...Array.from(new Set(projects.map(p => p.category)))];
 
@@ -329,8 +341,8 @@ const ProjectsPage: React.FC = () => {
                             className="btn-brutal-outline inline-flex items-center gap-2 px-4 py-2 text-sm"
                             {...(project.caseStudy.startsWith('http') && { target: "_blank", rel: "noopener noreferrer" })}
                           >
-                            <FileText className="h-4 w-4" />
-                            Case Study
+                            {project.series ? <Clapperboard className="h-4 w-4" /> : <FileText className="h-4 w-4" />}
+                            {project.caseStudyLabel || "Case Study"}
                           </a>
                         )}
                         {project.medium && (

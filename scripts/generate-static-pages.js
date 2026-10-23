@@ -219,6 +219,67 @@ function projectPageFallback(p) {
   );
 }
 
+// Series pages (kind "series"): only published episodes are in the data, so
+// everything listed here is public. Newest first, same rule as src/lib/episodes.ts.
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const formatPosted = (iso) => {
+  const [y, m, d] = iso.split('-').map(Number);
+  return `${MONTHS[m - 1]} ${d}, ${y}`;
+};
+const newestFirst = (eps) => [...eps].sort((a, b) => b.posted.localeCompare(a.posted) || b.n - a.n);
+
+function seriesPageFallback(p) {
+  const eps = newestFirst(p.episodes);
+  const latest = eps[0];
+  const epLinks = (e) =>
+    `<a href="https://www.youtube.com/shorts/${esc(e.youtubeId)}">YouTube</a> · <a href="${esc(e.tiktok)}">TikTok</a> · <a href="${esc(e.instagram)}">Instagram</a>`;
+  return buildFallbackMain(
+    `<h1>${esc(p.name)}</h1><p>${esc(p.oneLiner)}</p><p>${esc(p.meta)}</p>` +
+      `<p>${p.accounts.map((a) => `<a href="${esc(a.href)}">${esc(a.label)} ${esc(a.handle)}</a>`).join(' · ')}</p>` +
+      (latest
+        ? `<section><h2>Latest episode: Ep ${latest.n}, ${esc(latest.title)}</h2><p>Posted ${formatPosted(latest.posted)}. ${esc(latest.line)}</p><p>${epLinks(latest)}</p></section>`
+        : '') +
+      `<section><h2>Episodes</h2>${eps
+        .map(
+          (e) =>
+            `<article><img src="${esc(e.cover)}" alt="${esc(e.coverAlt)}" width="540" height="960" loading="lazy" style="width:135px;height:auto"><h3>Ep ${e.n}: ${esc(e.title)}</h3><p>Posted ${formatPosted(e.posted)}. ${esc(e.line)}</p><p>${epLinks(e)}</p></article>`
+        )
+        .join('')}</section>` +
+      `<section><h2>How it's made</h2><p>${esc(p.howItsMade.intro)}</p>${p.howItsMade.steps
+        .map((st) => `<h3>${esc(st.title)}</h3><p>${esc(st.body)}</p>`)
+        .join('')}</section>` +
+      relatedFooter('/projects/')
+  );
+}
+
+function seriesLd(p, url) {
+  const creator = { '@type': 'Person', '@id': 'https://joechamdani.com/#joseph', name: 'Joseph Davis Chamdani' };
+  const eps = [...p.episodes].sort((a, b) => a.n - b.n);
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWorkSeries',
+    name: p.name,
+    description: p.oneLiner,
+    url,
+    image: `https://joechamdani.com${p.ogImage}`,
+    genre: 'Comedy',
+    inLanguage: 'en',
+    startDate: eps[0]?.posted,
+    creator,
+    sameAs: p.accounts.map((a) => a.href),
+    hasPart: eps.map((e) => ({
+      '@type': 'VideoObject',
+      name: `${p.name}, Ep ${e.n}: ${e.title}`,
+      description: e.line,
+      uploadDate: e.posted,
+      thumbnailUrl: `https://joechamdani.com${e.cover}`,
+      embedUrl: `https://www.youtube.com/embed/${e.youtubeId}`,
+      url: `https://www.youtube.com/shorts/${e.youtubeId}`,
+      creator,
+    })),
+  };
+}
+
 // Build fallback content per route (keyed by page.path)
 const fallbackByPath = {
   projects: buildFallbackMain(
@@ -226,7 +287,9 @@ const fallbackByPath = {
       projects
         .map(
           (p) =>
-            `<section><h2>${esc(p.title)}</h2><p>${esc(p.description)}</p><p>Tech: ${esc((p.tech || []).join(', '))}</p></section>`
+            `<section><h2>${esc(p.title)}</h2><p>${esc(p.description)}</p><p>Tech: ${esc((p.tech || []).join(', '))}</p>${
+              p.caseStudy?.startsWith('/') ? `<p><a href="${esc(p.caseStudy)}">${esc(p.caseStudyLabel || 'Case study')}</a></p>` : ''
+            }</section>`
         )
         .join('') +
       relatedFooter('/projects/')
@@ -339,7 +402,12 @@ for (const [slug, p] of Object.entries(projectPages)) {
     image: `https://joechamdani.com${p.ogImage || '/preview.png'}`,
     url: `https://joechamdani.com/projects/${slug}/`
   });
-  fallbackByPath[`projects/${slug}`] = projectPageFallback(p);
+  fallbackByPath[`projects/${slug}`] = p.kind === 'series' ? seriesPageFallback(p) : projectPageFallback(p);
+  if (p.kind === 'series')
+    seoImagesByPath[`projects/${slug}`] = [
+      p.art,
+      ...newestFirst(p.episodes).map((e) => ({ src: e.cover, alt: e.coverAlt })),
+    ];
 }
 
 // Generate experience pages from experiences.json
@@ -371,6 +439,8 @@ for (const cred of credentials) {
 const projectHeadExtras = Object.fromEntries(
   Object.entries(projectPages).map(([slug, p]) => {
     const url = `https://joechamdani.com/projects/${slug}/`;
+    if (p.kind === 'series')
+      return [`projects/${slug}`, [`<script type="application/ld+json">${JSON.stringify(seriesLd(p, url))}</script>`, breadcrumbLd(p.name, url)].join('\n    ')];
     const ld = `<script type="application/ld+json">${JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'CreativeWork',
