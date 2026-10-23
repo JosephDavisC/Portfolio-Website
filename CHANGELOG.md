@@ -2,9 +2,13 @@
 
 The history of joechamdani.com, newest first. Each version links its GitHub Release, which has the full notes. All dates are Pacific time (America/Los_Angeles). A version's date is the day its GitHub Release was published. PR numbers link to the pull request.
 
-## Next (proposed v2.4.0)
+## Next
 
-Merged to main after v2.3.0, not tagged yet.
+Nothing yet.
+
+## v2.4.0: circle theme switch and Joe Builds Things (23 Oct 2026)
+
+[Release notes](https://github.com/JosephDavisC/Portfolio-Website/releases/tag/v2.4.0)
 
 - **Circle reveal theme switch.** Switching between light and dark now runs as one View Transition: the new theme grows as a circle from the toggle instead of every element fading its colours, which stuttered on phones. Browsers without View Transitions, and visitors with reduced motion on, get an instant switch. ([#10](https://github.com/JosephDavisC/Portfolio-Website/pull/10))
 - **README reel.** The README opens with a 12 second, 60 fps reel of the homepage, stored in `.github/` so it never ships with a deploy. ([#10](https://github.com/JosephDavisC/Portfolio-Website/pull/10))
