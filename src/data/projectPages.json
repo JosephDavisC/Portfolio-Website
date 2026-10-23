@@ -81,5 +81,32 @@
         ] },
       "result": "Won 1st place at the UW Claude Hackathon 2025, built in 3 hours. Still live as a public demo."
     }
+  },
+  "joe-builds-things": {
+    "slug": "joe-builds-things",
+    "kind": "series",
+    "name": "Joe Builds Things",
+    "oneLiner": "A college student and an AI sidekick that helps way too much. Made entirely in code: Remotion, React Three Fiber, voice cloning.",
+    "meta": "Season 1 started October 20, 2026",
+    "art": { "src": "/images/projects/joe-builds-things/joe-and-bot-duo.jpg", "alt": "Voxel Joe in a dark hoodie next to his AI sidekick, a small robot with a screen face, at a desk with a code monitor", "w": 800, "h": 800 },
+    "accounts": [
+      { "label": "Instagram", "handle": "@joebuildthings", "href": "https://www.instagram.com/joebuildthings/" },
+      { "label": "TikTok", "handle": "@josephdavisc", "href": "https://www.tiktok.com/@josephdavisc" },
+      { "label": "YouTube", "handle": "@JosephDavisC", "href": "https://www.youtube.com/@JosephDavisC" }
+    ],
+    "ogImage": "/images/projects/joe-builds-things/joe-and-bot-duo.jpg",
+    "seo": {
+      "title": "Joe Builds Things · Episodes · Joseph Davis Chamdani",
+      "description": "Every episode of Joe Builds Things, a series of vertical 3D comedy shorts about a college student and an AI sidekick that helps way too much, made in code."
+    },
+    "howItsMade": {
+      "intro": "A script written as JSON goes in and a finished vertical 3D short comes out, from a pipeline I built.",
+      "steps": [
+        { "title": "Script", "body": "Each episode starts as a script written as JSON, and the rest of the pipeline reads from it." },
+        { "title": "Scene", "body": "Remotion and React Three Fiber (three.js) render the voxel characters, the set, the cameras and the animated captions." },
+        { "title": "Voices", "body": "Both voices are cloned locally with open source Chatterbox TTS. Whisper transcribes every line and a pitch check rejects off takes before render." },
+        { "title": "Sound", "body": "Sound effects are generated in Python with numpy." }
+      ]
+    }
   }
 }

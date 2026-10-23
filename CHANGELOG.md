@@ -4,7 +4,7 @@ The history of joechamdani.com, newest first. Each version links its GitHub Rele
 
 ## Next
 
-Nothing yet.
+- **Joe Builds Things episodes page.** A new page at `/projects/joe-builds-things/` lists every published episode newest first, features the latest one with a Watch button, and explains how the shorts are made. Each episode plays in the shared vertical player, so nothing loads from YouTube until someone clicks. The /projects card links to it, and its Watch button now always plays the newest episode.
 
 ## v2.4.0: circle theme switch and Joe Builds Things (23 Oct 2026)
 

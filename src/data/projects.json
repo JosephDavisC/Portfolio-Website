@@ -20,11 +20,9 @@
     "demo2Label": "YouTube",
     "demo3": "https://www.tiktok.com/@josephdavisc",
     "demo3Label": "TikTok",
-    "video": {
-      "youtubeId": "nNa5JfGEd3s",
-      "label": "Watch Ep 2",
-      "title": "Joe Builds Things, Episode 2: Rotate Every Key"
-    }
+    "caseStudy": "/projects/joe-builds-things/",
+    "caseStudyLabel": "All episodes",
+    "series": "joe-builds-things"
   },
   {
     "title": "Personal Dashboard",
