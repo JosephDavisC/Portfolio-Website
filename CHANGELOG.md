@@ -4,7 +4,15 @@ The history of joechamdani.com, newest first. Each version links its GitHub Rele
 
 ## Next
 
-- **Joe Builds Things episodes page.** A new page at `/projects/joe-builds-things/` lists every published episode newest first, features the latest one with a Watch button, and explains how the shorts are made. Each episode plays in the shared vertical player, so nothing loads from YouTube until someone clicks. The /projects card links to it, and its Watch button now always plays the newest episode.
+Nothing yet.
+
+## v2.5.0: Joe Builds Things episodes page (23 Oct 2026)
+
+[Release notes](https://github.com/JosephDavisC/Portfolio-Website/releases/tag/v2.5.0)
+
+- **Joe Builds Things episodes page.** A new page at `/projects/joe-builds-things/` lists every published episode newest first, features the latest one with a Watch button, and explains how the shorts are made. Each episode plays in the shared vertical player, so nothing loads from YouTube until someone clicks. The /projects card links to it, and its Watch button now always plays the newest episode. ([#13](https://github.com/JosephDavisC/Portfolio-Website/pull/13))
+- **Lightbox focus.** Opening the lightbox moves focus to Close, Tab stays inside it, and closing returns focus to where it was. ([#13](https://github.com/JosephDavisC/Portfolio-Website/pull/13))
+- **Episode build check.** The build fails if the newest episode is missing from the crawler fallback, `llms.txt` or the sitemap. ([#13](https://github.com/JosephDavisC/Portfolio-Website/pull/13))
 
 ## v2.4.0: circle theme switch and Joe Builds Things (23 Oct 2026)
 
