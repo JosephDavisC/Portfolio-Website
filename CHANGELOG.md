@@ -4,6 +4,12 @@ The history of joechamdani.com, newest first. Each version links its GitHub Rele
 
 ## Next
 
+Nothing yet.
+
+## v2.5.1: Joe Builds Things Ep 4 (25 Oct 2026)
+
+[Release notes](https://github.com/JosephDavisC/Portfolio-Website/releases/tag/v2.5.1)
+
 - **Joe Builds Things Ep 4.** "Order For Me" (25 Oct 2026) is on the episodes page, featured as the latest episode, and the /projects Watch button now plays it.
 
 ## v2.5.0: Joe Builds Things episodes page (23 Oct 2026)
