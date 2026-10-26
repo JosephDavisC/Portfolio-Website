@@ -194,13 +194,18 @@
   </url>
   <url>
     <loc>https://joechamdani.com/projects/joe-builds-things/</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
       <image:loc>https://joechamdani.com/images/projects/joe-builds-things/joe-and-bot-duo.jpg</image:loc>
       <image:title>Joe Builds Things</image:title>
       <image:caption>Voxel Joe and his AI sidekick robot at a desk, the series art for Joe Builds Things</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/images/projects/joe-builds-things/ep04-cover.jpg</image:loc>
+      <image:title>Joe Builds Things Ep 4: Order For Me</image:title>
+      <image:caption>Ep 4 cover: a shocked voxel Joe in a coffee shop over the caption I let AI order my coffee, $38.50 for this</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://joechamdani.com/images/projects/joe-builds-things/ep03-cover.jpg</image:loc>
