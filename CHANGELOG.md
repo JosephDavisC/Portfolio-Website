@@ -6,6 +6,12 @@ The history of joechamdani.com, newest first. Each version links its GitHub Rele
 
 Nothing yet.
 
+## v2.5.2: resume refresh (25 Oct 2026)
+
+[Release notes](https://github.com/JosephDavisC/Portfolio-Website/releases/tag/v2.5.2)
+
+- **Resume.** The PDF adds SWECC Labs maintainer and mentor work under the SWECC Technical Officer role.
+
 ## v2.5.1: Joe Builds Things Ep 4 (25 Oct 2026)
 
 [Release notes](https://github.com/JosephDavisC/Portfolio-Website/releases/tag/v2.5.1)
