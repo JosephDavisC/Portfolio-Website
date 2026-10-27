@@ -4,7 +4,7 @@ The history of joechamdani.com, newest first. Each version links its GitHub Rele
 
 ## Next
 
-Nothing yet.
+- **Build tooling.** Vite 5 to 6.4.5, sharp 0.34 to 0.35.5, basic-ftp 5.0.5 to 5.3.1, plus in range updates to PostCSS, Rollup and their dependencies. The unused `@tailwindcss/typography` package is removed. npm audit goes from 24 findings to 4, none critical. Pages render pixel identical; Rollup now splits the vendor chunks differently at the same total size.
 
 ## v2.5.2: resume refresh (25 Oct 2026)
 
