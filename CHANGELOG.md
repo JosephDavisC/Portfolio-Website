@@ -4,7 +4,14 @@ The history of joechamdani.com, newest first. Each version links its GitHub Rele
 
 ## Next
 
-Nothing yet.
+- **Build tooling and dependencies.** npm audit goes from 24 findings (1 critical, 14 high) to 4 (2 high, 2 moderate). The 4 left need majors: basic-ftp 6, zod 4, React Router 7.
+  - Ships to visitors: `react-router-dom` and `react-router` 6.30.3 to 6.30.6 (range `^6.26.2` to `^6.30.6`), with `@remix-run/router` 1.23.2 to 1.23.4.
+  - Build: `vite` 5.4.21 to 6.4.4, `rollup` 4.52.3 to 4.59.0, `postcss` 8.5.6 to 8.5.23, `browserslist` 4.26.3 to 4.28.7 with `baseline-browser-mapping` 2.9.19 to 2.11.0, `caniuse-lite`, `electron-to-chromium`, `node-releases` and `update-browserslist-db`, `postcss-selector-parser` 6.1.2 to 6.1.5, `source-map-js` 1.2.1 to 1.2.2, `nanoid` 3.3.11 to 3.3.20, `picomatch` 2.3.1 to 2.3.2. `@vitejs/plugin-react-swc` floor raised to `^3.11.0`, the version already locked, whose peer range includes Vite 6.
+  - Image scripts: `sharp` 0.34.5 to 0.35.5.
+  - Deploy: `basic-ftp` 5.0.5 to 5.3.1.
+  - Lint and other dev tooling: `ajv` 6.12.6 to 6.15.0, `brace-expansion`, `flatted`, `js-yaml`, `lodash`, `minimatch`, `semver`, `@humanfs/node`, plus small transitive moves (`@emnapi/runtime`, `@img/colour`, `@types/estree`, `fdir`, `tinyglobby`). The full list with versions is in the PR.
+  - Removed: `@tailwindcss/typography` (never registered in the Tailwind config) and the stale `bun.lockb` (npm is the package manager).
+  - Result: same 390 files and byte identical CSS. Asset hashes change, and the newer Rollup splits `vendor-react` and `vendor-ui` differently at the same total size. Screenshots match in both themes at 1280 and 390, except small animated illustrations on the home page that also vary between two captures of the same build.
 
 ## v2.5.2: resume refresh (25 Oct 2026)
 
