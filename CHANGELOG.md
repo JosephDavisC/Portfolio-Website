@@ -4,7 +4,13 @@ The history of joechamdani.com, newest first. Each version links its GitHub Rele
 
 ## Next
 
-- **Build tooling and dependencies.** npm audit goes from 24 findings (1 critical, 14 high) to 4 (2 high, 2 moderate). The 4 left need majors: basic-ftp 6, zod 4, React Router 7.
+Nothing yet.
+
+## v2.5.3: build tooling refresh (27 Oct 2026)
+
+[Release notes](https://github.com/JosephDavisC/Portfolio-Website/releases/tag/v2.5.3)
+
+- **Build tooling and dependencies.** ([#14](https://github.com/JosephDavisC/Portfolio-Website/pull/14)) npm audit goes from 24 findings (1 critical, 14 high) to 4 (2 high, 2 moderate). The 4 left need majors: basic-ftp 6, zod 4, React Router 7.
   - Ships to visitors: `react-router-dom` and `react-router` 6.30.3 to 6.30.6 (range `^6.26.2` to `^6.30.6`), with `@remix-run/router` 1.23.2 to 1.23.4.
   - Build: `vite` 5.4.21 to 6.4.4, `rollup` 4.52.3 to 4.59.0, `postcss` 8.5.6 to 8.5.23, `browserslist` 4.26.3 to 4.28.7 with `baseline-browser-mapping` 2.9.19 to 2.11.0, `caniuse-lite`, `electron-to-chromium`, `node-releases` and `update-browserslist-db`, `postcss-selector-parser` 6.1.2 to 6.1.5, `source-map-js` 1.2.1 to 1.2.2, `nanoid` 3.3.11 to 3.3.20, `picomatch` 2.3.1 to 2.3.2. `@vitejs/plugin-react-swc` floor raised to `^3.11.0`, the version already locked, whose peer range includes Vite 6.
   - Image scripts: `sharp` 0.34.5 to 0.35.5.
