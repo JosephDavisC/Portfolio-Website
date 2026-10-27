@@ -4,7 +4,7 @@ The history of joechamdani.com, newest first. Each version links its GitHub Rele
 
 ## Next
 
-Nothing yet.
+- **Runtime majors.** npm audit goes from 4 findings (2 high, 2 moderate) to 0. Ships to visitors: `react-router-dom` 6.30.6 is replaced by `react-router` 7.18.4 (imports move to `react-router`, same routes and behaviour), `zod` 3.25.76 to 4.6.7 and `@hookform/resolvers` 3.10.0 to 5.9.2 (contact form messages unchanged). Deploy: `basic-ftp` 5.3.1 to 6.2.3, no script changes. The contact chunk grows by about 12 kB gzip (zod 4) and `vendor-react` by about 6 kB gzip (React Router 7).
 
 ## v2.5.3: build tooling refresh (27 Oct 2026)
 
