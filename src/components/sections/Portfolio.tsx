@@ -1,7 +1,7 @@
 import { track } from "@/lib/track";
 import React from 'react';
 import { m } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { Github, ExternalLink, BookOpen, FileText, ArrowRight } from 'lucide-react';
 import { getWebPPath, hasWebP } from '@/components/shared/OptimizedImage';
 import projectsData from '@/data/projects.json';

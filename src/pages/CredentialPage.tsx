@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { Link, useParams, useLocation } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router";
 import { Helmet } from "react-helmet-async";
 import { ArrowLeft, Download, ExternalLink, PlayCircle } from "lucide-react";
 import Navbar from "@/components/shared/Navbar";

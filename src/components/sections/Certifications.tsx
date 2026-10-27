@@ -1,7 +1,7 @@
 import React from "react";
 import { m } from "framer-motion";
 import { Award } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 40 },

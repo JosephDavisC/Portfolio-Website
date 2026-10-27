@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useParams, Link, useLocation } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router';
 import { Helmet } from 'react-helmet-async';
 import { m } from 'framer-motion';
 import { ArrowLeft, Calendar, ExternalLink, Github, ChevronRight, Share2, Link2, Linkedin, Twitter, MessageCircle, Mail } from 'lucide-react';

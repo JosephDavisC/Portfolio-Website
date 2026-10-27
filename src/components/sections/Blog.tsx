@@ -1,7 +1,7 @@
 import React from 'react';
 import { m } from 'framer-motion';
 import { ExternalLink, Calendar, ArrowRight, ChevronRight } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router';
 import articlesData from '@/data/articles.json';
 
 export interface Article {

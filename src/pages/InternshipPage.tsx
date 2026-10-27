@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Link, useParams, Navigate } from "react-router-dom";
+import { Link, useParams, Navigate } from "react-router";
 import { Helmet } from "react-helmet-async";
 import { m } from "framer-motion";
 import Navbar from "@/components/shared/Navbar";

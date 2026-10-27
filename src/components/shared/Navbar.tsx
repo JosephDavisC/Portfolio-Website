@@ -1,6 +1,6 @@
 import { track } from "@/lib/track";
 import { useEffect, useMemo, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router";
 import { Menu, X, Briefcase } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 
