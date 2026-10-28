@@ -266,7 +266,7 @@ export default function SeoDocs() {
                     Routing & State
                   </h3>
                   <ul className="space-y-2 text-sm text-slate-300">
-                    <li className="flex justify-between"><span>React Router</span><span className="text-slate-500">v6</span></li>
+                    <li className="flex justify-between"><span>React Router</span><span className="text-slate-500">v7</span></li>
                     <li className="flex justify-between"><span>TanStack Query</span><span className="text-slate-500">v5</span></li>
                     <li className="flex justify-between"><span>React Hook Form</span><span className="text-slate-500">v7</span></li>
                   </ul>
@@ -384,7 +384,7 @@ export default function SeoDocs() {
             </h2>
             <div className="pl-11 space-y-6">
               <p className="text-slate-300">
-                Client-side routing is handled by React Router v6 with the following route structure:
+                Client-side routing is handled by React Router v7 with the following route structure:
               </p>
 
               <div className="bg-slate-800 rounded-xl overflow-hidden border border-slate-700">
