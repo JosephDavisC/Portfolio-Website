@@ -4,7 +4,8 @@ The history of joechamdani.com, newest first. Each version links its GitHub Rele
 
 ## Next
 
-- **Runtime majors.** npm audit goes from 4 findings (2 high, 2 moderate) to 0. Ships to visitors: `react-router-dom` 6.30.6 is replaced by `react-router` 7.18.4 (imports move to `react-router`, same routes and behaviour), `zod` 3.25.76 to 4.6.7 and `@hookform/resolvers` 3.10.0 to 5.9.2 (contact form messages unchanged). Deploy: `basic-ftp` 5.3.1 to 6.2.3, no script changes. The contact chunk grows by about 12 kB gzip (zod 4) and `vendor-react` by about 6 kB gzip (React Router 7).
+- **Runtime majors.** npm audit goes from 4 findings (2 high, 2 moderate) to 0. Ships to visitors: `react-router-dom` 6.30.6 is replaced by `react-router` 7.18.4 (imports move to `react-router`, same routes), `zod` 3.25.76 to 4.6.7 and `@hookform/resolvers` 3.10.0 to 5.9.2. The contact schema moves to `zod/mini` with the same email rule and messages, so the Contact chunk shrinks from 25.3 kB to 18.8 kB gzip; `vendor-react` grows from 7.7 kB to 13.8 kB gzip. Deploy: `basic-ftp` 5.3.1 to 6.2.3, no script changes. The /seo-docs page now says React Router v7.
+- **Lazy page feedback.** React Router 7 runs every navigation as a React transition. Going from the home page to a lazy page still shows the "Loading..." fallback, but going from one lazy page to another (for example with back and forward) keeps the old page on screen until the new chunk arrives. A thin top bar (court green, neon blue in dark, static with reduced motion) now shows while that takes longer than 150 ms.
 
 ## v2.5.3: build tooling refresh (27 Oct 2026)
 
