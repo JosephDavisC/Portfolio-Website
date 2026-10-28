@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import { HelmetProvider } from "react-helmet-async";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import ScrollProgress from "@/components/shared/ScrollProgress";
+import RouteProgress from "@/components/shared/RouteProgress";
 import ScrollToTop from "@/components/shared/ScrollToTop";
 import ScrollUpButton from "@/components/shared/ScrollUpButton";
 import EasterEggs from "@/components/shared/EasterEggs";
@@ -41,6 +42,7 @@ const App = () => (
           <BrowserRouter>
             <ScrollToTop />
             <ScrollProgress />
+            <RouteProgress />
 
             <Routes>
               <Route path="/" element={<Index />} />
