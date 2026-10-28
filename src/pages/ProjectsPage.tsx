@@ -4,7 +4,7 @@ import { m, AnimatePresence, LazyMotion, useReducedMotion } from 'framer-motion'
 // The app loads framer's lighter domAnimation set; the filter's slide-into-place needs
 // layout animation (domMax). Load it for this page only, so other pages stay light.
 const loadLayoutFeatures = () => import('framer-motion').then((mod) => mod.domMax);
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { Helmet } from 'react-helmet-async';
 import { Github, ExternalLink, BookOpen, FileText, ArrowLeft, Play, Clapperboard } from 'lucide-react';
 import Lightbox from '@/components/sections/Lightbox';

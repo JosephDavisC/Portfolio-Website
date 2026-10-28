@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router";
 import { Helmet } from "react-helmet-async";
 import { ArrowLeft, ExternalLink, Trophy, Users, Target, Lightbulb, AlertCircle } from "lucide-react";
 import Navbar from "@/components/shared/Navbar";

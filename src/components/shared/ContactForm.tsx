@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { m } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
+import * as z from 'zod/mini';
 import { Send, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -11,10 +11,10 @@ import { Textarea } from '@/components/ui/textarea';
 import { toast } from 'sonner';
 
 const formSchema = z.object({
-  name: z.string().min(2, 'Name must be at least 2 characters'),
-  email: z.string().email('Please enter a valid email address'),
-  subject: z.string().min(5, 'Subject must be at least 5 characters'),
-  message: z.string().min(10, 'Message must be at least 10 characters'),
+  name: z.string().check(z.minLength(2, 'Name must be at least 2 characters')),
+  email: z.email({ error: 'Please enter a valid email address' }),
+  subject: z.string().check(z.minLength(5, 'Subject must be at least 5 characters')),
+  message: z.string().check(z.minLength(10, 'Message must be at least 10 characters')),
 });
 
 type FormData = z.infer<typeof formSchema>;

@@ -2,7 +2,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { m } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { ArrowLeft } from 'lucide-react';
 import Navbar from '@/components/shared/Navbar';
 

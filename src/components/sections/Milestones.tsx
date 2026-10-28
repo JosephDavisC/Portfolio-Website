@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { m, AnimatePresence } from "framer-motion";
 import { Calendar, MapPin, X, ChevronDown, ChevronUp, ChevronRight, Briefcase, Users, GraduationCap, ArrowRight } from "lucide-react";
 import { getWebPPath, hasWebP } from "@/components/shared/OptimizedImage";
