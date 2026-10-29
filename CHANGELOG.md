@@ -6,6 +6,13 @@ The history of joechamdani.com, newest first. Each version links its GitHub Rele
 
 Nothing yet.
 
+## v2.6.1: Joe Builds Things Ep 5 (28 Oct 2026)
+
+[Release notes](https://github.com/JosephDavisC/Portfolio-Website/releases/tag/v2.6.1)
+
+- **Joe Builds Things Ep 5.** "One Message Left" (28 Oct 2026) is on the episodes page, featured as the latest episode, and the /projects Watch button now plays it.
+- **Deploy script.** The FTP password is read from 1Password at deploy time instead of a plain config file.
+
 ## v2.6.0: React Router 7 and zod 4 (27 Oct 2026)
 
 [Release notes](https://github.com/JosephDavisC/Portfolio-Website/releases/tag/v2.6.0)

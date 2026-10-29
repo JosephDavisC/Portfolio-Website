@@ -194,13 +194,18 @@
   </url>
   <url>
     <loc>https://joechamdani.com/projects/joe-builds-things/</loc>
-    <lastmod>2026-10-25</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
       <image:loc>https://joechamdani.com/images/projects/joe-builds-things/joe-and-bot-duo.jpg</image:loc>
       <image:title>Joe Builds Things</image:title>
       <image:caption>Voxel Joe and his AI sidekick robot at a desk, the series art for Joe Builds Things</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://joechamdani.com/images/projects/joe-builds-things/ep05-cover.jpg</image:loc>
+      <image:title>Joe Builds Things Ep 5: One Message Left</image:title>
+      <image:caption>Ep 5 cover: a stunned voxel Joe in a coffee shop over the caption I had one message left, MLA or APA, it asked anyway</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://joechamdani.com/images/projects/joe-builds-things/ep04-cover.jpg</image:loc>

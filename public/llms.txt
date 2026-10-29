@@ -20,6 +20,7 @@ This site represents Joseph Davis Chamdani, the University of Washington Informa
 
 - [Joe Builds Things](https://www.instagram.com/joebuildthings/): Joseph's personal side project, a short comedy series about a college student and his overly helpful AI sidekick, made with a code pipeline he built. A script written as JSON renders into a finished vertical 3D short: voxel characters, set, cameras and animated captions in Remotion and React Three Fiber (three.js), both voices cloned locally with open source Chatterbox TTS, Whisper transcription plus a pitch check that rejects off takes before render, and sound effects generated in Python (numpy). Season 1 started October 20, 2026. Every episode, newest first: https://joechamdani.com/projects/joe-builds-things/
   Ep 4 "Order For Me" (Oct 25, 2026): https://www.youtube.com/shorts/JAs4CBSM268
+  Ep 5 "One Message Left" (Oct 28, 2026): https://www.youtube.com/shorts/QDRURlEQQuI
   Ep 3 "Let Me Fix That" (Oct 23, 2026): https://www.youtube.com/shorts/kpZunpCussQ
   Ep 2 "Rotate Every Key" (Oct 21, 2026): https://www.youtube.com/shorts/nNa5JfGEd3s
   Ep 1 "I Said Staging" (Oct 20, 2026): https://www.youtube.com/shorts/s5g0TvcpCQI
