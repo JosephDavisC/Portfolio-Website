@@ -531,15 +531,4 @@
     </image:image>
   </url>
 
-  <url>
-    <loc>https://joechamdani.com/experience/icg/</loc>
-    <lastmod>2026-08-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://joechamdani.com/logos/ICG.png</image:loc>
-      <image:title>Information Consulting Group - Technology Operations Associate</image:title>
-    </image:image>
-  </url>
-
 </urlset>

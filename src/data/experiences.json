@@ -1,43 +1,4 @@
 {
-  "icg": {
-    "slug": "icg",
-    "company": "Information Consulting Group",
-    "logo": "/logos/ICG.png",
-    "ogImage": "/logos/ICG.png",
-    "role": "Technology Operations Associate",
-    "type": "Part-time",
-    "duration": "May 2026 – Present · 6 mos",
-    "location": "Seattle, Washington, United States · Hybrid",
-    "website": "https://www.linkedin.com/company/information-consulting-group/",
-    "description": "Information Consulting Group (ICG) is a consulting organization based in Seattle, WA. As a Technology Operations Associate, I support technology operations and consulting initiatives, collaborating with the team on operational and technical projects.",
-    "theme": {
-      "primary": "#1E3A5F",
-      "primaryHover": "#2B527A",
-      "primaryDark": "#162C4A",
-      "gradient": "from-blue-900 to-blue-700",
-      "bgTint": "bg-blue-900/20",
-      "borderTint": "border-blue-900/30",
-      "textColor": "text-[#1E3A5F]"
-    },
-    "seo": {
-      "title": "Information Consulting Group - Technology Operations Associate",
-      "description": "Technology Operations Associate at Information Consulting Group, Seattle. Supporting technology operations and consulting initiatives.",
-      "keywords": [
-        "Joseph Chamdani",
-        "Technology Operations",
-        "Information Consulting Group",
-        "ICG",
-        "Seattle",
-        "consulting"
-      ]
-    },
-    "highlights": [
-      "Supporting technology operations and consulting initiatives",
-      "Collaborating with the team on operational and technical projects"
-    ],
-    "technologies": ["Technology Operations", "Consulting"],
-    "impact": []
-  },
   "whitespace": {
     "slug": "whitespace",
     "company": "Whitespace Solutions",

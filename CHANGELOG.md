@@ -6,6 +6,12 @@ The history of joechamdani.com, newest first. Each version links its GitHub Rele
 
 Nothing yet.
 
+## v2.6.2: Remove ICG (29 Oct 2026)
+
+[Release notes](https://github.com/JosephDavisC/Portfolio-Website/releases/tag/v2.6.2)
+
+- **Experience.** Information Consulting Group is removed from the site: the /experience/icg page, the Milestones timeline entry, the crawler fallback in index.html, llms.txt, the sitemap and the ICG logo files. SWECC stays as the current UW club.
+
 ## v2.6.1: Joe Builds Things Ep 5 (28 Oct 2026)
 
 [Release notes](https://github.com/JosephDavisC/Portfolio-Website/releases/tag/v2.6.1)

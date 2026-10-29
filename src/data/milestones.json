@@ -53,27 +53,6 @@
         ]
       },
       {
-        "name": "Information Consulting Group",
-        "category": "Clubs",
-        "logo": "/logos/ICG.png",
-        "website": "https://www.linkedin.com/company/information-consulting-group/",
-        "meta": "Part-time · 6 mos",
-        "location": "Seattle, Washington, United States",
-        "roles": [
-          {
-            "title": "Technology Operations Associate",
-            "dates": "May 2026 – Present · 6 mos",
-            "meta": "Hybrid",
-            "bullets": [
-              "Supported technology operations and consulting initiatives at Information Consulting Group."
-            ],
-            "media": [
-              { "src": "/logos/ICG.png", "caption": "Information Consulting Group", "href": "https://washingtonicg.org/" }
-            ]
-          }
-        ]
-      },
-      {
         "name": "Sector - CyberSecurity",
         "featured": true,
         "category": "Internships",
