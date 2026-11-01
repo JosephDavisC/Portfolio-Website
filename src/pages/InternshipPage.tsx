@@ -354,7 +354,7 @@ export default function InternshipPage() {
 
         {/* Hero Section */}
         <m.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="card-brutal p-8 md:p-12 mb-8"
@@ -685,7 +685,7 @@ export default function InternshipPage() {
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: i * 0.1 }}
+                  transition={{ duration: 0.4, delay: Math.min(i * 0.05, 0.15) }}
                   className="card-brutal p-6 md:p-8 relative overflow-hidden"
                 >
                   {/* Decorative gradient */}

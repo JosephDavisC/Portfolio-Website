@@ -65,7 +65,7 @@ export default function Rackets({ embed = false }: Props) {
     <section id="rackets" className="py-24 px-6 bg-black/20">
       <div className="max-w-6xl mx-auto">
         <m.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}

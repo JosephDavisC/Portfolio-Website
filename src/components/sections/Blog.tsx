@@ -100,10 +100,10 @@ const ArticleCard: React.FC<{ article: Article; index: number; onOpenArticle: (i
 
   const cardClass = `grid ${hasImage ? 'md:grid-cols-2' : 'md:grid-cols-1'} gap-8 items-center card-brutal p-6 md:p-8 group`;
   const motionProps = {
-    initial: { opacity: 0, y: 40 },
+    initial: { opacity: 0, y: 16 },
     whileInView: { opacity: 1, y: 0 },
-    whileHover: { y: -4 },
-    transition: { duration: 0.5, delay: index * 0.1, type: 'spring' as const, stiffness: 200 },
+    whileHover: { y: -4, transition: { duration: 0.2, ease: [0.22, 1, 0.36, 1] as const } },
+    transition: { duration: 0.5, delay: Math.min(index * 0.05, 0.15), type: 'spring' as const, stiffness: 200 },
     viewport: { once: true },
   };
 
@@ -154,9 +154,9 @@ const Blog = () => {
     <section id="blog" className="py-16 px-6 bg-paper">
       <div className="max-w-6xl mx-auto">
         <m.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
           className="text-center mb-12"
         >

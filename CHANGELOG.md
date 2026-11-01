@@ -4,7 +4,7 @@ The history of joechamdani.com, newest first. Each version links its GitHub Rele
 
 ## Next
 
-Nothing yet.
+- **Motion polish.** The site now follows the device's reduce motion setting everywhere (before, only /projects did). Cards no longer get their hover lift from CSS and Framer Motion at once. Section entrances are shorter (16px over 0.4s instead of 40 to 50px on a slow spring) and the Hero buttons settle in about 0.5s instead of 1.5s. The image viewer, the 3D avatar viewer, the article Share menu and the mobile menu now ease open instead of snapping, the blog tag filter slides rows into place like /projects, and outline links get a press state.
 
 ## v2.6.2: Remove ICG (29 Oct 2026)
 

@@ -143,9 +143,9 @@ export default function TennisCoffeeSection() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <m.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
           className="text-center mb-12"
         >
@@ -180,7 +180,7 @@ export default function TennisCoffeeSection() {
           <m.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             viewport={{ once: true }}
             className="space-y-6"
           >
@@ -299,7 +299,7 @@ export default function TennisCoffeeSection() {
           <m.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.1, type: "spring", stiffness: 100 }}
+            transition={{ duration: 0.4, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             viewport={{ once: true }}
             className="space-y-6"
           >
@@ -365,7 +365,7 @@ export default function TennisCoffeeSection() {
 
         {/* RACKETS SECTION */}
         <m.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}

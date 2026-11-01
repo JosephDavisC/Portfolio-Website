@@ -169,9 +169,9 @@ export default function Milestones({ variant = "home" }: MilestonesProps) {
       <div className="max-w-5xl mx-auto">
         {isHome && (
         <m.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
           className="text-center mb-8"
         >

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { m } from "framer-motion";
 import { X, RotateCw } from "lucide-react";
 import { createAvatar } from "@/lib/avatar3d";
 
@@ -161,9 +162,13 @@ export default function AvatarViewer({ onClose }: Props) {
 
   const choose = (p: string) => { setPose(p); apiRef.current?.pose(p); };
 
+  // Same open motion as Lightbox: backdrop fades, card settles in from 96%.
   return (
-    <div
+    <m.div
       ref={dialogRef}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
       className="fixed inset-0 z-[100] bg-espresso/80 dark:bg-[#0B1220]/90 backdrop-blur-sm flex items-center justify-center p-4"
       onClick={onClose}
       role="dialog"
@@ -181,7 +186,10 @@ export default function AvatarViewer({ onClose }: Props) {
         <X className="h-5 w-5" />
       </button>
 
-      <div
+      <m.div
+        initial={{ opacity: 0, scale: 0.96 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
         className="card-brutal w-full max-w-lg overflow-hidden flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
@@ -216,7 +224,7 @@ export default function AvatarViewer({ onClose }: Props) {
             ))}
           </div>
         </div>
-      </div>
-    </div>
+      </m.div>
+    </m.div>
   );
 }

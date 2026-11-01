@@ -4,7 +4,7 @@ import { Award } from "lucide-react";
 import { Link } from "react-router";
 
 const fadeInUp = {
-  initial: { opacity: 0, y: 40 },
+  initial: { opacity: 0, y: 16 },
   animate: { opacity: 1, y: 0 },
   transition: { duration: 0.5, type: "spring", stiffness: 200 },
 };
@@ -66,9 +66,9 @@ export default function Certifications() {
     <section id="certifications" className="py-16 px-6 pb-20 bg-paper">
       <div className="max-w-6xl mx-auto">
         <m.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
           className="text-center mb-12"
         >

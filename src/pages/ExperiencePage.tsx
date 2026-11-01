@@ -53,7 +53,7 @@ const ExperiencePage = () => {
           <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, type: 'spring', stiffness: 100 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             className="text-center mb-10"
           >
             <h1 className="text-5xl md:text-6xl font-heading font-bold mb-6 text-espresso">

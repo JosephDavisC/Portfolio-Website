@@ -71,7 +71,7 @@ const ContactForm = () => {
   return (
     <m.div
       className="card-brutal p-6 sm:p-10 relative overflow-hidden group/form"
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.2 }}
       viewport={{ once: true }}

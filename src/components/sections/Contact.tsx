@@ -22,9 +22,9 @@ const Contact = () => {
       <div className="max-w-4xl mx-auto">
         <m.div
           className="text-center mb-12"
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
         >
           <h2 className="text-5xl md:text-6xl font-heading font-bold mb-6 text-espresso">
@@ -70,7 +70,7 @@ const Contact = () => {
 
         <m.div
           className="card-brutal p-6 sm:p-10"
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
@@ -83,7 +83,7 @@ const Contact = () => {
               href="mailto:joseph@joechamdani.com"
               whileHover={{ y: -4 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="flex flex-col items-center px-4 py-6 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-all group"
+              className="flex flex-col items-center px-4 py-6 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-[border-color,box-shadow] group"
             >
               <div className="w-12 h-12 rounded-full bg-court/20 dark:bg-[#60A5FA]/20 border-2 border-court dark:border-[#60A5FA] flex items-center justify-center mb-3">
                 <Mail className="h-6 w-6 text-court-dark dark:text-[#60A5FA]" />
@@ -98,7 +98,7 @@ const Contact = () => {
               rel="noopener noreferrer"
               whileHover={{ y: -4 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="flex flex-col items-center px-4 py-6 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-all group"
+              className="flex flex-col items-center px-4 py-6 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-[border-color,box-shadow] group"
             >
               <div className="w-12 h-12 rounded-full bg-court/20 dark:bg-[#60A5FA]/20 border-2 border-court dark:border-[#60A5FA] flex items-center justify-center mb-3">
                 <Linkedin className="h-6 w-6 text-court-dark dark:text-[#60A5FA]" />
@@ -113,7 +113,7 @@ const Contact = () => {
               rel="noopener noreferrer"
               whileHover={{ y: -4 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="flex flex-col items-center px-4 py-6 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-espresso dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-all group"
+              className="flex flex-col items-center px-4 py-6 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-espresso dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-[border-color,box-shadow] group"
             >
               <div className="w-12 h-12 rounded-full bg-espresso/10 dark:bg-slate-700 border-2 border-espresso dark:border-slate-500 flex items-center justify-center mb-3">
                 <Github className="h-6 w-6 text-espresso dark:text-slate-300" />
@@ -128,7 +128,7 @@ const Contact = () => {
               rel="noopener noreferrer"
               whileHover={{ y: -4 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="flex flex-col items-center px-4 py-6 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-all group"
+              className="flex flex-col items-center px-4 py-6 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-[border-color,box-shadow] group"
             >
               <div className="w-12 h-12 rounded-full bg-court/20 dark:bg-[#60A5FA]/20 border-2 border-court dark:border-[#60A5FA] flex items-center justify-center mb-3">
                 <Instagram className="h-6 w-6 text-court-dark dark:text-[#60A5FA]" />
@@ -143,7 +143,7 @@ const Contact = () => {
               rel="noopener noreferrer"
               whileHover={{ y: -4 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="flex flex-col items-center px-4 py-6 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-all group"
+              className="flex flex-col items-center px-4 py-6 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-[border-color,box-shadow] group"
             >
               <div className="w-12 h-12 rounded-full bg-court/20 dark:bg-[#60A5FA]/20 border-2 border-court dark:border-[#60A5FA] flex items-center justify-center mb-3">
                 <Instagram className="h-6 w-6 text-court-dark dark:text-[#60A5FA]" />
@@ -158,7 +158,7 @@ const Contact = () => {
               rel="noopener noreferrer"
               whileHover={{ y: -4 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="flex flex-col items-center px-4 py-6 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-all group"
+              className="flex flex-col items-center px-4 py-6 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-[border-color,box-shadow] group"
             >
               <div className="w-12 h-12 rounded-full bg-court/20 dark:bg-[#60A5FA]/20 border-2 border-court dark:border-[#60A5FA] flex items-center justify-center mb-3">
                 <Youtube className="h-6 w-6 text-court-dark dark:text-[#60A5FA]" />
@@ -173,7 +173,7 @@ const Contact = () => {
               rel="noopener noreferrer"
               whileHover={{ y: -4 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="flex flex-col items-center px-4 py-6 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-all group"
+              className="flex flex-col items-center px-4 py-6 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-[border-color,box-shadow] group"
             >
               <div className="w-12 h-12 rounded-full bg-court/20 dark:bg-[#60A5FA]/20 border-2 border-court dark:border-[#60A5FA] flex items-center justify-center mb-3">
                 <DevpostIcon className="h-6 w-6 text-court-dark dark:text-[#60A5FA]" />
@@ -188,7 +188,7 @@ const Contact = () => {
               rel="noopener noreferrer"
               whileHover={{ y: -4 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="flex flex-col items-center px-4 py-6 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-all group"
+              className="flex flex-col items-center px-4 py-6 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-[border-color,box-shadow] group"
             >
               <div className="w-12 h-12 rounded-full bg-court/20 dark:bg-[#60A5FA]/20 border-2 border-court dark:border-[#60A5FA] flex items-center justify-center mb-3">
                 <MediumIcon className="h-6 w-6 text-court-dark dark:text-[#60A5FA]" />
@@ -204,7 +204,7 @@ const Contact = () => {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => track("resume-download")}
-              className="btn-brutal inline-flex items-center gap-2"
+              className="motion-hover btn-brutal inline-flex items-center gap-2"
               whileHover={{ scale: 1.02, x: -2, y: -2 }}
               whileTap={{ scale: 0.98, x: 2, y: 2 }}
             >

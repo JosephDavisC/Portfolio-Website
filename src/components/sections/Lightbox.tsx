@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { m } from "framer-motion";
 import { X } from "lucide-react";
 
 /**
@@ -14,9 +15,20 @@ import { X } from "lucide-react";
  * - The close button is 44px, the minimum reliable touch target, and sits inside
  *   the safe area so it is not under the notch or a rounded corner.
  *
+ * Motion: the backdrop fades and the photo settles in from 96% on open. There is
+ * no exit animation on purpose: most callers unmount the viewer on close, so it
+ * could never play, and closing should feel instant anyway.
+ *
  * Keyboard: focus moves to the close button on open, Tab cycles inside the dialog,
  * and focus returns to whatever opened it on close (same contract as AvatarViewer).
  */
+const EASE = [0.22, 1, 0.36, 1] as const;
+const settle = {
+  initial: { opacity: 0, scale: 0.96 },
+  animate: { opacity: 1, scale: 1 },
+  transition: { duration: 0.24, ease: EASE },
+};
+
 export default function Lightbox({
   src,
   alt,
@@ -80,8 +92,11 @@ export default function Lightbox({
   if (!open) return null;
 
   return (
-    <div
+    <m.div
       ref={dialogRef}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.2, ease: EASE }}
       className="fixed inset-0 z-[100] bg-espresso/80 dark:bg-[#0B1220]/90 backdrop-blur-sm flex items-center justify-center p-4"
       onClick={onClose}
       role="dialog"
@@ -98,7 +113,8 @@ export default function Lightbox({
         <X className="h-6 w-6" />
       </button>
       {video ? (
-        <div
+        <m.div
+          {...settle}
           className="aspect-[9/16] max-w-[92vw] overflow-hidden rounded-xl border-2 border-espresso dark:border-slate-600 shadow-brutal-lg dark:shadow-none bg-black"
           style={{ height: "min(85vh, calc(92vw * 16 / 9))" }}
           onClick={(e) => e.stopPropagation()}
@@ -111,15 +127,16 @@ export default function Lightbox({
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
           />
-        </div>
+        </m.div>
       ) : (
-      <img
+      <m.img
+        {...settle}
         src={src}
         alt={alt || "image"}
         className="max-h-[85vh] max-w-[92vw] object-contain rounded-xl border-2 border-espresso dark:border-slate-600 shadow-brutal-lg dark:shadow-none"
         onClick={(e) => e.stopPropagation()}
       />
       )}
-    </div>
+    </m.div>
   );
 }
