@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useParams, Link, useLocation } from 'react-router';
 import { Helmet } from 'react-helmet-async';
-import { m } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, Calendar, ExternalLink, Github, ChevronRight, Share2, Link2, Linkedin, Twitter, MessageCircle, Mail } from 'lucide-react';
 import { toast } from 'sonner';
 import { track } from '@/lib/track';
@@ -49,13 +49,20 @@ const ShareMenu: React.FC<{ articleId: string; title: string; direction: 'down' 
         <Share2 className={trigger === 'quiet' ? 'h-4 w-4' : 'h-5 w-5'} />
         Share
       </button>
+      <AnimatePresence>
       {open && (
         <>
           <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} aria-hidden="true" />
-          <div
+          {/* Grows out of the Share button. Framer owns transform here, so the "up"
+              menu's centering is x: -50% rather than Tailwind's -translate-x-1/2. */}
+          <m.div
             role="menu"
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1, transition: { duration: 0.16, ease: [0.22, 1, 0.36, 1] } }}
+            exit={{ opacity: 0, scale: 0.96, transition: { duration: 0.12, ease: [0.22, 1, 0.36, 1] } }}
+            style={direction === 'down' ? { transformOrigin: 'top right' } : { x: '-50%', transformOrigin: 'bottom center' }}
             className={`absolute z-50 w-44 card-brutal p-2 flex flex-col gap-0.5 ${
-              direction === 'down' ? 'right-0 top-full mt-2' : 'left-1/2 -translate-x-1/2 bottom-full mb-2'
+              direction === 'down' ? 'right-0 top-full mt-2' : 'left-1/2 bottom-full mb-2'
             }`}
           >
             {options.map((opt) => (
@@ -69,9 +76,10 @@ const ShareMenu: React.FC<{ articleId: string; title: string; direction: 'down' 
                 {opt.label}
               </button>
             ))}
-          </div>
+          </m.div>
         </>
       )}
+      </AnimatePresence>
     </div>
   );
 };
@@ -1707,7 +1715,7 @@ const ArticlePage = () => {
       <m.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
         className="pt-32 pb-6 px-6"
       >
         <div className="max-w-3xl mx-auto">

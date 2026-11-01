@@ -1,7 +1,13 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { Helmet } from 'react-helmet-async';
-import { m } from 'framer-motion';
+import { m, AnimatePresence, LazyMotion } from 'framer-motion';
+
+// Same filter motion as ProjectsPage: rows that leave fade out, rows that stay slide
+// to their new slot (layout, which needs framer's domMax, loaded for this page only),
+// new rows fade in with a capped stagger. MotionConfig in main.tsx handles reduced motion.
+const loadLayoutFeatures = () => import('framer-motion').then((mod) => mod.domMax);
+const EASE = [0.22, 1, 0.36, 1] as const;
 import { ArrowLeft, ArrowRight, ChevronRight, ExternalLink, Linkedin } from 'lucide-react';
 import Navbar from '@/components/shared/Navbar';
 import Footer from '@/components/shared/Footer';
@@ -89,7 +95,7 @@ const BlogPage = () => {
           <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, type: 'spring', stiffness: 100 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             className="text-center mb-12"
           >
             <h1 className="text-5xl md:text-6xl font-heading font-bold mb-6 text-espresso">
@@ -147,7 +153,7 @@ const BlogPage = () => {
           {/* Featured (latest), unfiltered view only */}
           {featured && (
           <m.article
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, type: 'spring', stiffness: 200 }}
             whileHover={{ y: -4 }}
@@ -218,7 +224,9 @@ const BlogPage = () => {
           )}
 
           {/* List rows */}
+          <LazyMotion features={loadLayoutFeatures}>
           <div className="flex flex-col gap-5">
+            <AnimatePresence mode="popLayout" initial={false}>
             {rest.map((article, index) => {
               const externalUrl = !article.hasFullArticle
                 ? article.externalLinks?.[0]?.url || article.externalLink
@@ -252,9 +260,11 @@ const BlogPage = () => {
               return (
                 <m.article
                   key={article.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.1 + index * 0.08 }}
+                  layout
+                  initial={{ opacity: 0, y: 10, scale: 0.98 }}
+                  animate={{ opacity: 1, y: 0, scale: 1, transition: { duration: 0.22, ease: EASE, delay: Math.min(index * 0.03, 0.15) } }}
+                  exit={{ opacity: 0, scale: 0.98, transition: { duration: 0.15, ease: EASE } }}
+                  transition={{ layout: { duration: 0.3, ease: EASE } }}
                 >
                   {externalUrl ? (
                     <a
@@ -274,7 +284,9 @@ const BlogPage = () => {
                 </m.article>
               );
             })}
+            </AnimatePresence>
           </div>
+          </LazyMotion>
 
           {isFiltered && rest.length === 0 && (
             <p className="text-center py-12 font-mono text-espresso/50 dark:text-slate-500">

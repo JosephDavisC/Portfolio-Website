@@ -1,6 +1,7 @@
 import { track } from "@/lib/track";
 import { useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "react-router";
+import { m, AnimatePresence } from "framer-motion";
 import { Menu, X, Briefcase } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 
@@ -237,9 +238,14 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu: drops 8px into place, no height animation since it overlays the page */}
+      <AnimatePresence>
       {isOpen && (
-        <ul className="md:hidden bg-paper dark:bg-[#141B2D] border-t-2 border-espresso/10 dark:border-slate-700/30 px-6 py-6 space-y-3">
+        <m.ul
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0, transition: { duration: 0.2, ease: [0.22, 1, 0.36, 1] } }}
+          exit={{ opacity: 0, y: -8, transition: { duration: 0.15, ease: [0.22, 1, 0.36, 1] } }}
+          className="md:hidden bg-paper dark:bg-[#141B2D] border-t-2 border-espresso/10 dark:border-slate-700/30 px-6 py-6 space-y-3">
           {links.map((link) =>
             isHome ? (
               <li key={link.href}>
@@ -282,8 +288,9 @@ export default function Navbar() {
               Work with me
             </a>
           </li>
-        </ul>
+        </m.ul>
       )}
+      </AnimatePresence>
     </header>
   );
 }
