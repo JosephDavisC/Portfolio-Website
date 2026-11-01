@@ -6,7 +6,7 @@ const MoreThanCode = () => {
     <section id="tennis-coffees" className="py-24 px-6 bg-black/10">
       <div className="max-w-6xl mx-auto">
         <m.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
@@ -21,7 +21,7 @@ const MoreThanCode = () => {
         </m.div>
 
         <m.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}

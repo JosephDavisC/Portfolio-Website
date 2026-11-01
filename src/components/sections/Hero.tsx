@@ -123,14 +123,14 @@ const Hero = () => {
           {/* Left Content */}
           <m.div
             className="text-left"
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -16 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           >
             <m.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.4, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
               className="mb-8"
             >
               {/* Name with scribble underline */}
@@ -191,9 +191,9 @@ const Hero = () => {
 
             {/* CTA Buttons */}
             <m.div
-              initial={{ y: 50, opacity: 0 }}
+              initial={{ y: 16, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.6, type: "spring", stiffness: 100 }}
+              transition={{ duration: 0.4, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
               className="flex flex-col sm:flex-row gap-4"
             >
               <m.a
@@ -239,9 +239,9 @@ const Hero = () => {
 
           {/* Right - Profile Image */}
           <m.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 16 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, type: "spring", stiffness: 100 }}
+            transition={{ duration: 0.4, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="flex justify-center lg:justify-end"
           >
             <m.div

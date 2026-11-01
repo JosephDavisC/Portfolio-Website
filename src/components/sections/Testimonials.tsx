@@ -41,9 +41,9 @@ const Testimonials = () => {
     <section id="testimonials" className="py-16 px-6 bg-paper">
       <div className="max-w-6xl mx-auto">
         <m.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, type: 'spring', stiffness: 100 }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
           className="text-center mb-12"
         >
@@ -76,9 +76,9 @@ const Testimonials = () => {
           {recommendations.map((r, i) => (
             <m.figure
               key={r.author}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: i * 0.1, type: 'spring', stiffness: 200 }}
+              transition={{ duration: 0.5, delay: Math.min(i * 0.05, 0.15), type: 'spring', stiffness: 200 }}
               viewport={{ once: true }}
               className="card-brutal p-6 md:p-8 flex flex-col"
             >

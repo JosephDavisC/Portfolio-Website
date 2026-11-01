@@ -14,9 +14,9 @@ const Projects = () => {
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <m.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
           className="text-center mb-12"
         >
@@ -33,12 +33,12 @@ const Projects = () => {
           {projects.map((project, index) => (
             <m.article
               key={index}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               whileHover={{ y: -4 }}
               transition={{
                 duration: 0.5,
-                delay: index * 0.1,
+                delay: Math.min(index * 0.05, 0.15),
                 type: "spring",
                 stiffness: 200
               }}
