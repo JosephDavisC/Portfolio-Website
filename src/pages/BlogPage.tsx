@@ -2,16 +2,16 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { Helmet } from 'react-helmet-async';
 import { m, AnimatePresence, LazyMotion } from 'framer-motion';
+import { ArrowLeft, ArrowRight, ChevronRight, ExternalLink, Linkedin } from 'lucide-react';
+import Navbar from '@/components/shared/Navbar';
+import Footer from '@/components/shared/Footer';
+import { articles, shortDate, type Article } from '@/components/sections/Blog';
 
 // Same filter motion as ProjectsPage: rows that leave fade out, rows that stay slide
 // to their new slot (layout, which needs framer's domMax, loaded for this page only),
 // new rows fade in with a capped stagger. MotionConfig in main.tsx handles reduced motion.
 const loadLayoutFeatures = () => import('framer-motion').then((mod) => mod.domMax);
 const EASE = [0.22, 1, 0.36, 1] as const;
-import { ArrowLeft, ArrowRight, ChevronRight, ExternalLink, Linkedin } from 'lucide-react';
-import Navbar from '@/components/shared/Navbar';
-import Footer from '@/components/shared/Footer';
-import { articles, shortDate, type Article } from '@/components/sections/Blog';
 
 const pageUrl = 'https://joechamdani.com/blog/';
 

@@ -87,7 +87,7 @@ const Awards = () => {
                 key={h.title}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ y: -4 }}
+                whileHover={{ y: -4, transition: { duration: 0.2, ease: [0.22, 1, 0.36, 1] } }}
                 transition={{ duration: 0.5, delay: Math.min(i * 0.05, 0.15), type: 'spring', stiffness: 200 }}
                 viewport={{ once: true }}
                 className="card-brutal p-6 flex flex-col"

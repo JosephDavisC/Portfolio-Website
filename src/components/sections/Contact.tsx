@@ -204,7 +204,7 @@ const Contact = () => {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => track("resume-download")}
-              className="btn-brutal inline-flex items-center gap-2"
+              className="motion-hover btn-brutal inline-flex items-center gap-2"
               whileHover={{ scale: 1.02, x: -2, y: -2 }}
               whileTap={{ scale: 0.98, x: 2, y: 2 }}
             >

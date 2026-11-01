@@ -202,7 +202,7 @@ const Hero = () => {
                   e.preventDefault();
                   scrollToIdNoHash("portfolio");
                 }}
-                className="btn-brutal-outline inline-flex items-center justify-center group"
+                className="motion-hover btn-brutal-outline inline-flex items-center justify-center group"
                 whileHover={{ scale: 1.02, x: -2, y: -2 }}
                 whileTap={{ scale: 0.98, x: 2, y: 2 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
@@ -226,7 +226,7 @@ const Hero = () => {
                   e.preventDefault();
                   scrollToIdNoHash("contact");
                 }}
-                className="btn-brutal inline-flex items-center justify-center group"
+                className="motion-hover btn-brutal inline-flex items-center justify-center group"
                 whileHover={{ scale: 1.02, x: -2, y: -2 }}
                 whileTap={{ scale: 0.98, x: 2, y: 2 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}

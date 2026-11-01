@@ -528,9 +528,17 @@ html {
 
 /* Framer Motion writes transform inline on m.* cards and buttons. The "all" transitions
    above would re-ease each frame it writes on an overshooting curve, so there Framer
-   owns transform and CSS keeps only the colors and shadows. */
-:is(.card-brutal, .btn-brutal, .btn-brutal-outline)[style*="transform"] {
+   owns transform and CSS keeps only the colors and shadows. Hover-only motion buttons
+   have no inline transform until their first hover, so they opt in with .motion-hover. */
+:is(.card-brutal, .btn-brutal, .btn-brutal-outline):is([style*="transform:"], .motion-hover) {
   transition-property: background-color, border-color, color, box-shadow;
+}
+
+/* MotionConfig in main.tsx covers Framer; this covers the CSS hover and press moves */
+@media (prefers-reduced-motion: reduce) {
+  :is(.card-brutal, .card-brutal-court, .btn-brutal, .btn-brutal-outline):is(:hover, :active) {
+    transform: none;
+  }
 }
 
 /* Dark mode color overrides */

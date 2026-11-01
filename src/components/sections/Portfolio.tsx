@@ -35,7 +35,7 @@ const Projects = () => {
               key={index}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ y: -4 }}
+              whileHover={{ y: -4, transition: { duration: 0.2, ease: [0.22, 1, 0.36, 1] } }}
               transition={{
                 duration: 0.5,
                 delay: Math.min(index * 0.05, 0.15),
@@ -199,7 +199,7 @@ const Projects = () => {
             href="https://github.com/JosephDavisC"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-brutal-outline inline-flex items-center gap-2"
+            className="motion-hover btn-brutal-outline inline-flex items-center gap-2"
             whileHover={{ scale: 1.02, x: -2, y: -2 }}
             whileTap={{ scale: 0.98, x: 2, y: 2 }}
           >

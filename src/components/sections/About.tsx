@@ -145,7 +145,7 @@ export default function About() {
           <m.article
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            whileHover={{ y: -4 }}
+            whileHover={{ y: -4, transition: { duration: 0.2, ease: [0.22, 1, 0.36, 1] } }}
             transition={{ duration: 0.5, delay: 0.1, type: "spring", stiffness: 200 }}
             viewport={{ once: true }}
             className="card-brutal p-8 md:p-10 relative overflow-hidden"
@@ -189,7 +189,7 @@ export default function About() {
                         key={skill.name}
                         initial={{ opacity: 0, scale: 0.96 }}
                         whileInView={{ opacity: 1, scale: 1 }}
-                        whileHover={{ scale: 1.04 }}
+                        whileHover={{ scale: 1.04, transition: { duration: 0.15, ease: [0.22, 1, 0.36, 1] } }}
                         transition={{
                           duration: 0.25,
                           delay: Math.min(index * 0.02, 0.15),
