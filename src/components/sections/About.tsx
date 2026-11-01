@@ -68,9 +68,9 @@ export default function About() {
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <m.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
           className="text-center mb-12"
         >
@@ -113,7 +113,7 @@ export default function About() {
         <div className="grid md:grid-cols-2 gap-8">
           {/* The Journey Card */}
           <m.article
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             whileHover={{ y: -4 }}
             transition={{ duration: 0.5, type: "spring", stiffness: 200 }}
@@ -143,7 +143,7 @@ export default function About() {
 
           {/* Core Skills Card */}
           <m.article
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             whileHover={{ y: -4 }}
             transition={{ duration: 0.5, delay: 0.1, type: "spring", stiffness: 200 }}
@@ -187,17 +187,16 @@ export default function About() {
                     {group.items.map((skill, index) => (
                       <m.div
                         key={skill.name}
-                        initial={{ opacity: 0, scale: 0.8 }}
+                        initial={{ opacity: 0, scale: 0.96 }}
                         whileInView={{ opacity: 1, scale: 1 }}
-                        whileHover={{ scale: 1.12, y: -2 }}
+                        whileHover={{ scale: 1.04 }}
                         transition={{
-                          duration: 0.3,
-                          delay: index * 0.02,
-                          type: "spring",
-                          stiffness: 300,
+                          duration: 0.25,
+                          delay: Math.min(index * 0.02, 0.15),
+                          ease: [0.22, 1, 0.36, 1],
                         }}
                         viewport={{ once: true }}
-                        className="group/skill flex items-center justify-center aspect-square rounded-lg border border-black/10 bg-white hover:border-black/25 hover:shadow-brutal-sm transition-all duration-200"
+                        className="group/skill flex items-center justify-center aspect-square rounded-lg border border-black/10 bg-white hover:border-black/25 hover:shadow-brutal-sm transition-[border-color,box-shadow] duration-200"
                         title={skill.name}
                       >
                         <img

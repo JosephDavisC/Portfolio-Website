@@ -229,6 +229,11 @@
     transform: translate(-2px, -2px);
   }
 
+  .btn-brutal-outline:active {
+    box-shadow: 1px 1px 0px 0px #3D2B1F;
+    transform: translate(1px, 1px);
+  }
+
   /* An underline that slides in from the left on hover. .nav-link previews the
      active-section bar; .link-underline is for quiet text links (Back to ..., Share). */
   .nav-link,
@@ -515,6 +520,17 @@ html {
   color: hsl(210 40% 98%);
   box-shadow: 0 20px 40px -10px rgba(96, 165, 250, 0.2);
   transform: translateY(-2px);
+}
+
+.dark .btn-brutal-outline:active {
+  transform: scale(0.98);
+}
+
+/* Framer Motion writes transform inline on m.* cards and buttons. The "all" transitions
+   above would re-ease each frame it writes on an overshooting curve, so there Framer
+   owns transform and CSS keeps only the colors and shadows. */
+:is(.card-brutal, .btn-brutal, .btn-brutal-outline)[style*="transform"] {
+  transition-property: background-color, border-color, color, box-shadow;
 }
 
 /* Dark mode color overrides */
