@@ -310,7 +310,7 @@ const fallbackByPath = {
                 (r.detailsLink ? `<p><a href="${esc(r.detailsLink)}/">More about ${esc(c.name)}</a></p>` : '')
             )
             .join('');
-          return `<section><h2>${esc(c.name)}</h2><p>${esc(c.category)}${c.meta ? ` · ${esc(c.meta)}` : ''}${c.location ? ` · ${esc(c.location)}` : ''}</p>${roles}</section>`;
+          return `<section><h2>${c.website ? `<a href="${esc(c.website)}">${esc(c.name)}</a>` : esc(c.name)}</h2><p>${esc(c.category)}${c.meta ? ` · ${esc(c.meta)}` : ''}${c.location ? ` · ${esc(c.location)}` : ''}</p>${roles}</section>`;
         })
         .join('') +
       relatedFooter('/experience/')
