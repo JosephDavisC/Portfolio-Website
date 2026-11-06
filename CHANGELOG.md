@@ -4,6 +4,8 @@ The history of joechamdani.com, newest first. Each version links its GitHub Rele
 
 ## Next
 
+- **Shorter homepage.** Milestones now show as short rows that open into the full card, with Cateroute open first. Long recommendations are clipped with a Read more button and their wording is unchanged, the racket setup sits behind a button, blog previews are shorter, and a new Worth a look row points to the best places to start. The experience page stays fully open.
+
 ## v2.6.5: UW job back on the timeline (5 Nov 2026)
 
 [Release notes](https://github.com/JosephDavisC/Portfolio-Website/releases/tag/v2.6.5)
