@@ -4,7 +4,12 @@ The history of joechamdani.com, newest first. Each version links its GitHub Rele
 
 ## Next
 
-Nothing yet.
+## v2.6.4: Cateroute (5 Nov 2026)
+
+[Release notes](https://github.com/JosephDavisC/Portfolio-Website/releases/tag/v2.6.4)
+
+- **Cateroute.** Added Joseph's current role as Co-Founder of Cateroute to the experience section, search metadata and llms.txt, with a link to his co-founder's LinkedIn, and updated his SWECC role.
+- **Navbar.** On tablet widths the links and the Work with me button wrapped onto several lines, so the navbar now switches to the menu button below 1024px.
 
 ## v2.6.3: Motion polish (1 Nov 2026)
 
