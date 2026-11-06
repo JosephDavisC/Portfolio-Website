@@ -3,6 +3,30 @@
     "categories": ["All", "Internships", "Clubs", "Work"],
     "companies": [
       {
+        "name": "Cateroute",
+        "featured": true,
+        "category": "Work",
+        "logo": "/logos/cateroute-symbol.svg",
+        "website": "https://cateroute.com",
+        "meta": "Co-Founder · 2 mos",
+        "location": "Seattle, Washington, United States",
+        "roles": [
+          {
+            "title": "Co-Founder",
+            "dates": "Oct 2026 – Present · 2 mos",
+            "bullets": [
+              "Software that tells catering crews what to bring and where to go.",
+              "Building it with my co-founder, Juwita Jessica Pangestu."
+            ],
+            "bulletLinks": { "Juwita Jessica Pangestu": "https://www.linkedin.com/in/juwita-jessica-pangestu/" },
+            "media": [
+              { "src": "/logos/cateroute-wordmark-card.png", "caption": "Cateroute", "href": "https://cateroute.com" },
+              { "src": "/logos/cateroute-card.png", "caption": "Demo, on sample data", "href": "https://prototype.cateroute.com/app" }
+            ]
+          }
+        ]
+      },
+      {
         "name": "Whitespace Solutions",
         "featured": true,
         "category": "Internships",
@@ -34,17 +58,17 @@
         "category": "Clubs",
         "logo": "/logos/swecc.png",
         "website": "https://swecc.org/",
-        "meta": "Part-time · 6 mos",
+        "meta": "Part-time · 7 mos",
         "location": "Seattle, Washington, United States",
         "roles": [
           {
             "title": "Technical Officer",
-            "dates": "May 2026 – Present · 6 mos",
+            "dates": "May 2026 – Present · 7 mos",
             "meta": "Hybrid",
             "bullets": [
-              "Help run the club's career events and keep its website updated.",
-              "Helping organize the club's spring 2027 mentorship cohort.",
-              "Member of SWECC Labs, the club's project team."
+              "Keep the club's website updated.",
+              "Run the spring 2027 Cohort program.",
+              "Mentor in SWECC Labs, the club's project team."
             ],
             "media": [
               { "src": "/logos/swecc.png", "caption": "SWECC", "href": "https://swecc.org/" }

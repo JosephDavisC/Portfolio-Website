@@ -20,6 +20,8 @@ type Role = {
   meta?: string;
   location?: string;
   bullets: string[];
+  // Exact phrases in the bullets to show as links. The bullet text stays plain.
+  bulletLinks?: Record<string, string>;
   detailsLink?: string;
   media?: Media[];
 };
@@ -93,6 +95,28 @@ function Lightbox({
 }
 
 /* ---------- Dotted meta row ---------- */
+// Turns the phrases named in bulletLinks into links, leaving the rest as text.
+const linkBullet = (text: string, links?: Record<string, string>) => {
+  const phrases = Object.keys(links ?? {});
+  if (!phrases.length) return text;
+  const escaped = phrases.map((p) => p.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+  return text.split(new RegExp(`(${escaped.join("|")})`)).map((part, i) =>
+    links?.[part] ? (
+      <a
+        key={i}
+        href={links[part]}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-court-dark dark:text-[#60A5FA] hover:text-court dark:hover:text-[#93C5FD] underline decoration-1 underline-offset-2 transition-colors"
+      >
+        {part}
+      </a>
+    ) : (
+      part
+    ),
+  );
+};
+
 const MetaRow = ({ items }: { items: React.ReactNode[] }) => {
   const filtered = items.filter(Boolean);
   return (
@@ -389,7 +413,7 @@ export default function Milestones({ variant = "home" }: MilestonesProps) {
 
                               <ul className="list-disc pl-5 space-y-1.5 text-espresso/80 dark:text-slate-300 mb-4">
                                 {role.bullets.map((b, bi) => (
-                                  <li key={bi}>{b}</li>
+                                  <li key={bi}>{linkBullet(b, role.bulletLinks)}</li>
                                 ))}
                               </ul>
 
