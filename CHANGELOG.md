@@ -4,6 +4,12 @@ The history of joechamdani.com, newest first. Each version links its GitHub Rele
 
 ## Next
 
+## v2.6.5: UW job back on the timeline (5 Nov 2026)
+
+[Release notes](https://github.com/JosephDavisC/Portfolio-Website/releases/tag/v2.6.5)
+
+- **Experience.** Added Joseph's UW Housing & Food Services student job back to the experience page, the crawler fallback in index.html and llms.txt.
+
 ## v2.6.4: Cateroute (5 Nov 2026)
 
 [Release notes](https://github.com/JosephDavisC/Portfolio-Website/releases/tag/v2.6.4)
