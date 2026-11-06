@@ -126,7 +126,13 @@ const MetaRow = ({ items }: { items: React.ReactNode[] }) => {
   return (
     <div className="text-espresso/60 dark:text-slate-400 text-sm font-mono flex flex-wrap items-center gap-x-1 gap-y-1">
       {filtered.map((item, i) => (
-        <span key={i} className="inline-flex items-center">
+        // The location drops off on phones, along with the dot in front of it.
+        <span
+          key={i}
+          className={`items-center ${
+            React.isValidElement(item) && item.key === "loc" ? "hidden sm:inline-flex" : "inline-flex"
+          }`}
+        >
           {i > 0 && <span className="mx-1 text-espresso/40 dark:text-slate-500 leading-none">·</span>}
           {item}
         </span>
@@ -194,7 +200,7 @@ export default function Milestones({ variant = "home" }: MilestonesProps) {
   return (
     <section
       id={isHome ? "milestones" : undefined}
-      className={isHome ? "py-16 px-6 bg-paper-dark dark:bg-[#0F1521]" : "px-0"}
+      className={isHome ? "py-10 sm:py-16 px-6 bg-paper-dark dark:bg-[#0F1521]" : "px-0"}
     >
       <div className="max-w-5xl mx-auto">
         {isHome && (
@@ -205,7 +211,7 @@ export default function Milestones({ variant = "home" }: MilestonesProps) {
           viewport={{ once: true }}
           className="text-center mb-8"
         >
-          <h2 className="text-5xl md:text-6xl font-heading font-bold mb-6 text-espresso dark:text-slate-100">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold mb-6 text-espresso dark:text-slate-100">
             <span className="relative inline-block">
               Milestones
               <svg
@@ -353,7 +359,7 @@ export default function Milestones({ variant = "home" }: MilestonesProps) {
                         <MetaRow
                           items={[
                             <span key="meta">{company.meta}</span>,
-                            <span key="loc" className="hidden sm:inline">{company.location}</span>,
+                            <span key="loc">{company.location}</span>,
                           ]}
                         />
                       </div>
@@ -517,7 +523,7 @@ export default function Milestones({ variant = "home" }: MilestonesProps) {
                                             href={m.href}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="block w-full h-36 sm:h-40 md:h-44"
+                                            className={`block w-full ${isHome ? "h-28" : "h-36"} sm:h-40 md:h-44`}
                                             aria-label={`Open ${m.caption} in new tab`}
                                           >
                                             {Img}
@@ -527,7 +533,7 @@ export default function Milestones({ variant = "home" }: MilestonesProps) {
                                           </a>
                                         ) : (
                                           <button
-                                            className="block w-full h-36 sm:h-40 md:h-44 cursor-zoom-in"
+                                            className={`block w-full ${isHome ? "h-28" : "h-36"} sm:h-40 md:h-44 cursor-zoom-in`}
                                             onClick={() => setLightboxSrc(m.src)}
                                             aria-label={`Open ${m.caption}`}
                                           >

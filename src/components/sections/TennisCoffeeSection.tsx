@@ -140,7 +140,7 @@ export default function TennisCoffeeSection() {
   const prevTennis = () => setTennisIdx((i) => (i - 1 + courtImages.length) % courtImages.length);
 
   return (
-    <section id="tennis-coffee" className="py-16 px-6 bg-paper-dark">
+    <section id="tennis-coffee" className="py-10 sm:py-16 px-6 bg-paper-dark">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <m.div
@@ -148,9 +148,9 @@ export default function TennisCoffeeSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
         >
-          <h2 className="text-5xl md:text-6xl font-heading font-bold mb-4 text-espresso">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold mb-4 text-espresso">
             More Than Just{" "}
             <span className="relative inline-block">
               Code
@@ -223,7 +223,7 @@ export default function TennisCoffeeSection() {
                 <ZoomIn className="h-4 w-4" />
               </button>
 
-              <div className="relative h-[380px] w-full overflow-hidden">
+              <div className="relative h-56 sm:h-[380px] w-full overflow-hidden">
                 <AnimatePresence mode="wait">
                   <m.img
                     key={`${sport}-${tennisIdx}`}
@@ -325,7 +325,7 @@ export default function TennisCoffeeSection() {
                 <ZoomIn className="h-4 w-4" />
               </button>
 
-              <div className="relative h-[380px] w-full overflow-hidden">
+              <div className="relative h-56 sm:h-[380px] w-full overflow-hidden">
                 <picture>
                   <source srcSet="/images/moments/Coffee.webp" type="image/webp" />
                   <img src="/images/moments/Coffee.JPG" alt="Coffee time" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />

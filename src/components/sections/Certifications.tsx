@@ -63,16 +63,16 @@ export default function Certifications() {
   };
 
   return (
-    <section id="certifications" className="py-16 px-6 pb-20 bg-paper">
+    <section id="certifications" className="py-10 sm:py-16 px-6 pb-12 sm:pb-20 bg-paper">
       <div className="max-w-6xl mx-auto">
         <m.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
         >
-          <h2 className="text-5xl md:text-6xl font-heading font-bold mb-6 text-espresso">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold mb-6 text-espresso">
             <span className="relative inline-block">
               Credentials
               <svg
@@ -91,7 +91,7 @@ export default function Certifications() {
               </svg>
             </span>
           </h2>
-          <p className="text-espresso/60 text-xl max-w-3xl mx-auto leading-relaxed font-mono">
+          <p className="text-espresso/60 text-base sm:text-xl max-w-3xl mx-auto leading-relaxed font-mono">
             Courses and certifications I've completed along the way
           </p>
         </m.div>
@@ -101,7 +101,7 @@ export default function Certifications() {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6"
         >
           {certifications.map((cert, i) => (
             <m.article
@@ -109,10 +109,10 @@ export default function Certifications() {
               variants={fadeInUp}
               whileHover={{ y: -4 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="card-brutal p-6 flex flex-col items-center text-center group"
+              className="card-brutal p-3 sm:p-6 flex flex-col items-center text-center group"
             >
               {/* Award icon */}
-              <div className="w-full flex justify-start mb-4">
+              <div className="w-full hidden sm:flex justify-start mb-4">
                 <div className="w-10 h-10 rounded-full bg-tennis/30 dark:bg-[#60A5FA]/20 border-2 border-espresso dark:border-[#60A5FA]/50 flex items-center justify-center">
                   <Award className="h-5 w-5 text-espresso dark:text-[#60A5FA]" />
                 </div>
@@ -120,23 +120,23 @@ export default function Certifications() {
 
               {/* Logo */}
               {cert.logo && (
-                <div className="h-24 w-24 rounded-xl overflow-hidden bg-paper border-2 border-espresso/20 flex items-center justify-center mb-6 shadow-brutal-sm">
+                <div className="h-14 w-14 sm:h-24 sm:w-24 rounded-xl overflow-hidden bg-paper border-2 border-espresso/20 flex items-center justify-center mb-3 sm:mb-6 shadow-brutal-sm">
                   <img
                     src={cert.logo}
                     alt={cert.logoAlt || cert.issuer}
-                    className="h-20 w-20 object-contain transition-transform duration-300 group-hover:scale-110"
+                    className="h-11 w-11 sm:h-20 sm:w-20 object-contain transition-transform duration-300 group-hover:scale-110"
                   />
                 </div>
               )}
 
               {/* Content */}
               <div className="flex-1 w-full">
-                <h3 className="text-xl font-heading font-semibold text-espresso dark:text-slate-100 mb-3 group-hover:text-court-dark dark:group-hover:text-[#60A5FA] transition-colors min-h-[3.5rem] flex items-center justify-center">
+                <h3 className="text-base sm:text-xl font-heading font-semibold text-espresso dark:text-slate-100 mb-1 sm:mb-3 group-hover:text-court-dark dark:group-hover:text-[#60A5FA] transition-colors min-h-[3.5rem] flex items-center justify-center">
                   {cert.name}
                 </h3>
-                <div className="flex items-center justify-center gap-2 text-espresso/70 dark:text-slate-300 mb-2 min-h-[2.5rem]">
+                <div className="flex items-center justify-center gap-2 text-espresso/70 dark:text-slate-300 mb-1 sm:mb-2 sm:min-h-[2.5rem]">
                   {cert.logo && (
-                    <div className="h-4 w-4 rounded overflow-hidden bg-paper border border-espresso/20 dark:border-slate-600 flex items-center justify-center">
+                    <div className="hidden sm:flex h-4 w-4 rounded overflow-hidden bg-paper border border-espresso/20 dark:border-slate-600 flex items-center justify-center">
                       <img
                         src={cert.logo}
                         alt=""
@@ -144,9 +144,9 @@ export default function Certifications() {
                       />
                     </div>
                   )}
-                  <p className="text-sm font-mono">{cert.issuer}</p>
+                  <p className="text-xs sm:text-sm font-mono">{cert.issuer}</p>
                 </div>
-                <p className="text-espresso/50 dark:text-slate-400 text-xs mb-6 font-mono">{cert.year}</p>
+                <p className="text-espresso/50 dark:text-slate-400 text-xs mb-3 sm:mb-6 font-mono">{cert.year}</p>
               </div>
 
               {/* Button */}
@@ -155,7 +155,7 @@ export default function Certifications() {
                   to={cert.href}
                   state={{ from: "/#certifications" }}
                   onClick={markCertOrigin}
-                  className="btn-brutal w-full inline-flex items-center justify-center text-sm"
+                  className="btn-brutal w-full inline-flex items-center justify-center text-xs sm:text-sm !px-2 !py-2 sm:!px-6 sm:!py-3"
                 >
                   Show credential ↗
                 </Link>

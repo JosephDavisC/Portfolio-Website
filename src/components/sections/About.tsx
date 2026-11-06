@@ -10,7 +10,7 @@ interface Skill {
 }
 
 // devicon (jsdelivr) helper; CSP already allows cdn.jsdelivr.net for img-src
-const dv = (p: string) => `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${p}.svg`;
+const dv = (p: string) => `https://cdn.jsdelivr.net/npm/devicon@2.17.0/icons/${p}.svg`;
 
 const skillGroups: { label: string; items: Skill[] }[] = [
   {
@@ -64,7 +64,7 @@ const skillGroups: { label: string; items: Skill[] }[] = [
 
 export default function About() {
   return (
-    <section id="about" className="py-16 px-6 bg-paper-dark">
+    <section id="about" className="py-10 sm:py-16 px-6 bg-paper-dark">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <m.div
@@ -72,9 +72,9 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
         >
-          <h2 className="text-5xl md:text-6xl font-heading font-bold mb-6 text-espresso">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold mb-6 text-espresso">
             From Jakarta to{" "}
             <span className="relative inline-block">
               Seattle
@@ -94,7 +94,7 @@ export default function About() {
               </svg>
             </span>
           </h2>
-          <p className="text-espresso/60 text-xl max-w-3xl mx-auto leading-relaxed font-mono">
+          <p className="text-espresso/60 text-base sm:text-xl max-w-3xl mx-auto leading-relaxed font-mono">
             Jakarta to Seattle, Bellevue College to UW, and a lot of shipped work in between.
           </p>
           <div className="flex flex-wrap justify-center gap-2 mt-7">
@@ -110,7 +110,7 @@ export default function About() {
         </m.div>
 
         {/* Two Column Cards */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-5 sm:gap-8">
           {/* The Journey Card */}
           <m.article
             initial={{ opacity: 0, y: 16 }}
@@ -118,7 +118,7 @@ export default function About() {
             whileHover={{ y: -4 }}
             transition={{ duration: 0.5, type: "spring", stiffness: 200 }}
             viewport={{ once: true }}
-            className="card-brutal p-8 md:p-10"
+            className="card-brutal p-5 sm:p-8 md:p-10"
           >
             <header className="flex items-center mb-5">
               <div className="w-12 h-12 rounded-full bg-court/20 dark:bg-[#60A5FA]/20 border-2 border-court dark:border-[#60A5FA] flex items-center justify-center mr-4">
@@ -128,7 +128,7 @@ export default function About() {
               <MiniJoe className="ml-auto -mt-6 -mb-2 md:-mt-8 h-24 md:h-28" />
             </header>
 
-            <div className="space-y-4 text-espresso/80 leading-relaxed text-[17px]">
+            <div className="space-y-4 text-espresso/80 leading-relaxed text-base sm:text-[17px]">
               <p>
                 I build technology that augments human judgment instead of replacing it. Trust in an AI system does not come from a high confidence score. It comes from clear boundaries, honest limits, and behavior people can predict.
               </p>
@@ -148,7 +148,7 @@ export default function About() {
             whileHover={{ y: -4, transition: { duration: 0.2, ease: [0.22, 1, 0.36, 1] } }}
             transition={{ duration: 0.5, delay: 0.1, type: "spring", stiffness: 200 }}
             viewport={{ once: true }}
-            className="card-brutal p-8 md:p-10 relative overflow-hidden"
+            className="card-brutal p-5 sm:p-8 md:p-10 relative overflow-hidden"
           >
             {/* Floating Chibi */}
             <m.img
@@ -173,7 +173,7 @@ export default function About() {
               <h3 className="text-2xl font-heading font-semibold text-espresso">What I build with</h3>
             </header>
 
-            <p className="text-espresso/60 mb-6 relative z-10 font-mono text-sm">
+            <p className="hidden sm:block text-espresso/60 mb-6 relative z-10 font-mono text-sm">
               Technologies I work with for school, side projects, and internships.
             </p>
 
@@ -183,7 +183,7 @@ export default function About() {
                   <p className="text-[10px] font-mono font-semibold uppercase tracking-widest text-espresso/40 dark:text-slate-500 mb-1.5">
                     {group.label}
                   </p>
-                  <div className="grid grid-cols-5 sm:grid-cols-7 lg:grid-cols-8 gap-1.5">
+                  <div className="grid grid-cols-7 lg:grid-cols-8 gap-1 sm:gap-1.5">
                     {group.items.map((skill, index) => (
                       <m.div
                         key={skill.name}
@@ -202,7 +202,7 @@ export default function About() {
                         <img
                           src={skill.icon}
                           alt={`${skill.name} logo`}
-                          className="w-6 h-6 flex-shrink-0"
+                          className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0"
                         />
                       </m.div>
                     ))}
