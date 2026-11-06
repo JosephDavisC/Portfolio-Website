@@ -4,6 +4,7 @@
     "companies": [
       {
         "name": "Cateroute",
+        "summary": "Software that tells catering crews what to bring and where to go.",
         "featured": true,
         "category": "Work",
         "logo": "/logos/cateroute-symbol.svg",
@@ -28,6 +29,7 @@
       },
       {
         "name": "Whitespace Solutions",
+        "summary": "Built and shipped features end to end on a live AI sales training platform, including its semantic search.",
         "featured": true,
         "category": "Internships",
         "logo": "/logos/whitespace-solution-logo.svg",
@@ -96,6 +98,7 @@
       },
       {
         "name": "Sector - CyberSecurity",
+        "summary": "Built AI tools to speed up penetration testing and flag security vulnerabilities.",
         "featured": true,
         "category": "Internships",
         "logo": "/logos/Sector_Icon_logo.png",
@@ -121,6 +124,7 @@
       },
       {
         "name": "BC Tech Club",
+        "summary": "Led the club's workshops and events and helped organize BC Hacks 2024.",
         "featured": true,
         "category": "Clubs",
         "logo": "/logos/bc-tech-club.jpg",
@@ -160,6 +164,8 @@
       },
       {
         "name": "Stockbit / Bibit",
+        "thumb": "/media/team-photo.jpeg",
+        "summary": "Built an OCR pipeline that reads Indonesian ID cards for KYC, plus the APIs to run it in production.",
         "featured": true,
         "category": "Internships",
         "logo": "/logos/stockbit.webp",

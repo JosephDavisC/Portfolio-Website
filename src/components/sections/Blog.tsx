@@ -73,7 +73,7 @@ const ArticleCard: React.FC<{ article: Article; index: number; onOpenArticle: (i
           )}
         </h3>
 
-        <p className="text-espresso/70 text-base md:text-lg leading-relaxed mb-6">
+        <p className="text-espresso/70 text-base md:text-lg leading-relaxed mb-6 line-clamp-3">
           {article.preview}
         </p>
 

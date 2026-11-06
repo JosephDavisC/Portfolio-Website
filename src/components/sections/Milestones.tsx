@@ -27,6 +27,10 @@ type Role = {
 };
 type Company = {
   name: string;
+  // One line for the closed homepage row.
+  summary?: string;
+  // Thumbnail for that row, when the first image is not the best one.
+  thumb?: string;
   category: string;
   featured?: boolean;
   logo: string;
@@ -145,7 +149,9 @@ export default function Milestones({ variant = "home" }: MilestonesProps) {
   const [lightboxSrc, setLightboxSrc] = useState<string>("");
   const [activeCategory, setActiveCategory] = useState<string>("All");
   const [expandedCompanies, setExpandedCompanies] = useState<Set<string>>(
-    new Set(companies.map((c) => c.name)) // Start with all expanded
+    // The full page starts open. The homepage opens only the current role, and the
+    // rest show as short rows that open into the same card.
+    new Set(isHome ? [(companies.find((c) => c.featured) ?? companies[0]).name] : companies.map((c) => c.name))
   );
 
   // Filter companies by category
@@ -299,6 +305,7 @@ export default function Milestones({ variant = "home" }: MilestonesProps) {
             <AnimatePresence mode="sync">
               {filteredCompanies.map((company) => {
                 const isExpanded = expandedCompanies.has(company.name);
+                const thumb = company.thumb ?? company.roles[0].media?.[0]?.src;
 
                 return (
                   <m.div
@@ -335,8 +342,8 @@ export default function Milestones({ variant = "home" }: MilestonesProps) {
                         className="flex-1 min-w-0 flex items-center gap-3 text-left"
                       >
                       <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2">
-                          <h3 className="text-xl font-heading font-semibold text-espresso dark:text-slate-100 truncate">
+                        <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
+                          <h3 className="text-xl font-heading font-semibold text-espresso dark:text-slate-100">
                             {company.name}
                           </h3>
                           <span className="px-2 py-0.5 text-[10px] font-mono font-semibold rounded-full bg-espresso/10 dark:bg-slate-700 text-espresso/60 dark:text-slate-300 border border-espresso/20 dark:border-slate-600">
@@ -364,6 +371,58 @@ export default function Milestones({ variant = "home" }: MilestonesProps) {
                       </div>
                       </button>
                     </div>
+
+                    {/* Homepage row while closed: role, dates, one line and a thumbnail */}
+                    <AnimatePresence initial={false}>
+                      {isHome && !isExpanded && (
+                        <m.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                          className="overflow-hidden pb-1 pr-1"
+                        >
+                          <div
+                            onClick={() => toggleCompany(company.name)}
+                            className="card-brutal p-5 md:p-6 flex items-center gap-4 cursor-pointer"
+                          >
+                            <div className="flex-1 min-w-0">
+                              <p className="font-heading font-semibold text-espresso dark:text-slate-100">
+                                {company.roles[0].title}
+                                <span className="ml-2 font-mono font-normal text-sm text-espresso/60 dark:text-slate-400">
+                                  {company.roles[0].dates}
+                                </span>
+                              </p>
+                              <p className="mt-1 text-espresso/80 dark:text-slate-300">
+                                {company.summary ?? company.roles[0].bullets[0]}
+                              </p>
+                              {company.roles[0].detailsLink && (
+                                <Link
+                                  to={company.roles[0].detailsLink}
+                                  onClick={(e) => e.stopPropagation()}
+                                  className="mt-2 inline-flex items-center gap-1 font-mono text-sm text-court-dark dark:text-[#60A5FA] underline underline-offset-2"
+                                >
+                                  View details
+                                  <ArrowRight className="h-3.5 w-3.5" />
+                                </Link>
+                              )}
+                            </div>
+                            {thumb && (
+                              <picture className="hidden sm:block shrink-0">
+                                {hasWebP(thumb) && <source srcSet={bust(getWebPPath(thumb))} type="image/webp" />}
+                                <img
+                                  loading="lazy"
+                                  decoding="async"
+                                  src={bust(thumb)}
+                                  alt=""
+                                  className="h-16 w-28 rounded-lg object-cover border-2 border-espresso/30 dark:border-slate-600"
+                                />
+                              </picture>
+                            )}
+                          </div>
+                        </m.div>
+                      )}
+                    </AnimatePresence>
 
                     {/* Roles (collapsible) */}
                     <AnimatePresence>
