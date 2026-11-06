@@ -4,6 +4,7 @@
     "companies": [
       {
         "name": "Cateroute",
+        "summary": "Software that tells catering crews what to bring and where to go.",
         "featured": true,
         "category": "Work",
         "logo": "/logos/cateroute-symbol.svg",
@@ -163,6 +164,7 @@
       },
       {
         "name": "Stockbit / Bibit",
+        "thumb": "/media/team-photo.jpeg",
         "summary": "Built an OCR pipeline that reads Indonesian ID cards for KYC, plus the APIs to run it in production.",
         "featured": true,
         "category": "Internships",

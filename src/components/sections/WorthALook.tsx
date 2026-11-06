@@ -2,7 +2,8 @@ import { Link } from 'react-router';
 import { ArrowUpRight } from 'lucide-react';
 import articles from '@/data/articles.json';
 
-const latest = articles[0];
+// External-only articles have no page here, so point at the newest one that does.
+const latest = articles.find((a) => a.hasFullArticle) ?? articles[0];
 
 const cardClass =
   'card-brutal p-5 flex items-start justify-between gap-3 h-full';

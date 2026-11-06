@@ -42,7 +42,7 @@ const QuoteText = ({ text }: { text: string }) => {
   const [open, setOpen] = useState(false);
   const isLong = text.split(/\s+/).length > LONG_QUOTE_WORDS;
   return (
-    <div className="flex-1">
+    <div>
       <blockquote
         className={`text-base md:text-lg text-espresso dark:text-slate-100 leading-relaxed ${
           isLong && !open ? 'line-clamp-4' : ''
