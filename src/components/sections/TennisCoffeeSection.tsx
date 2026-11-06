@@ -120,6 +120,7 @@ function StringBed() {
 
 export default function TennisCoffeeSection() {
   const [tennisIdx, setTennisIdx] = useState(0);
+  const [showRackets, setShowRackets] = useState(false);
   const [sport, setSport] = useState<"all" | "tennis" | "padel">("all");
   const [racketTab, setRacketTab] = useState<"tennis" | "padel">("tennis");
   const courtImages = sport === "all" ? tennisImages : tennisImages.filter((p) => p.sport === sport);
@@ -363,7 +364,19 @@ export default function TennisCoffeeSection() {
           </m.div>
         </div>
 
+        <div className="mt-10 text-center">
+          <button
+            type="button"
+            onClick={() => setShowRackets((v) => !v)}
+            aria-expanded={showRackets}
+            className="btn-brutal-outline inline-flex items-center gap-2"
+          >
+            {showRackets ? "Hide my racket setup" : "See my racket setup"}
+          </button>
+        </div>
+
         {/* RACKETS SECTION */}
+        {showRackets && (
         <m.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -512,6 +525,7 @@ export default function TennisCoffeeSection() {
           </div>
           )}
         </m.div>
+        )}
       </div>
 
       <Lightbox src={lbSrc} alt={lbAlt} onClose={() => setLbSrc("")} />

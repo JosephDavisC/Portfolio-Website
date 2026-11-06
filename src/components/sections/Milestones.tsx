@@ -297,7 +297,7 @@ export default function Milestones({ variant = "home" }: MilestonesProps) {
 
           <div className="space-y-6">
             <AnimatePresence mode="sync">
-              {filteredCompanies.map((company) => {
+              {filteredCompanies.map((company, companyIndex) => {
                 const isExpanded = expandedCompanies.has(company.name);
 
                 return (
@@ -412,7 +412,7 @@ export default function Milestones({ variant = "home" }: MilestonesProps) {
                               </h4>
 
                               <ul className="list-disc pl-5 space-y-1.5 text-espresso/80 dark:text-slate-300 mb-4">
-                                {role.bullets.map((b, bi) => (
+                                {(isHome ? role.bullets.slice(0, 2) : role.bullets).map((b, bi) => (
                                   <li key={bi}>{linkBullet(b, role.bulletLinks)}</li>
                                 ))}
                               </ul>
@@ -428,7 +428,7 @@ export default function Milestones({ variant = "home" }: MilestonesProps) {
                                 </Link>
                               )}
 
-                              {role.media?.length ? (
+                              {role.media?.length && (!isHome || companyIndex === 0) ? (
                                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                                   {role.media.map((m, mi) => {
                                     // The <picture> must carry block w-full h-full: it sits

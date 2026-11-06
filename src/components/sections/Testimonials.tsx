@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { m } from 'framer-motion';
 import { Quote, Linkedin, Building2 } from 'lucide-react';
 import OptimizedImage from '@/components/shared/OptimizedImage';
@@ -36,6 +36,34 @@ const recommendations: Rec[] = [
   },
 ];
 
+// The quote text is verbatim, so long ones are clipped on screen, never edited.
+const LONG_QUOTE_WORDS = 45;
+const QuoteText = ({ text }: { text: string }) => {
+  const [open, setOpen] = useState(false);
+  const isLong = text.split(/\s+/).length > LONG_QUOTE_WORDS;
+  return (
+    <div className="flex-1">
+      <blockquote
+        className={`text-base md:text-lg text-espresso dark:text-slate-100 leading-relaxed ${
+          isLong && !open ? 'line-clamp-4' : ''
+        }`}
+      >
+        {text}
+      </blockquote>
+      {isLong && (
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          className="mt-2 font-mono text-sm text-court-dark dark:text-[#60A5FA] underline underline-offset-2"
+        >
+          {open ? 'Show less' : 'Read more'}
+        </button>
+      )}
+    </div>
+  );
+};
+
 const Testimonials = () => {
   return (
     <section id="testimonials" className="py-16 px-6 bg-paper">
@@ -72,7 +100,7 @@ const Testimonials = () => {
           </p>
         </m.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
           {recommendations.map((r, i) => (
             <m.figure
               key={r.author}
@@ -90,9 +118,7 @@ const Testimonials = () => {
                 </span>
               </div>
 
-              <blockquote className="text-base md:text-lg text-espresso dark:text-slate-100 leading-relaxed flex-1">
-                {r.quote}
-              </blockquote>
+              <QuoteText text={r.quote} />
 
               <figcaption className="mt-6 flex items-center gap-4">
                 <a

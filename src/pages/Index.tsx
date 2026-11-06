@@ -9,6 +9,7 @@ import Navbar from '@/components/shared/Navbar';
 const Portfolio = React.lazy(() => import('@/components/sections/Portfolio'));
 const Certification = React.lazy(() => import('@/components/sections/Certifications'));
 const Awards = React.lazy(() => import('@/components/sections/Awards'));
+const WorthALook = React.lazy(() => import('@/components/sections/WorthALook'));
 const Milestones = React.lazy(() => import('@/components/sections/Milestones'));
 const Blog = React.lazy(() => import('@/components/sections/Blog'));
 const TennisCoffeeSection = React.lazy(() => import('@/components/sections/TennisCoffeeSection'));
@@ -27,6 +28,7 @@ const Index = () => {
       <About />
 
       <Suspense fallback={<div className="text-slate-400 text-center py-10">Loading...</div>}>
+        <WorthALook />
         <Milestones />
         <Portfolio />
         <Certification />
