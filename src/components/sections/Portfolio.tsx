@@ -10,7 +10,7 @@ const projects = projectsData.filter(p => p.featured).slice(0, 4);
 
 const Projects = () => {
   return (
-    <section id="portfolio" className="py-16 px-4 sm:px-6 bg-paper overflow-hidden">
+    <section id="portfolio" className="py-10 sm:py-16 px-4 sm:px-6 bg-paper overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <m.div
@@ -18,12 +18,12 @@ const Projects = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
         >
-          <h2 className="text-5xl md:text-6xl font-heading font-bold mb-6 text-espresso">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold mb-6 text-espresso">
             Portfolio
           </h2>
-          <p className="text-espresso/60 text-xl max-w-3xl mx-auto leading-relaxed font-mono">
+          <p className="text-espresso/60 text-base sm:text-xl max-w-3xl mx-auto leading-relaxed font-mono">
             Real-world projects that combine AI, data analytics, and engineering
           </p>
         </m.div>
@@ -43,7 +43,7 @@ const Projects = () => {
                 stiffness: 200
               }}
               viewport={{ once: true }}
-              className="card-brutal p-6 flex flex-col group"
+              className="card-brutal p-4 sm:p-6 flex flex-col group"
             >
               {/* Project Image */}
               <figure className="relative overflow-hidden rounded-lg border-2 border-espresso mb-5">
@@ -61,10 +61,10 @@ const Projects = () => {
                     alt={project.imageAlt || project.title}
                     className={
                       project.imageStyle === "contain-white"
-                        ? "h-56 w-full object-contain bg-white p-6 md:h-64"
+                        ? "h-40 sm:h-56 w-full object-contain bg-white p-4 sm:p-6 md:h-64"
                         : project.imageStyle === "contain-navy"
-                          ? "h-56 w-full object-contain bg-[#222a48] md:h-64"
-                          : "h-56 w-full object-cover object-center md:h-64"
+                          ? "h-40 sm:h-56 w-full object-contain bg-[#222a48] md:h-64"
+                          : "h-40 sm:h-56 w-full object-cover object-center md:h-64"
                     }
                     loading="lazy"
                     whileHover={{ scale: 1.05 }}
@@ -84,10 +84,10 @@ const Projects = () => {
 
               {/* Tech Tags */}
               <div className="mt-3 flex flex-wrap gap-2">
-                {project.tech.map((tech) => (
+                {project.tech.map((tech, techIndex) => (
                   <span
                     key={tech}
-                    className="px-3 py-1 bg-espresso/5 dark:bg-slate-700/80 text-espresso/70 dark:text-slate-200 border border-espresso/20 dark:border-slate-500/50 rounded-full text-sm font-mono"
+                    className={`${techIndex > 2 ? "hidden sm:inline-block " : ""}px-3 py-1 bg-espresso/5 dark:bg-slate-700/80 text-espresso/70 dark:text-slate-200 border border-espresso/20 dark:border-slate-500/50 rounded-full text-sm font-mono`}
                   >
                     {tech}
                   </span>
@@ -95,7 +95,7 @@ const Projects = () => {
               </div>
 
               {/* Description */}
-              <p className="text-espresso/70 mt-4 mb-6 leading-relaxed flex-grow">
+              <p className="text-espresso/70 mt-3 sm:mt-4 mb-4 sm:mb-6 leading-relaxed flex-grow line-clamp-3 sm:line-clamp-none">
                 {project.description}
               </p>
 

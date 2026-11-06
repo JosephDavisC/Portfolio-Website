@@ -45,16 +45,16 @@ const honors: Honor[] = [
 
 const Awards = () => {
   return (
-    <section id="awards" className="py-16 px-6 bg-paper-dark">
+    <section id="awards" className="py-10 sm:py-16 px-6 bg-paper-dark">
       <div className="max-w-6xl mx-auto">
         <m.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
         >
-          <h2 className="text-5xl md:text-6xl font-heading font-bold mb-6 text-espresso">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold mb-6 text-espresso">
             Awards &{' '}
             <span className="relative inline-block">
               Honors
@@ -74,12 +74,12 @@ const Awards = () => {
               </svg>
             </span>
           </h2>
-          <p className="text-espresso/60 text-xl max-w-2xl mx-auto font-mono">
+          <p className="text-espresso/60 text-base sm:text-xl max-w-2xl mx-auto font-mono">
             Recognition from hackathons, summits, and scholarships.
           </p>
         </m.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
           {honors.map((h, i) => {
             const Icon = h.icon;
             return (
@@ -90,26 +90,26 @@ const Awards = () => {
                 whileHover={{ y: -4, transition: { duration: 0.2, ease: [0.22, 1, 0.36, 1] } }}
                 transition={{ duration: 0.5, delay: Math.min(i * 0.05, 0.15), type: 'spring', stiffness: 200 }}
                 viewport={{ once: true }}
-                className="card-brutal p-6 flex flex-col"
+                className="card-brutal p-3 sm:p-6 flex flex-col"
               >
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-12 h-12 rounded-full bg-court/20 dark:bg-[#60A5FA]/20 border-2 border-court dark:border-[#60A5FA] flex items-center justify-center">
-                    <Icon className="h-6 w-6 text-court-dark dark:text-[#60A5FA]" />
+                <div className="flex items-center justify-between mb-2 sm:mb-4">
+                  <div className="shrink-0 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-court/20 dark:bg-[#60A5FA]/20 border-2 border-court dark:border-[#60A5FA] flex items-center justify-center">
+                    <Icon className="h-4 w-4 sm:h-6 sm:w-6 text-court-dark dark:text-[#60A5FA]" />
                   </div>
-                  <span className="px-3 py-1 text-sm font-bold font-mono rounded-full bg-court/20 dark:bg-[#60A5FA]/20 text-court-dark dark:text-[#60A5FA] border-2 border-court dark:border-[#60A5FA]/50">
+                  <span className="px-2 sm:px-3 py-1 text-xs sm:text-sm font-bold font-mono rounded-full bg-court/20 dark:bg-[#60A5FA]/20 text-court-dark dark:text-[#60A5FA] border-2 border-court dark:border-[#60A5FA]/50">
                     {h.rank}
                   </span>
                 </div>
-                <h3 className="text-xl font-heading font-semibold text-espresso dark:text-slate-100">
+                <h3 className="text-base sm:text-xl font-heading font-semibold text-espresso dark:text-slate-100">
                   {h.title}
                 </h3>
                 {h.detail && (
-                  <p className="text-sm text-court-dark dark:text-[#60A5FA] font-mono mt-1">{h.detail}</p>
+                  <p className="text-xs sm:text-sm text-court-dark dark:text-[#60A5FA] font-mono mt-1">{h.detail}</p>
                 )}
                 <p className="text-espresso/70 dark:text-slate-400 text-sm mt-2 leading-relaxed flex-1">
                   {h.org}
                 </p>
-                <p className="text-espresso/50 dark:text-slate-500 text-sm font-mono mt-4">{h.year}</p>
+                <p className="text-espresso/50 dark:text-slate-500 text-xs sm:text-sm font-mono mt-2 sm:mt-4">{h.year}</p>
               </m.div>
             );
           })}

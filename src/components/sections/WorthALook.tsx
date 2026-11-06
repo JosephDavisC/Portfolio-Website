@@ -6,7 +6,7 @@ import articles from '@/data/articles.json';
 const latest = articles.find((a) => a.hasFullArticle) ?? articles[0];
 
 const cardClass =
-  'card-brutal p-5 flex items-start justify-between gap-3 h-full';
+  'card-brutal p-4 sm:p-5 flex items-start justify-between gap-3 h-full';
 
 const Body = ({ label, title }: { label: string; title: string }) => (
   <>

@@ -50,7 +50,7 @@ const ArticleCard: React.FC<{ article: Article; index: number; onOpenArticle: (i
           <m.img
             src={article.thumbnail}
             alt={article.title}
-            className={`w-full h-56 md:h-64 ${article.thumbnailFit === 'contain' ? 'object-contain p-4' : 'object-cover'}`}
+            className={`w-full h-36 sm:h-56 md:h-64 ${article.thumbnailFit === 'contain' ? 'object-contain p-4' : 'object-cover'}`}
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.4 }}
           />
@@ -73,12 +73,12 @@ const ArticleCard: React.FC<{ article: Article; index: number; onOpenArticle: (i
           )}
         </h3>
 
-        <p className="text-espresso/70 text-base md:text-lg leading-relaxed mb-6 line-clamp-3">
+        <p className="text-espresso/70 text-base md:text-lg leading-relaxed mb-4 sm:mb-6 line-clamp-2 sm:line-clamp-3">
           {article.preview}
         </p>
 
         {article.tags && article.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-6">
+          <div className="hidden sm:flex flex-wrap gap-2 mb-6">
             {article.tags.map((tag) => (
               <span
                 key={tag}
@@ -151,16 +151,16 @@ const Blog = () => {
   const visibleArticles = articles.slice(0, HOMEPAGE_ARTICLE_COUNT);
 
   return (
-    <section id="blog" className="py-16 px-6 bg-paper">
+    <section id="blog" className="py-10 sm:py-16 px-6 bg-paper">
       <div className="max-w-6xl mx-auto">
         <m.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
         >
-          <h2 className="text-5xl md:text-6xl font-heading font-bold mb-6 text-espresso">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold mb-6 text-espresso">
             Blog &{" "}
             <span className="relative inline-block">
               Articles
@@ -180,7 +180,7 @@ const Blog = () => {
               </svg>
             </span>
           </h2>
-          <p className="text-espresso/60 text-xl max-w-3xl mx-auto leading-relaxed font-mono">
+          <p className="text-espresso/60 text-base sm:text-xl max-w-3xl mx-auto leading-relaxed font-mono">
             Stories, experiences, and lessons learned along the way
           </p>
         </m.div>

@@ -66,16 +66,16 @@ const QuoteText = ({ text }: { text: string }) => {
 
 const Testimonials = () => {
   return (
-    <section id="testimonials" className="py-16 px-6 bg-paper">
+    <section id="testimonials" className="py-10 sm:py-16 px-6 bg-paper">
       <div className="max-w-6xl mx-auto">
         <m.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
         >
-          <h2 className="text-5xl md:text-6xl font-heading font-bold mb-6 text-espresso">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold mb-6 text-espresso">
             What People{' '}
             <span className="relative inline-block">
               Say
@@ -95,7 +95,7 @@ const Testimonials = () => {
               </svg>
             </span>
           </h2>
-          <p className="text-espresso/60 text-xl max-w-2xl mx-auto font-mono">
+          <p className="text-espresso/60 text-base sm:text-xl max-w-2xl mx-auto font-mono">
             Recommendations from people I have worked with.
           </p>
         </m.div>
@@ -108,7 +108,7 @@ const Testimonials = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: Math.min(i * 0.05, 0.15), type: 'spring', stiffness: 200 }}
               viewport={{ once: true }}
-              className="card-brutal p-6 md:p-8 flex flex-col"
+              className="card-brutal p-4 sm:p-6 md:p-8 flex flex-col"
             >
               <div className="flex items-center justify-between mb-4">
                 <Quote className="h-8 w-8 text-court dark:text-[#60A5FA] shrink-0" />
