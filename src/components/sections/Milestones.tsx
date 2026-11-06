@@ -27,6 +27,8 @@ type Role = {
 };
 type Company = {
   name: string;
+  // One line for the closed homepage row.
+  summary?: string;
   category: string;
   featured?: boolean;
   logo: string;
@@ -145,7 +147,9 @@ export default function Milestones({ variant = "home" }: MilestonesProps) {
   const [lightboxSrc, setLightboxSrc] = useState<string>("");
   const [activeCategory, setActiveCategory] = useState<string>("All");
   const [expandedCompanies, setExpandedCompanies] = useState<Set<string>>(
-    new Set(companies.map((c) => c.name)) // Start with all expanded
+    // The full page starts open. The homepage opens only the current role, and the
+    // rest show as short rows that open into the same card.
+    new Set(isHome ? companies.slice(0, 1).map((c) => c.name) : companies.map((c) => c.name))
   );
 
   // Filter companies by category
@@ -297,7 +301,7 @@ export default function Milestones({ variant = "home" }: MilestonesProps) {
 
           <div className="space-y-6">
             <AnimatePresence mode="sync">
-              {filteredCompanies.map((company, companyIndex) => {
+              {filteredCompanies.map((company) => {
                 const isExpanded = expandedCompanies.has(company.name);
 
                 return (
@@ -335,8 +339,8 @@ export default function Milestones({ variant = "home" }: MilestonesProps) {
                         className="flex-1 min-w-0 flex items-center gap-3 text-left"
                       >
                       <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2">
-                          <h3 className="text-xl font-heading font-semibold text-espresso dark:text-slate-100 truncate">
+                        <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
+                          <h3 className="text-xl font-heading font-semibold text-espresso dark:text-slate-100">
                             {company.name}
                           </h3>
                           <span className="px-2 py-0.5 text-[10px] font-mono font-semibold rounded-full bg-espresso/10 dark:bg-slate-700 text-espresso/60 dark:text-slate-300 border border-espresso/20 dark:border-slate-600">
@@ -364,6 +368,38 @@ export default function Milestones({ variant = "home" }: MilestonesProps) {
                       </div>
                       </button>
                     </div>
+
+                    {/* Homepage row while closed: role, dates, one line and a thumbnail */}
+                    {isHome && !isExpanded && company.summary && (
+                      <div
+                        onClick={() => toggleCompany(company.name)}
+                        className="card-brutal p-5 md:p-6 flex items-center gap-4 cursor-pointer"
+                      >
+                        <div className="flex-1 min-w-0">
+                          <p className="font-heading font-semibold text-espresso dark:text-slate-100">
+                            {company.roles[0].title}
+                            <span className="ml-2 font-mono font-normal text-sm text-espresso/60 dark:text-slate-400">
+                              {company.roles[0].dates}
+                            </span>
+                          </p>
+                          <p className="mt-1 text-espresso/80 dark:text-slate-300">{company.summary}</p>
+                        </div>
+                        {company.roles[0].media?.[0] && (
+                          <picture className="hidden sm:block shrink-0">
+                            {hasWebP(company.roles[0].media[0].src) && (
+                              <source srcSet={bust(getWebPPath(company.roles[0].media[0].src))} type="image/webp" />
+                            )}
+                            <img
+                              loading="lazy"
+                              decoding="async"
+                              src={bust(company.roles[0].media[0].src)}
+                              alt=""
+                              className="h-16 w-28 rounded-lg object-cover border-2 border-espresso/30 dark:border-slate-600"
+                            />
+                          </picture>
+                        )}
+                      </div>
+                    )}
 
                     {/* Roles (collapsible) */}
                     <AnimatePresence>
@@ -412,7 +448,7 @@ export default function Milestones({ variant = "home" }: MilestonesProps) {
                               </h4>
 
                               <ul className="list-disc pl-5 space-y-1.5 text-espresso/80 dark:text-slate-300 mb-4">
-                                {(isHome ? role.bullets.slice(0, 2) : role.bullets).map((b, bi) => (
+                                {role.bullets.map((b, bi) => (
                                   <li key={bi}>{linkBullet(b, role.bulletLinks)}</li>
                                 ))}
                               </ul>
@@ -428,7 +464,7 @@ export default function Milestones({ variant = "home" }: MilestonesProps) {
                                 </Link>
                               )}
 
-                              {role.media?.length && (!isHome || companyIndex === 0) ? (
+                              {role.media?.length ? (
                                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                                   {role.media.map((m, mi) => {
                                     // The <picture> must carry block w-full h-full: it sits
