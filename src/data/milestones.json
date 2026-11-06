@@ -77,6 +77,24 @@
         ]
       },
       {
+        "name": "University of Washington Housing & Food Services",
+        "category": "Work",
+        "logo": "/logos/UW_Logo.png",
+        "website": "https://hfs.uw.edu",
+        "meta": "Part-time · 1 yr 3 mos",
+        "location": "Seattle, Washington, United States",
+        "roles": [
+          {
+            "title": "Student Assistant (Catering)",
+            "dates": "Sep 2025 – Present · 1 yr 3 mos",
+            "meta": "On-site",
+            "bullets": [
+              "Set up, run and clean up catering for campus events."
+            ]
+          }
+        ]
+      },
+      {
         "name": "Sector - CyberSecurity",
         "featured": true,
         "category": "Internships",
