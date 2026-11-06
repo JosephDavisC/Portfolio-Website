@@ -183,7 +183,7 @@ export default function About() {
                   <p className="text-[10px] font-mono font-semibold uppercase tracking-widest text-espresso/40 dark:text-slate-500 mb-1.5">
                     {group.label}
                   </p>
-                  <div className="grid grid-cols-7 lg:grid-cols-8 gap-1 sm:gap-1.5">
+                  <div className="grid grid-cols-8 sm:grid-cols-7 lg:grid-cols-8 gap-1 sm:gap-1.5">
                     {group.items.map((skill, index) => (
                       <m.div
                         key={skill.name}

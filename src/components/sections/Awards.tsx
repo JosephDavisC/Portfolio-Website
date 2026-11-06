@@ -93,7 +93,7 @@ const Awards = () => {
                 className="card-brutal p-3 sm:p-6 flex flex-col"
               >
                 <div className="flex items-center justify-between mb-2 sm:mb-4">
-                  <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-court/20 dark:bg-[#60A5FA]/20 border-2 border-court dark:border-[#60A5FA] flex items-center justify-center">
+                  <div className="shrink-0 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-court/20 dark:bg-[#60A5FA]/20 border-2 border-court dark:border-[#60A5FA] flex items-center justify-center">
                     <Icon className="h-4 w-4 sm:h-6 sm:w-6 text-court-dark dark:text-[#60A5FA]" />
                   </div>
                   <span className="px-2 sm:px-3 py-1 text-xs sm:text-sm font-bold font-mono rounded-full bg-court/20 dark:bg-[#60A5FA]/20 text-court-dark dark:text-[#60A5FA] border-2 border-court dark:border-[#60A5FA]/50">

@@ -4,7 +4,7 @@ The history of joechamdani.com, newest first. Each version links its GitHub Rele
 
 ## Next
 
-- **Phone layout.** The homepage is much shorter on phones: tighter section spacing, credentials and awards in two columns, smaller project and blog images, clipped project descriptions, a compact social grid and a shorter message box.
+- **Phone layout.** The homepage is much shorter on phones: tighter section spacing, credentials and awards in two columns, smaller project and blog images, clipped project descriptions, a compact social grid and a shorter message box. Project cards show their first three tech tags.
 - **About.** Fixed the broken AWS icon by loading the tech icons from a pinned package version, because the old CDN path now refuses that icon set.
 
 ## v2.7.0: Shorter homepage (5 Nov 2026)

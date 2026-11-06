@@ -83,11 +83,11 @@ const Projects = () => {
               </h3>
 
               {/* Tech Tags */}
-              <div className="mt-3 hidden sm:flex flex-wrap gap-2">
-                {project.tech.map((tech) => (
+              <div className="mt-3 flex flex-wrap gap-2">
+                {project.tech.map((tech, techIndex) => (
                   <span
                     key={tech}
-                    className="px-3 py-1 bg-espresso/5 dark:bg-slate-700/80 text-espresso/70 dark:text-slate-200 border border-espresso/20 dark:border-slate-500/50 rounded-full text-sm font-mono"
+                    className={`${techIndex > 2 ? "hidden sm:inline-block " : ""}px-3 py-1 bg-espresso/5 dark:bg-slate-700/80 text-espresso/70 dark:text-slate-200 border border-espresso/20 dark:border-slate-500/50 rounded-full text-sm font-mono`}
                   >
                     {tech}
                   </span>

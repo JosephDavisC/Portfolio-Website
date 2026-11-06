@@ -78,7 +78,7 @@ const Contact = () => {
           <h3 className="text-2xl md:text-3xl font-heading font-bold mb-5 sm:mb-8 text-center text-espresso dark:text-slate-100">
             Or connect with me on social
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-10 sm:px-0">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-10">
             <m.a
               href="mailto:joseph@joechamdani.com"
               whileHover={{ y: -4 }}
@@ -89,7 +89,7 @@ const Contact = () => {
                 <Mail className="h-4 w-4 text-court-dark dark:text-[#60A5FA]" />
               </div>
               <h4 className="font-heading font-semibold text-espresso dark:text-slate-100 mb-1">Email</h4>
-              <p className="hidden sm:block text-espresso/60 dark:text-slate-400 text-xs font-mono tracking-tight break-all text-center max-w-full">joseph@joechamdani.com</p>
+              <p className="text-espresso/60 dark:text-slate-400 text-xs font-mono tracking-tight break-all text-center max-w-full">joseph@joechamdani.com</p>
             </m.a>
 
             <m.a

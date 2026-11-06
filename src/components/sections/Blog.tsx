@@ -78,7 +78,7 @@ const ArticleCard: React.FC<{ article: Article; index: number; onOpenArticle: (i
         </p>
 
         {article.tags && article.tags.length > 0 && (
-          <div className="hidden sm:flex flex flex-wrap gap-2 mb-6">
+          <div className="hidden sm:flex flex-wrap gap-2 mb-6">
             {article.tags.map((tag) => (
               <span
                 key={tag}

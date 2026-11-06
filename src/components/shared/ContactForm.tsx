@@ -168,9 +168,9 @@ const ContactForm = () => {
             <Textarea
               id="message"
               placeholder="Tell me about your project, collaboration idea, or just say hi!"
-              rows={4}
+              rows={6}
               {...register('message')}
-              className={`bg-paper dark:bg-slate-800 border-2 border-espresso/20 dark:border-slate-600 text-espresso dark:text-slate-200 placeholder:text-espresso/40 dark:placeholder:text-slate-500 focus:border-court dark:focus:border-[#60A5FA] focus-visible:ring-court dark:focus-visible:ring-[#60A5FA] focus:shadow-brutal-sm transition-all duration-300 resize-none rounded-lg ${
+              className={`h-28 sm:h-auto bg-paper dark:bg-slate-800 border-2 border-espresso/20 dark:border-slate-600 text-espresso dark:text-slate-200 placeholder:text-espresso/40 dark:placeholder:text-slate-500 focus:border-court dark:focus:border-[#60A5FA] focus-visible:ring-court dark:focus-visible:ring-[#60A5FA] focus:shadow-brutal-sm transition-all duration-300 resize-none rounded-lg ${
                 errors.message ? 'border-red-500' : ''
               }`}
             />

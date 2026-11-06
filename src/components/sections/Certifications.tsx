@@ -136,7 +136,7 @@ export default function Certifications() {
                 </h3>
                 <div className="flex items-center justify-center gap-2 text-espresso/70 dark:text-slate-300 mb-1 sm:mb-2 sm:min-h-[2.5rem]">
                   {cert.logo && (
-                    <div className="hidden sm:flex h-4 w-4 rounded overflow-hidden bg-paper border border-espresso/20 dark:border-slate-600 flex items-center justify-center">
+                    <div className="hidden sm:flex h-4 w-4 rounded overflow-hidden bg-paper border border-espresso/20 dark:border-slate-600 items-center justify-center">
                       <img
                         src={cert.logo}
                         alt=""

@@ -523,7 +523,7 @@ export default function Milestones({ variant = "home" }: MilestonesProps) {
                                             href={m.href}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className={`block w-full ${isHome ? "h-28" : "h-36"} sm:h-40 md:h-44`}
+                                            className="block w-full h-36 sm:h-40 md:h-44"
                                             aria-label={`Open ${m.caption} in new tab`}
                                           >
                                             {Img}
@@ -533,7 +533,7 @@ export default function Milestones({ variant = "home" }: MilestonesProps) {
                                           </a>
                                         ) : (
                                           <button
-                                            className={`block w-full ${isHome ? "h-28" : "h-36"} sm:h-40 md:h-44 cursor-zoom-in`}
+                                            className="block w-full h-36 sm:h-40 md:h-44 cursor-zoom-in"
                                             onClick={() => setLightboxSrc(m.src)}
                                             aria-label={`Open ${m.caption}`}
                                           >

@@ -223,7 +223,7 @@ export default function TennisCoffeeSection() {
                 <ZoomIn className="h-4 w-4" />
               </button>
 
-              <div className="relative h-56 sm:h-[380px] w-full overflow-hidden">
+              <div className="relative h-64 sm:h-[380px] w-full overflow-hidden">
                 <AnimatePresence mode="wait">
                   <m.img
                     key={`${sport}-${tennisIdx}`}
@@ -325,7 +325,7 @@ export default function TennisCoffeeSection() {
                 <ZoomIn className="h-4 w-4" />
               </button>
 
-              <div className="relative h-56 sm:h-[380px] w-full overflow-hidden">
+              <div className="relative h-64 sm:h-[380px] w-full overflow-hidden">
                 <picture>
                   <source srcSet="/images/moments/Coffee.webp" type="image/webp" />
                   <img src="/images/moments/Coffee.JPG" alt="Coffee time" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
