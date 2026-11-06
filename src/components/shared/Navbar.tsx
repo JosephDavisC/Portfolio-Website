@@ -206,7 +206,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Navigation */}
-        <ul className="hidden md:flex items-center gap-1 text-sm">
+        <ul className="hidden lg:flex items-center gap-1 text-sm whitespace-nowrap">
           {desktopLinks}
         </ul>
 
@@ -218,7 +218,7 @@ export default function Navbar() {
             onClick={() => track("freelance-cta")}
             target="_blank"
             rel="noopener"
-            className="btn-brutal hidden md:inline-flex items-center gap-1.5 px-4 py-2 text-sm"
+            className="btn-brutal hidden lg:inline-flex items-center gap-1.5 px-4 py-2 text-sm whitespace-nowrap"
           >
             <Briefcase className="w-4 h-4" />
             Work with me
@@ -229,7 +229,7 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen((s) => !s)}
-            className="md:hidden p-2 border-2 border-espresso dark:border-slate-600 rounded-lg shadow-brutal-sm hover:shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all bg-paper dark:bg-slate-800"
+            className="lg:hidden p-2 border-2 border-espresso dark:border-slate-600 rounded-lg shadow-brutal-sm hover:shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all bg-paper dark:bg-slate-800"
             aria-label="Toggle navigation"
             aria-expanded={isOpen}
           >
@@ -245,7 +245,7 @@ export default function Navbar() {
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0, transition: { duration: 0.2, ease: [0.22, 1, 0.36, 1] } }}
           exit={{ opacity: 0, y: -8, transition: { duration: 0.15, ease: [0.22, 1, 0.36, 1] } }}
-          className="md:hidden bg-paper dark:bg-[#141B2D] border-t-2 border-espresso/10 dark:border-slate-700/30 px-6 py-6 space-y-3">
+          className="lg:hidden bg-paper dark:bg-[#141B2D] border-t-2 border-espresso/10 dark:border-slate-700/30 px-6 py-6 space-y-3">
           {links.map((link) =>
             isHome ? (
               <li key={link.href}>
