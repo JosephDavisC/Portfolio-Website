@@ -78,18 +78,25 @@ const Contact = () => {
           <h3 className="text-2xl md:text-3xl font-heading font-bold mb-5 sm:mb-8 text-center text-espresso dark:text-slate-100">
             Or connect with me on social
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-10">
+          {/* Tiles hide their subtitles on phones, so the address stays readable and copyable here. */}
+          <a
+            href="mailto:joseph@joechamdani.com"
+            className="sm:hidden block text-center font-mono text-sm mb-4 text-court-dark dark:text-[#60A5FA] underline underline-offset-2"
+          >
+            joseph@joechamdani.com
+          </a>
+          <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-fr gap-3 sm:gap-4 mb-10">
             <m.a
               href="mailto:joseph@joechamdani.com"
               whileHover={{ y: -4 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="flex flex-col items-center px-3 py-3 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-[border-color,box-shadow] group"
+              className="flex flex-col items-center justify-center text-center px-2 py-3 sm:px-3 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-[border-color,box-shadow] group"
             >
               <div className="w-9 h-9 rounded-full bg-court/20 dark:bg-[#60A5FA]/20 border-2 border-court dark:border-[#60A5FA] flex items-center justify-center mb-1.5">
                 <Mail className="h-4 w-4 text-court-dark dark:text-[#60A5FA]" />
               </div>
-              <h4 className="font-heading font-semibold text-espresso dark:text-slate-100 mb-1">Email</h4>
-              <p className="text-espresso/60 dark:text-slate-400 text-xs font-mono tracking-tight break-all text-center max-w-full">joseph@joechamdani.com</p>
+              <h4 className="text-sm sm:text-base leading-tight font-heading font-semibold text-espresso dark:text-slate-100 sm:mb-1">Email</h4>
+              <p className="hidden sm:block text-espresso/60 dark:text-slate-400 text-xs font-mono tracking-tight break-all text-center max-w-full">joseph@joechamdani.com</p>
             </m.a>
 
             <m.a
@@ -98,12 +105,12 @@ const Contact = () => {
               rel="noopener noreferrer"
               whileHover={{ y: -4 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="flex flex-col items-center px-3 py-3 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-[border-color,box-shadow] group"
+              className="flex flex-col items-center justify-center text-center px-2 py-3 sm:px-3 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-[border-color,box-shadow] group"
             >
               <div className="w-9 h-9 rounded-full bg-court/20 dark:bg-[#60A5FA]/20 border-2 border-court dark:border-[#60A5FA] flex items-center justify-center mb-1.5">
                 <Linkedin className="h-4 w-4 text-court-dark dark:text-[#60A5FA]" />
               </div>
-              <h4 className="font-heading font-semibold text-espresso dark:text-slate-100 mb-1">LinkedIn</h4>
+              <h4 className="text-sm sm:text-base leading-tight font-heading font-semibold text-espresso dark:text-slate-100 sm:mb-1">LinkedIn</h4>
               <p className="hidden sm:block text-espresso/60 dark:text-slate-400 text-sm font-mono">Let's connect</p>
             </m.a>
 
@@ -113,12 +120,12 @@ const Contact = () => {
               rel="noopener noreferrer"
               whileHover={{ y: -4 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="flex flex-col items-center px-3 py-3 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-espresso dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-[border-color,box-shadow] group"
+              className="flex flex-col items-center justify-center text-center px-2 py-3 sm:px-3 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-espresso dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-[border-color,box-shadow] group"
             >
               <div className="w-9 h-9 rounded-full bg-espresso/10 dark:bg-slate-700 border-2 border-espresso dark:border-slate-500 flex items-center justify-center mb-1.5">
                 <Github className="h-4 w-4 text-espresso dark:text-slate-300" />
               </div>
-              <h4 className="font-heading font-semibold text-espresso dark:text-slate-100 mb-1">GitHub</h4>
+              <h4 className="text-sm sm:text-base leading-tight font-heading font-semibold text-espresso dark:text-slate-100 sm:mb-1">GitHub</h4>
               <p className="hidden sm:block text-espresso/60 dark:text-slate-400 text-sm font-mono">View my code</p>
             </m.a>
 
@@ -128,12 +135,12 @@ const Contact = () => {
               rel="noopener noreferrer"
               whileHover={{ y: -4 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="flex flex-col items-center px-3 py-3 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-[border-color,box-shadow] group"
+              className="flex flex-col items-center justify-center text-center px-2 py-3 sm:px-3 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-[border-color,box-shadow] group"
             >
               <div className="w-9 h-9 rounded-full bg-court/20 dark:bg-[#60A5FA]/20 border-2 border-court dark:border-[#60A5FA] flex items-center justify-center mb-1.5">
                 <Instagram className="h-4 w-4 text-court-dark dark:text-[#60A5FA]" />
               </div>
-              <h4 className="font-heading font-semibold text-espresso dark:text-slate-100 mb-1">Instagram</h4>
+              <h4 className="text-sm sm:text-base leading-tight font-heading font-semibold text-espresso dark:text-slate-100 sm:mb-1">Instagram</h4>
               <p className="hidden sm:block text-espresso/60 dark:text-slate-400 text-sm font-mono">@josephdavisc</p>
             </m.a>
 
@@ -143,12 +150,12 @@ const Contact = () => {
               rel="noopener noreferrer"
               whileHover={{ y: -4 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="flex flex-col items-center px-3 py-3 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-[border-color,box-shadow] group"
+              className="flex flex-col items-center justify-center text-center px-2 py-3 sm:px-3 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-[border-color,box-shadow] group"
             >
               <div className="w-9 h-9 rounded-full bg-court/20 dark:bg-[#60A5FA]/20 border-2 border-court dark:border-[#60A5FA] flex items-center justify-center mb-1.5">
                 <Instagram className="h-4 w-4 text-court-dark dark:text-[#60A5FA]" />
               </div>
-              <h4 className="font-heading font-semibold text-espresso dark:text-slate-100 mb-1">Joe Builds Things</h4>
+              <h4 className="text-sm sm:text-base leading-tight font-heading font-semibold text-espresso dark:text-slate-100 sm:mb-1">Joe Builds Things</h4>
               <p className="hidden sm:block text-espresso/60 dark:text-slate-400 text-sm font-mono">@joebuildthings</p>
             </m.a>
 
@@ -158,12 +165,12 @@ const Contact = () => {
               rel="noopener noreferrer"
               whileHover={{ y: -4 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="flex flex-col items-center px-3 py-3 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-[border-color,box-shadow] group"
+              className="flex flex-col items-center justify-center text-center px-2 py-3 sm:px-3 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-[border-color,box-shadow] group"
             >
               <div className="w-9 h-9 rounded-full bg-court/20 dark:bg-[#60A5FA]/20 border-2 border-court dark:border-[#60A5FA] flex items-center justify-center mb-1.5">
                 <Youtube className="h-4 w-4 text-court-dark dark:text-[#60A5FA]" />
               </div>
-              <h4 className="font-heading font-semibold text-espresso dark:text-slate-100 mb-1">YouTube</h4>
+              <h4 className="text-sm sm:text-base leading-tight font-heading font-semibold text-espresso dark:text-slate-100 sm:mb-1">YouTube</h4>
               <p className="hidden sm:block text-espresso/60 dark:text-slate-400 text-sm font-mono">@JosephDavisC</p>
             </m.a>
 
@@ -173,12 +180,12 @@ const Contact = () => {
               rel="noopener noreferrer"
               whileHover={{ y: -4 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="flex flex-col items-center px-3 py-3 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-[border-color,box-shadow] group"
+              className="flex flex-col items-center justify-center text-center px-2 py-3 sm:px-3 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-[border-color,box-shadow] group"
             >
               <div className="w-9 h-9 rounded-full bg-court/20 dark:bg-[#60A5FA]/20 border-2 border-court dark:border-[#60A5FA] flex items-center justify-center mb-1.5">
                 <DevpostIcon className="h-4 w-4 text-court-dark dark:text-[#60A5FA]" />
               </div>
-              <h4 className="font-heading font-semibold text-espresso dark:text-slate-100 mb-1">Devpost</h4>
+              <h4 className="text-sm sm:text-base leading-tight font-heading font-semibold text-espresso dark:text-slate-100 sm:mb-1">Devpost</h4>
               <p className="hidden sm:block text-espresso/60 dark:text-slate-400 text-sm font-mono">Hackathons</p>
             </m.a>
 
@@ -188,12 +195,12 @@ const Contact = () => {
               rel="noopener noreferrer"
               whileHover={{ y: -4 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="flex flex-col items-center px-3 py-3 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-[border-color,box-shadow] group"
+              className="flex flex-col items-center justify-center text-center px-2 py-3 sm:px-3 bg-paper dark:bg-slate-800/50 rounded-xl border-2 border-espresso/20 dark:border-slate-600 hover:border-court dark:hover:border-[#60A5FA] hover:shadow-brutal-sm transition-[border-color,box-shadow] group"
             >
               <div className="w-9 h-9 rounded-full bg-court/20 dark:bg-[#60A5FA]/20 border-2 border-court dark:border-[#60A5FA] flex items-center justify-center mb-1.5">
                 <MediumIcon className="h-4 w-4 text-court-dark dark:text-[#60A5FA]" />
               </div>
-              <h4 className="font-heading font-semibold text-espresso dark:text-slate-100 mb-1">Medium</h4>
+              <h4 className="text-sm sm:text-base leading-tight font-heading font-semibold text-espresso dark:text-slate-100 sm:mb-1">Medium</h4>
               <p className="hidden sm:block text-espresso/60 dark:text-slate-400 text-sm font-mono">Writing</p>
             </m.a>
           </div>
