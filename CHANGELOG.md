@@ -4,6 +4,12 @@ The history of joechamdani.com, newest first. Each version links its GitHub Rele
 
 ## Next
 
+## v2.7.2: Solid buttons (5 Nov 2026)
+
+[Release notes](https://github.com/JosephDavisC/Portfolio-Website/releases/tag/v2.7.2)
+
+- **Buttons.** Main buttons are now solid in dark mode as well as light, so they stand out from tags and secondary buttons.
+
 ## v2.7.1: Phone layout (5 Nov 2026)
 
 [Release notes](https://github.com/JosephDavisC/Portfolio-Website/releases/tag/v2.7.1)

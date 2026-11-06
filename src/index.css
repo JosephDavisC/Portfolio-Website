@@ -490,18 +490,18 @@ html {
 }
 
 /* Dark mode buttons */
+/* Main buttons are solid in both themes. Tags and outline buttons stay translucent. */
 .dark .btn-brutal {
-  background: rgba(96, 165, 250, 0.1);
-  color: #60A5FA;
-  border-color: rgba(96, 165, 250, 0.3);
-  box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.1);
-  backdrop-filter: blur(8px);
+  background: #60A5FA;
+  color: #0B1220;
+  border-color: #60A5FA;
+  box-shadow: none;
 }
 
 .dark .btn-brutal:hover {
-  background: rgba(96, 165, 250, 0.2);
-  border-color: rgba(96, 165, 250, 0.6);
-  box-shadow: 0 0 16px rgba(96, 165, 250, 0.2);
+  background: #93C5FD;
+  border-color: #93C5FD;
+  box-shadow: 0 0 16px rgba(96, 165, 250, 0.35);
   transform: translateY(-2px);
 }
 
