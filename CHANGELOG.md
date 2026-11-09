@@ -4,6 +4,13 @@ The history of joechamdani.com, newest first. Each version links its GitHub Rele
 
 ## Next
 
+## v2.7.3: Search summary (8 Nov 2026)
+
+[Release notes](https://github.com/JosephDavisC/Portfolio-Website/releases/tag/v2.7.3)
+
+- **Search.** The structured data now gives the job title as Co-Founder of Cateroute, with a bio that matches the page description.
+- **No-JavaScript version.** The plain-text version of the homepage now opens with the hero line and lists the same featured experience and projects as the homepage, with links to the full lists.
+
 ## v2.7.2: Solid buttons (5 Nov 2026)
 
 [Release notes](https://github.com/JosephDavisC/Portfolio-Website/releases/tag/v2.7.2)
