@@ -370,7 +370,7 @@ export default function Milestones({ variant = "home" }: MilestonesProps) {
                         <m.div
                           className="transition-transform group-hover:translate-y-0.5 motion-reduce:transition-none"
                           animate={{ rotate: isExpanded ? 180 : 0 }}
-                          transition={{ duration: 0.2 }}
+                          transition={{ duration: 0.25, ease: [0.23, 1, 0.32, 1] }}
                         >
                           <ChevronDown className="h-5 w-5" />
                         </m.div>
@@ -383,9 +383,8 @@ export default function Milestones({ variant = "home" }: MilestonesProps) {
                       {isHome && !isExpanded && (
                         <m.div
                           initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                          animate={{ opacity: 1, height: "auto", transition: { duration: 0.25, ease: [0.23, 1, 0.32, 1] } }}
+                          exit={{ opacity: 0, height: 0, transition: { duration: 0.2, ease: [0.23, 1, 0.32, 1] } }}
                           className="overflow-hidden pb-1 pr-1"
                         >
                           <div
@@ -435,9 +434,8 @@ export default function Milestones({ variant = "home" }: MilestonesProps) {
                       {isExpanded && (
                         <m.div
                           initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                          animate={{ opacity: 1, height: "auto", transition: { duration: 0.25, ease: [0.23, 1, 0.32, 1] } }}
+                          exit={{ opacity: 0, height: 0, transition: { duration: 0.2, ease: [0.23, 1, 0.32, 1] } }}
                           className="overflow-hidden"
                         >
                           {company.roles.map((role, i) => (

@@ -39,6 +39,9 @@
 
     --radius: 0.75rem;
 
+    /* Motion: strong ease-out for UI, no overshoot */
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+
     /* Sidebar (keeping for shadcn compatibility) */
     --sidebar-background: 43 25% 95%;
     --sidebar-foreground: 20 29% 18%;
@@ -174,7 +177,9 @@
   .card-brutal {
     @apply bg-paper border-2 border-espresso rounded-xl;
     box-shadow: 2px 2px 0px 0px #3D2B1F;
-    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition-property: transform, box-shadow, background-color, border-color, color;
+    transition-duration: 200ms;
+    transition-timing-function: var(--ease-out);
   }
 
   .card-brutal:hover {
@@ -203,7 +208,9 @@
     /* espresso on court green is 5.4:1; paper on it was 2.3:1 */
     @apply px-6 py-3 bg-court text-espresso font-semibold border-2 border-espresso rounded-lg;
     box-shadow: 2px 2px 0px 0px #3D2B1F;
-    transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition-property: transform, box-shadow, background-color, border-color, color;
+    transition-duration: 160ms;
+    transition-timing-function: var(--ease-out);
   }
 
   .btn-brutal:hover {
@@ -220,7 +227,9 @@
   .btn-brutal-outline {
     @apply px-6 py-3 bg-paper text-espresso font-semibold border-2 border-espresso rounded-lg;
     box-shadow: 2px 2px 0px 0px #3D2B1F;
-    transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition-property: transform, box-shadow, background-color, border-color, color;
+    transition-duration: 160ms;
+    transition-timing-function: var(--ease-out);
   }
 
   .btn-brutal-outline:hover {
@@ -532,6 +541,18 @@ html {
    have no inline transform until their first hover, so they opt in with .motion-hover. */
 :is(.card-brutal, .btn-brutal, .btn-brutal-outline):is([style*="transform:"], .motion-hover) {
   transition-property: background-color, border-color, color, box-shadow;
+}
+
+/* The press snaps back faster than the hover lifts (100ms vs 160 to 200ms) */
+:is(.card-brutal, .btn-brutal, .btn-brutal-outline):active {
+  transition-duration: 100ms;
+}
+
+/* Phones fire a fake hover on tap, which left buttons and cards stuck lifted */
+@media (hover: none) {
+  :is(.card-brutal, .card-brutal-court, .btn-brutal, .btn-brutal-outline):hover:not(:active) {
+    transform: none;
+  }
 }
 
 /* MotionConfig in main.tsx covers Framer; this covers the CSS hover and press moves */

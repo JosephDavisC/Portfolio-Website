@@ -4,6 +4,13 @@ The history of joechamdani.com, newest first. Each version links its GitHub Rele
 
 ## Next
 
+## v2.7.4: Snappier motion (10 Nov 2026)
+
+[Release notes](https://github.com/JosephDavisC/Portfolio-Website/releases/tag/v2.7.4)
+
+- **Buttons and cards.** Hover and press now use a fast ease-out curve with no overshoot, and animate only movement, shadow and color. A press springs back faster than the hover lifts, and tapping on a phone no longer leaves a button or card stuck in its hover state.
+- **Experience rows.** Opening and closing a row starts fast instead of easing in, and closing is slightly quicker than opening.
+
 ## v2.7.3: Search summary (8 Nov 2026)
 
 [Release notes](https://github.com/JosephDavisC/Portfolio-Website/releases/tag/v2.7.3)
