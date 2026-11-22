@@ -4,6 +4,12 @@ The history of joechamdani.com, newest first. Each version links its GitHub Rele
 
 ## Next
 
+## v2.7.7: Academic portfolio address (22 Nov 2026)
+
+[Release notes](https://github.com/JosephDavisC/Portfolio-Website/releases/tag/v2.7.7)
+
+- **New academic address.** Links to the academic portfolio now go to academic.joechamdani.com, its new home. The old uw.joechamdani.com address still redirects there.
+
 ## v2.7.6: Bigger scholar photo on phones (21 Nov 2026)
 
 [Release notes](https://github.com/JosephDavisC/Portfolio-Website/releases/tag/v2.7.6)

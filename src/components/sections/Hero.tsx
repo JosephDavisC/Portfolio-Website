@@ -290,7 +290,7 @@ const Hero = () => {
                     className="absolute inset-0 rounded-full bg-espresso/80 dark:bg-slate-900/85 backdrop-blur-sm flex items-center justify-center z-30"
                   >
                     <m.a
-                      href="https://uw.joechamdani.com"
+                      href="https://academic.joechamdani.com"
                       initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 8 }}

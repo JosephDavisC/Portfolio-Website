@@ -102,7 +102,7 @@ Coverage of Joseph's work, written by others:
 
 ## Optional
 
-- [Academic portfolio](https://uw.joechamdani.com): UW and Bellevue College coursework, research, and projects.
+- [Academic portfolio](https://academic.joechamdani.com): UW and Bellevue College coursework, research, and projects.
 - [INFO 200 Transfer Evaluation System](https://info200.joechamdani.cloud): The class prototype that seeded the hackathon tool (a separate project).
 - [INFO 340 Project](https://info340.joechamdani.com): UW Informatics INFO 340 course project.
 - [INFO 380 Project](https://info380.joechamdani.com): UW Informatics INFO 380 course project.
