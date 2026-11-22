@@ -4,6 +4,15 @@ The history of joechamdani.com, newest first. Each version links its GitHub Rele
 
 ## Next
 
+## v2.7.5: Awards with proof (21 Nov 2026)
+
+[Release notes](https://github.com/JosephDavisC/Portfolio-Website/releases/tag/v2.7.5)
+
+- **Award cards.** Each card now shows the real logo of who gave the award instead of a generic icon, with the result as a quiet label. Award names match the official titles.
+- **Proof on every card.** The hackathon links to its case study, the UW scholarship to the UW scholar profile, and the Bellevue College letter and BINUS certificate open in the site's image viewer.
+- **UW scholar profile.** A new card under the awards shows the University of Washington scholar profile with its photo, award and quote, and links to the page on uw.edu.
+- **Search.** Structured data and llms.txt list the Spence award and point to the UW profile.
+
 ## v2.7.4: Snappier motion (10 Nov 2026)
 
 [Release notes](https://github.com/JosephDavisC/Portfolio-Website/releases/tag/v2.7.4)
