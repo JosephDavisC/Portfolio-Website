@@ -4,6 +4,12 @@ The history of joechamdani.com, newest first. Each version links its GitHub Rele
 
 ## Next
 
+## v2.7.6: Bigger scholar photo on phones (21 Nov 2026)
+
+[Release notes](https://github.com/JosephDavisC/Portfolio-Website/releases/tag/v2.7.6)
+
+- **UW scholar profile card.** On phones the photo now fills the card width in a wider crop, and the small uw.edu label is hidden to save a line. Desktop is unchanged.
+
 ## v2.7.5: Awards with proof (21 Nov 2026)
 
 [Release notes](https://github.com/JosephDavisC/Portfolio-Website/releases/tag/v2.7.5)

@@ -175,7 +175,7 @@ const Awards = () => {
           className="card-brutal group mt-6 sm:mt-10 flex flex-col sm:flex-row items-stretch gap-5 sm:gap-8 p-5 sm:p-8 bg-[#4B2E83]/[0.04] dark:bg-[#8B6FD1]/[0.08]"
           aria-label="Read Joseph's scholar profile on the University of Washington OMSFA site"
         >
-          <div className="shrink-0 self-center sm:self-auto w-32 sm:w-40 rounded-xl border-4 border-[#B7A57A] overflow-hidden bg-[#B7A57A]">
+          <div className="shrink-0 w-full sm:w-40 rounded-xl border-4 border-[#B7A57A] overflow-hidden bg-[#B7A57A]">
             <picture>
               <source srcSet="/images/uw-scholar-photo.webp" type="image/webp" />
               <img
@@ -184,7 +184,7 @@ const Awards = () => {
                 loading="lazy"
                 width={400}
                 height={533}
-                className="w-full h-full object-cover aspect-[3/4]"
+                className="w-full h-full object-cover object-[center_35%] aspect-[4/3] sm:aspect-[3/4]"
               />
             </picture>
           </div>
@@ -193,7 +193,7 @@ const Awards = () => {
               <p className="text-xs sm:text-sm font-mono font-semibold uppercase tracking-widest text-[#4B2E83] dark:text-[#B9A3E3]">
                 University of Washington · Scholar profile
               </p>
-              <span className="text-xs font-mono text-espresso/50 dark:text-slate-500">uw.edu</span>
+              <span className="hidden sm:inline text-xs font-mono text-espresso/50 dark:text-slate-500">uw.edu</span>
             </div>
             <p className="mt-3 text-2xl sm:text-3xl font-heading font-bold text-[#4B2E83] dark:text-[#CDBFF0]">Joseph Chamdani</p>
             <div className="mt-2 h-1.5 w-28 sm:w-40 bg-[#B7A57A] -skew-x-12" aria-hidden="true" />
